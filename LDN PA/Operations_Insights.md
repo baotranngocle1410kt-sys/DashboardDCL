@@ -5,10 +5,10 @@
 ---
 
 ## 📈 Chỉ số Vận hành (KPIs)
-- **GTC**: 58.51%
-- **FD**: 2.64%
+- **GTC**: 58.51% (Biến động vs Tuần trước: ↘ -4.84% vs Tuần trước)
+- **FD**: 2.64% (Biến động vs Tuần trước: ↗ +0.44% vs Tuần trước)
 - **Ontime**: 91.50%
-- **Backlog**: 2,875
+- **Backlog**: 2,875 (Biến động vs Tuần trước: ↗ +35.10% vs Tuần trước)
 - **Thiếu hụt Nhân sự**: Thiếu 59 shipper (Tuyển mới: 39 / Nghỉ việc: 52)
 
 ## 🔴 Cảnh báo Hôm nay (Alerts)
@@ -23,13 +23,15 @@
 
 ## 📈 Highlight / Lowlight
 ### Highlights:
+- Sản lượng đơn toàn vùng đạt 76,580 đơn, tăng trưởng **+14.15%** so với tuần trước.
 - **Ngô Phan Mỹ Tú** là AM có tỷ lệ GTC cao nhất toàn vùng (77.32%), đồng thời duy trì lượng đơn tồn đọng cực thấp.
-- Tỷ lệ chuyển trả (FD) toàn vùng duy trì ở mức an toàn là **2.64%**.
+- Tỷ lệ chuyển trả (FD) toàn vùng duy trì ở mức an toàn là **2.64%** (↗ +0.44% vs Tuần trước).
 - Trong tuần qua, HRBP đã tuyển thành công **39 nhân viên mới** (OB) hỗ trợ lấp đầy các tuyến nóng.
 
 ### Lowlights:
-- Hiệu suất GTC trung bình toàn vùng ở mức thấp **(58.51%)**, chưa đạt kỳ vọng.
-- Toàn vùng đang **thiếu hụt thực tế 59 shipper (NVPTTT)**, ảnh hưởng nghiêm trọng đến tiến độ giao hàng đầu ca.
+- Hiệu suất GTC trung bình toàn vùng (58.51%) sụt giảm **-4.84%** so với cùng kỳ tuần trước (63.35%).
+- Đơn tồn backlog (>5 ngày) tăng mạnh **+35.10%** so với tuần trước (từ 2,128 lên 2,875 đơn).
+- Toàn vùng đang **thiếu hụt thực tế 59 shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.
 - Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 11 định biên) và **Đồng Tháp** (thiếu 15 định biên).
 
 ## 🔮 Phân tích Nguyên nhân (Root Causes)

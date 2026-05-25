@@ -544,16 +544,48 @@ def main():
     # Sort post offices by volume descending
     bc_data = sorted(bc_data, key=lambda x: x['volume'], reverse=True)
     
-    # 10. Generate Automated Analysis Text
+    # 10. Generate Automated Analysis Text and WoW comparisons
+    vol_wow_pct = kpis['volume']['vs_lastweek'] * 100
+    gtc_wow_diff = kpis['gtc']['vs_lastweek'] * 100
+    bl_wow_pct = kpis['backlog']['vs_lastweek'] * 100
+    fd_wow_diff = kpis['fd']['vs_lastweek'] * 100
+
+    vol_arrow = "↗" if vol_wow_pct >= 0 else "↘"
+    gtc_arrow = "↗" if gtc_wow_diff >= 0 else "↘"
+    bl_arrow = "↗" if bl_wow_pct >= 0 else "↘"
+    fd_arrow = "↗" if fd_wow_diff >= 0 else "↘"
+
+    vol_wow_text = f"{vol_arrow} {vol_wow_pct:+.2f}% vs Tuần trước"
+    gtc_wow_text = f"{gtc_arrow} {gtc_wow_diff:+.2f}% vs Tuần trước"
+    bl_wow_text = f"{bl_arrow} {bl_wow_pct:+.2f}% vs Tuần trước"
+    fd_wow_text = f"{fd_arrow} {fd_wow_diff:+.2f}% vs Tuần trước"
+
+    wow_highlights = []
+    wow_lowlights = []
+
+    if gtc_wow_diff >= 0:
+        wow_highlights.append(f"Tỷ lệ GTC toàn vùng ({cur_gtc:.2%}) cải thiện **+{gtc_wow_diff:.2f}%** so với cùng kỳ tuần trước ({lastweek_gtc:.2%}).")
+    else:
+        wow_lowlights.append(f"Hiệu suất GTC trung bình toàn vùng ({cur_gtc:.2%}) sụt giảm **{gtc_wow_diff:.2f}%** so với cùng kỳ tuần trước ({lastweek_gtc:.2%}).")
+
+    if vol_wow_pct >= 0:
+        wow_highlights.append(f"Sản lượng đơn toàn vùng đạt {cur_vol:,} đơn, tăng trưởng **+{vol_wow_pct:.2f}%** so với tuần trước.")
+    else:
+        wow_lowlights.append(f"Sản lượng đơn toàn vùng đạt {cur_vol:,} đơn, suy giảm nhẹ **{vol_wow_pct:.2f}%** so với tuần trước.")
+
+    if bl_wow_pct <= 0:
+        wow_highlights.append(f"Đơn tồn backlog (>5 ngày) kiểm soát tốt, giảm **{bl_wow_pct:.2f}%** so với tuần trước (từ {lastweek_bl:,} xuống {cur_bl:,} đơn).")
+    else:
+        wow_lowlights.append(f"Đơn tồn backlog (>5 ngày) tăng mạnh **+{bl_wow_pct:.2f}%** so với tuần trước (từ {lastweek_bl:,} lên {cur_bl:,} đơn).")
+
     analysis = {
-        'highlights': [
+        'highlights': wow_highlights + [
             f"**Ngô Phan Mỹ Tú** là AM có tỷ lệ GTC cao nhất toàn vùng ({am_summary_gtc('Ngô Phan Mỹ Tú', am_data):.2%}), đồng thời duy trì lượng đơn tồn đọng cực thấp.",
-            f"Tỷ lệ chuyển trả (FD) toàn vùng duy trì ở mức an toàn là **{cur_fd:.2%}**.",
+            f"Tỷ lệ chuyển trả (FD) toàn vùng duy trì ở mức an toàn là **{cur_fd:.2%}** ({fd_wow_text}).",
             f"Trong tuần qua, HRBP đã tuyển thành công **{total_ob_week} nhân viên mới** (OB) hỗ trợ lấp đầy các tuyến nóng."
         ],
-        'lowlights': [
-            f"Hiệu suất GTC trung bình toàn vùng ở mức thấp **({cur_gtc:.2%})**, chưa đạt kỳ vọng.",
-            f"Toàn vùng đang **thiếu hụt thực tế {total_shortage_actual} shipper (NVPTTT)**, ảnh hưởng nghiêm trọng đến tiến độ giao hàng đầu ca.",
+        'lowlights': wow_lowlights + [
+            f"Toàn vùng đang **thiếu hụt thực tế {total_shortage_actual} shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.",
             f"Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu {province_summary_shortage('Tiền Giang', province_data)} định biên) và **Đồng Tháp** (thiếu {province_summary_shortage('Đồng Tháp', province_data)} định biên)."
         ],
         'causes': [
@@ -756,10 +788,10 @@ def main():
 ---
 
 ## 📈 Chỉ số Vận hành (KPIs)
-- **GTC**: {cur_gtc:.2%}
-- **FD**: {cur_fd:.2%}
+- **GTC**: {cur_gtc:.2%} (Biến động vs Tuần trước: {gtc_wow_text})
+- **FD**: {cur_fd:.2%} (Biến động vs Tuần trước: {fd_wow_text})
 - **Ontime**: {overall_ontime:.2%}
-- **Backlog**: {cur_bl:,}
+- **Backlog**: {cur_bl:,} (Biến động vs Tuần trước: {bl_wow_text})
 - **Thiếu hụt Nhân sự**: Thiếu {total_shortage_actual} shipper (Tuyển mới: {total_ob_week} / Nghỉ việc: {total_resign_week})
 
 ## 🔴 Cảnh báo Hôm nay (Alerts)
