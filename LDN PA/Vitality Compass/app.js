@@ -58,6 +58,17 @@ async function selectFolder() {
 }
 
 async function readFile(name) {
+  if (!dirHandle) {
+    try {
+      const res = await fetch(`./LDN PA/${name}`);
+      if (res.ok) {
+        return await res.text();
+      }
+    } catch(e) {
+      console.warn("Failed to fetch file from server:", name, e);
+    }
+    return '';
+  }
   try {
     const parts = name.split('/');
     let handle = dirHandle;
@@ -71,6 +82,10 @@ async function readFile(name) {
 }
 
 async function writeFile(name, content) {
+  if (!dirHandle) {
+    showToast('⚠️ Đang ở Chế độ Chỉ Đọc. Chọn thư mục để có quyền chỉnh sửa.');
+    return false;
+  }
   try {
     const parts = name.split('/');
     let handle = dirHandle;
@@ -88,8 +103,11 @@ async function writeFile(name, content) {
 // ===== REFRESH =====
 async function refreshData() {
   const now = new Date();
-  document.getElementById('dateDisplay').textContent =
-    now.toLocaleDateString('vi-VN', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+  let dateText = now.toLocaleDateString('vi-VN', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+  if (!dirHandle) {
+    dateText += ' | 👁️ Chế độ Chỉ Đọc (Kết nối thư mục để sửa)';
+  }
+  document.getElementById('dateDisplay').textContent = dateText;
 
   taskSystemsContent = await readFile('Task Systems.md');
   notebookContent = await readFile('Notebook.md');
@@ -1618,4 +1636,22 @@ function clean_bc_name(name) {
   if (!name) return "";
   return name.toLowerCase().replace("bưu cục", "").replace("bc", "").replace(/[\s\-]+/g, " ").trim();
 }
+
+// Auto-load server data on startup if available (Read-Only mode)
+window.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const testLoad = await readFile('Task Systems.md');
+    if (testLoad) {
+      document.getElementById('onboarding').style.display = 'none';
+      document.getElementById('appHeader').style.display = 'flex';
+      document.getElementById('appTabs').style.display = 'flex';
+      
+      switchTab('checklist');
+      await refreshData();
+      showToast('👁️ Chế độ xem Chỉ Đọc (Dữ liệu từ GitHub)');
+    }
+  } catch(e) {
+    console.error("Autoload failed:", e);
+  }
+});
 
