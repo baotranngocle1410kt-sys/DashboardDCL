@@ -1,0 +1,4 @@
+# Git ignore file for LDN PA project
+~$*.xlsx
+*.xlsx.tmp
+*.log
