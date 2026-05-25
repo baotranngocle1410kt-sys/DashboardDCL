@@ -26,9 +26,9 @@
       "vs_lastmonth": 0.5540540540540541
     },
     "hr": {
-      "total_shortage_actual": 82,
-      "total_shortage_bs": 37,
-      "total_resign_week": 45,
+      "total_shortage_actual": 87,
+      "total_shortage_bs": 38,
+      "total_resign_week": 49,
       "total_ob_week": 0,
       "latest_week": 22
     }
@@ -119,11 +119,11 @@
       "backlog": 1061,
       "backlog_change": 513,
       "hr": {
-        "shortage_actual": 17,
-        "shortage_bs": 8,
-        "resign": 9,
+        "shortage_actual": 22,
+        "shortage_bs": 9,
+        "resign": 13,
         "ob": 0,
-        "target_headcount": 125
+        "target_headcount": 135
       }
     },
     {
@@ -392,11 +392,11 @@
       },
       "status": "Yếu",
       "hr": {
-        "shortage_actual": 17,
-        "shortage_bs": 8,
-        "resign": 9,
+        "shortage_actual": 22,
+        "shortage_bs": 9,
+        "resign": 13,
         "ob": 0,
-        "target_headcount": 125
+        "target_headcount": 135
       }
     },
     {
@@ -899,14 +899,14 @@
       "status": "Bất ổn",
       "cause": "Lượng đơn tăng đột biến 150% do khuyến mãi Shopee.",
       "hr": {
-        "shortage_actual": 0,
-        "shortage_bs": 0,
-        "target_headcount": 28,
-        "tuyen_thieu": "",
-        "hrbp": "N/A",
-        "status": "Đủ",
+        "shortage_actual": 5,
+        "shortage_bs": 1,
+        "target_headcount": 10,
+        "tuyen_thieu": "Thị trấn Long Hồ, Hoà Tịnh, Long Mỹ, Phước Hậu",
+        "hrbp": "BìnhNLC",
+        "status": "Thiếu",
         "ob_week": 0,
-        "resign_week": 0
+        "resign_week": 4
       }
     },
     {
@@ -2106,7 +2106,7 @@
     ],
     "lowlights": [
       "Hiệu suất GTC trung bình toàn vùng ở mức thấp **(58.51%)**, chưa đạt kỳ vọng.",
-      "Toàn vùng đang **thiếu hụt thực tế 82 shipper (NVPTTT)**, ảnh hưởng nghiêm trọng đến tiến độ giao hàng đầu ca.",
+      "Toàn vùng đang **thiếu hụt thực tế 87 shipper (NVPTTT)**, ảnh hưởng nghiêm trọng đến tiến độ giao hàng đầu ca.",
       "Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 18 định biên) và **Đồng Tháp** (thiếu 22 định biên)."
     ],
     "causes": [
@@ -2488,19 +2488,19 @@
         "missing_routes": "Phường Tân Ngãi,  Phường Tân Hòa, Phường 9, Tân Hạnh"
       },
       {
-        "bc_name": "Bưu Cục 86 Tiên Thuỷ-Châu Thành-Bến Tre",
-        "volume": 1096,
-        "vol_tts": 164,
-        "gtc": 0.4571167883,
-        "backlog_72h": 16,
-        "am": "Huỳnh Quốc Trung",
-        "dinhiben_nvpttt": 13,
+        "bc_name": "Bưu Cục Quốc Lộ 53-Long Hồ-Vĩnh Long",
+        "volume": 1311,
+        "vol_tts": 196,
+        "gtc": 0.2669717773,
+        "backlog_72h": 19,
+        "am": "Nguyễn Tuấn Anh",
+        "dinhiben_nvpttt": 10,
         "dinhiben_nvxl": 1,
         "tuyen_7d": 0,
-        "nghi_7d": 3,
-        "details": "- Thiếu hụt thực tế sau OB: 4 NVPTTT.\n- Nhân sự mới nhận việc trong tuần: +0 OB. Nhân sự nghỉ việc: -3.\n- Tuyến thiếu: Tân Phú, Tiên Long, Sơn Đông.",
-        "shortage_accurate": 4,
-        "missing_routes": "Tân Phú, Tiên Long, Sơn Đông"
+        "nghi_7d": 4,
+        "details": "- Thiếu hụt thực tế sau OB: 5 NVPTTT.\n- Nhân sự mới nhận việc trong tuần: +0 OB. Nhân sự nghỉ việc: -4.\n- Tuyến thiếu: Thị trấn Long Hồ, Hoà Tịnh, Long Mỹ, Phước Hậu.",
+        "shortage_accurate": 5,
+        "missing_routes": "Thị trấn Long Hồ, Hoà Tịnh, Long Mỹ, Phước Hậu"
       }
     ],
     "latest_week": 22

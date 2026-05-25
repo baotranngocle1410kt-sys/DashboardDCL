@@ -9,7 +9,7 @@
 - **FD**: 2.64%
 - **Ontime**: 91.50%
 - **Backlog**: 2,875
-- **Thiếu hụt Nhân sự**: Thiếu 82 shipper (Tuyển mới: 0 / Nghỉ việc: 45)
+- **Thiếu hụt Nhân sự**: Thiếu 87 shipper (Tuyển mới: 0 / Nghỉ việc: 49)
 
 ## 🔴 Cảnh báo Hôm nay (Alerts)
 - **BC Quốc Lộ 50-Gò Công Tây-Tiền Giang** có chỉ số GTC ngày 23/05/26 thấp hơn ngày hôm N-1 (22/05/26) 0.58%. So với cùng kỳ giảm 10.79% do Không rõ nguyên nhân, rủi ro sập luồng hàng cao!, nhân sự đang thiếu 1/19 định biên, tuyến thiếu (Bình Tân, Long Bình, Vĩnh Hựu).
@@ -29,7 +29,7 @@
 
 ### Lowlights:
 - Hiệu suất GTC trung bình toàn vùng ở mức thấp **(58.51%)**, chưa đạt kỳ vọng.
-- Toàn vùng đang **thiếu hụt thực tế 82 shipper (NVPTTT)**, ảnh hưởng nghiêm trọng đến tiến độ giao hàng đầu ca.
+- Toàn vùng đang **thiếu hụt thực tế 87 shipper (NVPTTT)**, ảnh hưởng nghiêm trọng đến tiến độ giao hàng đầu ca.
 - Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 18 định biên) và **Đồng Tháp** (thiếu 22 định biên).
 
 ## 🔮 Phân tích Nguyên nhân (Root Causes)
@@ -53,7 +53,7 @@
 | Đoàn Công Tín | 53.83% | 2.70% | Yếu | 486 | Thiếu 3/63 | KhôiHM |
 | Nguyễn Anh Tùng | 50.25% | 2.94% | Yếu | 500 | Thiếu 9/89 | KhôiHM |
 | Huỳnh Phương Duy | 49.68% | 1.64% | Yếu | 401 | Thiếu 9/68 | VyLNK |
-| Nguyễn Tuấn Anh | 48.34% | 3.07% | Yếu | 1,061 | Thiếu 17/125 | BìnhNLC |
+| Nguyễn Tuấn Anh | 48.34% | 3.07% | Yếu | 1,061 | Thiếu 22/135 | BìnhNLC |
 | Huỳnh Quốc Trung | 45.71% | 3.01% | Yếu | 24 | Thiếu 7/34 | VyLNK |
 
 ## 📦 Backlog Tracking
