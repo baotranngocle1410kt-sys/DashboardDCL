@@ -26,11 +26,11 @@
       "vs_lastmonth": 0.5540540540540541
     },
     "hr": {
-      "total_shortage_actual": 87,
-      "total_shortage_bs": 38,
-      "total_resign_week": 49,
-      "total_ob_week": 0,
-      "latest_week": 22
+      "total_shortage_actual": 59,
+      "total_shortage_bs": 40,
+      "total_resign_week": 52,
+      "total_ob_week": 39,
+      "latest_week": 21
     }
   },
   "daily_trends": [
@@ -102,10 +102,10 @@
       "backlog": 563,
       "backlog_change": 158,
       "hr": {
-        "shortage_actual": 19,
-        "shortage_bs": 6,
-        "resign": 13,
-        "ob": 0,
+        "shortage_actual": 15,
+        "shortage_bs": 7,
+        "resign": 10,
+        "ob": 2,
         "target_headcount": 175
       }
     },
@@ -119,11 +119,11 @@
       "backlog": 1061,
       "backlog_change": 513,
       "hr": {
-        "shortage_actual": 22,
-        "shortage_bs": 9,
-        "resign": 13,
-        "ob": 0,
-        "target_headcount": 135
+        "shortage_actual": 13,
+        "shortage_bs": 6,
+        "resign": 11,
+        "ob": 4,
+        "target_headcount": 130
       }
     },
     {
@@ -136,10 +136,10 @@
       "backlog": 265,
       "backlog_change": 56,
       "hr": {
-        "shortage_actual": 22,
+        "shortage_actual": 15,
         "shortage_bs": 10,
-        "resign": 12,
-        "ob": 0,
+        "resign": 14,
+        "ob": 9,
         "target_headcount": 172
       }
     },
@@ -153,10 +153,10 @@
       "backlog": 1086,
       "backlog_change": 276,
       "hr": {
-        "shortage_actual": 18,
-        "shortage_bs": 11,
-        "resign": 7,
-        "ob": 0,
+        "shortage_actual": 11,
+        "shortage_bs": 12,
+        "resign": 12,
+        "ob": 18,
         "target_headcount": 222
       }
     },
@@ -170,10 +170,10 @@
       "backlog": 138,
       "backlog_change": 25,
       "hr": {
-        "shortage_actual": 6,
-        "shortage_bs": 2,
-        "resign": 4,
-        "ob": 0,
+        "shortage_actual": 5,
+        "shortage_bs": 5,
+        "resign": 5,
+        "ob": 6,
         "target_headcount": 116
       }
     }
@@ -216,10 +216,10 @@
       },
       "status": "Mạnh",
       "hr": {
-        "shortage_actual": 5,
-        "shortage_bs": 2,
-        "resign": 3,
-        "ob": 0,
+        "shortage_actual": 4,
+        "shortage_bs": 6,
+        "resign": 4,
+        "ob": 7,
         "target_headcount": 128
       }
     },
@@ -260,10 +260,10 @@
       },
       "status": "Cải thiện",
       "hr": {
-        "shortage_actual": 4,
+        "shortage_actual": 3,
         "shortage_bs": 2,
-        "resign": 2,
-        "ob": 0,
+        "resign": 5,
+        "ob": 4,
         "target_headcount": 46
       }
     },
@@ -282,9 +282,9 @@
       },
       "status": "Cải thiện",
       "hr": {
-        "shortage_actual": 8,
+        "shortage_actual": 7,
         "shortage_bs": 3,
-        "resign": 5,
+        "resign": 4,
         "ob": 0,
         "target_headcount": 39
       }
@@ -304,10 +304,10 @@
       },
       "status": "Cải thiện",
       "hr": {
-        "shortage_actual": 12,
+        "shortage_actual": 4,
         "shortage_bs": 8,
-        "resign": 4,
-        "ob": 0,
+        "resign": 5,
+        "ob": 10,
         "target_headcount": 80
       }
     },
@@ -326,10 +326,10 @@
       },
       "status": "Yếu",
       "hr": {
-        "shortage_actual": 3,
-        "shortage_bs": 2,
+        "shortage_actual": 2,
+        "shortage_bs": 3,
         "resign": 1,
-        "ob": 0,
+        "ob": 5,
         "target_headcount": 63
       }
     },
@@ -348,10 +348,10 @@
       },
       "status": "Yếu",
       "hr": {
-        "shortage_actual": 9,
+        "shortage_actual": 8,
         "shortage_bs": 6,
-        "resign": 3,
-        "ob": 0,
+        "resign": 7,
+        "ob": 6,
         "target_headcount": 89
       }
     },
@@ -370,10 +370,10 @@
       },
       "status": "Yếu",
       "hr": {
-        "shortage_actual": 9,
+        "shortage_actual": 5,
         "shortage_bs": 2,
-        "resign": 7,
-        "ob": 0,
+        "resign": 4,
+        "ob": 1,
         "target_headcount": 68
       }
     },
@@ -392,11 +392,11 @@
       },
       "status": "Yếu",
       "hr": {
-        "shortage_actual": 22,
-        "shortage_bs": 9,
-        "resign": 13,
-        "ob": 0,
-        "target_headcount": 135
+        "shortage_actual": 13,
+        "shortage_bs": 6,
+        "resign": 11,
+        "ob": 4,
+        "target_headcount": 130
       }
     },
     {
@@ -414,10 +414,10 @@
       },
       "status": "Yếu",
       "hr": {
-        "shortage_actual": 7,
+        "shortage_actual": 5,
         "shortage_bs": 1,
         "resign": 6,
-        "ob": 0,
+        "ob": 2,
         "target_headcount": 34
       }
     }
@@ -440,13 +440,13 @@
       "status": "Bất ổn",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
-        "shortage_actual": 1,
-        "shortage_bs": 1,
+        "shortage_actual": 0,
+        "shortage_bs": 2,
         "target_headcount": 19,
         "tuyen_thieu": "Bình Tân, Long Bình, Vĩnh Hựu",
         "hrbp": "KhôiHM",
         "status": "Thiếu",
-        "ob_week": 0,
+        "ob_week": 4,
         "resign_week": 0
       }
     },
@@ -467,14 +467,14 @@
       "status": "Bất ổn",
       "cause": "Thiếu shipper giao chặng cuối, tồn đọng ca sáng.",
       "hr": {
-        "shortage_actual": 9,
-        "shortage_bs": 5,
-        "target_headcount": 16,
-        "tuyen_thieu": "Phường 3, Phường 4, Phưởng 5, Thanh Đức",
+        "shortage_actual": 5,
+        "shortage_bs": 0,
+        "target_headcount": 21,
+        "tuyen_thieu": "Phường 3, Phường 4, Phưởng 5, Long Phước",
         "hrbp": "BìnhNLC",
         "status": "Thiếu",
-        "ob_week": 0,
-        "resign_week": 4
+        "ob_week": 2,
+        "resign_week": 7
       }
     },
     {
@@ -521,14 +521,14 @@
       "status": "Bất ổn",
       "cause": "Hàng ca 1 về trễ, chưa kịp phân tuyến gán shipper.",
       "hr": {
-        "shortage_actual": 8,
+        "shortage_actual": 4,
         "shortage_bs": 1,
         "target_headcount": 9,
-        "tuyen_thieu": "Bình Hòa Phước, An Bình, Đồng Phú, Hòa Ninh, Thị trấn Chợ Lách",
+        "tuyen_thieu": "Bình Hòa Phước, An Bình, Đồng Phú, Hòa Ninh",
         "hrbp": "VyLNK",
         "status": "Thiếu",
-        "ob_week": 0,
-        "resign_week": 7
+        "ob_week": 1,
+        "resign_week": 4
       }
     },
     {
@@ -548,13 +548,13 @@
       "status": "Cảnh báo",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
-        "shortage_actual": 3,
+        "shortage_actual": 1,
         "shortage_bs": 0,
         "target_headcount": 21,
         "tuyen_thieu": "Trung An, Phước Thạnh",
         "hrbp": "KhôiHM",
         "status": "Thiếu",
-        "ob_week": 0,
+        "ob_week": 2,
         "resign_week": 3
       }
     },
@@ -578,11 +578,11 @@
         "shortage_actual": 0,
         "shortage_bs": 0,
         "target_headcount": 14,
-        "tuyen_thieu": "",
+        "tuyen_thieu": "Phường 11",
         "hrbp": "BìnhNLC",
-        "status": "Đủ",
-        "ob_week": 0,
-        "resign_week": 0
+        "status": "Thiếu",
+        "ob_week": 1,
+        "resign_week": 1
       }
     },
     {
@@ -629,14 +629,14 @@
       "status": "Bất ổn",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
-        "shortage_actual": 1,
+        "shortage_actual": 0,
         "shortage_bs": 0,
         "target_headcount": 19,
         "tuyen_thieu": "",
         "hrbp": "KhôiHM",
         "status": "Thiếu",
-        "ob_week": 0,
-        "resign_week": 1
+        "ob_week": 4,
+        "resign_week": 3
       }
     },
     {
@@ -656,8 +656,8 @@
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
-        "shortage_actual": 1,
-        "shortage_bs": 1,
+        "shortage_actual": 2,
+        "shortage_bs": 2,
         "target_headcount": 22,
         "tuyen_thieu": "KCN Long Đức",
         "hrbp": "VyLNK",
@@ -791,14 +791,14 @@
       "status": "Bất ổn",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
-        "shortage_actual": 2,
+        "shortage_actual": 1,
         "shortage_bs": 0,
         "target_headcount": 18,
         "tuyen_thieu": "Nhị Mỹ, Tân Hội Trung, Xã Mỹ Xương, Xã Bình Thạnh",
         "hrbp": "BìnhNLC",
         "status": "Thiếu",
-        "ob_week": 0,
-        "resign_week": 2
+        "ob_week": 3,
+        "resign_week": 4
       }
     },
     {
@@ -818,13 +818,13 @@
       "status": "Cảnh báo",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
-        "shortage_actual": 6,
+        "shortage_actual": 1,
         "shortage_bs": 2,
         "target_headcount": 23,
         "tuyen_thieu": "Phú Điền, Mỹ An, Thanh Mỹ, Mỹ Hoà, Thị trấn Mỹ An",
         "hrbp": "BìnhNLC",
         "status": "Thiếu",
-        "ob_week": 0,
+        "ob_week": 5,
         "resign_week": 4
       }
     },
@@ -872,13 +872,13 @@
       "status": "Cảnh báo",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
-        "shortage_actual": 1,
+        "shortage_actual": 0,
         "shortage_bs": 1,
         "target_headcount": 14,
         "tuyen_thieu": "Phú Hưng",
         "hrbp": "VyLNK",
         "status": "Thiếu",
-        "ob_week": 0,
+        "ob_week": 1,
         "resign_week": 0
       }
     },
@@ -899,14 +899,14 @@
       "status": "Bất ổn",
       "cause": "Lượng đơn tăng đột biến 150% do khuyến mãi Shopee.",
       "hr": {
-        "shortage_actual": 5,
-        "shortage_bs": 1,
-        "target_headcount": 10,
-        "tuyen_thieu": "Thị trấn Long Hồ, Hoà Tịnh, Long Mỹ, Phước Hậu",
-        "hrbp": "BìnhNLC",
-        "status": "Thiếu",
+        "shortage_actual": 0,
+        "shortage_bs": 0,
+        "target_headcount": 28,
+        "tuyen_thieu": "",
+        "hrbp": "N/A",
+        "status": "Đủ",
         "ob_week": 0,
-        "resign_week": 4
+        "resign_week": 0
       }
     },
     {
@@ -926,10 +926,10 @@
       "status": "Cảnh báo",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
-        "shortage_actual": 3,
-        "shortage_bs": 0,
+        "shortage_actual": 5,
+        "shortage_bs": 2,
         "target_headcount": 12,
-        "tuyen_thieu": "An Hiệp, Tân Phú Trung",
+        "tuyen_thieu": "xã An Hiệp, xã an nhơn, xã tân phú trung, xã an khánh.",
         "hrbp": "BìnhNLC",
         "status": "Thiếu",
         "ob_week": 0,
@@ -1008,13 +1008,13 @@
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
         "shortage_actual": 5,
-        "shortage_bs": 2,
+        "shortage_bs": 5,
         "target_headcount": 17,
         "tuyen_thieu": "Phường Tân Ngãi,  Phường Tân Hòa, Phường 9, Tân Hạnh",
         "hrbp": "BìnhNLC",
         "status": "Thiếu",
         "ob_week": 0,
-        "resign_week": 3
+        "resign_week": 0
       }
     },
     {
@@ -1115,14 +1115,14 @@
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
-        "shortage_actual": 0,
+        "shortage_actual": 1,
         "shortage_bs": 0,
         "target_headcount": 13,
-        "tuyen_thieu": "",
+        "tuyen_thieu": "xã Tân Mỹ",
         "hrbp": "BìnhNLC",
-        "status": "Đủ",
+        "status": "Thiếu",
         "ob_week": 0,
-        "resign_week": 0
+        "resign_week": 1
       }
     },
     {
@@ -1147,9 +1147,9 @@
         "target_headcount": 13,
         "tuyen_thieu": "Mỹ Long, Hiệp Đức, Ngũ Hiệp, Tam Bình",
         "hrbp": "KhôiHM",
-        "status": "Đủ",
-        "ob_week": 0,
-        "resign_week": 0
+        "status": "Thiếu",
+        "ob_week": 1,
+        "resign_week": 1
       }
     },
     {
@@ -1169,12 +1169,12 @@
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
-        "shortage_actual": 0,
-        "shortage_bs": 0,
+        "shortage_actual": 1,
+        "shortage_bs": 1,
         "target_headcount": 16,
-        "tuyen_thieu": "",
+        "tuyen_thieu": "Tân Lợi Thạnh, Thạnh Phú Đông, Hưng Lễ",
         "hrbp": "VyLNK",
-        "status": "Đủ",
+        "status": "Thiếu",
         "ob_week": 0,
         "resign_week": 0
       }
@@ -1277,13 +1277,13 @@
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
-        "shortage_actual": 1,
+        "shortage_actual": 0,
         "shortage_bs": 0,
         "target_headcount": 15,
         "tuyen_thieu": "Ngọc Biên",
         "hrbp": "VyLNK",
         "status": "Thiếu",
-        "ob_week": 0,
+        "ob_week": 1,
         "resign_week": 1
       }
     },
@@ -1310,8 +1310,8 @@
         "tuyen_thieu": "Tân Lập 123 + 1/2 Phước Lập, Tân Hòa Đông + Phú Mỹ",
         "hrbp": "KhôiHM",
         "status": "Thiếu",
-        "ob_week": 0,
-        "resign_week": 0
+        "ob_week": 2,
+        "resign_week": 2
       }
     },
     {
@@ -1331,14 +1331,14 @@
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
-        "shortage_actual": 2,
+        "shortage_actual": 0,
         "shortage_bs": 0,
         "target_headcount": 10,
-        "tuyen_thieu": "Tân Lộc, Phú Quới",
+        "tuyen_thieu": "Tân Lộc (cũ)",
         "hrbp": "BìnhNLC",
         "status": "Thiếu",
-        "ob_week": 0,
-        "resign_week": 2
+        "ob_week": 1,
+        "resign_week": 1
       }
     },
     {
@@ -1385,14 +1385,14 @@
       "status": "Bất ổn",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
-        "shortage_actual": 3,
-        "shortage_bs": 2,
+        "shortage_actual": 0,
+        "shortage_bs": 0,
         "target_headcount": 10,
-        "tuyen_thieu": "Phong Hoà, Tân Hoà",
+        "tuyen_thieu": "",
         "hrbp": "BìnhNLC",
-        "status": "Thiếu",
+        "status": "Đủ",
         "ob_week": 0,
-        "resign_week": 1
+        "resign_week": 0
       }
     },
     {
@@ -1415,7 +1415,7 @@
         "shortage_actual": 1,
         "shortage_bs": 0,
         "target_headcount": 12,
-        "tuyen_thieu": "Phú Thành A",
+        "tuyen_thieu": "phú thành a",
         "hrbp": "BìnhNLC",
         "status": "Thiếu",
         "ob_week": 0,
@@ -1466,13 +1466,13 @@
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
-        "shortage_actual": 1,
+        "shortage_actual": 0,
         "shortage_bs": 0,
         "target_headcount": 12,
         "tuyen_thieu": "Tân Hòa",
         "hrbp": "VyLNK",
         "status": "Thiếu",
-        "ob_week": 0,
+        "ob_week": 1,
         "resign_week": 1
       }
     },
@@ -1499,7 +1499,7 @@
         "tuyen_thieu": "An Thái Đông (1), Mỹ Lương (1), An Thái Trung (2), An Hữu (2), Hòa Hưng (2), Tân Hưng (2), Tân Thanh (1), Mỹ Lợi A (1), Mỹ Lợi B (1)",
         "hrbp": "KhôiHM",
         "status": "Đủ",
-        "ob_week": 0,
+        "ob_week": 1,
         "resign_week": 0
       }
     },
@@ -1575,12 +1575,12 @@
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
         "shortage_actual": 1,
-        "shortage_bs": 0,
+        "shortage_bs": 1,
         "target_headcount": 12,
-        "tuyen_thieu": "Châu Điền",
+        "tuyen_thieu": "Thạnh Phú, Châu Điền",
         "hrbp": "VyLNK",
         "status": "Thiếu",
-        "ob_week": 0,
+        "ob_week": 1,
         "resign_week": 1
       }
     },
@@ -1655,13 +1655,13 @@
       "status": "Cảnh báo",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
-        "shortage_actual": 3,
+        "shortage_actual": 0,
         "shortage_bs": 3,
         "target_headcount": 13,
         "tuyen_thieu": "Thị trấn (2), Mỹ Tân (1), Mỹ Tây (1)",
         "hrbp": "KhôiHM",
         "status": "Thiếu",
-        "ob_week": 0,
+        "ob_week": 3,
         "resign_week": 0
       }
     },
@@ -1763,14 +1763,14 @@
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
-        "shortage_actual": 1,
+        "shortage_actual": 2,
         "shortage_bs": 1,
         "target_headcount": 12,
-        "tuyen_thieu": "",
+        "tuyen_thieu": "Tân Hưng, Thành Trung, Tân Quới",
         "hrbp": "BìnhNLC",
         "status": "Thiếu",
-        "ob_week": 0,
-        "resign_week": 0
+        "ob_week": 1,
+        "resign_week": 2
       }
     },
     {
@@ -1793,7 +1793,7 @@
         "shortage_actual": 3,
         "shortage_bs": 3,
         "target_headcount": 8,
-        "tuyen_thieu": "Mỹ An Hưng A, Tân Khánh Trung, Tân Mỹ",
+        "tuyen_thieu": "Xã Mỹ An Hưng A, Xã Tân Khánh Trung, Xã Tân Mỹ",
         "hrbp": "BìnhNLC",
         "status": "Thiếu",
         "ob_week": 0,
@@ -1818,13 +1818,13 @@
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
         "shortage_actual": 0,
-        "shortage_bs": 0,
+        "shortage_bs": 1,
         "target_headcount": 13,
-        "tuyen_thieu": "",
+        "tuyen_thieu": "Kim Hòa, Trường Thọ",
         "hrbp": "VyLNK",
-        "status": "Đủ",
-        "ob_week": 0,
-        "resign_week": 0
+        "status": "Thiếu",
+        "ob_week": 2,
+        "resign_week": 1
       }
     },
     {
@@ -1850,7 +1850,7 @@
         "tuyen_thieu": "",
         "hrbp": "VyLNK",
         "status": "Đủ",
-        "ob_week": 0,
+        "ob_week": 1,
         "resign_week": 0
       }
     },
@@ -1877,7 +1877,7 @@
         "tuyen_thieu": "Xã Mỹ Hạnh Đông, Xã Mỹ Hạnh Trung, Thạnh Lộc",
         "hrbp": "KhôiHM",
         "status": "Đủ",
-        "ob_week": 0,
+        "ob_week": 1,
         "resign_week": 0
       }
     },
@@ -2102,12 +2102,12 @@
     "highlights": [
       "**Ngô Phan Mỹ Tú** là AM có tỷ lệ GTC cao nhất toàn vùng (77.32%), đồng thời duy trì lượng đơn tồn đọng cực thấp.",
       "Tỷ lệ chuyển trả (FD) toàn vùng duy trì ở mức an toàn là **2.64%**.",
-      "Trong tuần qua, HRBP đã tuyển thành công **0 nhân viên mới** (OB) hỗ trợ lấp đầy các tuyến nóng."
+      "Trong tuần qua, HRBP đã tuyển thành công **39 nhân viên mới** (OB) hỗ trợ lấp đầy các tuyến nóng."
     ],
     "lowlights": [
       "Hiệu suất GTC trung bình toàn vùng ở mức thấp **(58.51%)**, chưa đạt kỳ vọng.",
-      "Toàn vùng đang **thiếu hụt thực tế 87 shipper (NVPTTT)**, ảnh hưởng nghiêm trọng đến tiến độ giao hàng đầu ca.",
-      "Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 18 định biên) và **Đồng Tháp** (thiếu 22 định biên)."
+      "Toàn vùng đang **thiếu hụt thực tế 59 shipper (NVPTTT)**, ảnh hưởng nghiêm trọng đến tiến độ giao hàng đầu ca.",
+      "Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 11 định biên) và **Đồng Tháp** (thiếu 15 định biên)."
     ],
     "causes": [
       "Thiếu shipper giao hàng chặng cuối tại các bưu cục lớn (Phó Cơ Điều, Lấp Vò, Vĩnh Kim) là nguyên nhân gốc rễ gây sụt giảm tỷ lệ GTC và tăng đơn tồn đọng (backlog).",
@@ -2428,49 +2428,19 @@
   "recruitment": {
     "top_5": [
       {
-        "bc_name": "Bưu Cục 73 Phó Cơ Điều-Phường Phước Hậu-Vĩnh Long",
-        "volume": 3046,
-        "vol_tts": 456,
-        "gtc": 0.1375574524,
-        "backlog_72h": 646,
-        "am": "Nguyễn Tuấn Anh",
-        "dinhiben_nvpttt": 16,
+        "bc_name": "Bưu Cục Tân Nhuận Đông-Châu Thành-Đồng Tháp",
+        "volume": 1265,
+        "vol_tts": 189,
+        "gtc": 0.6577075099,
+        "backlog_72h": 18,
+        "am": "Lý Quài Nhân",
+        "dinhiben_nvpttt": 12,
         "dinhiben_nvxl": 1,
         "tuyen_7d": 0,
-        "nghi_7d": 4,
-        "details": "- Thiếu hụt thực tế sau OB: 9 NVPTTT.\n- Nhân sự mới nhận việc trong tuần: +0 OB. Nhân sự nghỉ việc: -4.\n- Tuyến thiếu: Phường 3, Phường 4, Phưởng 5, Thanh Đức.",
-        "shortage_accurate": 9,
-        "missing_routes": "Phường 3, Phường 4, Phưởng 5, Thanh Đức"
-      },
-      {
-        "bc_name": "Bưu Cục QL57 KP3-Thị Trấn Chợ Lách-Bến Tre",
-        "volume": 2722,
-        "vol_tts": 408,
-        "gtc": 0.1473181484,
-        "backlog_72h": 383,
-        "am": "Huỳnh Phương Duy",
-        "dinhiben_nvpttt": 9,
-        "dinhiben_nvxl": 1,
-        "tuyen_7d": 0,
-        "nghi_7d": 7,
-        "details": "- Thiếu hụt thực tế sau OB: 8 NVPTTT.\n- Nhân sự mới nhận việc trong tuần: +0 OB. Nhân sự nghỉ việc: -7.\n- Tuyến thiếu: Bình Hòa Phước, An Bình, Đồng Phú, Hòa Ninh, Thị trấn Chợ Lách.",
-        "shortage_accurate": 8,
-        "missing_routes": "Bình Hòa Phước, An Bình, Đồng Phú, Hòa Ninh, Thị trấn Chợ Lách"
-      },
-      {
-        "bc_name": "Bưu Cục Khóm 3 Trần Hưng Đạo-Xã Tháp Mười-Đồng Tháp",
-        "volume": 1489,
-        "vol_tts": 223,
-        "gtc": 0.6205507052,
-        "backlog_72h": 22,
-        "am": "Lê Minh Tuấn",
-        "dinhiben_nvpttt": 23,
-        "dinhiben_nvxl": 2,
-        "tuyen_7d": 0,
-        "nghi_7d": 4,
-        "details": "- Thiếu hụt thực tế sau OB: 6 NVPTTT.\n- Nhân sự mới nhận việc trong tuần: +0 OB. Nhân sự nghỉ việc: -4.\n- Tuyến thiếu: Phú Điền, Mỹ An, Thanh Mỹ, Mỹ Hoà, Thị trấn Mỹ An.",
-        "shortage_accurate": 6,
-        "missing_routes": "Phú Điền, Mỹ An, Thanh Mỹ, Mỹ Hoà, Thị trấn Mỹ An"
+        "nghi_7d": 3,
+        "details": "- Thiếu hụt thực tế sau OB: 5 NVPTTT.\n- Nhân sự mới nhận việc trong tuần: +0 OB. Nhân sự nghỉ việc: -3.\n- Tuyến thiếu: xã An Hiệp, xã an nhơn, xã tân phú trung, xã an khánh..",
+        "shortage_accurate": 5,
+        "missing_routes": "xã An Hiệp, xã an nhơn, xã tân phú trung, xã an khánh."
       },
       {
         "bc_name": "Bưu Cục 57/4 Phan Văn Đáng-Vĩnh Long-Vĩnh Long",
@@ -2482,27 +2452,57 @@
         "dinhiben_nvpttt": 17,
         "dinhiben_nvxl": 1,
         "tuyen_7d": 0,
-        "nghi_7d": 3,
-        "details": "- Thiếu hụt thực tế sau OB: 5 NVPTTT.\n- Nhân sự mới nhận việc trong tuần: +0 OB. Nhân sự nghỉ việc: -3.\n- Tuyến thiếu: Phường Tân Ngãi,  Phường Tân Hòa, Phường 9, Tân Hạnh.",
+        "nghi_7d": 0,
+        "details": "- Thiếu hụt thực tế sau OB: 5 NVPTTT.\n- Nhân sự mới nhận việc trong tuần: +0 OB. Nhân sự nghỉ việc: -0.\n- Tuyến thiếu: Phường Tân Ngãi,  Phường Tân Hòa, Phường 9, Tân Hạnh.",
         "shortage_accurate": 5,
         "missing_routes": "Phường Tân Ngãi,  Phường Tân Hòa, Phường 9, Tân Hạnh"
       },
       {
-        "bc_name": "Bưu Cục Quốc Lộ 53-Long Hồ-Vĩnh Long",
-        "volume": 1311,
-        "vol_tts": 196,
-        "gtc": 0.2669717773,
-        "backlog_72h": 19,
+        "bc_name": "Bưu Cục 73 Phó Cơ Điều-Phường Phước Hậu-Vĩnh Long",
+        "volume": 3046,
+        "vol_tts": 456,
+        "gtc": 0.1375574524,
+        "backlog_72h": 646,
         "am": "Nguyễn Tuấn Anh",
-        "dinhiben_nvpttt": 10,
+        "dinhiben_nvpttt": 21,
+        "dinhiben_nvxl": 1,
+        "tuyen_7d": 2,
+        "nghi_7d": 7,
+        "details": "- Thiếu hụt thực tế sau OB: 5 NVPTTT.\n- Nhân sự mới nhận việc trong tuần: +2 OB. Nhân sự nghỉ việc: -7.\n- Tuyến thiếu: Phường 3, Phường 4, Phưởng 5, Long Phước.",
+        "shortage_accurate": 5,
+        "missing_routes": "Phường 3, Phường 4, Phưởng 5, Long Phước"
+      },
+      {
+        "bc_name": "Bưu Cục 86 Tiên Thuỷ-Châu Thành-Bến Tre",
+        "volume": 1096,
+        "vol_tts": 164,
+        "gtc": 0.4571167883,
+        "backlog_72h": 16,
+        "am": "Huỳnh Quốc Trung",
+        "dinhiben_nvpttt": 13,
         "dinhiben_nvxl": 1,
         "tuyen_7d": 0,
+        "nghi_7d": 3,
+        "details": "- Thiếu hụt thực tế sau OB: 4 NVPTTT.\n- Nhân sự mới nhận việc trong tuần: +0 OB. Nhân sự nghỉ việc: -3.\n- Tuyến thiếu: Tân Phú, Tiên Long, Sơn Đông.",
+        "shortage_accurate": 4,
+        "missing_routes": "Tân Phú, Tiên Long, Sơn Đông"
+      },
+      {
+        "bc_name": "Bưu Cục QL57 KP3-Thị Trấn Chợ Lách-Bến Tre",
+        "volume": 2722,
+        "vol_tts": 408,
+        "gtc": 0.1473181484,
+        "backlog_72h": 383,
+        "am": "Huỳnh Phương Duy",
+        "dinhiben_nvpttt": 9,
+        "dinhiben_nvxl": 1,
+        "tuyen_7d": 1,
         "nghi_7d": 4,
-        "details": "- Thiếu hụt thực tế sau OB: 5 NVPTTT.\n- Nhân sự mới nhận việc trong tuần: +0 OB. Nhân sự nghỉ việc: -4.\n- Tuyến thiếu: Thị trấn Long Hồ, Hoà Tịnh, Long Mỹ, Phước Hậu.",
-        "shortage_accurate": 5,
-        "missing_routes": "Thị trấn Long Hồ, Hoà Tịnh, Long Mỹ, Phước Hậu"
+        "details": "- Thiếu hụt thực tế sau OB: 4 NVPTTT.\n- Nhân sự mới nhận việc trong tuần: +1 OB. Nhân sự nghỉ việc: -4.\n- Tuyến thiếu: Bình Hòa Phước, An Bình, Đồng Phú, Hòa Ninh.",
+        "shortage_accurate": 4,
+        "missing_routes": "Bình Hòa Phước, An Bình, Đồng Phú, Hòa Ninh"
       }
     ],
-    "latest_week": 22
+    "latest_week": 21
   }
 }
