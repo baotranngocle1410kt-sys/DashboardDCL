@@ -1464,7 +1464,7 @@ function renderHrTop5() {
         <strong>Chi tiết vận hành:</strong> ${escapeHtml(warningText)} ${escapeHtml(item.details)}
       </div>
       <div class="hr-plan-box">
-        <strong>Phương án xử lý:</strong> Phân bổ gán tuyến trước 8h sáng, chạy FB Ads tìm shipper thay thế. AM cắm chốt tại BC để hướng dẫn shipper mới.
+        <strong>Phương án xử lý:</strong> ${escapeHtml(item.action_plan || 'Phân bổ gán tuyến trước 8h sáng, chạy FB Ads tìm shipper thay thế. AM cắm chốt tại BC để hướng dẫn shipper mới.')}
       </div>
       <div style="display:flex; justify-content: flex-end; margin-top: 8px;">
         <button class="bc-btn bc-btn-primary" style="flex:none; padding: 6px 14px; font-size:11px;" onclick="sendTelegramAlert('${escapeHtml(item.bc_name)}', '${escapeHtml(item.am)}', '${escapeHtml(amTele)}', '${bcMatch ? (bcMatch.gtc*100).toFixed(2)+'%' : 'N/A'}', '${escapeHtml(changeText)}', '${bcMatch ? bcMatch.backlog : 'N/A'}', 'Thiếu shipper chặng cuối và tuyến chạy xa')">💬 Nhắc AM & HRBP</button>

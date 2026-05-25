@@ -8,9 +8,9 @@ import re
 # Ensure UTF-8 output
 sys.stdout.reconfigure(encoding='utf-8')
 
-p_performance = r"C:\Users\Administrator\Desktop\AI 2026\Metor\DCL - BÁO CÁO VẬN HÀNH.xlsx"
-p_backlog = r"C:\Users\Administrator\Desktop\AI 2026\Metor\DCL - Đơn aging _5 ngày.xlsx"
-p_hr = r"C:\Users\Administrator\Desktop\AI 2026\Metor\[ĐCL] - BÁO CÁO TUYỂN DỤNG DATA.xlsx"
+p_performance = r"C:\Users\Administrator\Desktop\AI 2026\Mentor\DCL - BÁO CÁO VẬN HÀNH.xlsx"
+p_backlog = r"C:\Users\Administrator\Desktop\AI 2026\Mentor\DCL - Đơn aging _5 ngày.xlsx"
+p_hr = r"C:\Users\Administrator\Desktop\AI 2026\Mentor\[ĐCL] - BÁO CÁO TUYỂN DỤNG DATA.xlsx"
 
 output_json = r"C:\Users\Administrator\Desktop\AI 2026\LDN PA\Vitality Compass\operations_data.json"
 output_md = r"C:\Users\Administrator\Desktop\AI 2026\LDN PA\Operations_Insights.md"
@@ -47,7 +47,7 @@ def main():
     print("Downloading live recruitment sheet from Google Sheets...")
     try:
         gsheet_hr_url = "https://docs.google.com/spreadsheets/d/1si4PWd97eJhQDQUBXvEErjmNHGO8W1NrQVFnzzMIkDI/export?format=xlsx"
-        p_hr_local = r"C:\Users\Administrator\Desktop\AI 2026\Metor\recruitment_live.xlsx"
+        p_hr_local = r"C:\Users\Administrator\Desktop\AI 2026\Mentor\recruitment_live.xlsx"
         req = urllib.request.Request(gsheet_hr_url, headers={'User-Agent': 'Mozilla/5.0'})
         with urllib.request.urlopen(req, timeout=90) as response:
             with open(p_hr_local, 'wb') as f:
@@ -59,7 +59,7 @@ def main():
         
     # Download Link 1 (GTC/Performance)
     print("Downloading Google Sheets Link 1...")
-    p_link1_local = r"C:\Users\Administrator\Desktop\AI 2026\Metor\link1_live.xlsx"
+    p_link1_local = r"C:\Users\Administrator\Desktop\AI 2026\Mentor\link1_live.xlsx"
     link1_success = False
     try:
         gsheet_link1_url = "https://docs.google.com/spreadsheets/d/19TGb1gh8z0U9slERRqpOrh-WyP9Wh0yfMkj6OUIeH1Y/export?format=xlsx"
@@ -74,7 +74,7 @@ def main():
         
     # Download Link 2 (Backlog)
     print("Downloading Google Sheets Link 2...")
-    p_link2_local = r"C:\Users\Administrator\Desktop\AI 2026\Metor\link2_live.xlsx"
+    p_link2_local = r"C:\Users\Administrator\Desktop\AI 2026\Mentor\link2_live.xlsx"
     link2_success = False
     try:
         gsheet_link2_url = "https://docs.google.com/spreadsheets/d/1KSNCjtIxSYuVtFwYO9t8jz7rj-oU53lGZHe95H-7QMM/export?format=xlsx"
@@ -106,7 +106,7 @@ def main():
         
     # Check if files exist
     if not os.path.exists(p_performance) or not os.path.exists(p_backlog) or not os.path.exists(p_hr):
-        print("Error: Required Excel files not found in Metor folder!")
+        print("Error: Required Excel files not found in Mentor folder!")
         sys.exit(1)
 
     print("\nProcessing sheets...")
@@ -121,32 +121,41 @@ def main():
     df_data['corrected_date'] = pd.to_datetime(df_data['Time Format']) 
     latest_gtc_date = df_data['corrected_date'].max()
     
-    # Prioritize current calendar week, fallback to GTC data week
+    # Align recruitment sheet with GTC data week first, then fallback to current calendar week, then max week
     import datetime
+    gtc_week_num = latest_gtc_date.isocalendar()[1]
     current_week_num = datetime.datetime.now().isocalendar()[1]
     
     xl_hr = pd.ExcelFile(p_hr)
-    target_sheet_name = f"Tổng hợp (T{current_week_num})"
     
+    # Try GTC data week first
+    target_sheet_name = f"Tổng hợp (T{gtc_week_num})"
     if target_sheet_name in xl_hr.sheet_names:
         latest_hr_sheet = target_sheet_name
-        latest_week_num = current_week_num
-        print(f"✓ Found recruitment sheet matching current calendar week: {latest_hr_sheet}")
+        latest_week_num = gtc_week_num
+        print(f"✓ Found recruitment sheet matching GTC data week: {latest_hr_sheet}")
     else:
-        # Fallback to absolute maximum week number found in the sheet (e.g. T22 even if current_week_num is different)
-        tonghop_sheets = []
-        for s in xl_hr.sheet_names:
-            match = re.match(r'Tổng hợp \(T(\d+)\)', s)
-            if match:
-                w = int(match.group(1))
-                tonghop_sheets.append((w, s))
-        if tonghop_sheets:
-            latest_week_num, latest_hr_sheet = max(tonghop_sheets, key=lambda x: x[0])
-            print(f"✓ Found latest available recruitment sheet: {latest_hr_sheet} (Week {latest_week_num})")
+        # Try current calendar week
+        target_sheet_name = f"Tổng hợp (T{current_week_num})"
+        if target_sheet_name in xl_hr.sheet_names:
+            latest_hr_sheet = target_sheet_name
+            latest_week_num = current_week_num
+            print(f"✓ Found recruitment sheet matching current calendar week: {latest_hr_sheet}")
         else:
-            latest_hr_sheet = 'Tổng hợp (T22)'
-            latest_week_num = 22
-            print(f"⚠ Falling back to default recruitment sheet: {latest_hr_sheet}")
+            # Fallback to absolute maximum week number found in the sheet
+            tonghop_sheets = []
+            for s in xl_hr.sheet_names:
+                match = re.match(r'Tổng hợp \(T(\d+)\)', s)
+                if match:
+                    w = int(match.group(1))
+                    tonghop_sheets.append((w, s))
+            if tonghop_sheets:
+                latest_week_num, latest_hr_sheet = max(tonghop_sheets, key=lambda x: x[0])
+                print(f"✓ Found latest available recruitment sheet: {latest_hr_sheet} (Week {latest_week_num})")
+            else:
+                latest_hr_sheet = 'Tổng hợp (T21)'
+                latest_week_num = 21
+                print(f"⚠ Falling back to default recruitment sheet: {latest_hr_sheet}")
         
     df_hr = pd.read_excel(p_hr, sheet_name=latest_hr_sheet)
     
@@ -548,13 +557,15 @@ def main():
             f"Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu {province_summary_shortage('Tiền Giang', province_data)} định biên) và **Đồng Tháp** (thiếu {province_summary_shortage('Đồng Tháp', province_data)} định biên)."
         ],
         'causes': [
-            "Thiếu shipper giao hàng chặng cuối tại các bưu cục lớn (Phó Cơ Điều, Lấp Vò, Vĩnh Kim) là nguyên nhân gốc rễ gây sụt giảm tỷ lệ GTC và tăng đơn tồn đọng (backlog).",
-            "Bưu cục Ấp 2-Phú Nhuận (Bến Tre) và Quốc lộ 80-Lấp Vò (Đồng Tháp) liên tục có nhân sự nghỉ ngang, shipper ra kho trễ (sau 9h-10h sáng) do lựa hàng chậm và gán tuyến thủ công."
+            "Tỷ lệ nghỉ việc cao tập trung tại các BC trọng điểm: **Phó Cơ Điều** (nghỉ 7), **Chợ Lách** (nghỉ 4), **Mỹ Thọ** (nghỉ 4), **Khóm 3 Trần Hưng Đạo** (nghỉ 4), **Tân Nhuận Đông** (nghỉ 3).",
+            "Áp lực quá tải đơn hàng trong các ngày sale lớn và việc di chuyển qua các tuyến cù lao/đò dọc xa xôi (như tại Chợ Lách và Tân Nhuận Đông) làm giảm thu nhập thực tế, gây nản chí cho shipper mới.",
+            "Quy trình lựa hàng và phân tuyến tại kho chậm trễ khiến shipper rời kho muộn (sau 9h30 sáng), phải làm việc xuyên trưa dưới trời nắng nóng và thiếu kèm cặp cho shipper mới (OB)."
         ],
         'recommendations': [
-            "Tập trung tuyển dụng và điều phối shipper khẩn cấp cho các bưu cục nóng: **Ấp 2-Phú Nhuận**, **Quốc lộ 80-Lấp Vò** và **88 Ấp Thân Hòa**.",
-            "Yêu cầu HRBP VyLNK và BìnhNLC đẩy mạnh chạy Ads Facebook, dán banner tuyển dụng và áp dụng chính sách giới thiệu nội bộ.",
-            "Áp dụng triệt để layout phân hàng trước 8h sáng để shipper rời kho trước 9h sáng tại các bưu cục có GTC dưới 50%."
+            "Yêu cầu AM (Tuấn Anh, Phương Duy, Việt Tới, Minh Tuấn, Quài Nhân) cắm chốt trực tiếp tại các bưu cục nóng để tháo gỡ khó khăn về tuyến và chia nhỏ tuyến giao phù hợp.",
+            "Đề xuất áp dụng phụ cấp xăng xe/đò phà đặc thù cho các tuyến cù lao (như An Bình, Bình Hòa Phước tại Chợ Lách) để giữ chân nhân sự.",
+            "Triển khai chương trình 'Buddy' kèm cặp shipper mới nhận việc trong 3 ngày đầu tiên và cam kết phân hàng trước 8h sáng để shipper ra kho sớm trước 9h sáng.",
+            "Yêu cầu HRBP (VyLNK, BìnhNLC) đẩy mạnh chạy Ads Facebook, dán banner tuyển dụng liên tục tại các bưu cục nóng và chuẩn bị nguồn cộng tác viên dự phòng."
         ]
     }
     
@@ -679,6 +690,20 @@ def main():
         if missing_routes.lower() == 'nan':
             missing_routes = ""
             
+        # Determine dynamic action plan based on post office name
+        action_plan = "Phân bổ gán tuyến trước 8h sáng, chạy FB Ads tìm shipper thay thế. AM cắm chốt tại BC để hướng dẫn shipper mới."
+        clean_bc_n = clean_bc_name(bc_n)
+        if "phó cơ điều" in clean_bc_n:
+            action_plan = "Yêu cầu AM Nguyễn Tuấn Anh trực tiếp xuống kho điều phối chia nhỏ tuyến giao, cam kết phân hàng trước 8h sáng, hỗ trợ điều động shipper từ các BC lân cận sang ứng cứu trong giờ cao điểm."
+        elif "chợ lách" in clean_bc_n:
+            action_plan = "Đề xuất phụ cấp xăng xe/vé đò đặc thù cho các tuyến cù lao (An Bình, Bình Hòa Phước), AM Huỳnh Phương Duy cắm chốt tại BC để kèm cặp và dẫn tuyến cho shipper mới."
+        elif "mỹ thọ" in clean_bc_n:
+            action_plan = "Phối hợp với HRBP BìnhNLC chạy gấp Ads tìm shipper thay thế, chia tuyến giao ngắn hạn cho cộng tác viên (part-time) gánh bớt các tuyến đang thiếu shipper."
+        elif "tháp mười" in clean_bc_n:
+            action_plan = "AM Lê Minh Tuấn rà soát lại sơ đồ tuyến giao, dồn tuyến tạm thời cho shipper cứng phụ trách và hỗ trợ thêm 15% thù lao tuyến tăng cường."
+        elif "tân nhuận đông" in clean_bc_n:
+            action_plan = "Khảo sát và tuyển dụng shipper địa phương am hiểu địa bàn, áp dụng chính sách 'Giới thiệu shipper mới nhận thưởng 500k' cho nhân viên kho hiện hữu."
+
         if not details:
             details = f"- Thiếu hụt thực tế sau OB: {shortage_accurate} NVPTTT.\n- Nhân sự mới nhận việc trong tuần: +{tuyen_7d} OB. Nhân sự nghỉ việc: -{nghi_7d}."
             if missing_routes:
@@ -697,7 +722,8 @@ def main():
             'nghi_7d': nghi_7d,
             'details': details,
             'shortage_accurate': shortage_accurate,
-            'missing_routes': missing_routes
+            'missing_routes': missing_routes,
+            'action_plan': action_plan
         })
 
     # 11. Export JSON Data

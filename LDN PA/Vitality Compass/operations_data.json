@@ -2442,7 +2442,8 @@
         "nghi_7d": 3,
         "details": "- Thiếu hụt thực tế sau OB: 5 NVPTTT.\n- Nhân sự mới nhận việc trong tuần: +0 OB. Nhân sự nghỉ việc: -3.\n- Tuyến thiếu: xã An Hiệp, xã an nhơn, xã tân phú trung, xã an khánh..",
         "shortage_accurate": 5,
-        "missing_routes": "xã An Hiệp, xã an nhơn, xã tân phú trung, xã an khánh."
+        "missing_routes": "xã An Hiệp, xã an nhơn, xã tân phú trung, xã an khánh.",
+        "action_plan": "Khảo sát và tuyển dụng shipper địa phương am hiểu địa bàn, áp dụng chính sách 'Giới thiệu shipper mới nhận thưởng 500k' cho nhân viên kho hiện hữu."
       },
       {
         "bc_name": "Bưu Cục 57/4 Phan Văn Đáng-Vĩnh Long-Vĩnh Long",
@@ -2457,7 +2458,8 @@
         "nghi_7d": 0,
         "details": "- Thiếu hụt thực tế sau OB: 5 NVPTTT.\n- Nhân sự mới nhận việc trong tuần: +0 OB. Nhân sự nghỉ việc: -0.\n- Tuyến thiếu: Phường Tân Ngãi,  Phường Tân Hòa, Phường 9, Tân Hạnh.",
         "shortage_accurate": 5,
-        "missing_routes": "Phường Tân Ngãi,  Phường Tân Hòa, Phường 9, Tân Hạnh"
+        "missing_routes": "Phường Tân Ngãi,  Phường Tân Hòa, Phường 9, Tân Hạnh",
+        "action_plan": "Phân bổ gán tuyến trước 8h sáng, chạy FB Ads tìm shipper thay thế. AM cắm chốt tại BC để hướng dẫn shipper mới."
       },
       {
         "bc_name": "Bưu Cục 73 Phó Cơ Điều-Phường Phước Hậu-Vĩnh Long",
@@ -2472,7 +2474,8 @@
         "nghi_7d": 7,
         "details": "- Thiếu hụt thực tế sau OB: 5 NVPTTT.\n- Nhân sự mới nhận việc trong tuần: +2 OB. Nhân sự nghỉ việc: -7.\n- Tuyến thiếu: Phường 3, Phường 4, Phưởng 5, Long Phước.",
         "shortage_accurate": 5,
-        "missing_routes": "Phường 3, Phường 4, Phưởng 5, Long Phước"
+        "missing_routes": "Phường 3, Phường 4, Phưởng 5, Long Phước",
+        "action_plan": "Yêu cầu AM Nguyễn Tuấn Anh trực tiếp xuống kho điều phối chia nhỏ tuyến giao, cam kết phân hàng trước 8h sáng, hỗ trợ điều động shipper từ các BC lân cận sang ứng cứu trong giờ cao điểm."
       },
       {
         "bc_name": "Bưu Cục 86 Tiên Thuỷ-Châu Thành-Bến Tre",
@@ -2487,7 +2490,8 @@
         "nghi_7d": 3,
         "details": "- Thiếu hụt thực tế sau OB: 4 NVPTTT.\n- Nhân sự mới nhận việc trong tuần: +0 OB. Nhân sự nghỉ việc: -3.\n- Tuyến thiếu: Tân Phú, Tiên Long, Sơn Đông.",
         "shortage_accurate": 4,
-        "missing_routes": "Tân Phú, Tiên Long, Sơn Đông"
+        "missing_routes": "Tân Phú, Tiên Long, Sơn Đông",
+        "action_plan": "Phân bổ gán tuyến trước 8h sáng, chạy FB Ads tìm shipper thay thế. AM cắm chốt tại BC để hướng dẫn shipper mới."
       },
       {
         "bc_name": "Bưu Cục QL57 KP3-Thị Trấn Chợ Lách-Bến Tre",
@@ -2502,7 +2506,8 @@
         "nghi_7d": 4,
         "details": "- Thiếu hụt thực tế sau OB: 4 NVPTTT.\n- Nhân sự mới nhận việc trong tuần: +1 OB. Nhân sự nghỉ việc: -4.\n- Tuyến thiếu: Bình Hòa Phước, An Bình, Đồng Phú, Hòa Ninh.",
         "shortage_accurate": 4,
-        "missing_routes": "Bình Hòa Phước, An Bình, Đồng Phú, Hòa Ninh"
+        "missing_routes": "Bình Hòa Phước, An Bình, Đồng Phú, Hòa Ninh",
+        "action_plan": "Đề xuất phụ cấp xăng xe/vé đò đặc thù cho các tuyến cù lao (An Bình, Bình Hòa Phước), AM Huỳnh Phương Duy cắm chốt tại BC để kèm cặp và dẫn tuyến cho shipper mới."
       }
     ],
     "latest_week": 21
