@@ -2110,13 +2110,15 @@
       "Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 11 định biên) và **Đồng Tháp** (thiếu 15 định biên)."
     ],
     "causes": [
-      "Thiếu shipper giao hàng chặng cuối tại các bưu cục lớn (Phó Cơ Điều, Lấp Vò, Vĩnh Kim) là nguyên nhân gốc rễ gây sụt giảm tỷ lệ GTC và tăng đơn tồn đọng (backlog).",
-      "Bưu cục Ấp 2-Phú Nhuận (Bến Tre) và Quốc lộ 80-Lấp Vò (Đồng Tháp) liên tục có nhân sự nghỉ ngang, shipper ra kho trễ (sau 9h-10h sáng) do lựa hàng chậm và gán tuyến thủ công."
+      "Tỷ lệ nghỉ việc cao tập trung tại các BC trọng điểm: **Phó Cơ Điều** (nghỉ 7), **Chợ Lách** (nghỉ 4), **Mỹ Thọ** (nghỉ 4), **Khóm 3 Trần Hưng Đạo** (nghỉ 4), **Tân Nhuận Đông** (nghỉ 3).",
+      "Áp lực quá tải đơn hàng trong các ngày sale lớn và việc di chuyển qua các tuyến cù lao/đò dọc xa xôi (như tại Chợ Lách và Tân Nhuận Đông) làm giảm thu nhập thực tế, gây nản chí cho shipper mới.",
+      "Quy trình lựa hàng và phân tuyến tại kho chậm trễ khiến shipper rời kho muộn (sau 9h30 sáng), phải làm việc xuyên trưa dưới trời nắng nóng và thiếu kèm cặp cho shipper mới (OB)."
     ],
     "recommendations": [
-      "Tập trung tuyển dụng và điều phối shipper khẩn cấp cho các bưu cục nóng: **Ấp 2-Phú Nhuận**, **Quốc lộ 80-Lấp Vò** và **88 Ấp Thân Hòa**.",
-      "Yêu cầu HRBP VyLNK và BìnhNLC đẩy mạnh chạy Ads Facebook, dán banner tuyển dụng và áp dụng chính sách giới thiệu nội bộ.",
-      "Áp dụng triệt để layout phân hàng trước 8h sáng để shipper rời kho trước 9h sáng tại các bưu cục có GTC dưới 50%."
+      "Yêu cầu AM (Tuấn Anh, Phương Duy, Việt Tới, Minh Tuấn, Quài Nhân) cắm chốt trực tiếp tại các bưu cục nóng để tháo gỡ khó khăn về tuyến và chia nhỏ tuyến giao phù hợp.",
+      "Đề xuất áp dụng phụ cấp xăng xe/đò phà đặc thù cho các tuyến cù lao (như An Bình, Bình Hòa Phước tại Chợ Lách) để giữ chân nhân sự.",
+      "Triển khai chương trình 'Buddy' kèm cặp shipper mới nhận việc trong 3 ngày đầu tiên và cam kết phân hàng trước 8h sáng để shipper ra kho sớm trước 9h sáng.",
+      "Yêu cầu HRBP (VyLNK, BìnhNLC) đẩy mạnh chạy Ads Facebook, dán banner tuyển dụng liên tục tại các bưu cục nóng và chuẩn bị nguồn cộng tác viên dự phòng."
     ]
   },
   "dropped_bcs": [
