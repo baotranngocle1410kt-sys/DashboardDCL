@@ -60,7 +60,7 @@ async function selectFolder() {
 async function readFile(name) {
   if (!dirHandle) {
     try {
-      const res = await fetch(`./LDN PA/${name}`);
+      const res = await fetch(encodeURI(`./LDN PA/${name}`));
       if (res.ok) {
         return await res.text();
       }
@@ -1638,7 +1638,7 @@ function clean_bc_name(name) {
 }
 
 // Auto-load server data on startup if available (Read-Only mode)
-window.addEventListener('DOMContentLoaded', async () => {
+async function initAutoLoad() {
   try {
     const testLoad = await readFile('Task Systems.md');
     if (testLoad) {
@@ -1653,5 +1653,11 @@ window.addEventListener('DOMContentLoaded', async () => {
   } catch(e) {
     console.error("Autoload failed:", e);
   }
-});
+}
+
+if (document.readyState === 'loading') {
+  window.addEventListener('DOMContentLoaded', initAutoLoad);
+} else {
+  initAutoLoad();
+}
 
