@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TỔNG QUAN VÙNG ĐCL — Trung tâm Chỉ huy</title>
+  <meta name="description" content="Dashboard quản trị công việc cá nhân & vận hành GHN">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+</head>
+
+<body>
+
+  <!-- Onboarding -->
+  <div class="onboarding" id="onboarding">
+    <div class="onboarding-box">
+      <div style="font-size:56px;margin-bottom:16px;">🧭</div>
+      <h2>TỔNG QUAN VÙNG ĐCL</h2>
+      <p>Trung tâm chỉ huy vận hành cá nhân.<br>Chọn thư mục <strong>LDN PA</strong> trên ổ cứng để bắt đầu.</p>
+      <button class="btn btn-primary" onclick="selectFolder()">📂 Chọn thư mục LDN PA</button>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header" id="appHeader" style="display:none">
+    <div class="header-left">
+      <div class="logo">🧭</div>
+      <div>
+        <div class="header-title">TỔNG QUAN VÙNG ĐCL</div>
+        <div class="header-subtitle" id="dateDisplay"></div>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button class="btn" onclick="refreshData()">🔄 Làm mới</button>
+      <button class="btn" onclick="selectFolder()">📂 Đổi thư mục</button>
+    </div>
+  </header>
+
+  <!-- Navigation Tabs -->
+  <div class="tabs-bar" id="appTabs" style="display:none">
+    <button class="tab-btn active" id="tabChecklist" onclick="switchTab('checklist')">🧭 Trọng Tâm Trong Ngày</button>
+    <button class="tab-btn" id="tabReporting" onclick="switchTab('reporting')">📊 Báo cáo Vận hành</button>
+    <button class="tab-btn" id="tabRecruitment" onclick="switchTab('recruitment')">👥 Nhân sự & Tuyển dụng</button>
+  </div>
+
+  <!-- Main -->
+  <main class="main" id="appMain" style="display:none">
+    <!-- LEFT COLUMN -->
+    <div>
+      <!-- Top 10 Bưu cục Cần Chú Ý -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">🚨 Top 10 Bưu Cục Cần Chú Ý</div>
+          <span class="card-badge" id="worstBcBadge">10 BC</span>
+        </div>
+        <div class="scrollable" style="max-height: 420px;">
+          <table class="am-table" style="table-layout: fixed; width: 100%;">
+            <thead>
+              <tr>
+                <th style="width: 42%; padding: 8px 6px;">Bưu cục</th>
+                <th style="width: 20%; padding: 8px 6px;">AM</th>
+                <th style="width: 15%; padding: 8px 6px; text-align: center;">GTC</th>
+                <th style="width: 12%; padding: 8px 6px; text-align: center;">Tồn</th>
+                <th style="width: 11%; padding: 8px 6px; text-align: center;"></th>
+              </tr>
+            </thead>
+            <tbody id="worstBcTableBody">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Top Bưu Cục Rớt Luân Chuyển -->
+      <div class="card" style="margin-top:20px">
+        <div class="card-header">
+          <div class="card-title">📦 Top Bưu Cục Rớt Luân Chuyển</div>
+          <span class="card-badge" id="droppedBcBadge">0 BC</span>
+        </div>
+        <div class="scrollable" style="max-height: 420px; border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden;">
+          <table class="excel-table" style="width: 100%;">
+            <thead>
+              <tr>
+                <th colspan="2" style="text-align: center; background-color: #ffffff; border-bottom: none;">Đơn LẤY rớt luân chuyển</th>
+                <th colspan="4" style="text-align: center; background-color: #ffffff; border-bottom: none;">Loai_KH</th>
+                <th rowspan="2" style="background-color: #f2f2f2; text-align: center; font-size: 11px; width: 10%;">Thao tác</th>
+              </tr>
+              <tr>
+                <th style="width: 18%; border-top: none;">AM</th>
+                <th style="width: 32%; border-top: none;">Bưu cục</th>
+                <th class="blue-header" style="width: 10%; border-top: none;">Khac</th>
+                <th class="blue-header" style="width: 10%; border-top: none;">Shopee</th>
+                <th class="blue-header" style="width: 10%; border-top: none;">TTS</th>
+                <th class="dark-blue-header" style="width: 10%; border-top: none;">Grand Total</th>
+              </tr>
+            </thead>
+            <tbody id="droppedBcTableBody">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div>
+
+      <!-- KPI Vận hành -->
+      <div class="card" style="margin-bottom:20px">
+        <div class="card-header">
+          <div class="card-title">📈 Chỉ số Vận hành</div>
+          <span class="card-badge" id="kpiBadgeChecklist">Demo</span>
+        </div>
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-value good" id="kpiGTC">95.2%</div>
+            <div class="kpi-label">GTC (Giao TC)</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-value warn" id="kpiFD">3.8%</div>
+            <div class="kpi-label">FD (Tỷ lệ trả)</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-value good" id="kpiOntime">91.5%</div>
+            <div class="kpi-label">Ontime</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-value bad" id="kpiBacklog">1,247</div>
+            <div class="kpi-label">Backlog >3 ngày</div>
+          </div>
+        </div>
+        <p style="font-size:11px;color:var(--text-muted)">* Dữ liệu mẫu. Cập nhật qua Operations_Insights.md</p>
+      </div>
+
+      <!-- AM Scorecard -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">👥 Đánh giá AM</div>
+          <span class="card-badge" id="amBadgeChecklist">Demo</span>
+        </div>
+        <div class="scrollable">
+          <table class="am-table">
+            <thead>
+              <tr>
+                <th>AM</th>
+                <th>GTC</th>
+                <th>Đánh giá</th>
+              </tr>
+            </thead>
+            <tbody id="amTableBody">
+              <tr>
+                <td>Nguyễn Văn A</td>
+                <td>97.1%</td>
+                <td><span class="am-tag strong">Mạnh</span></td>
+              </tr>
+              <tr>
+                <td>Trần Thị B</td>
+                <td>94.5%</td>
+                <td><span class="am-tag improve">Cải thiện</span></td>
+              </tr>
+              <tr>
+                <td>Lê Văn C</td>
+                <td>88.2%</td>
+                <td><span class="am-tag weak">Yếu</span></td>
+              </tr>
+              <tr>
+                <td>Phạm D</td>
+                <td>96.0%</td>
+                <td><span class="am-tag strong">Mạnh</span></td>
+              </tr>
+              <tr>
+                <td>Hoàng E</td>
+                <td>90.1%</td>
+                <td><span class="am-tag improve">Cải thiện</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:11px;color:var(--text-muted);margin-top:8px">* Dữ liệu mẫu. Cập nhật qua
+          Operations_Insights.md</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Reporting Dashboard -->
+  <main class="main reporting-view" id="appReporting" style="display:none">
+    <!-- Row 1: KPI Cards -->
+    <div class="kpi-grid-4">
+      <div class="kpi-card-rep">
+        <div class="kpi-card-title">Sản lượng (Volume)</div>
+        <div class="kpi-card-value" id="repVol">0</div>
+        <div class="kpi-card-changes" id="repVolChanges">
+          <span class="change-tag" id="repVolYest">-- vs Hôm qua</span>
+          <span class="change-tag" id="repVolWeek">-- vs Tuần trước</span>
+          <span class="change-tag" id="repVolMonth">-- vs Tháng trước</span>
+        </div>
+      </div>
+      <div class="kpi-card-rep">
+        <div class="kpi-card-title">Tỷ lệ Giao thành công (GTC)</div>
+        <div class="kpi-card-value" id="repGtc">0%</div>
+        <div class="kpi-card-changes" id="repGtcChanges">
+          <span class="change-tag" id="repGtcYest">-- vs Hôm qua</span>
+          <span class="change-tag" id="repGtcWeek">-- vs Tuần trước</span>
+          <span class="change-tag" id="repGtcMonth">-- vs Tháng trước</span>
+        </div>
+      </div>
+      <div class="kpi-card-rep">
+        <div class="kpi-card-title">Tỷ lệ Chuyển trả (FD)</div>
+        <div class="kpi-card-value" id="repFd">0%</div>
+        <div class="kpi-card-changes" id="repFdChanges">
+          <span class="change-tag" id="repFdYest">-- vs Hôm qua</span>
+          <span class="change-tag" id="repFdWeek">-- vs Tuần trước</span>
+          <span class="change-tag" id="repFdMonth">-- vs Tháng trước</span>
+        </div>
+      </div>
+      <div class="kpi-card-rep">
+        <div class="kpi-card-title">Tồn đọng (Backlog >5 ngày)</div>
+        <div class="kpi-card-value" id="repBl">0</div>
+        <div class="kpi-card-changes" id="repBlChanges">
+          <span class="change-tag" id="repBlYest">-- vs Hôm qua</span>
+          <span class="change-tag" id="repBlWeek">-- vs Tuần trước</span>
+          <span class="change-tag" id="repBlMonth">-- vs Tháng trước</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2: Charts and Insights -->
+    <div class="rep-row-2">
+      <!-- Trends Chart Card -->
+      <div class="card chart-card">
+        <div class="card-header">
+          <div class="card-title">📈 Biểu đồ Xu hướng Vận hành (8 ngày qua)</div>
+          <div class="chart-toggles">
+            <button class="btn btn-sm active" id="btnTrendGtc" onclick="toggleTrendChart('gtc')">GTC / FD</button>
+            <button class="btn btn-sm" id="btnTrendVol" onclick="toggleTrendChart('volume')">Sản lượng</button>
+            <button class="btn btn-sm" id="btnTrendBl" onclick="toggleTrendChart('backlog')">Tồn đọng</button>
+          </div>
+        </div>
+        <div class="chart-wrapper">
+          <canvas id="trendChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Analysis Box -->
+      <div class="card insights-card">
+        <div class="card-header">
+          <div class="card-title">🧠 Báo cáo Phân tích & Đề xuất (AI-driven)</div>
+        </div>
+        <div class="insights-body scrollable">
+          <div class="insight-sec">
+            <div class="insight-sec-title highlight">🟢 Highlights</div>
+            <ul id="insightHighlights"></ul>
+          </div>
+          <div class="insight-sec">
+            <div class="insight-sec-title lowlight">🔴 Lowlights</div>
+            <ul id="insightLowlights"></ul>
+          </div>
+          <div class="insight-sec">
+            <div class="insight-sec-title">🔮 Nguyên nhân chính</div>
+            <ul id="insightCauses"></ul>
+          </div>
+          <div class="insight-sec">
+            <div class="insight-sec-title">🛠️ Kiến nghị hành động</div>
+            <ul id="insightRecommendations"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 3: Multi-dimensional Table -->
+    <div class="card table-card">
+      <div class="card-header table-header-flex">
+        <div class="card-title-group">
+          <div class="card-title">📋 Chi tiết theo chiều thống kê</div>
+          <div class="dim-toggles">
+            <button class="dim-btn active" id="btnDimProvince" onclick="switchDimension('province')">Tỉnh</button>
+            <button class="dim-btn" id="btnDimAm" onclick="switchDimension('am')">Area Manager (AM)</button>
+            <button class="dim-btn" id="btnDimBc" onclick="switchDimension('bc')">Bưu cục (BC)</button>
+          </div>
+        </div>
+        <input type="text" class="search-input" id="tableSearch" placeholder="Tìm kiếm theo tên..." oninput="handleSearch()">
+      </div>
+      <div class="scrollable table-wrapper">
+        <table class="rep-table" id="repTable">
+          <thead>
+            <tr id="repTableHead">
+              <!-- Dynamic headers -->
+            </tr>
+          </thead>
+          <tbody id="repTableBody">
+            <!-- Dynamic rows -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <!-- Recruitment Dashboard -->
+  <main class="main recruitment-view" id="appRecruitment" style="display:none">
+    <!-- Row 1: HR KPI Cards -->
+    <div class="kpi-grid-4">
+      <div class="kpi-card-rep">
+        <div class="kpi-card-title">Thiếu hụt thực tế (Shipper)</div>
+        <div class="kpi-card-value" id="hrActual">0</div>
+        <div class="kpi-card-changes">
+          <span class="change-tag warn">Tình trạng thực tế chênh lệch định biên</span>
+        </div>
+      </div>
+      <div class="kpi-card-rep">
+        <div class="kpi-card-title">Thiếu tuyển dụng (BS)</div>
+        <div class="kpi-card-value" id="hrBs">0</div>
+        <div class="kpi-card-changes">
+          <span class="change-tag warn">Số lượng chỉ tiêu cần bổ sung gấp</span>
+        </div>
+      </div>
+      <div class="kpi-card-rep">
+        <div class="kpi-card-title">Nhận việc mới (OB)</div>
+        <div class="kpi-card-value" id="hrOb">0</div>
+        <div class="kpi-card-changes">
+          <span class="change-tag up">Shipper mới gia nhập tuần qua</span>
+        </div>
+      </div>
+      <div class="kpi-card-rep">
+        <div class="kpi-card-title">Nghỉ việc (Resign)</div>
+        <div class="kpi-card-value" id="hrResign">0</div>
+        <div class="kpi-card-changes">
+          <span class="change-tag down">Shipper nghỉ việc tuần qua</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2: Chart & Top 5 shortage post offices -->
+    <div class="rep-row-2">
+      <!-- HR Chart Card -->
+      <div class="card chart-card">
+        <div class="card-header">
+          <div class="card-title">👥 Biến động & Thiếu hụt Shipper theo Tỉnh</div>
+        </div>
+        <div class="chart-wrapper">
+          <canvas id="hrProvinceChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Top 5 BC Shortages Card -->
+      <div class="card insights-card">
+        <div class="card-header">
+          <div class="card-title">🔥 Top 5 Bưu Cục Thiếu Nhiều Nhất</div>
+        </div>
+        <div class="insights-body scrollable" id="hrTop5List">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 3: Detail Dimension Table -->
+    <div class="card table-card">
+      <div class="card-header table-header-flex">
+        <div class="card-title-group">
+          <div class="card-title">📋 Thống kê Nhân sự & Tuyển dụng chi tiết</div>
+          <div class="dim-toggles">
+            <button class="dim-btn active" id="btnHrDimProvince" onclick="switchHrDimension('province')">Tỉnh</button>
+            <button class="dim-btn" id="btnHrDimAm" onclick="switchHrDimension('am')">Area Manager (AM)</button>
+            <button class="dim-btn" id="btnHrDimBc" onclick="switchHrDimension('bc')">Bưu cục</button>
+          </div>
+        </div>
+        <input type="text" class="search-input" id="hrTableSearch" placeholder="Tìm kiếm theo tên..." oninput="handleHrSearch()">
+      </div>
+      <div class="scrollable table-wrapper">
+        <table class="rep-table" id="hrRepTable">
+          <thead>
+            <tr id="hrRepTableHead">
+              <!-- Dynamic headers -->
+            </tr>
+          </thead>
+          <tbody id="hrRepTableBody">
+            <!-- Dynamic rows -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
