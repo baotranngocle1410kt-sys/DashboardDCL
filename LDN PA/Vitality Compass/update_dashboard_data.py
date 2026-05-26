@@ -111,10 +111,13 @@ def main():
 
     print("\nProcessing sheets...")
 
-    # Load Data Sheets
-    df_data = pd.read_excel(p_performance, sheet_name="Data ĐCL")
-    df_cocau = pd.read_excel(p_performance, sheet_name="CoCauVung")
-    df_hist = pd.read_excel(p_performance, sheet_name="Lịch sử")
+    # Load Data Sheets (Optimized with ExcelFile to avoid reopening)
+    print("Reading performance report sheets...")
+    with pd.ExcelFile(p_performance) as xls_perf:
+        df_data = pd.read_excel(xls_perf, sheet_name="Data ĐCL")
+        df_cocau = pd.read_excel(xls_perf, sheet_name="CoCauVung")
+        df_hist = pd.read_excel(xls_perf, sheet_name="Lịch sử")
+    print("Reading backlog sheets...")
     df_backlog_pivot = pd.read_excel(p_backlog, sheet_name="PIVOT")
     
     # 2. Date Corrections (Moved up to get current week number)
@@ -126,38 +129,38 @@ def main():
     gtc_week_num = latest_gtc_date.isocalendar()[1]
     current_week_num = datetime.datetime.now().isocalendar()[1]
     
-    xl_hr = pd.ExcelFile(p_hr)
-    
-    # Try GTC data week first
-    target_sheet_name = f"Tổng hợp (T{gtc_week_num})"
-    if target_sheet_name in xl_hr.sheet_names:
-        latest_hr_sheet = target_sheet_name
-        latest_week_num = gtc_week_num
-        print(f"✓ Found recruitment sheet matching GTC data week: {latest_hr_sheet}")
-    else:
-        # Try current calendar week
-        target_sheet_name = f"Tổng hợp (T{current_week_num})"
+    print("Reading recruitment sheet...")
+    with pd.ExcelFile(p_hr) as xl_hr:
+        # Try GTC data week first
+        target_sheet_name = f"Tổng hợp (T{gtc_week_num})"
         if target_sheet_name in xl_hr.sheet_names:
             latest_hr_sheet = target_sheet_name
-            latest_week_num = current_week_num
-            print(f"✓ Found recruitment sheet matching current calendar week: {latest_hr_sheet}")
+            latest_week_num = gtc_week_num
+            print(f"✓ Found recruitment sheet matching GTC data week: {latest_hr_sheet}")
         else:
-            # Fallback to absolute maximum week number found in the sheet
-            tonghop_sheets = []
-            for s in xl_hr.sheet_names:
-                match = re.match(r'Tổng hợp \(T(\d+)\)', s)
-                if match:
-                    w = int(match.group(1))
-                    tonghop_sheets.append((w, s))
-            if tonghop_sheets:
-                latest_week_num, latest_hr_sheet = max(tonghop_sheets, key=lambda x: x[0])
-                print(f"✓ Found latest available recruitment sheet: {latest_hr_sheet} (Week {latest_week_num})")
+            # Try current calendar week
+            target_sheet_name = f"Tổng hợp (T{current_week_num})"
+            if target_sheet_name in xl_hr.sheet_names:
+                latest_hr_sheet = target_sheet_name
+                latest_week_num = current_week_num
+                print(f"✓ Found recruitment sheet matching current calendar week: {latest_hr_sheet}")
             else:
-                latest_hr_sheet = 'Tổng hợp (T21)'
-                latest_week_num = 21
-                print(f"⚠ Falling back to default recruitment sheet: {latest_hr_sheet}")
-        
-    df_hr = pd.read_excel(p_hr, sheet_name=latest_hr_sheet)
+                # Fallback to absolute maximum week number found in the sheet
+                tonghop_sheets = []
+                for s in xl_hr.sheet_names:
+                    match = re.match(r'Tổng hợp \(T(\d+)\)', s)
+                    if match:
+                        w = int(match.group(1))
+                        tonghop_sheets.append((w, s))
+                if tonghop_sheets:
+                    latest_week_num, latest_hr_sheet = max(tonghop_sheets, key=lambda x: x[0])
+                    print(f"✓ Found latest available recruitment sheet: {latest_hr_sheet} (Week {latest_week_num})")
+                else:
+                    latest_hr_sheet = 'Tổng hợp (T21)'
+                    latest_week_num = 21
+                    print(f"⚠ Falling back to default recruitment sheet: {latest_hr_sheet}")
+            
+        df_hr = pd.read_excel(xl_hr, sheet_name=latest_hr_sheet)
     
     # Find columns for Subtable 0
     try:
