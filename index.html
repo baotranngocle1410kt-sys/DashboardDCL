@@ -42,6 +42,7 @@
     <button class="tab-btn active" id="tabChecklist" onclick="switchTab('checklist')">🧭 Trọng Tâm Trong Ngày</button>
     <button class="tab-btn" id="tabReporting" onclick="switchTab('reporting')">📊 Báo cáo Vận hành</button>
     <button class="tab-btn" id="tabRecruitment" onclick="switchTab('recruitment')">👥 Nhân sự & Tuyển dụng</button>
+    <button class="tab-btn" id="tabReturnRate" onclick="switchTab('return_rate')">📉 Quản lý Tỷ lệ Trả (%FD)</button>
   </div>
 
   <!-- Main -->
@@ -375,6 +376,95 @@
             </tr>
           </thead>
           <tbody id="hrRepTableBody">
+            <!-- Dynamic rows -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <!-- Return Rate (%FD) Dashboard -->
+  <main class="main return-rate-view" id="appReturnRate" style="display:none">
+    <!-- Row 1: KPI Cards -->
+    <div class="kpi-grid-4">
+      <div class="kpi-card-rep">
+        <div class="kpi-card-title">Tỷ lệ Trả Tuần Hiện Tại</div>
+        <div class="kpi-card-value" id="fdWeeklyVal">0%</div>
+        <div class="kpi-card-changes" id="fdWeeklyChanges">
+          <span class="change-tag" id="fdWeeklyChange">-- vs Tuần trước</span>
+        </div>
+      </div>
+      <div class="kpi-card-rep">
+        <div class="kpi-card-title">Tỷ lệ Trả Ngày Gần Nhất</div>
+        <div class="kpi-card-value" id="fdDailyVal">0%</div>
+        <div class="kpi-card-changes" id="fdDailyChanges">
+          <span class="change-tag" id="fdDailyChangeD1">-- vs Hôm trước</span>
+          <span class="change-tag" id="fdDailyChangeD7">-- vs Tuần trước</span>
+        </div>
+      </div>
+      <div class="kpi-card-rep">
+        <div class="kpi-card-title">Bưu cục Vượt Ngưỡng Đỏ (>8%)</div>
+        <div class="kpi-card-value" id="fdRedCount" style="color:var(--accent-rose)">0</div>
+        <div class="kpi-card-changes">
+          <span class="change-tag warn">Cần hành động giảm hoàn khẩn cấp</span>
+        </div>
+      </div>
+      <div class="kpi-card-rep">
+        <div class="kpi-card-title">Mục Tiêu Định Hướng</div>
+        <div class="kpi-card-value" id="fdTargetVal" style="color:var(--accent-green)">&lt; 5.0%</div>
+        <div class="kpi-card-changes">
+          <span class="change-tag up">Ngưỡng an toàn vận hành</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2: Chart & Hotspots -->
+    <div class="rep-row-2">
+      <!-- Chart Card -->
+      <div class="card chart-card">
+        <div class="card-header">
+          <div class="card-title">📉 Biểu đồ Xu hướng Tỷ lệ Trả (%FD)</div>
+          <div class="chart-toggles">
+            <button class="btn btn-sm active" id="btnFdTrendWeekly" onclick="toggleFdTrendChart('weekly')">Xu Hướng Tuần</button>
+            <button class="btn btn-sm" id="btnFdTrendDaily" onclick="toggleFdTrendChart('daily')">Xu Hướng Ngày</button>
+          </div>
+        </div>
+        <div class="chart-wrapper">
+          <canvas id="fdTrendChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Top 5 BC High FD Rate -->
+      <div class="card insights-card">
+        <div class="card-header">
+          <div class="card-title">🔥 Top 5 Bưu Cục Tỷ Lệ Trả Cao Nhất</div>
+        </div>
+        <div class="insights-body scrollable" id="fdTop5List">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 3: Detail Dimension Table -->
+    <div class="card table-card">
+      <div class="card-header table-header-flex">
+        <div class="card-title-group">
+          <div class="card-title">📋 Bảng Chi Tiết Tỷ Lệ Trả (%FD)</div>
+          <div class="dim-toggles">
+            <button class="dim-btn active" id="btnFdViewWeekly" onclick="switchFdViewMode('weekly')">Xem Theo Tuần</button>
+            <button class="dim-btn" id="btnFdViewDaily" onclick="switchFdViewMode('daily')">Xem Theo Ngày</button>
+          </div>
+        </div>
+        <input type="text" class="search-input" id="fdTableSearch" placeholder="Tìm kiếm bưu cục hoặc AM..." oninput="handleFdSearch()">
+      </div>
+      <div class="scrollable table-wrapper">
+        <table class="rep-table" id="fdRepTable">
+          <thead>
+            <tr id="fdRepTableHead">
+              <!-- Dynamic headers -->
+            </tr>
+          </thead>
+          <tbody id="fdRepTableBody">
             <!-- Dynamic rows -->
           </tbody>
         </table>

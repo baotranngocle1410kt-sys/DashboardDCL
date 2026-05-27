@@ -34,6 +34,29 @@ def clean_bc_name(name):
     name = re.sub(r'[\s\-]+', ' ', name)
     return name.strip()
 
+def parse_pct(val):
+    if val is None:
+        return 0.0
+    val_str = str(val).strip()
+    if not val_str or val_str.lower() == 'nan' or val_str == '-' or val_str == '':
+        return 0.0
+    
+    # Check direction indicators
+    sign = 1.0
+    if '▼' in val_str:
+        sign = -1.0
+        val_str = val_str.replace('▼', '').strip()
+    elif '▲' in val_str:
+        sign = 1.0
+        val_str = val_str.replace('▲', '').strip()
+        
+    clean = val_str.replace('%', '').strip()
+    try:
+        val_float = float(clean) / 100.0
+        return val_float * sign if sign != 1.0 or val_float < 0 else val_float
+    except:
+        return 0.0
+
 def main():
     print("Starting data aggregation and analysis...")
     
@@ -86,6 +109,21 @@ def main():
         link2_success = True
     except Exception as e:
         print(f"⚠ Failed to download Link 2: {e}. Falling back to local file.")
+        
+    # Download FD Report (Link 4)
+    print("Downloading live FD report sheet from Google Sheets...")
+    p_fd_local = r"C:\Users\Administrator\Desktop\AI 2026\Mentor\fd_live.csv"
+    fd_success = False
+    try:
+        gsheet_fd_url = "https://docs.google.com/spreadsheets/d/1eJo3_M35Q-Qb3t9AzZkF22gZUCG5oETj-ZIew1DaFgA/export?format=csv&gid=0"
+        req = urllib.request.Request(gsheet_fd_url, headers={'User-Agent': 'Mozilla/5.0'})
+        with urllib.request.urlopen(req, timeout=90) as response:
+            with open(p_fd_local, 'wb') as f:
+                f.write(response.read())
+        print("✓ Downloaded live FD report sheet successfully.")
+        fd_success = True
+    except Exception as e:
+        print(f"⚠ Failed to download live FD report sheet: {e}. Falling back to local file.")
         
     # Dynamic classification of Link 1 & Link 2
     for path, success, label in [(p_link1_local, link1_success, "Link 1"), (p_link2_local, link2_success, "Link 2")]:
@@ -761,6 +799,105 @@ def main():
             'action_plan': action_plan
         })
 
+    # 10.7 Parse FD Report from fd_live.csv
+    print("Parsing return rate (%FD) sheet...")
+    fd_data = {
+        'weekly': [],
+        'daily': [],
+        'headers': {
+            'weekly': [],
+            'daily': []
+        },
+        'kpis': {}
+    }
+    
+    p_fd_csv = r"C:\Users\Administrator\Desktop\AI 2026\Mentor\fd_live.csv"
+    if os.path.exists(p_fd_csv):
+        try:
+            import csv
+            with open(p_fd_csv, mode='r', encoding='utf-8') as csv_file:
+                reader = csv.reader(csv_file)
+                rows = list(reader)
+                
+            if len(rows) > 1:
+                # Row 0 contains the headers
+                header_row = rows[0]
+                
+                # Split weekly and daily headers
+                weekly_headers = [h.strip() for h in header_row[0:8] if h.strip() != '']
+                daily_headers = [h.strip() for h in header_row[9:21] if h.strip() != '']
+                
+                fd_data['headers']['weekly'] = weekly_headers
+                fd_data['headers']['daily'] = daily_headers
+                
+                # Parse each row
+                for row in rows[1:]:
+                    if len(row) < 8:
+                        continue
+                    
+                    # 1. Parse Weekly (columns 0-7)
+                    am_w = row[0].strip()
+                    bc_w = row[1].strip()
+                    if am_w == 'TỔNG Vùng ĐCL' or bc_w == 'TỔNG Vùng ĐCL':
+                        fd_data['kpis']['weekly_total'] = {
+                            'am': 'TỔNG Vùng ĐCL',
+                            'bc_name': 'TỔNG Vùng ĐCL',
+                            'w18': parse_pct(row[2]),
+                            'w19': parse_pct(row[3]),
+                            'w20': parse_pct(row[4]),
+                            'w21': parse_pct(row[5]),
+                            'w22': parse_pct(row[6]),
+                            'change_wtd': parse_pct(row[7])
+                        }
+                    elif bc_w and bc_w != 'Bưu cục':
+                        fd_data['weekly'].append({
+                            'am': am_w,
+                            'bc_name': bc_w,
+                            'w18': parse_pct(row[2]),
+                            'w19': parse_pct(row[3]),
+                            'w20': parse_pct(row[4]),
+                            'w21': parse_pct(row[5]),
+                            'w22': parse_pct(row[6]),
+                            'change_wtd': parse_pct(row[7])
+                        })
+                        
+                    # 2. Parse Daily (columns 9-20)
+                    if len(row) >= 21:
+                        am_d = row[9].strip()
+                        bc_d = row[10].strip()
+                        if am_d == 'TỔNG Vùng ĐCL' or bc_d == 'TỔNG Vùng ĐCL':
+                            fd_data['kpis']['daily_total'] = {
+                                'am': 'TỔNG Vùng ĐCL',
+                                'bc_name': 'TỔNG Vùng ĐCL',
+                                'd18': parse_pct(row[11]),
+                                'd19': parse_pct(row[12]),
+                                'd20': parse_pct(row[13]),
+                                'd21': parse_pct(row[14]),
+                                'd22': parse_pct(row[15]),
+                                'd23': parse_pct(row[16]),
+                                'd24': parse_pct(row[17]),
+                                'd25': parse_pct(row[18]),
+                                'change_d1': parse_pct(row[19]),
+                                'change_d7': parse_pct(row[20])
+                            }
+                        elif bc_d and bc_d != 'Bưu cục':
+                            fd_data['daily'].append({
+                                'am': am_d,
+                                'bc_name': bc_d,
+                                'd18': parse_pct(row[11]),
+                                'd19': parse_pct(row[12]),
+                                'd20': parse_pct(row[13]),
+                                'd21': parse_pct(row[14]),
+                                'd22': parse_pct(row[15]),
+                                'd23': parse_pct(row[16]),
+                                'd24': parse_pct(row[17]),
+                                'd25': parse_pct(row[18]),
+                                'change_d1': parse_pct(row[19]),
+                                'change_d7': parse_pct(row[20])
+                            })
+        except Exception as e:
+            print(f"⚠ Failed to parse fd_live.csv: {e}")
+
     # 11. Export JSON Data
 
     payload = {
@@ -775,7 +912,8 @@ def main():
         'recruitment': {
             'top_5': top5_data,
             'latest_week': latest_week_num
-        }
+        },
+        'fd_report': fd_data
     }
     
     with open(output_json, 'w', encoding='utf-8') as f:
