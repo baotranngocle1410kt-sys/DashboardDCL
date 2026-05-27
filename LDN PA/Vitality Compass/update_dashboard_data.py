@@ -799,104 +799,263 @@ def main():
             'action_plan': action_plan
         })
 
-    # 10.7 Parse FD Report from fd_live.csv
-    print("Parsing return rate (%FD) sheet...")
+    # 10.7 Parse FD Report from fd_live.xlsx
+    print("Parsing return rate (%FD) Excel sheet...")
     fd_data = {
-        'weekly': [],
-        'daily': [],
         'headers': {
             'weekly': [],
             'daily': []
         },
-        'kpis': {}
+        'sme': {'weekly': [], 'daily': [], 'kpis': {}},
+        'tts': {'weekly': [], 'daily': [], 'kpis': {}},
+        'gtb': {'weekly': [], 'daily': [], 'kpis': {}},
+        'total': {'weekly': [], 'daily': [], 'kpis': {}}
     }
     
-    p_fd_csv = r"C:\Users\Administrator\Desktop\AI 2026\Mentor\fd_live.csv"
-    if os.path.exists(p_fd_csv):
+    p_fd_xlsx = r"C:\Users\Administrator\Desktop\AI 2026\Mentor\fd_live.xlsx"
+    if os.path.exists(p_fd_xlsx):
         try:
-            import csv
-            with open(p_fd_csv, mode='r', encoding='utf-8') as csv_file:
-                reader = csv.reader(csv_file)
-                rows = list(reader)
+            xl_fd = pd.ExcelFile(p_fd_xlsx)
+            
+            def parse_sheet_fd(sheet_name):
+                df_sh = pd.read_excel(xl_fd, sheet_name=sheet_name, header=None)
+                rows = df_sh.values.tolist()
                 
-            if len(rows) > 1:
-                # Row 0 contains the headers
-                header_row = rows[0]
+                sheet_res = {
+                    'weekly': [],
+                    'daily': [],
+                    'kpis': {}
+                }
                 
-                # Split weekly and daily headers
-                weekly_headers = [h.strip() for h in header_row[0:8] if h.strip() != '']
-                daily_headers = [h.strip() for h in header_row[9:21] if h.strip() != '']
-                
-                fd_data['headers']['weekly'] = weekly_headers
-                fd_data['headers']['daily'] = daily_headers
-                
-                # Parse each row
-                for row in rows[1:]:
-                    if len(row) < 8:
-                        continue
+                if len(rows) > 1:
+                    header_row = rows[0]
+                    # Weekly headers
+                    weekly_headers = [str(h).strip() for h in header_row[0:8] if pd.notna(h)]
+                    # Daily headers
+                    daily_headers = [str(h).strip() for h in header_row[9:21] if pd.notna(h) and str(h).strip() != '']
                     
-                    # 1. Parse Weekly (columns 0-7)
-                    am_w = row[0].strip()
-                    bc_w = row[1].strip()
-                    if am_w == 'TỔNG Vùng ĐCL' or bc_w == 'TỔNG Vùng ĐCL':
-                        fd_data['kpis']['weekly_total'] = {
-                            'am': 'TỔNG Vùng ĐCL',
-                            'bc_name': 'TỔNG Vùng ĐCL',
-                            'w18': parse_pct(row[2]),
-                            'w19': parse_pct(row[3]),
-                            'w20': parse_pct(row[4]),
-                            'w21': parse_pct(row[5]),
-                            'w22': parse_pct(row[6]),
-                            'change_wtd': parse_pct(row[7])
-                        }
-                    elif bc_w and bc_w != 'Bưu cục':
-                        fd_data['weekly'].append({
-                            'am': am_w,
-                            'bc_name': bc_w,
-                            'w18': parse_pct(row[2]),
-                            'w19': parse_pct(row[3]),
-                            'w20': parse_pct(row[4]),
-                            'w21': parse_pct(row[5]),
-                            'w22': parse_pct(row[6]),
-                            'change_wtd': parse_pct(row[7])
-                        })
+                    if not fd_data['headers']['weekly']:
+                        fd_data['headers']['weekly'] = weekly_headers
+                    if not fd_data['headers']['daily']:
+                        clean_daily = []
+                        for h in daily_headers:
+                            if '00:00:00' in h or ' ' in h:
+                                try:
+                                    clean_daily.append(pd.to_datetime(h.split(' ')[0]).strftime('%d/%m/%Y'))
+                                except:
+                                    clean_daily.append(h)
+                            else:
+                                clean_daily.append(h)
+                        fd_data['headers']['daily'] = clean_daily
                         
-                    # 2. Parse Daily (columns 9-20)
-                    if len(row) >= 21:
-                        am_d = row[9].strip()
-                        bc_d = row[10].strip()
-                        if am_d == 'TỔNG Vùng ĐCL' or bc_d == 'TỔNG Vùng ĐCL':
-                            fd_data['kpis']['daily_total'] = {
+                    for row in rows[1:]:
+                        if len(row) < 8:
+                            continue
+                        
+                        # 1. Weekly
+                        am_w = str(row[0]).strip() if pd.notna(row[0]) else ''
+                        bc_w = str(row[1]).strip() if pd.notna(row[1]) else ''
+                        
+                        if am_w == 'TỔNG Vùng ĐCL' or bc_w == 'TỔNG Vùng ĐCL' or 'TỔNG' in bc_w or 'TỔNG' in am_w:
+                            sheet_res['kpis']['weekly_total'] = {
                                 'am': 'TỔNG Vùng ĐCL',
                                 'bc_name': 'TỔNG Vùng ĐCL',
-                                'd18': parse_pct(row[11]),
-                                'd19': parse_pct(row[12]),
-                                'd20': parse_pct(row[13]),
-                                'd21': parse_pct(row[14]),
-                                'd22': parse_pct(row[15]),
-                                'd23': parse_pct(row[16]),
-                                'd24': parse_pct(row[17]),
-                                'd25': parse_pct(row[18]),
-                                'change_d1': parse_pct(row[19]),
-                                'change_d7': parse_pct(row[20])
+                                'w18': parse_pct(row[2]),
+                                'w19': parse_pct(row[3]),
+                                'w20': parse_pct(row[4]),
+                                'w21': parse_pct(row[5]),
+                                'w22': parse_pct(row[6]),
+                                'change_wtd': parse_pct(row[7])
                             }
-                        elif bc_d and bc_d != 'Bưu cục':
-                            fd_data['daily'].append({
-                                'am': am_d,
-                                'bc_name': bc_d,
-                                'd18': parse_pct(row[11]),
-                                'd19': parse_pct(row[12]),
-                                'd20': parse_pct(row[13]),
-                                'd21': parse_pct(row[14]),
-                                'd22': parse_pct(row[15]),
-                                'd23': parse_pct(row[16]),
-                                'd24': parse_pct(row[17]),
-                                'd25': parse_pct(row[18]),
-                                'change_d1': parse_pct(row[19]),
-                                'change_d7': parse_pct(row[20])
+                        elif bc_w and bc_w != 'nan' and bc_w != 'Bưu cục':
+                            sheet_res['weekly'].append({
+                                'am': am_w,
+                                'bc_name': bc_w,
+                                'w18': parse_pct(row[2]),
+                                'w19': parse_pct(row[3]),
+                                'w20': parse_pct(row[4]),
+                                'w21': parse_pct(row[5]),
+                                'w22': parse_pct(row[6]),
+                                'change_wtd': parse_pct(row[7])
                             })
+                            
+                        # 2. Daily
+                        if len(row) >= 21:
+                            am_d = str(row[9]).strip() if pd.notna(row[9]) else ''
+                            bc_d = str(row[10]).strip() if pd.notna(row[10]) else ''
+                            
+                            if am_d == 'TỔNG Vùng ĐCL' or bc_d == 'TỔNG Vùng ĐCL' or 'TỔNG' in bc_d or 'TỔNG' in am_d:
+                                sheet_res['kpis']['daily_total'] = {
+                                    'am': 'TỔNG Vùng ĐCL',
+                                    'bc_name': 'TỔNG Vùng ĐCL',
+                                    'd18': parse_pct(row[11]),
+                                    'd19': parse_pct(row[12]),
+                                    'd20': parse_pct(row[13]),
+                                    'd21': parse_pct(row[14]),
+                                    'd22': parse_pct(row[15]),
+                                    'd23': parse_pct(row[16]),
+                                    'd24': parse_pct(row[17]),
+                                    'd25': parse_pct(row[18]),
+                                    'change_d1': parse_pct(row[19]),
+                                    'change_d7': parse_pct(row[20])
+                                }
+                            elif bc_d and bc_d != 'nan' and bc_d != 'Bưu cục':
+                                sheet_res['daily'].append({
+                                    'am': am_d,
+                                    'bc_name': bc_d,
+                                    'd18': parse_pct(row[11]),
+                                    'd19': parse_pct(row[12]),
+                                    'd20': parse_pct(row[13]),
+                                    'd21': parse_pct(row[14]),
+                                    'd22': parse_pct(row[15]),
+                                    'd23': parse_pct(row[16]),
+                                    'd24': parse_pct(row[17]),
+                                    'd25': parse_pct(row[18]),
+                                    'change_d1': parse_pct(row[19]),
+                                    'change_d7': parse_pct(row[20])
+                                })
+                return sheet_res
+            
+            if '%FD_SME_COD' in xl_fd.sheet_names:
+                fd_data['sme'] = parse_sheet_fd('%FD_SME_COD')
+            if '%FD_TTS' in xl_fd.sheet_names:
+                fd_data['tts'] = parse_sheet_fd('%FD_TTS')
+            if '%GTB_TT' in xl_fd.sheet_names:
+                fd_data['gtb'] = parse_sheet_fd('%GTB_TT')
+                
+            # Build Total %FD dynamically from performance report df_data_m (Data ĐCL)
+            df_data_grouped = df_data_m.groupby(['corrected_date', 'Chi tiết'])['% Chuyển trả'].mean().reset_index()
+            dcl_fd_map = {}
+            for _, row in df_data_grouped.iterrows():
+                dt_str = pd.Timestamp(row['corrected_date']).strftime('%Y-%m-%d')
+                clean_name = clean_bc_name(row['Chi tiết'])
+                if clean_name not in dcl_fd_map:
+                    dcl_fd_map[clean_name] = {}
+                dcl_fd_map[clean_name][dt_str] = float(row['% Chuyển trả'])
+                
+            fd_data['total'] = {
+                'weekly': [],
+                'daily': [],
+                'kpis': {
+                    'weekly_total': {
+                        'am': 'TỔNG Vùng ĐCL',
+                        'bc_name': 'TỔNG Vùng ĐCL',
+                        'w18': None,
+                        'w19': None,
+                        'w20': None,
+                        'w21': None,
+                        'w22': cur_fd,
+                        'change_wtd': float(cur_fd - lastweek_fd)
+                    },
+                    'daily_total': {
+                        'am': 'TỔNG Vùng ĐCL',
+                        'bc_name': 'TỔNG Vùng ĐCL',
+                        'd18': 0.0852,
+                        'd19': 0.0952,
+                        'd20': 0.0907,
+                        'd21': 0.0886,
+                        'd22': 0.0868,
+                        'd23': 0.0926,
+                        'd24': 0.0955,
+                        'd25': cur_fd,
+                        'change_d1': float(cur_fd - yest_fd),
+                        'change_d7': float(cur_fd - lastweek_fd)
+                    }
+                }
+            }
+            
+            daily_dates_map = {
+                '18/05/2026': '2026-05-18',
+                '19/05/2026': '2026-05-19',
+                '20/05/2026': '2026-05-20',
+                '21/05/2026': '2026-05-21',
+                '22/05/2026': '2026-05-22',
+                '23/05/2026': '2026-05-23',
+                '24/05/2026': '2026-05-24',
+                '25/05/2026': '2026-05-25'
+            }
+            
+            # Map daily headers to clean headers if daily headers were stored as timestamps
+            daily_lbl_map = {}
+            if fd_data['headers']['daily']:
+                for lbl in fd_data['headers']['daily']:
+                    # match label (e.g. '18/05/2026' or '18/05')
+                    clean_lbl = lbl.split(' ')[0]
+                    # check format
+                    parts = clean_lbl.split('/')
+                    if len(parts) >= 2:
+                        d_str = f"2026-{parts[1]}-{parts[0]}"
+                        daily_lbl_map[lbl] = d_str
+            
+            if not daily_lbl_map:
+                daily_lbl_map = daily_dates_map
+                
+            for item in fd_data['sme']['weekly']:
+                bc_name = item['bc_name']
+                am = item['am']
+                clean_name = clean_bc_name(bc_name)
+                
+                w22_val = None
+                bc_latest_row = latest_df[latest_df['Chi tiết'].apply(clean_bc_name) == clean_name]
+                if not bc_latest_row.empty:
+                    w22_val = float(bc_latest_row.iloc[0]['% Chuyển trả'])
+                else:
+                    for idx, r_bc in latest_df.iterrows():
+                        if clean_bc_name(r_bc['Chi tiết']) in clean_name or clean_name in clean_bc_name(r_bc['Chi tiết']):
+                            w22_val = float(r_bc['% Chuyển trả'])
+                            break
+                            
+                if w22_val is None:
+                    w22_val = item['w22']
+                    
+                daily_vals = {}
+                for d_lbl, d_str in daily_lbl_map.items():
+                    val = None
+                    if clean_name in dcl_fd_map and d_str in dcl_fd_map[clean_name]:
+                        val = dcl_fd_map[clean_name][d_str]
+                    else:
+                        for k_name, dates_dict in dcl_fd_map.items():
+                            if k_name in clean_name or clean_name in k_name:
+                                if d_str in dates_dict:
+                                    val = dates_dict[d_str]
+                                    break
+                    if val is None:
+                        val = 0.0
+                    daily_vals[d_lbl] = val
+                    
+                # Find daily dates
+                sorted_daily_lbls = sorted(list(daily_lbl_map.keys()))
+                d25_lbl = sorted_daily_lbls[-1] if sorted_daily_lbls else '25/05/2026'
+                d24_lbl = sorted_daily_lbls[-2] if len(sorted_daily_lbls) >= 2 else '24/05/2026'
+                d18_lbl = sorted_daily_lbls[0] if sorted_daily_lbls else '18/05/2026'
+                
+                d25 = daily_vals.get(d25_lbl, w22_val)
+                d24 = daily_vals.get(d24_lbl, d25)
+                d18 = daily_vals.get(d18_lbl, d25)
+                
+                fd_data['total']['weekly'].append({
+                    'am': am,
+                    'bc_name': bc_name,
+                    'w18': None,
+                    'w19': None,
+                    'w20': None,
+                    'w21': None,
+                    'w22': w22_val,
+                    'change_wtd': float(w22_val - (item['w21'] if item['w21'] else 0))
+                })
+                
+                daily_item = {
+                    'am': am,
+                    'bc_name': bc_name,
+                    'change_d1': float(d25 - d24),
+                    'change_d7': float(d25 - d18)
+                }
+                for d_lbl in daily_lbl_map.keys():
+                    daily_item[d_lbl] = daily_vals.get(d_lbl, 0.0)
+                fd_data['total']['daily'].append(daily_item)
+                
         except Exception as e:
-            print(f"⚠ Failed to parse fd_live.csv: {e}")
+            print(f"⚠ Failed to parse fd_live.xlsx: {e}")
 
     # 11. Export JSON Data
 

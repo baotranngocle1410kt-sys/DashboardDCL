@@ -388,14 +388,14 @@
     <!-- Row 1: KPI Cards -->
     <div class="kpi-grid-4">
       <div class="kpi-card-rep">
-        <div class="kpi-card-title">Tỷ lệ Trả Tuần Hiện Tại</div>
+        <div class="kpi-card-title" id="fdWeeklyTitle">Tỷ lệ Trả Tuần W22 (Tổng Vùng)</div>
         <div class="kpi-card-value" id="fdWeeklyVal">0%</div>
         <div class="kpi-card-changes" id="fdWeeklyChanges">
           <span class="change-tag" id="fdWeeklyChange">-- vs Tuần trước</span>
         </div>
       </div>
       <div class="kpi-card-rep">
-        <div class="kpi-card-title">Tỷ lệ Trả Ngày Gần Nhất</div>
+        <div class="kpi-card-title" id="fdDailyTitle">Tỷ lệ Trả Ngày 25/05 (Tổng Vùng)</div>
         <div class="kpi-card-value" id="fdDailyVal">0%</div>
         <div class="kpi-card-changes" id="fdDailyChanges">
           <span class="change-tag" id="fdDailyChangeD1">-- vs Hôm trước</span>
@@ -403,17 +403,48 @@
         </div>
       </div>
       <div class="kpi-card-rep">
-        <div class="kpi-card-title">Bưu cục Vượt Ngưỡng Đỏ (>8%)</div>
+        <div class="kpi-card-title" id="fdRedCountTitle">Bưu cục Vượt Ngưỡng Đỏ (>8%)</div>
         <div class="kpi-card-value" id="fdRedCount" style="color:var(--accent-rose)">0</div>
-        <div class="kpi-card-changes">
+        <div class="kpi-card-changes" id="fdRedCountDesc">
           <span class="change-tag warn">Cần hành động giảm hoàn khẩn cấp</span>
         </div>
       </div>
       <div class="kpi-card-rep">
-        <div class="kpi-card-title">Mục Tiêu Định Hướng</div>
+        <div class="kpi-card-title" id="fdTargetTitle">Mục Tiêu Định Hướng</div>
         <div class="kpi-card-value" id="fdTargetVal" style="color:var(--accent-green)">&lt; 5.0%</div>
-        <div class="kpi-card-changes">
+        <div class="kpi-card-changes" id="fdTargetDesc">
           <span class="change-tag up">Ngưỡng an toàn vận hành</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Metric Selector Bar -->
+    <div class="card" style="padding: 12px 20px;">
+      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="font-size: 13px; font-weight: 600; color: var(--text-secondary);">Chọn chỉ số theo dõi:</span>
+          <div class="dim-toggles">
+            <button class="dim-btn active" id="btnFdMetricTotal" onclick="switchFdMetric('total')">%FD Tổng</button>
+            <button class="dim-btn" id="btnFdMetricSme" onclick="switchFdMetric('sme')">%FD SME COD</button>
+            <button class="dim-btn" id="btnFdMetricTts" onclick="switchFdMetric('tts')">%FD TikTok Shop</button>
+            <button class="dim-btn" id="btnFdMetricGtb" onclick="switchFdMetric('gtb')">%GTB-TT (Thất Bại Thu Tiền)</button>
+          </div>
+        </div>
+        <span style="font-size: 11px; color: var(--accent-teal); background: rgba(45,212,191,0.1); padding: 4px 10px; border-radius: 20px;" id="fdMetricDesc">
+          Hiển thị tỷ lệ chuyển trả tổng của Bưu cục (tất cả các nguồn đơn).
+        </span>
+      </div>
+    </div>
+
+    <!-- GTB-TT Explanation Card -->
+    <div class="card" style="border-left: 4px solid var(--accent-green); background: rgba(34,197,94,0.04); padding: 14px 20px;">
+      <div style="display:flex; align-items: center; gap: 14px;">
+        <span style="font-size: 24px; line-height: 1;">💡</span>
+        <div>
+          <h4 style="font-size: 13px; font-weight: 600; color: var(--accent-green); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px;">Chỉ số GTB-TT (Giao Thất Bại Thu Tiền)</h4>
+          <p style="font-size: 12px; line-height: 1.5; color: var(--text-primary);">
+            Là trường hợp shipper giao hàng không thành công nhưng <strong>vẫn thu được cước phí giao hàng</strong> của người nhận (không cần báo Shop/người gửi). Thao tác này <strong>vẫn được tính lương giao thành công cho shipper</strong> và tính là đơn thành công của Bưu cục. Hãy rà soát AM để nhân rộng hoạt động này giúp <strong>nâng tỷ lệ GTC, hạ tỷ lệ %FD</strong> toàn vùng!
+          </p>
         </div>
       </div>
     </div>
@@ -423,7 +454,7 @@
       <!-- Chart Card -->
       <div class="card chart-card">
         <div class="card-header">
-          <div class="card-title">📉 Biểu đồ Xu hướng Tỷ lệ Trả (%FD)</div>
+          <div class="card-title" id="fdChartTitle">📉 Biểu đồ Xu hướng Tỷ lệ Trả Tổng (%)</div>
           <div class="chart-toggles">
             <button class="btn btn-sm active" id="btnFdTrendWeekly" onclick="toggleFdTrendChart('weekly')">Xu Hướng Tuần</button>
             <button class="btn btn-sm" id="btnFdTrendDaily" onclick="toggleFdTrendChart('daily')">Xu Hướng Ngày</button>
@@ -437,7 +468,7 @@
       <!-- Top 5 BC High FD Rate -->
       <div class="card insights-card">
         <div class="card-header">
-          <div class="card-title">🔥 Top 5 Bưu Cục Tỷ Lệ Trả Cao Nhất</div>
+          <div class="card-title" id="fdTop5Title">🔥 Top 5 Bưu Cục Tỷ Lệ Trả Cao Nhất</div>
         </div>
         <div class="insights-body scrollable" id="fdTop5List">
           <!-- Rendered dynamically -->
@@ -449,7 +480,7 @@
     <div class="card table-card">
       <div class="card-header table-header-flex">
         <div class="card-title-group">
-          <div class="card-title">📋 Bảng Chi Tiết Tỷ Lệ Trả (%FD)</div>
+          <div class="card-title" id="fdTableTitle">📋 Bảng Chi Tiết Tỷ Lệ Trả Tổng (%)</div>
           <div class="dim-toggles">
             <button class="dim-btn active" id="btnFdViewWeekly" onclick="switchFdViewMode('weekly')">Xem Theo Tuần</button>
             <button class="dim-btn" id="btnFdViewDaily" onclick="switchFdViewMode('daily')">Xem Theo Ngày</button>

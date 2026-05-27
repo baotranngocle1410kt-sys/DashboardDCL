@@ -144,6 +144,7 @@ async function refreshData() {
     renderWorstBcs();
     renderChecklistSidePanel();
     renderDroppedBcs();
+    renderReturnRateView();
   } else if (insightsContent) {
     parseAndRenderInsights(insightsContent);
   }
@@ -517,6 +518,13 @@ let trendChartObj = null;
 let tableSearchQuery = '';
 let telegramConfig = null;
 
+// ===== RETURN RATE (%FD) STATE =====
+let activeFdMetric = 'total';
+let activeFdTrendMetric = 'weekly';
+let activeFdViewMode = 'weekly';
+let fdTableSearchQuery = '';
+let fdTrendChartObj = null;
+
 // ===== RECRUITMENT VIEW STATE =====
 let activeHrDim = 'province';
 let hrTableSearchQuery = '';
@@ -536,18 +544,22 @@ function switchTab(tabName) {
   const checklistMain = document.getElementById('appMain');
   const reportingMain = document.getElementById('appReporting');
   const recruitmentMain = document.getElementById('appRecruitment');
+  const returnRateMain = document.getElementById('appReturnRate');
   
   const tabCheck = document.getElementById('tabChecklist');
   const tabRep = document.getElementById('tabReporting');
   const tabRec = document.getElementById('tabRecruitment');
+  const tabRet = document.getElementById('tabReturnRate');
 
   checklistMain.style.display = 'none';
   reportingMain.style.display = 'none';
   recruitmentMain.style.display = 'none';
+  if (returnRateMain) returnRateMain.style.display = 'none';
   
   tabCheck.classList.remove('active');
   tabRep.classList.remove('active');
   tabRec.classList.remove('active');
+  if (tabRet) tabRet.classList.remove('active');
 
   if (tabName === 'checklist') {
     checklistMain.style.display = 'grid';
@@ -565,6 +577,15 @@ function switchTab(tabName) {
     tabRec.classList.add('active');
     if (repData) {
       setTimeout(renderRecruitmentView, 50);
+    }
+  } else if (tabName === 'return_rate') {
+    if (returnRateMain) {
+      returnRateMain.style.display = 'flex';
+      returnRateMain.style.flexDirection = 'column';
+    }
+    if (tabRet) tabRet.classList.add('active');
+    if (repData) {
+      setTimeout(renderReturnRateView, 50);
     }
   }
 }
@@ -1629,6 +1650,712 @@ function renderHrDimensionTable() {
       `;
       body.appendChild(tr);
     });
+  }
+}
+
+// ===== RETURN RATE (%FD) DASHBOARD RENDERING =====
+function renderReturnRateView() {
+  if (!repData || !repData.fd_report) return;
+  renderFdKPIs();
+  try {
+    renderFdChart();
+  } catch(e) {
+    console.error("Failed to render FD trend chart:", e);
+  }
+  renderFdTop5();
+  renderFdTable();
+}
+
+function renderFdKPIs() {
+  const fdReport = repData.fd_report;
+  if (!fdReport) return;
+  const metricData = fdReport[activeFdMetric];
+  if (!metricData || !metricData.kpis) return;
+  
+  const isGtb = activeFdMetric === 'gtb';
+  
+  // Update Card Titles and Descriptions dynamically
+  const labelWeekly = isGtb ? 'Tỷ lệ GTB-TT Tuần W22' : 'Tỷ lệ Trả Tuần W22';
+  const labelDaily = isGtb ? 'Tỷ lệ GTB-TT Ngày 25/05' : 'Tỷ lệ Trả Ngày 25/05';
+  const labelRedCount = isGtb ? 'Bưu cục GTB-TT Thấp (<15%)' : 'Bưu cục Vượt Ngưỡng Đỏ (>8%)';
+  const labelTarget = isGtb ? 'Mục Tiêu Khuyến Khích' : 'Mục Tiêu Định Hướng';
+  
+  const fdWeeklyTitle = document.getElementById('fdWeeklyTitle');
+  if (fdWeeklyTitle) fdWeeklyTitle.textContent = labelWeekly + ' (Tổng Vùng)';
+  
+  const fdDailyTitle = document.getElementById('fdDailyTitle');
+  if (fdDailyTitle) fdDailyTitle.textContent = labelDaily + ' (Tổng Vùng)';
+  
+  const fdRedCountTitle = document.getElementById('fdRedCountTitle');
+  if (fdRedCountTitle) fdRedCountTitle.textContent = labelRedCount;
+  
+  const fdTargetTitle = document.getElementById('fdTargetTitle');
+  if (fdTargetTitle) fdTargetTitle.textContent = labelTarget;
+
+  const fdRedCountDesc = document.getElementById('fdRedCountDesc');
+  if (fdRedCountDesc) {
+    fdRedCountDesc.innerHTML = isGtb 
+      ? `<span class="change-tag warn">Cần thúc đẩy nhân rộng GTB-TT</span>`
+      : `<span class="change-tag warn">Cần hành động giảm hoàn khẩn cấp</span>`;
+  }
+  
+  const fdTargetDesc = document.getElementById('fdTargetDesc');
+  if (fdTargetDesc) {
+    fdTargetDesc.innerHTML = isGtb
+      ? `<span class="change-tag up">Tối ưu chi phí shipper</span>`
+      : `<span class="change-tag up">Ngưỡng an toàn vận hành</span>`;
+  }
+
+  const fdTargetVal = document.getElementById('fdTargetVal');
+  if (fdTargetVal) {
+    fdTargetVal.textContent = isGtb ? '> 25.0%' : '< 5.0%';
+    fdTargetVal.style.color = 'var(--accent-green)';
+  }
+
+  // Weekly total
+  const wt = metricData.kpis.weekly_total;
+  const weeklyValEl = document.getElementById('fdWeeklyVal');
+  const weeklyChangesEl = document.getElementById('fdWeeklyChanges');
+  
+  if (wt && wt.w22 !== null && wt.w22 !== undefined) {
+    weeklyValEl.textContent = (wt.w22 * 100).toFixed(2) + '%';
+    const change_wtd = wt.change_wtd || 0;
+    const sign = change_wtd >= 0 ? '+' : '';
+    const arrow = change_wtd >= 0 ? '↗' : '↘';
+    
+    let cls = '';
+    if (isGtb) {
+      cls = change_wtd >= 0 ? 'up' : 'down';
+    } else {
+      cls = change_wtd <= 0 ? 'up' : 'down';
+    }
+    
+    weeklyChangesEl.innerHTML = `
+      <span class="change-tag ${cls}">${arrow} ${sign}${(change_wtd * 100).toFixed(2)}% vs Tuần trước</span>
+    `;
+  } else {
+    weeklyValEl.textContent = '--';
+    weeklyChangesEl.innerHTML = `<span class="change-tag">-- vs Tuần trước</span>`;
+  }
+  
+  // Daily total
+  const dt = metricData.kpis.daily_total;
+  const dailyValEl = document.getElementById('fdDailyVal');
+  const dailyChangesEl = document.getElementById('fdDailyChanges');
+  
+  if (dt && dt.d25 !== null && dt.d25 !== undefined) {
+    dailyValEl.textContent = (dt.d25 * 100).toFixed(2) + '%';
+    const change_d1 = dt.change_d1 || 0;
+    const change_d7 = dt.change_d7 || 0;
+    
+    const sign1 = change_d1 >= 0 ? '+' : '';
+    const arrow1 = change_d1 >= 0 ? '↗' : '↘';
+    
+    const sign7 = change_d7 >= 0 ? '+' : '';
+    const arrow7 = change_d7 >= 0 ? '↗' : '↘';
+    
+    let cls1 = '';
+    let cls7 = '';
+    if (isGtb) {
+      cls1 = change_d1 >= 0 ? 'up' : 'down';
+      cls7 = change_d7 >= 0 ? 'up' : 'down';
+    } else {
+      cls1 = change_d1 <= 0 ? 'up' : 'down';
+      cls7 = change_d7 <= 0 ? 'up' : 'down';
+    }
+    
+    dailyChangesEl.innerHTML = `
+      <span class="change-tag ${cls1}" style="margin-right:8px">${arrow1} ${sign1}${(change_d1 * 100).toFixed(2)}% vs Hôm qua</span>
+      <span class="change-tag ${cls7}">${arrow7} ${sign7}${(change_d7 * 100).toFixed(2)}% vs Tuần trước</span>
+    `;
+  } else {
+    dailyValEl.textContent = '--';
+    dailyChangesEl.innerHTML = `
+      <span class="change-tag" style="margin-right:8px">-- vs Hôm qua</span>
+      <span class="change-tag">-- vs Tuần trước</span>
+    `;
+  }
+  
+  // Red Count
+  let redCount = 0;
+  if (metricData.weekly) {
+    if (isGtb) {
+      redCount = metricData.weekly.filter(bc => bc.bc_name !== 'TỔNG Vùng ĐCL' && bc.w22 !== null && bc.w22 < 0.15).length;
+    } else {
+      redCount = metricData.weekly.filter(bc => bc.bc_name !== 'TỔNG Vùng ĐCL' && bc.w22 !== null && bc.w22 > 0.08).length;
+    }
+  }
+  document.getElementById('fdRedCount').textContent = redCount;
+}
+
+function renderFdChart() {
+  const fdReport = repData.fd_report;
+  if (!fdReport) return;
+  const metricData = fdReport[activeFdMetric];
+  if (!metricData || !metricData.kpis) return;
+  
+  const weeklyTotal = metricData.kpis.weekly_total;
+  const dailyTotal = metricData.kpis.daily_total;
+  const isGtb = activeFdMetric === 'gtb';
+  
+  let labels = [];
+  let data = [];
+  let title = '';
+  
+  if (activeFdTrendMetric === 'weekly') {
+    labels = fdReport.headers.weekly.slice(2, 7); // '2026/18' to '2026/22'
+    if (weeklyTotal) {
+      data = [
+        weeklyTotal.w18 !== null && weeklyTotal.w18 !== undefined ? (weeklyTotal.w18 * 100).toFixed(2) : null,
+        weeklyTotal.w19 !== null && weeklyTotal.w19 !== undefined ? (weeklyTotal.w19 * 100).toFixed(2) : null,
+        weeklyTotal.w20 !== null && weeklyTotal.w20 !== undefined ? (weeklyTotal.w20 * 100).toFixed(2) : null,
+        weeklyTotal.w21 !== null && weeklyTotal.w21 !== undefined ? (weeklyTotal.w21 * 100).toFixed(2) : null,
+        weeklyTotal.w22 !== null && weeklyTotal.w22 !== undefined ? (weeklyTotal.w22 * 100).toFixed(2) : null
+      ];
+    }
+    title = isGtb ? 'Tỷ lệ GTB-TT theo Tuần (%)' : 'Tỷ lệ Trả theo Tuần (%)';
+  } else {
+    labels = fdReport.headers.daily.slice(2); // '18/05/2026' to '25/05/2026'
+    if (dailyTotal) {
+      data = [
+        dailyTotal.d18 !== null && dailyTotal.d18 !== undefined ? (dailyTotal.d18 * 100).toFixed(2) : null,
+        dailyTotal.d19 !== null && dailyTotal.d19 !== undefined ? (dailyTotal.d19 * 100).toFixed(2) : null,
+        dailyTotal.d20 !== null && dailyTotal.d20 !== undefined ? (dailyTotal.d20 * 100).toFixed(2) : null,
+        dailyTotal.d21 !== null && dailyTotal.d21 !== undefined ? (dailyTotal.d21 * 100).toFixed(2) : null,
+        dailyTotal.d22 !== null && dailyTotal.d22 !== undefined ? (dailyTotal.d22 * 100).toFixed(2) : null,
+        dailyTotal.d23 !== null && dailyTotal.d23 !== undefined ? (dailyTotal.d23 * 100).toFixed(2) : null,
+        dailyTotal.d24 !== null && dailyTotal.d24 !== undefined ? (dailyTotal.d24 * 100).toFixed(2) : null,
+        dailyTotal.d25 !== null && dailyTotal.d25 !== undefined ? (dailyTotal.d25 * 100).toFixed(2) : null
+      ];
+    }
+    title = isGtb ? 'Tỷ lệ GTB-TT theo Ngày (%)' : 'Tỷ lệ Trả theo Ngày (%)';
+  }
+  
+  if (fdTrendChartObj) fdTrendChartObj.destroy();
+  const canvas = document.getElementById('fdTrendChart');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  
+  const themeColor = isGtb ? '#2dd4bf' : '#f43f5e';
+  const bgColor = isGtb ? 'rgba(45, 212, 191, 0.1)' : 'rgba(244, 63, 94, 0.1)';
+  
+  fdTrendChartObj = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: title,
+          data: data,
+          borderColor: themeColor,
+          backgroundColor: bgColor,
+          tension: 0.3,
+          fill: true,
+          borderWidth: 2,
+          pointBackgroundColor: themeColor,
+          pointRadius: 4,
+          spanGaps: true
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          labels: { color: '#8899b0', font: { size: 11 } }
+        }
+      },
+      scales: {
+        x: {
+          grid: { color: 'rgba(42,58,82,0.1)' },
+          ticks: { color: '#8899b0', font: { size: 10 } }
+        },
+        y: {
+          grid: { color: 'rgba(42,58,82,0.1)' },
+          ticks: { color: '#8899b0', font: { size: 10 } }
+        }
+      }
+    }
+  });
+}
+
+function toggleFdTrendChart(metric) {
+  activeFdTrendMetric = metric;
+  document.getElementById('btnFdTrendWeekly').classList.remove('active');
+  document.getElementById('btnFdTrendDaily').classList.remove('active');
+  
+  if (metric === 'weekly') document.getElementById('btnFdTrendWeekly').classList.add('active');
+  else document.getElementById('btnFdTrendDaily').classList.add('active');
+  
+  renderFdChart();
+}
+
+function renderFdTop5() {
+  const container = document.getElementById('fdTop5List');
+  if (!container || !repData || !repData.fd_report) return;
+  container.innerHTML = '';
+  
+  const metricData = repData.fd_report[activeFdMetric];
+  if (!metricData || !metricData.weekly) return;
+
+  const isGtb = activeFdMetric === 'gtb';
+  
+  const filtered = metricData.weekly.filter(bc => 
+    bc.bc_name && 
+    bc.bc_name !== 'TỔNG Vùng ĐCL' && 
+    bc.bc_name !== 'Grand Total' &&
+    bc.w22 !== null
+  );
+  
+  const sorted = [...filtered].sort((a, b) => {
+    return isGtb ? a.w22 - b.w22 : b.w22 - a.w22;
+  });
+  
+  const top5 = sorted.slice(0, 5);
+  
+  const titleEl = document.getElementById('fdTop5Title');
+  if (titleEl) {
+    titleEl.textContent = isGtb ? '🔥 Top 5 Bưu Cục Tỷ Lệ GTB-TT Thấp Nhất' : '🔥 Top 5 Bưu Cục Tỷ Lệ Trả Cao Nhất';
+  }
+  
+  if (top5.length === 0) {
+    container.innerHTML = '<div style="text-align: center; color: var(--text-muted); padding: 20px;">Không có dữ liệu bưu cục.</div>';
+    return;
+  }
+  
+  const fd_causes = {
+    'Phó Cơ Điều': 'Thiếu shipper giao chặng cuối, hàng hoàn do lưu kho quá hạn.',
+    'Đường Huyện 35': 'Tuyến giao hàng Vĩnh Kim xa, shipper mới giao không kịp phải chuyển hoàn.',
+    'QL57 KP3': 'Khách hàng không liên lạc được nhiều, tỷ lệ hẹn lại giao thấp.',
+    'Quốc Lộ 53': 'Hàng gom giao trễ ca tối, shipper giao trễ bị khách từ chối nhận.',
+    'Tỉnh Lộ 868': 'Shipper chưa rành tuyến, tự ý báo hoàn không liên hệ khách.'
+  };
+  
+  const fd_plans = {
+    'Phó Cơ Điều': 'Điều phối khẩn cấp 2 shipper cứng từ Vĩnh Long sang hỗ trợ, kiểm tra các đơn báo lưu kho/chuyển trả.',
+    'Đường Huyện 35': 'Chia nhỏ tuyến giao Vĩnh Kim, HRBP tuyển gấp shipper phụ trách tuyến này.',
+    'QL57 KP3': 'Yêu cầu AM kiểm tra lịch sử cuộc gọi của shipper, lọc danh sách đơn hoàn tự động.',
+    'Quốc Lộ 53': 'Điều chỉnh luồng hàng ca chiều về sớm trước 14h, hạn chế đi giao ca tối muộn.',
+    'Tỉnh Lộ 868': 'Tổ chức kèm cặp shipper mới nhận việc, rà soát quy trình báo hoàn trên App.'
+  };
+
+  const gtb_causes = {
+    'Phó Cơ Điều': 'Shipper chưa quen với quy trình thu cước thất bại, lo ngại tranh chấp với người nhận.',
+    'Đường Huyện 35': 'Tuyến xa, shipper ngại thu cước chuyển hoàn vì tốn thời gian giải thích.',
+    'QL57 KP3': 'AM chưa phổ biến đầy đủ chính sách tính lương giao thành công cho shipper khi thực hiện GTB-TT.',
+    'Quốc Lộ 53': 'Tỷ lệ đơn thanh toán trước cao, hoặc shipper chưa chủ động đề xuất thu cước khi giao thất bại.',
+    'Tỉnh Lộ 868': 'Shipper mới nhiều chưa được hướng dẫn thao tác thu cước thất bại trên app.'
+  };
+
+  const gtb_plans = {
+    'Phó Cơ Điều': 'AM họp khẩn đào tạo lại quy trình GTB-TT, hướng dẫn shipper cách giải thích cước phí hoàn với khách.',
+    'Đường Huyện 35': 'Áp dụng chỉ tiêu tối thiểu 20% GTB-TT cho các tuyến huyện xa, theo dõi sát tiến độ hàng ngày.',
+    'QL57 KP3': 'Dán bảng hướng dẫn tính lương shipper của đơn GTB-TT tại bảng tin bưu cục, AM trực tiếp giải đáp thắc mắc.',
+    'Quốc Lộ 53': 'Truyền thông gương shipper điển hình thu cước tốt, AM kiểm tra danh sách đơn hoàn không thu được phí.',
+    'Tỉnh Lộ 868': 'Tổ chức kèm cặp thực tế trên tuyến cho shipper mới về nghiệp vụ thu cước giao thất bại.'
+  };
+  
+  top5.forEach((item, i) => {
+    const el = document.createElement('div');
+    el.className = 'hr-top5-item';
+    
+    let bcMatch = null;
+    let cleanName = clean_bc_name(item.bc_name);
+    for (let bc of repData.bcs) {
+      let b_clean = clean_bc_name(bc.name);
+      if (b_clean === cleanName || b_clean.includes(cleanName) || cleanName.includes(b_clean)) {
+        bcMatch = bc;
+        break;
+      }
+    }
+    
+    const amTele = bcMatch ? bcMatch.am_tele : '';
+    const vol = bcMatch ? bcMatch.volume : 0;
+    
+    let cause = isGtb 
+      ? 'Shipper chưa nắm rõ nghiệp vụ thu phí khi giao thất bại, tỷ lệ áp dụng thấp.' 
+      : 'Khách báo hủy đơn hoặc không liên lạc được nhiều lần.';
+    let plan = isGtb 
+      ? 'AM tổ chức truyền thông cách tính lương đơn GTB-TT và hướng dẫn shipper tăng cường thu cước hoàn.' 
+      : 'AM cắm chốt kiểm tra trực tiếp danh sách đơn hoàn, gọi điện xác minh khách hàng.';
+    
+    const causes_dict = isGtb ? gtb_causes : fd_causes;
+    const plans_dict = isGtb ? gtb_plans : fd_plans;
+
+    for (let k in causes_dict) {
+      if (item.bc_name.includes(k)) {
+        cause = causes_dict[k];
+        plan = plans_dict[k];
+        break;
+      }
+    }
+    
+    const changeVal = item.change_wtd;
+    const arrow = changeVal >= 0 ? '▲' : '▼';
+    const sign = changeVal >= 0 ? '+' : '';
+    
+    let changeCls = '';
+    if (isGtb) {
+      changeCls = changeVal >= 0 ? 'text-success' : 'text-danger';
+    } else {
+      changeCls = changeVal <= 0 ? 'text-success' : 'text-danger';
+    }
+    
+    const labelMetric = isGtb ? '%GTB-TT' : '%FD';
+    const badgeColor = isGtb 
+      ? (item.w22 >= 0.25 ? 'rgba(34,197,94,0.15); color: var(--accent-green);' : (item.w22 >= 0.15 ? 'rgba(245,158,11,0.15); color: var(--accent-amber);' : 'rgba(244,63,94,0.15); color: var(--accent-rose);'))
+      : (item.w22 > 0.08 ? 'rgba(244,63,94,0.15); color: var(--accent-rose);' : (item.w22 >= 0.05 ? 'rgba(245,158,11,0.15); color: var(--accent-amber);' : 'rgba(34,197,94,0.15); color: var(--accent-green);'));
+
+    el.innerHTML = `
+      <div class="hr-top5-header">
+        <div>
+          <div class="hr-top5-bcname">${i+1}. ${escapeHtml(item.bc_name)}</div>
+          <div class="hr-top5-am">👤 AM: ${escapeHtml(item.am)}</div>
+        </div>
+        <span class="hr-top5-badge" style="background: ${badgeColor}">${labelMetric}: ${(item.w22 * 100).toFixed(2)}%</span>
+      </div>
+      <div class="hr-top5-stats" style="grid-template-columns: repeat(2, 1fr)">
+        <div class="hr-top5-stat">
+          Biến động tuần (Wow)
+          <strong class="${changeCls}">${arrow} ${sign}${(changeVal * 100).toFixed(2)}%</strong>
+        </div>
+        <div class="hr-top5-stat">
+          Sản lượng giao
+          <strong>${vol ? vol.toLocaleString() : 'N/A'} đơn</strong>
+        </div>
+      </div>
+      <div class="bc-cause-box" style="margin-top: 6px;">
+        <strong>Nguyên nhân:</strong> ${escapeHtml(cause)}
+      </div>
+      <div class="hr-plan-box" style="border-left-color: var(--accent-amber); background: rgba(245,158,11,0.08);">
+        <strong>Phương án xử lý:</strong> ${escapeHtml(plan)}
+      </div>
+      <div style="display:flex; justify-content: flex-end; margin-top: 8px;">
+        <button class="bc-btn bc-btn-primary" style="flex:none; padding: 6px 14px; font-size:11px;" onclick="sendTelegramFdAlert('${escapeHtml(item.bc_name)}', '${escapeHtml(item.am)}', '${escapeHtml(amTele)}', '${(item.w22*100).toFixed(2)}%', '${escapeHtml(formatChangeText(changeVal))}', '${escapeHtml(cause)}')">💬 Nhắc AM</button>
+      </div>
+    `;
+    container.appendChild(el);
+  });
+}
+
+function renderFdTable() {
+  const head = document.getElementById('fdRepTableHead');
+  const body = document.getElementById('fdRepTableBody');
+  if (!head || !body || !repData || !repData.fd_report) return;
+  body.innerHTML = '';
+  
+  const fdReport = repData.fd_report;
+  const metricData = fdReport[activeFdMetric];
+  if (!metricData) return;
+  
+  let filteredWeekly = metricData.weekly.filter(bc => 
+    bc.bc_name.toLowerCase().includes(fdTableSearchQuery) || 
+    bc.am.toLowerCase().includes(fdTableSearchQuery)
+  );
+  
+  let filteredDaily = metricData.daily.filter(bc => 
+    bc.bc_name.toLowerCase().includes(fdTableSearchQuery) || 
+    bc.am.toLowerCase().includes(fdTableSearchQuery)
+  );
+  
+  function getFdCellClass(val) {
+    if (val === null || val === undefined || val === '') return '';
+    const isGtb = activeFdMetric === 'gtb';
+    if (isGtb) {
+      if (val >= 0.25) return 'fd-cell-green';
+      if (val >= 0.15) return 'fd-cell-amber';
+      return 'fd-cell-red';
+    } else {
+      if (val > 0.08) return 'fd-cell-red';
+      if (val >= 0.05) return 'fd-cell-amber';
+      return 'fd-cell-green';
+    }
+  }
+
+  function formatValue(val) {
+    if (val === null || val === undefined || val === '') return '--';
+    return (val * 100).toFixed(2) + '%';
+  }
+  
+  const isGtb = activeFdMetric === 'gtb';
+  
+  if (activeFdViewMode === 'weekly') {
+    head.innerHTML = `
+      <th>Bưu cục</th>
+      <th>AM Phụ Trách</th>
+      <th style="text-align: center">2026/18</th>
+      <th style="text-align: center">2026/19</th>
+      <th style="text-align: center">2026/20</th>
+      <th style="text-align: center">2026/21</th>
+      <th style="text-align: center; font-weight: bold">2026/22</th>
+      <th style="text-align: center">Biến động (Wow)</th>
+      <th style="text-align: center">Thao tác</th>
+    `;
+    
+    filteredWeekly.sort((a, b) => {
+      const valA = a.w22;
+      const valB = b.w22;
+      
+      const hasA = valA !== null && valA !== undefined;
+      const hasB = valB !== null && valB !== undefined;
+      
+      if (!hasA && !hasB) return 0;
+      if (!hasA) return 1;
+      if (!hasB) return -1;
+      
+      return isGtb ? valA - valB : valB - valA;
+    });
+    
+    filteredWeekly.forEach(row => {
+      const tr = document.createElement('tr');
+      tr.className = 'fd-row-active';
+      
+      const changeVal = row.change_wtd;
+      const arrow = changeVal >= 0 ? '▲' : '▼';
+      const sign = changeVal >= 0 ? '+' : '';
+      
+      let changeCls = '';
+      if (isGtb) {
+        changeCls = changeVal >= 0 ? 'up' : 'down';
+      } else {
+        changeCls = changeVal <= 0 ? 'up' : 'down';
+      }
+      
+      let bcMatch = repData.bcs.find(b => clean_bc_name(b.name) === clean_bc_name(row.bc_name));
+      const amTele = bcMatch ? bcMatch.am_tele : '';
+      
+      tr.innerHTML = `
+        <td><strong>${escapeHtml(row.bc_name)}</strong></td>
+        <td>👤 ${escapeHtml(row.am)}</td>
+        <td style="text-align: center" class="${getFdCellClass(row.w18)}">${formatValue(row.w18)}</td>
+        <td style="text-align: center" class="${getFdCellClass(row.w19)}">${formatValue(row.w19)}</td>
+        <td style="text-align: center" class="${getFdCellClass(row.w20)}">${formatValue(row.w20)}</td>
+        <td style="text-align: center" class="${getFdCellClass(row.w21)}">${formatValue(row.w21)}</td>
+        <td style="text-align: center; font-weight: bold" class="${getFdCellClass(row.w22)}">${formatValue(row.w22)}</td>
+        <td style="text-align: center">
+          <span class="change-tag ${changeCls}">${arrow} ${sign}${(changeVal * 100).toFixed(2)}%</span>
+        </td>
+        <td style="text-align: center">
+          <button class="btn-nhac-am" onclick="sendTelegramFdAlert('${escapeHtml(row.bc_name)}', '${escapeHtml(row.am)}', '${escapeHtml(amTele)}', '${formatValue(row.w22)}', '${formatChangeText(changeVal)}', 'Kiểm tra tỷ lệ vận hành và đẩy mạnh GTB-TT của bưu cục')">Nhắc AM</button>
+        </td>
+      `;
+      body.appendChild(tr);
+    });
+  } else {
+    head.innerHTML = `
+      <th>Bưu cục</th>
+      <th>AM Phụ Trách</th>
+      <th style="text-align: center">18/05</th>
+      <th style="text-align: center">19/05</th>
+      <th style="text-align: center">20/05</th>
+      <th style="text-align: center">21/05</th>
+      <th style="text-align: center">22/05</th>
+      <th style="text-align: center">23/05</th>
+      <th style="text-align: center">24/05</th>
+      <th style="text-align: center; font-weight: bold">25/05</th>
+      <th style="text-align: center">Biến động (DoD)</th>
+      <th style="text-align: center">Thao tác</th>
+    `;
+    
+    filteredDaily.sort((a, b) => {
+      const valA = a.d25;
+      const valB = b.d25;
+      
+      const hasA = valA !== null && valA !== undefined;
+      const hasB = valB !== null && valB !== undefined;
+      
+      if (!hasA && !hasB) return 0;
+      if (!hasA) return 1;
+      if (!hasB) return -1;
+      
+      return isGtb ? valA - valB : valB - valA;
+    });
+    
+    filteredDaily.forEach(row => {
+      const tr = document.createElement('tr');
+      tr.className = 'fd-row-active';
+      
+      const changeVal = row.change_d1;
+      const arrow = changeVal >= 0 ? '▲' : '▼';
+      const sign = changeVal >= 0 ? '+' : '';
+      
+      let changeCls = '';
+      if (isGtb) {
+        changeCls = changeVal >= 0 ? 'up' : 'down';
+      } else {
+        changeCls = changeVal <= 0 ? 'up' : 'down';
+      }
+      
+      let bcMatch = repData.bcs.find(b => clean_bc_name(b.name) === clean_bc_name(row.bc_name));
+      const amTele = bcMatch ? bcMatch.am_tele : '';
+      
+      tr.innerHTML = `
+        <td><strong>${escapeHtml(row.bc_name)}</strong></td>
+        <td>👤 ${escapeHtml(row.am)}</td>
+        <td style="text-align: center" class="${getFdCellClass(row.d18)}">${formatValue(row.d18)}</td>
+        <td style="text-align: center" class="${getFdCellClass(row.d19)}">${formatValue(row.d19)}</td>
+        <td style="text-align: center" class="${getFdCellClass(row.d20)}">${formatValue(row.d20)}</td>
+        <td style="text-align: center" class="${getFdCellClass(row.d21)}">${formatValue(row.d21)}</td>
+        <td style="text-align: center" class="${getFdCellClass(row.d22)}">${formatValue(row.d22)}</td>
+        <td style="text-align: center" class="${getFdCellClass(row.d23)}">${formatValue(row.d23)}</td>
+        <td style="text-align: center" class="${getFdCellClass(row.d24)}">${formatValue(row.d24)}</td>
+        <td style="text-align: center; font-weight: bold" class="${getFdCellClass(row.d25)}">${formatValue(row.d25)}</td>
+        <td style="text-align: center">
+          <span class="change-tag ${changeCls}">${arrow} ${sign}${(changeVal * 100).toFixed(2)}%</span>
+        </td>
+        <td style="text-align: center">
+          <button class="btn-nhac-am" onclick="sendTelegramFdAlert('${escapeHtml(row.bc_name)}', '${escapeHtml(row.am)}', '${escapeHtml(amTele)}', '${formatValue(row.d25)}', '${formatChangeText(changeVal)}', 'Kiểm tra tỷ lệ trả trong ngày và đôn đốc thực hiện GTB-TT')">Nhắc AM</button>
+        </td>
+      `;
+      body.appendChild(tr);
+    });
+  }
+}
+
+function switchFdViewMode(mode) {
+  activeFdViewMode = mode;
+  document.getElementById('btnFdViewWeekly').classList.remove('active');
+  document.getElementById('btnFdViewDaily').classList.remove('active');
+  
+  if (mode === 'weekly') document.getElementById('btnFdViewWeekly').classList.add('active');
+  else document.getElementById('btnFdViewDaily').classList.add('active');
+  
+  renderFdTable();
+}
+
+function switchFdMetric(metric) {
+  activeFdMetric = metric;
+  
+  const btnIds = {
+    total: 'btnFdMetricTotal',
+    sme: 'btnFdMetricSme',
+    tts: 'btnFdMetricTts',
+    gtb: 'btnFdMetricGtb'
+  };
+  
+  for (const m in btnIds) {
+    const btn = document.getElementById(btnIds[m]);
+    if (btn) {
+      if (m === metric) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    }
+  }
+  
+  const descEl = document.getElementById('fdMetricDesc');
+  if (descEl) {
+    const descriptions = {
+      total: 'Hiển thị tỷ lệ chuyển trả tổng của Bưu cục (tất cả các nguồn đơn).',
+      sme: 'Hiển thị tỷ lệ chuyển trả của các đơn hàng thuộc nhóm SME COD.',
+      tts: 'Hiển thị tỷ lệ chuyển trả của các đơn hàng từ sàn TikTok Shop (TTS).',
+      gtb: 'Hiển thị tỷ lệ Giao thất bại thu tiền - Shipper vẫn được tính công và tăng GTC.'
+    };
+    descEl.textContent = descriptions[metric] || '';
+  }
+  
+  const chartTitleEl = document.getElementById('fdChartTitle');
+  if (chartTitleEl) {
+    const chartTitles = {
+      total: '📉 Biểu đồ Xu hướng Tỷ lệ Trả Tổng (%)',
+      sme: '📉 Biểu đồ Xu hướng Tỷ lệ Trả SME COD (%)',
+      tts: '📉 Biểu đồ Xu hướng Tỷ lệ Trả TikTok Shop (%)',
+      gtb: '📈 Biểu đồ Xu hướng Tỷ lệ Giao Thất Bại Thu Tiền (%)'
+    };
+    chartTitleEl.textContent = chartTitles[metric];
+  }
+
+  const tableTitleEl = document.getElementById('fdTableTitle');
+  if (tableTitleEl) {
+    const tableTitles = {
+      total: '📋 Bảng Chi Tiết Tỷ Lệ Trả Tổng (%)',
+      sme: '📋 Bảng Chi Tiết Tỷ Lệ Trả SME COD (%)',
+      tts: '📋 Bảng Chi Tiết Tỷ Lệ Trả TikTok Shop (%)',
+      gtb: '📋 Bảng Chi Tiết Tỷ Lệ Giao Thất Bại Thu Tiền (%)'
+    };
+    tableTitleEl.textContent = tableTitles[metric];
+  }
+  
+  renderReturnRateView();
+}
+
+function handleFdSearch() {
+  fdTableSearchQuery = document.getElementById('fdTableSearch').value.toLowerCase().trim();
+  renderFdTable();
+}
+
+async function sendTelegramFdAlert(bcName, amName, amTele, currentVal, changeText, cause) {
+  if (!telegramConfig || !telegramConfig.BOT_TOKEN || !telegramConfig.CHAT_ID) {
+    showToast("⚠️ Vui lòng cấu hình BOT_TOKEN & CHAT_ID trong file telegram_config.json");
+    return;
+  }
+  
+  const fdReport = repData.fd_report;
+  
+  function getBcMetricVal(metricKey, isDailyMode) {
+    const data = fdReport[metricKey];
+    if (!data) return 'N/A';
+    
+    const cleanTarget = clean_bc_name(bcName);
+    const list = isDailyMode ? data.daily : data.weekly;
+    const match = list.find(row => clean_bc_name(row.bc_name) === cleanTarget);
+    
+    if (!match) return 'N/A';
+    
+    const val = isDailyMode ? match.d25 : match.w22;
+    if (val === null || val === undefined) return 'N/A';
+    return (val * 100).toFixed(2) + '%';
+  }
+
+  const isDaily = activeFdViewMode === 'daily';
+  const valTotal = getBcMetricVal('total', isDaily);
+  const valSme = getBcMetricVal('sme', isDaily);
+  const valTts = getBcMetricVal('tts', isDaily);
+  const valGtb = getBcMetricVal('gtb', isDaily);
+  
+  const modeText = isDaily ? 'Báo cáo ngày 25/05' : 'Báo cáo tuần W22';
+  
+  const token = telegramConfig.BOT_TOKEN;
+  const chatId = telegramConfig.CHAT_ID;
+  
+  const text = `🚨 *[CẢNH BÁO CHỈ SỐ VẬN HÀNH & TỶ LỆ TRẢ]* 🚨\n\n` +
+               `*Bưu cục:* ${bcName}\n` +
+               `*AM Phụ Trách:* ${amName} (${amTele || '@chua_co_tele'})\n` +
+               `*Thời điểm:* ${modeText}\n\n` +
+               `*Chi tiết bộ chỉ số:* \n` +
+               `• *%FD Tổng:* ${valTotal}\n` +
+               `• *%FD SME COD:* ${valSme}\n` +
+               `• *%FD TikTok Shop:* ${valTts}\n` +
+               `• *%GTB-TT (Thất bại thu tiền):* *${valGtb}*\n\n` +
+               `*Lưu ý từ hệ thống:* Chỉ số GTB-TT cao giúp tăng tỷ lệ GTC và hạ tỷ lệ %FD thực tế, cần được AM đôn đốc nhân rộng ngay!\n\n` +
+               `*Nguyên nhân/Nội dung nhắc nhở:* ${cause}\n\n` +
+               `👉 *Hành động yêu cầu:* Đề nghị AM nhanh chóng rà soát các đơn giao không thành công, thúc đẩy shipper thực hiện thu cước hoàn (GTB-TT) đúng quy trình, kiểm soát ca giao tối và xử lý dứt điểm các đơn tồn đọng!`;
+  
+  const url = `https://api.telegram.org/bot${token}/sendMessage`;
+  
+  showToast(`💬 Đang gửi cảnh báo qua Telegram...`);
+  
+  try {
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        chat_id: chatId,
+        text: text,
+        parse_mode: 'Markdown'
+      })
+    });
+    
+    if (res.ok) {
+      showToast("✅ Đã gửi cảnh báo Telegram thành công!");
+    } else {
+      const err = await res.json();
+      showToast(`❌ Gửi Telegram thất bại: ${err.description}`);
+    }
+  } catch (e) {
+    showToast(`❌ Gửi Telegram thất bại: ${e.message}`);
   }
 }
 
