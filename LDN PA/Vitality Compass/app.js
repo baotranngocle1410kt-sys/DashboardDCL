@@ -1496,6 +1496,7 @@ function renderHrTop5() {
 }
 
 function formatChangeText(val) {
+  if (val === null || val === undefined || isNaN(val)) return '--';
   if (val === 0) return '→ 0%';
   const sign = val > 0 ? '+' : '';
   const arrow = val > 0 ? '↗' : '↘';
@@ -1719,20 +1720,23 @@ function renderFdKPIs() {
   
   if (wt && wt.w22 !== null && wt.w22 !== undefined) {
     weeklyValEl.textContent = (wt.w22 * 100).toFixed(2) + '%';
-    const change_wtd = wt.change_wtd || 0;
-    const sign = change_wtd >= 0 ? '+' : '';
-    const arrow = change_wtd >= 0 ? '↗' : '↘';
+    const change_wtd = wt.change_wtd;
+    const hasChange = change_wtd !== null && change_wtd !== undefined && !isNaN(change_wtd);
+    const sign = hasChange && change_wtd >= 0 ? '+' : '';
+    const arrow = hasChange ? (change_wtd >= 0 ? '↗' : '↘') : '';
     
     let cls = '';
-    if (isGtb) {
-      cls = change_wtd >= 0 ? 'up' : 'down';
-    } else {
-      cls = change_wtd <= 0 ? 'up' : 'down';
+    if (hasChange) {
+      if (isGtb) {
+        cls = change_wtd >= 0 ? 'up' : 'down';
+      } else {
+        cls = change_wtd <= 0 ? 'up' : 'down';
+      }
     }
     
-    weeklyChangesEl.innerHTML = `
-      <span class="change-tag ${cls}">${arrow} ${sign}${(change_wtd * 100).toFixed(2)}% vs Tuần trước</span>
-    `;
+    weeklyChangesEl.innerHTML = hasChange
+      ? `<span class="change-tag ${cls}">${arrow} ${sign}${(change_wtd * 100).toFixed(2)}% vs Tuần trước</span>`
+      : `<span class="change-tag">-- vs Tuần trước</span>`;
   } else {
     weeklyValEl.textContent = '--';
     weeklyChangesEl.innerHTML = `<span class="change-tag">-- vs Tuần trước</span>`;
@@ -1745,29 +1749,36 @@ function renderFdKPIs() {
   
   if (dt && dt.d25 !== null && dt.d25 !== undefined) {
     dailyValEl.textContent = (dt.d25 * 100).toFixed(2) + '%';
-    const change_d1 = dt.change_d1 || 0;
-    const change_d7 = dt.change_d7 || 0;
+    const change_d1 = dt.change_d1;
+    const change_d7 = dt.change_d7;
     
-    const sign1 = change_d1 >= 0 ? '+' : '';
-    const arrow1 = change_d1 >= 0 ? '↗' : '↘';
+    const hasChange1 = change_d1 !== null && change_d1 !== undefined && !isNaN(change_d1);
+    const sign1 = hasChange1 && change_d1 >= 0 ? '+' : '';
+    const arrow1 = hasChange1 ? (change_d1 >= 0 ? '↗' : '↘') : '';
     
-    const sign7 = change_d7 >= 0 ? '+' : '';
-    const arrow7 = change_d7 >= 0 ? '↗' : '↘';
+    const hasChange7 = change_d7 !== null && change_d7 !== undefined && !isNaN(change_d7);
+    const sign7 = hasChange7 && change_d7 >= 0 ? '+' : '';
+    const arrow7 = hasChange7 ? (change_d7 >= 0 ? '↗' : '↘') : '';
     
     let cls1 = '';
     let cls7 = '';
     if (isGtb) {
-      cls1 = change_d1 >= 0 ? 'up' : 'down';
-      cls7 = change_d7 >= 0 ? 'up' : 'down';
+      if (hasChange1) cls1 = change_d1 >= 0 ? 'up' : 'down';
+      if (hasChange7) cls7 = change_d7 >= 0 ? 'up' : 'down';
     } else {
-      cls1 = change_d1 <= 0 ? 'up' : 'down';
-      cls7 = change_d7 <= 0 ? 'up' : 'down';
+      if (hasChange1) cls1 = change_d1 <= 0 ? 'up' : 'down';
+      if (hasChange7) cls7 = change_d7 <= 0 ? 'up' : 'down';
     }
     
-    dailyChangesEl.innerHTML = `
-      <span class="change-tag ${cls1}" style="margin-right:8px">${arrow1} ${sign1}${(change_d1 * 100).toFixed(2)}% vs Hôm qua</span>
-      <span class="change-tag ${cls7}">${arrow7} ${sign7}${(change_d7 * 100).toFixed(2)}% vs Tuần trước</span>
-    `;
+    const tag1Html = hasChange1 
+      ? `<span class="change-tag ${cls1}" style="margin-right:8px">${arrow1} ${sign1}${(change_d1 * 100).toFixed(2)}% vs Hôm qua</span>`
+      : `<span class="change-tag" style="margin-right:8px">-- vs Hôm qua</span>`;
+      
+    const tag7Html = hasChange7
+      ? `<span class="change-tag ${cls7}">${arrow7} ${sign7}${(change_d7 * 100).toFixed(2)}% vs Tuần trước</span>`
+      : `<span class="change-tag">-- vs Tuần trước</span>`;
+      
+    dailyChangesEl.innerHTML = tag1Html + tag7Html;
   } else {
     dailyValEl.textContent = '--';
     dailyChangesEl.innerHTML = `
@@ -1992,15 +2003,20 @@ function renderFdTop5() {
     }
     
     const changeVal = item.change_wtd;
-    const arrow = changeVal >= 0 ? '▲' : '▼';
-    const sign = changeVal >= 0 ? '+' : '';
+    const hasChange = changeVal !== null && changeVal !== undefined && !isNaN(changeVal);
+    const arrow = hasChange ? (changeVal >= 0 ? '▲' : '▼') : '';
+    const sign = hasChange ? (changeVal >= 0 ? '+' : '') : '';
     
     let changeCls = '';
-    if (isGtb) {
-      changeCls = changeVal >= 0 ? 'text-success' : 'text-danger';
-    } else {
-      changeCls = changeVal <= 0 ? 'text-success' : 'text-danger';
+    if (hasChange) {
+      if (isGtb) {
+        changeCls = changeVal >= 0 ? 'text-success' : 'text-danger';
+      } else {
+        changeCls = changeVal <= 0 ? 'text-success' : 'text-danger';
+      }
     }
+    
+    const changeText = hasChange ? `${arrow} ${sign}${(changeVal * 100).toFixed(2)}%` : '--';
     
     const labelMetric = isGtb ? '%GTB-TT' : '%FD';
     const badgeColor = isGtb 
@@ -2018,7 +2034,7 @@ function renderFdTop5() {
       <div class="hr-top5-stats" style="grid-template-columns: repeat(2, 1fr)">
         <div class="hr-top5-stat">
           Biến động tuần (Wow)
-          <strong class="${changeCls}">${arrow} ${sign}${(changeVal * 100).toFixed(2)}%</strong>
+          <strong class="${changeCls}">${changeText}</strong>
         </div>
         <div class="hr-top5-stat">
           Sản lượng giao
@@ -2080,6 +2096,21 @@ function renderFdTable() {
   
   const isGtb = activeFdMetric === 'gtb';
   
+  function renderChangeTagHtml(val) {
+    if (val === null || val === undefined || isNaN(val)) {
+      return `<span class="change-tag">--</span>`;
+    }
+    const arrow = val >= 0 ? '▲' : '▼';
+    const sign = val >= 0 ? '+' : '';
+    let changeCls = '';
+    if (isGtb) {
+      changeCls = val >= 0 ? 'up' : 'down';
+    } else {
+      changeCls = val <= 0 ? 'up' : 'down';
+    }
+    return `<span class="change-tag ${changeCls}">${arrow} ${sign}${(val * 100).toFixed(2)}%</span>`;
+  }
+  
   if (activeFdViewMode === 'weekly') {
     head.innerHTML = `
       <th>Bưu cục</th>
@@ -2112,16 +2143,6 @@ function renderFdTable() {
       tr.className = 'fd-row-active';
       
       const changeVal = row.change_wtd;
-      const arrow = changeVal >= 0 ? '▲' : '▼';
-      const sign = changeVal >= 0 ? '+' : '';
-      
-      let changeCls = '';
-      if (isGtb) {
-        changeCls = changeVal >= 0 ? 'up' : 'down';
-      } else {
-        changeCls = changeVal <= 0 ? 'up' : 'down';
-      }
-      
       let bcMatch = repData.bcs.find(b => clean_bc_name(b.name) === clean_bc_name(row.bc_name));
       const amTele = bcMatch ? bcMatch.am_tele : '';
       
@@ -2134,7 +2155,7 @@ function renderFdTable() {
         <td style="text-align: center" class="${getFdCellClass(row.w21)}">${formatValue(row.w21)}</td>
         <td style="text-align: center; font-weight: bold" class="${getFdCellClass(row.w22)}">${formatValue(row.w22)}</td>
         <td style="text-align: center">
-          <span class="change-tag ${changeCls}">${arrow} ${sign}${(changeVal * 100).toFixed(2)}%</span>
+          ${renderChangeTagHtml(changeVal)}
         </td>
         <td style="text-align: center">
           <button class="btn-nhac-am" onclick="sendTelegramFdAlert('${escapeHtml(row.bc_name)}', '${escapeHtml(row.am)}', '${escapeHtml(amTele)}', '${formatValue(row.w22)}', '${formatChangeText(changeVal)}', 'Kiểm tra tỷ lệ vận hành và đẩy mạnh GTB-TT của bưu cục')">Nhắc AM</button>
@@ -2177,16 +2198,6 @@ function renderFdTable() {
       tr.className = 'fd-row-active';
       
       const changeVal = row.change_d1;
-      const arrow = changeVal >= 0 ? '▲' : '▼';
-      const sign = changeVal >= 0 ? '+' : '';
-      
-      let changeCls = '';
-      if (isGtb) {
-        changeCls = changeVal >= 0 ? 'up' : 'down';
-      } else {
-        changeCls = changeVal <= 0 ? 'up' : 'down';
-      }
-      
       let bcMatch = repData.bcs.find(b => clean_bc_name(b.name) === clean_bc_name(row.bc_name));
       const amTele = bcMatch ? bcMatch.am_tele : '';
       
@@ -2387,4 +2398,3 @@ if (document.readyState === 'loading') {
 } else {
   initAutoLoad();
 }
-

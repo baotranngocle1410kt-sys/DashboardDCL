@@ -37,10 +37,18 @@ def clean_bc_name(name):
 def parse_pct(val):
     if val is None:
         return 0.0
+    if isinstance(val, (int, float)):
+        import numpy as np
+        if np.isnan(val):
+            return 0.0
+        if abs(val) > 1.0:
+            return float(val) / 100.0
+        return float(val)
+        
     val_str = str(val).strip()
     if not val_str or val_str.lower() == 'nan' or val_str == '-' or val_str == '':
         return 0.0
-    
+        
     # Check direction indicators
     sign = 1.0
     if '▼' in val_str:
@@ -52,8 +60,10 @@ def parse_pct(val):
         
     clean = val_str.replace('%', '').strip()
     try:
-        val_float = float(clean) / 100.0
-        return val_float * sign if sign != 1.0 or val_float < 0 else val_float
+        val_float = float(clean)
+        if '%' in val_str or abs(val_float) > 1.0:
+            return (val_float / 100.0) * sign
+        return val_float * sign
     except:
         return 0.0
 
@@ -112,13 +122,13 @@ def main():
         
     # Download FD Report (Link 4)
     print("Downloading live FD report sheet from Google Sheets...")
-    p_fd_local = r"C:\Users\Administrator\Desktop\AI 2026\Mentor\fd_live.csv"
+    p_fd_xlsx = r"C:\Users\Administrator\Desktop\AI 2026\Mentor\fd_live.xlsx"
     fd_success = False
     try:
-        gsheet_fd_url = "https://docs.google.com/spreadsheets/d/1eJo3_M35Q-Qb3t9AzZkF22gZUCG5oETj-ZIew1DaFgA/export?format=csv&gid=0"
+        gsheet_fd_url = "https://docs.google.com/spreadsheets/d/1eJo3_M35Q-Qb3t9AzZkF22gZUCG5oETj-ZIew1DaFgA/export?format=xlsx"
         req = urllib.request.Request(gsheet_fd_url, headers={'User-Agent': 'Mozilla/5.0'})
         with urllib.request.urlopen(req, timeout=90) as response:
-            with open(p_fd_local, 'wb') as f:
+            with open(p_fd_xlsx, 'wb') as f:
                 f.write(response.read())
         print("✓ Downloaded live FD report sheet successfully.")
         fd_success = True
@@ -1041,7 +1051,7 @@ def main():
                     'w20': None,
                     'w21': None,
                     'w22': w22_val,
-                    'change_wtd': float(w22_val - (item['w21'] if item['w21'] else 0))
+                    'change_wtd': None
                 })
                 
                 daily_item = {
