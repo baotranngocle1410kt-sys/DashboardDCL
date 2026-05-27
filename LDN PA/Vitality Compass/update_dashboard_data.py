@@ -1060,8 +1060,9 @@ def main():
                     'change_d1': float(d25 - d24),
                     'change_d7': float(d25 - d18)
                 }
-                for d_lbl in daily_lbl_map.keys():
-                    daily_item[d_lbl] = daily_vals.get(d_lbl, 0.0)
+                for idx, lbl in enumerate(sorted_daily_lbls):
+                    key_name = f"d{18 + idx}"
+                    daily_item[key_name] = daily_vals.get(lbl, 0.0)
                 fd_data['total']['daily'].append(daily_item)
                 
         except Exception as e:
