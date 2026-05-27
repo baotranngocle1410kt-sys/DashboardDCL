@@ -530,6 +530,9 @@ let activeHrDim = 'province';
 let hrTableSearchQuery = '';
 let hrChartObj = null;
 
+// ===== DROPPED TRANSFER SORT STATE =====
+let activeDroppedSort = 'tts';
+
 async function loadTelegramConfig() {
   const confStr = await readFile('telegram_config.json');
   if (confStr) {
@@ -774,7 +777,20 @@ function renderDroppedBcs() {
 
   container.innerHTML = '';
 
-  const droppedList = repData.dropped_bcs;
+  // Sort the dropped list based on activeDroppedSort descending (TTS is default)
+  const droppedList = [...repData.dropped_bcs];
+  droppedList.sort((a, b) => {
+    const valA = a[activeDroppedSort] || 0;
+    const valB = b[activeDroppedSort] || 0;
+    if (valB !== valA) {
+      return valB - valA;
+    }
+    // Secondary sort by total descending
+    if (activeDroppedSort !== 'total') {
+      return (b.total || 0) - (a.total || 0);
+    }
+    return 0;
+  });
   
   // Update badge count
   const badge = document.getElementById('droppedBcBadge');
@@ -867,6 +883,13 @@ function renderDroppedBcs() {
     <td style="background-color: #f2f2f2;"></td>
   `;
   container.appendChild(trTotal);
+}
+
+function changeDroppedSort(value) {
+  activeDroppedSort = value;
+  const selectEl = document.getElementById('droppedBcSortSelect');
+  if (selectEl) selectEl.value = value;
+  renderDroppedBcs();
 }
 
 

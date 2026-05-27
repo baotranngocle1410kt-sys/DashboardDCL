@@ -75,11 +75,20 @@
 
       <!-- Top Bưu Cục Rớt Luân Chuyển -->
       <div class="card" style="margin-top:20px">
-        <div class="card-header">
+        <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap;">
           <div class="card-title">📦 Top Bưu Cục Rớt Luân Chuyển</div>
-          <span class="card-badge" id="droppedBcBadge">0 BC</span>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <label style="font-size: 11px; color: var(--text-muted);">Sắp xếp theo:</label>
+            <select id="droppedBcSortSelect" onchange="changeDroppedSort(this.value)" style="background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border); padding: 4px 8px; border-radius: 4px; font-size: 11px; cursor: pointer; outline: none;">
+              <option value="tts" selected>TiktokShop (TTS)</option>
+              <option value="shopee">Shopee</option>
+              <option value="khac">Khác</option>
+              <option value="total">Tổng cộng</option>
+            </select>
+            <span class="card-badge" id="droppedBcBadge">0 BC</span>
+          </div>
         </div>
-        <div class="scrollable" style="max-height: 420px; border: 1px solid var(--border); border-radius: var(--radius-sm); overflow: hidden;">
+        <div class="scrollable" style="max-height: 420px; border: 1px solid var(--border); border-radius: var(--radius-sm); overflow-y: auto;">
           <table class="excel-table" style="width: 100%;">
             <thead>
               <tr>
