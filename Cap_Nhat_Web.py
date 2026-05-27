@@ -30,7 +30,10 @@ except subprocess.CalledProcessError as e:
 print("\n>>> BƯỚC 2: Đang tải dữ liệu mới lên trang web GitHub...")
 files_to_push = [
     r"LDN PA/Vitality Compass/operations_data.json",
-    r"LDN PA/Operations_Insights.md"
+    r"LDN PA/Operations_Insights.md",
+    r"app.js",
+    r"LDN PA/Vitality Compass/app.js",
+    r"LDN PA/Vitality Compass/update_dashboard_data.py"
 ]
 
 try:
