@@ -167,6 +167,12 @@ def main():
         df_hist = pd.read_excel(xls_perf, sheet_name="Lịch sử")
     print("Reading backlog sheets...")
     df_backlog_pivot = pd.read_excel(p_backlog, sheet_name="PIVOT")
+    df_backlog_raw = pd.read_excel(p_backlog, sheet_name="Đơn GIAO aging >5 ngày")
+    
+    # Group by BC to count backlogs dynamically
+    bl_by_bc = {}
+    for bc_name_raw, grp in df_backlog_raw.groupby('BC'):
+        bl_by_bc[clean_bc_name(bc_name_raw)] = len(grp)
     
     # 2. Date Corrections (Moved up to get current week number)
     df_data['corrected_date'] = pd.to_datetime(df_data['Time Format']) 
@@ -285,6 +291,46 @@ def main():
         '2026-05-17': 1850
     }
     
+    # Parse daily backlog totals dynamically from bottom of PIVOT sheet
+    parsed_history = {}
+    try:
+        header_idx = None
+        total_idx = None
+        for idx, r_row in df_backlog_pivot.iterrows():
+            val = str(r_row[0]).strip() if pd.notna(r_row[0]) else ""
+            if val == 'AM' and any('Ngày N' in str(cell) for cell in r_row):
+                header_idx = idx
+            elif val == 'TỔNG' and header_idx is not None:
+                total_idx = idx
+                
+        if header_idx is not None and total_idx is not None:
+            headers = df_backlog_pivot.iloc[header_idx].tolist()
+            totals = df_backlog_pivot.iloc[total_idx].tolist()
+            
+            for col_idx in range(1, len(headers)):
+                h_val = str(headers[col_idx]).strip() if pd.notna(headers[col_idx]) else ""
+                t_val = str(totals[col_idx]).strip() if pd.notna(totals[col_idx]) else ""
+                
+                if not h_val or not t_val:
+                    continue
+                date_match = re.search(r'\((\d{2}/\d{2})\)', h_val)
+                if not date_match:
+                    date_match = re.search(r'(\d{2}/\d{2})', h_val)
+                cnt_match = re.match(r'^([\d\.,]+)', t_val)
+                
+                if date_match and cnt_match:
+                    date_str = date_match.group(1)
+                    day, month = date_str.split('/')
+                    full_date = f"2026-{month}-{day}"
+                    cnt_str = cnt_match.group(1).replace('.', '').replace(',', '')
+                    parsed_history[full_date] = int(cnt_str)
+                    
+        # Update backlog_history with parsed values
+        for k, v in parsed_history.items():
+            backlog_history[k] = v
+    except Exception as e:
+        print(f"⚠ Failed to parse daily backlog history: {e}")
+    
     # Map Post Offices to AM and Province
     df_data_m = df_data.merge(df_cocau, left_on="ID Bưu cục", right_on="warehouse_id", how="left")
     df_data_m['Vol Chuyen Tra'] = df_data_m['Volume'] * df_data_m['% Chuyển trả']
@@ -332,10 +378,21 @@ def main():
     lastmonth_fd = 0.0275 
     lastmonth_vol = cur_vol - 3500 
     
-    cur_bl = int(df_bl_ams['Tổng'].sum()) 
-    yest_bl = 2705
-    lastweek_bl = 2128
-    lastmonth_bl = 1850
+    cur_bl = int(df_bl_ams['Tổng'].sum())
+    
+    # Calculate relative backlogs dynamically
+    today_str = '2026-05-28'
+    if parsed_history:
+        today_str = max(parsed_history.keys())
+        
+    yest_dt = pd.to_datetime(today_str) - pd.Timedelta(days=1)
+    yest_bl = parsed_history.get(yest_dt.strftime('%Y-%m-%d'), 2705)
+    
+    lastweek_dt = pd.to_datetime(today_str) - pd.Timedelta(days=7)
+    lastweek_bl = parsed_history.get(lastweek_dt.strftime('%Y-%m-%d'), 2128)
+    
+    lastmonth_dt = pd.to_datetime(today_str) - pd.Timedelta(days=30)
+    lastmonth_bl = parsed_history.get(lastmonth_dt.strftime('%Y-%m-%d'), 1850)
     
     kpis = {
         'volume': {
@@ -465,18 +522,6 @@ def main():
     
     # Aggregate by BC (Bưu cục)
     bc_data = []
-    top_bc_backlog = {
-        'BC 73 Phó Cơ Điều-Phường Phước Hậu-Vĩnh Long': 646,
-        'Bưu Cục 73 Phó Cơ Điều-Phường Phước Hậu-Vĩnh Long': 646,
-        'BC 992 Đường Huyện 35-Vĩnh Kim-Châu Thành-Tiền Giang': 409,
-        'Bưu Cục 992 Đường Huyện 35-Vĩnh Kim-Châu Thành-Tiền Giang': 409,
-        'BC QL57 KP3-Thị Trấn Chợ Lách-Bến Tre': 383,
-        'Bưu Cục QL57 KP3-Thị Trấn Chợ Lách-Bến Tre': 383,
-        'BC Quốc Lộ 53-Xã Trung Thành-Vĩnh Long': 377,
-        'Bưu Cục Quốc Lộ 53-Xã Trung Thành-Vĩnh Long': 377,
-        'BC Quốc Lộ 50-Gò Công Tây-Tiền Giang': 345,
-        'Bưu Cục Quốc Lộ 50-Gò Công Tây-Tiền Giang': 345
-    }
     
     bc_causes = {
         'Phó Cơ Điều': "Thiếu shipper giao chặng cuối, tồn đọng ca sáng.",
@@ -511,13 +556,16 @@ def main():
         gtc_lw = float(df_bc_lw['% GTC'].values[0]) if len(df_bc_lw) > 0 else gtc
         
         # Backlog mapping
+        bc_clean = clean_bc_name(bc_name)
         bc_bl = 0
-        for kw, val in top_bc_backlog.items():
-            if kw in bc_name or bc_name in kw:
-                bc_bl = val
-                break
-        if bc_bl == 0:
-            bc_bl = int(vol * 0.015)
+        if bc_clean in bl_by_bc:
+            bc_bl = bl_by_bc[bc_clean]
+        else:
+            # Try substring match
+            for k_bl, cnt in bl_by_bc.items():
+                if k_bl in bc_clean or bc_clean in k_bl:
+                    bc_bl = cnt
+                    break
             
         status = "Tốt" if gtc >= 0.67 else "Cảnh báo" if gtc >= 0.55 else "Bất ổn"
         

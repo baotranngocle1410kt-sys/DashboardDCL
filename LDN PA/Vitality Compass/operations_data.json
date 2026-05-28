@@ -436,7 +436,7 @@
       "gtc_vs_lastweek": 0.0009625319999999882,
       "fd": 0.09696,
       "fd_change": 0.04054297592,
-      "backlog": 646,
+      "backlog": 475,
       "status": "Bất ổn",
       "cause": "Thiếu shipper giao chặng cuối, tồn đọng ca sáng.",
       "hr": {
@@ -463,7 +463,7 @@
       "gtc_vs_lastweek": -0.09050406719999998,
       "fd": 0.03534031414,
       "fd_change": -0.04035689702,
-      "backlog": 345,
+      "backlog": 150,
       "status": "Bất ổn",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -490,7 +490,7 @@
       "gtc_vs_lastweek": 0.03263649240000005,
       "fd": 0.1274161736,
       "fd_change": 0.07172266525999998,
-      "backlog": 409,
+      "backlog": 236,
       "status": "Bất ổn",
       "cause": "Tuyến giao hàng Vĩnh Kim bị chia cắt, shipper nghỉ đột xuất.",
       "hr": {
@@ -517,7 +517,7 @@
       "gtc_vs_lastweek": 0.05499006799999995,
       "fd": 0.01747487986,
       "fd_change": -0.00436978033,
-      "backlog": 34,
+      "backlog": 41,
       "status": "Cảnh báo",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -544,7 +544,7 @@
       "gtc_vs_lastweek": 0.010110349299999988,
       "fd": 0.01040253279,
       "fd_change": -0.00734369614,
-      "backlog": 33,
+      "backlog": 72,
       "status": "Cảnh báo",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -571,7 +571,7 @@
       "gtc_vs_lastweek": -0.02639234130000001,
       "fd": 0.01699716714,
       "fd_change": 0.0010925945800000017,
-      "backlog": 31,
+      "backlog": 10,
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -598,7 +598,7 @@
       "gtc_vs_lastweek": 0.09858324820000008,
       "fd": 0.02106810387,
       "fd_change": 0.0015559087500000013,
-      "backlog": 30,
+      "backlog": 21,
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -625,7 +625,7 @@
       "gtc_vs_lastweek": -0.1455884796,
       "fd": 0.01325854156,
       "fd_change": -0.00044008857999999935,
-      "backlog": 377,
+      "backlog": 564,
       "status": "Bất ổn",
       "cause": "Lượng đơn tăng đột biến 150% do khuyến mãi Shopee.",
       "hr": {
@@ -652,7 +652,7 @@
       "gtc_vs_lastweek": 0.10090342430000002,
       "fd": 0.1296770887,
       "fd_change": 0.026032980799999994,
-      "backlog": 383,
+      "backlog": 109,
       "status": "Bất ổn",
       "cause": "Hàng ca 1 về trễ, chưa kịp phân tuyến gán shipper.",
       "hr": {
@@ -679,7 +679,7 @@
       "gtc_vs_lastweek": 0.0077213097000000674,
       "fd": 0.03908285565,
       "fd_change": 0.012183374759999997,
-      "backlog": 28,
+      "backlog": 68,
       "status": "Cảnh báo",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -706,7 +706,7 @@
       "gtc_vs_lastweek": -0.05253217460000004,
       "fd": 0.01580381471,
       "fd_change": -0.00356238247,
-      "backlog": 27,
+      "backlog": 101,
       "status": "Bất ổn",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -733,7 +733,7 @@
       "gtc_vs_lastweek": 0.018499759000000005,
       "fd": 0.02625152625,
       "fd_change": 0.00397578874,
-      "backlog": 24,
+      "backlog": 27,
       "status": "Cảnh báo",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -760,7 +760,7 @@
       "gtc_vs_lastweek": 0.009216729599999973,
       "fd": 0.01775523145,
       "fd_change": -0.00771831525,
-      "backlog": 23,
+      "backlog": 14,
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -787,7 +787,7 @@
       "gtc_vs_lastweek": -0.058555662399999986,
       "fd": 0.01817001947,
       "fd_change": -0.006081050430000002,
-      "backlog": 23,
+      "backlog": 6,
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -814,7 +814,7 @@
       "gtc_vs_lastweek": 0.0,
       "fd": 0.009861932939,
       "fd_change": -0.0014233335210000007,
-      "backlog": 22,
+      "backlog": 226,
       "status": "Bất ổn",
       "cause": "Lượng đơn tăng đột biến 150% do khuyến mãi Shopee.",
       "hr": {
@@ -841,7 +841,7 @@
       "gtc_vs_lastweek": -0.01797621820000006,
       "fd": 0.02724252492,
       "fd_change": -0.0013111684399999997,
-      "backlog": 22,
+      "backlog": 6,
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -868,7 +868,7 @@
       "gtc_vs_lastweek": -0.00015518320000007524,
       "fd": 0.0162037037,
       "fd_change": -0.0011948050000000002,
-      "backlog": 19,
+      "backlog": 15,
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -895,7 +895,7 @@
       "gtc_vs_lastweek": -0.05114345109999996,
       "fd": 0.02724358974,
       "fd_change": -0.002168174969999999,
-      "backlog": 18,
+      "backlog": 12,
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -922,7 +922,7 @@
       "gtc_vs_lastweek": 0.04688863190000003,
       "fd": 0.02605863192,
       "fd_change": -0.006230067040000002,
-      "backlog": 18,
+      "backlog": 9,
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -949,7 +949,7 @@
       "gtc_vs_lastweek": 0.0337938659,
       "fd": 0.0197044335,
       "fd_change": -0.013714589639999997,
-      "backlog": 18,
+      "backlog": 42,
       "status": "Cảnh báo",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -976,7 +976,7 @@
       "gtc_vs_lastweek": -0.058975914200000035,
       "fd": 0.02561983471,
       "fd_change": 0.01441086754,
-      "backlog": 18,
+      "backlog": 59,
       "status": "Bất ổn",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -1003,7 +1003,7 @@
       "gtc_vs_lastweek": -0.013571839899999993,
       "fd": 0.01991701245,
       "fd_change": -0.01133298755,
-      "backlog": 18,
+      "backlog": 7,
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -1030,7 +1030,7 @@
       "gtc_vs_lastweek": 0.016574073999999994,
       "fd": 0.01833333333,
       "fd_change": -0.00651670951,
-      "backlog": 18,
+      "backlog": 7,
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -1057,7 +1057,7 @@
       "gtc_vs_lastweek": -0.02381271829999998,
       "fd": 0.03122362869,
       "fd_change": -0.00827741081,
-      "backlog": 17,
+      "backlog": 25,
       "status": "Cảnh báo",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -1084,7 +1084,7 @@
       "gtc_vs_lastweek": -0.014671544200000053,
       "fd": 0.02654109589,
       "fd_change": -0.009591716609999999,
-      "backlog": 17,
+      "backlog": 11,
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -1111,7 +1111,7 @@
       "gtc_vs_lastweek": 0.027202900800000096,
       "fd": 0.02096069869,
       "fd_change": -0.004774595429999997,
-      "backlog": 17,
+      "backlog": 4,
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -1138,7 +1138,7 @@
       "gtc_vs_lastweek": -0.0373850563,
       "fd": 0.01318101933,
       "fd_change": -0.022130776309999996,
-      "backlog": 17,
+      "backlog": 46,
       "status": "Cảnh báo",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -1165,7 +1165,7 @@
       "gtc_vs_lastweek": -0.023951443500000003,
       "fd": 0.02552816901,
       "fd_change": 0.0028771622999999996,
-      "backlog": 17,
+      "backlog": 9,
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -1192,7 +1192,7 @@
       "gtc_vs_lastweek": -0.012267678900000023,
       "fd": 0.01675485009,
       "fd_change": -0.0067413905100000004,
-      "backlog": 17,
+      "backlog": 50,
       "status": "Cảnh báo",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -1219,7 +1219,7 @@
       "gtc_vs_lastweek": -0.021360359200000012,
       "fd": 0.01865671642,
       "fd_change": -0.013509792570000002,
-      "backlog": 16,
+      "backlog": 13,
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -1246,7 +1246,7 @@
       "gtc_vs_lastweek": 0.03497884899999992,
       "fd": 0.009328358209,
       "fd_change": -0.00024756518400000094,
-      "backlog": 16,
+      "backlog": 6,
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -1273,7 +1273,7 @@
       "gtc_vs_lastweek": -0.0880589578,
       "fd": 0.04170616114,
       "fd_change": 0.010351177940000005,
-      "backlog": 15,
+      "backlog": 82,
       "status": "Bất ổn",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -1300,7 +1300,7 @@
       "gtc_vs_lastweek": -0.04413512669999997,
       "fd": 0.02415458937,
       "fd_change": 0.00961970565,
-      "backlog": 15,
+      "backlog": 2,
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -1327,7 +1327,7 @@
       "gtc_vs_lastweek": -0.01434948980000006,
       "fd": 0.01166180758,
       "fd_change": -0.00625532568,
-      "backlog": 15,
+      "backlog": 0,
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -1354,7 +1354,7 @@
       "gtc_vs_lastweek": 0.02535132919999994,
       "fd": 0.01382033564,
       "fd_change": -0.0026845187299999983,
-      "backlog": 15,
+      "backlog": 3,
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -1381,7 +1381,7 @@
       "gtc_vs_lastweek": 0.06999270550000003,
       "fd": 0.01086956522,
       "fd_change": -0.00994208931,
-      "backlog": 15,
+      "backlog": 4,
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -1408,7 +1408,7 @@
       "gtc_vs_lastweek": -0.0776693236999999,
       "fd": 0.02819738167,
       "fd_change": 0.001530715000000002,
-      "backlog": 14,
+      "backlog": 8,
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -1435,7 +1435,7 @@
       "gtc_vs_lastweek": -0.0023902174999999026,
       "fd": 0.02832244009,
       "fd_change": 0.004615543540000003,
-      "backlog": 13,
+      "backlog": 5,
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -1462,7 +1462,7 @@
       "gtc_vs_lastweek": -0.0065043562000000055,
       "fd": 0.01644736842,
       "fd_change": -0.0007610445799999983,
-      "backlog": 13,
+      "backlog": 7,
       "status": "Cảnh báo",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -1489,7 +1489,7 @@
       "gtc_vs_lastweek": 0.06098939530000003,
       "fd": 0.01334816463,
       "fd_change": -0.00996789755,
-      "backlog": 13,
+      "backlog": 1,
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -1516,7 +1516,7 @@
       "gtc_vs_lastweek": 0.059921485900000016,
       "fd": 0.0214205186,
       "fd_change": 0.006215840240000001,
-      "backlog": 13,
+      "backlog": 2,
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -1543,7 +1543,7 @@
       "gtc_vs_lastweek": 0.03206507450000007,
       "fd": 0.02739726027,
       "fd_change": 0.01241598686,
-      "backlog": 13,
+      "backlog": 6,
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -1570,7 +1570,7 @@
       "gtc_vs_lastweek": 0.09827032549999992,
       "fd": 0.01382488479,
       "fd_change": -0.005592590940000001,
-      "backlog": 13,
+      "backlog": 2,
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -1597,7 +1597,7 @@
       "gtc_vs_lastweek": 0.023400937899999974,
       "fd": 0.02115158637,
       "fd_change": -0.008528778930000001,
-      "backlog": 12,
+      "backlog": 8,
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -1624,7 +1624,7 @@
       "gtc_vs_lastweek": 0.123136676,
       "fd": 0.003592814371,
       "fd_change": -0.008008113699000001,
-      "backlog": 12,
+      "backlog": 9,
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -1651,7 +1651,7 @@
       "gtc_vs_lastweek": -0.030849269299999982,
       "fd": 0.02098765432,
       "fd_change": -0.0005313330200000001,
-      "backlog": 12,
+      "backlog": 3,
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -1678,7 +1678,7 @@
       "gtc_vs_lastweek": -0.013346986399999983,
       "fd": 0.02621722846,
       "fd_change": -0.015080706640000004,
-      "backlog": 12,
+      "backlog": 10,
       "status": "Cảnh báo",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -1705,7 +1705,7 @@
       "gtc_vs_lastweek": 0.08339359849999994,
       "fd": 0.02290076336,
       "fd_change": -0.008085152130000002,
-      "backlog": 11,
+      "backlog": 5,
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -1732,7 +1732,7 @@
       "gtc_vs_lastweek": -0.01389776790000008,
       "fd": 0.0290237467,
       "fd_change": 0.0033827210599999998,
-      "backlog": 11,
+      "backlog": 9,
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -1759,7 +1759,7 @@
       "gtc_vs_lastweek": 0.022374412999999982,
       "fd": 0.02506596306,
       "fd_change": -0.006484105529999999,
-      "backlog": 11,
+      "backlog": 5,
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -1786,7 +1786,7 @@
       "gtc_vs_lastweek": -0.04625466119999999,
       "fd": 0.01728723404,
       "fd_change": -0.006049988830000002,
-      "backlog": 11,
+      "backlog": 16,
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -1813,7 +1813,7 @@
       "gtc_vs_lastweek": -0.005005284600000048,
       "fd": 0.01081081081,
       "fd_change": -0.00821092832,
-      "backlog": 11,
+      "backlog": 2,
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -1840,7 +1840,7 @@
       "gtc_vs_lastweek": 0.02572806449999998,
       "fd": 0.02259887006,
       "fd_change": -0.01845203306,
-      "backlog": 10,
+      "backlog": 16,
       "status": "Cảnh báo",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -1867,7 +1867,7 @@
       "gtc_vs_lastweek": -0.02758342810000003,
       "fd": 0.02404526167,
       "fd_change": 0.003740693140000001,
-      "backlog": 10,
+      "backlog": 9,
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -1894,7 +1894,7 @@
       "gtc_vs_lastweek": -0.11505798559999997,
       "fd": 0.01430615165,
       "fd_change": 0.0021930964699999993,
-      "backlog": 10,
+      "backlog": 27,
       "status": "Bất ổn",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -1921,7 +1921,7 @@
       "gtc_vs_lastweek": -0.18105421180000003,
       "fd": 0.01040118871,
       "fd_change": -0.01394946064,
-      "backlog": 10,
+      "backlog": 5,
       "status": "Cảnh báo",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -1948,7 +1948,7 @@
       "gtc_vs_lastweek": -0.008217946399999954,
       "fd": 0.01940298507,
       "fd_change": -0.01806099188,
-      "backlog": 10,
+      "backlog": 5,
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -1975,7 +1975,7 @@
       "gtc_vs_lastweek": 0.06278988259999996,
       "fd": 0.03785488959,
       "fd_change": -0.015095186049999994,
-      "backlog": 9,
+      "backlog": 23,
       "status": "Cảnh báo",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -2002,7 +2002,7 @@
       "gtc_vs_lastweek": 0.07240348409999997,
       "fd": 0.02741935484,
       "fd_change": -0.005189340809999998,
-      "backlog": 9,
+      "backlog": 17,
       "status": "Cảnh báo",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -2029,7 +2029,7 @@
       "gtc_vs_lastweek": 0.040567951400000024,
       "fd": 0.02107279693,
       "fd_change": 4.029214999999933e-05,
-      "backlog": 7,
+      "backlog": 3,
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -2056,7 +2056,7 @@
       "gtc_vs_lastweek": 0.03649670890000001,
       "fd": 0.007957559682,
       "fd_change": -0.005346209718000001,
-      "backlog": 5,
+      "backlog": 0,
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -2497,7 +2497,7 @@
         "volume": 3125,
         "vol_tts": 468,
         "gtc": 0.15008,
-        "backlog_72h": 646,
+        "backlog_72h": 475,
         "am": "Nguyễn Tuấn Anh",
         "dinhiben_nvpttt": 16,
         "dinhiben_nvxl": 1,
@@ -2513,7 +2513,7 @@
         "volume": 1951,
         "vol_tts": 292,
         "gtc": 0.2885699641,
-        "backlog_72h": 383,
+        "backlog_72h": 109,
         "am": "Huỳnh Phương Duy",
         "dinhiben_nvpttt": 9,
         "dinhiben_nvxl": 1,
@@ -2529,7 +2529,7 @@
         "volume": 1638,
         "vol_tts": 245,
         "gtc": 0.605006105,
-        "backlog_72h": 24,
+        "backlog_72h": 27,
         "am": "Lê Minh Tuấn",
         "dinhiben_nvpttt": 23,
         "dinhiben_nvxl": 2,
@@ -2545,7 +2545,7 @@
         "volume": 1200,
         "vol_tts": 180,
         "gtc": 0.7758333333,
-        "backlog_72h": 18,
+        "backlog_72h": 7,
         "am": "Nguyễn Tuấn Anh",
         "dinhiben_nvpttt": 17,
         "dinhiben_nvxl": 1,
@@ -2561,7 +2561,7 @@
         "volume": 1210,
         "vol_tts": 181,
         "gtc": 0.5495867769,
-        "backlog_72h": 18,
+        "backlog_72h": 59,
         "am": "Huỳnh Quốc Trung",
         "dinhiben_nvpttt": 13,
         "dinhiben_nvxl": 1,
