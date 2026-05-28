@@ -8,7 +8,7 @@
 - **GTC**: 60.72% (Biến động vs Tuần trước: ↗ +0.01% vs Tuần trước)
 - **FD**: 3.06% (Biến động vs Tuần trước: ↗ +0.59% vs Tuần trước)
 - **Ontime**: 91.50%
-- **Backlog**: 2,699 (Biến động vs Tuần trước: ↗ +26.83% vs Tuần trước)
+- **Backlog**: 2,699 (Biến động vs Tuần trước: ↗ +15.10% vs Tuần trước)
 - **Thiếu hụt Nhân sự**: Thiếu 71 shipper (Tuyển mới: 23 / Nghỉ việc: 49)
 
 ## 🔴 Cảnh báo Hôm nay (Alerts)
@@ -30,7 +30,7 @@
 - Trong tuần qua, HRBP đã tuyển thành công **23 nhân viên mới** (OB) hỗ trợ lấp đầy các tuyến nóng.
 
 ### Lowlights:
-- Đơn tồn backlog (>5 ngày) tăng mạnh **+26.83%** so với tuần trước (từ 2,128 lên 2,699 đơn).
+- Đơn tồn backlog (>5 ngày) tăng mạnh **+15.10%** so với tuần trước (từ 2,345 lên 2,699 đơn).
 - Toàn vùng đang **thiếu hụt thực tế 71 shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.
 - Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 13 định biên) và **Đồng Tháp** (thiếu 18 định biên).
 

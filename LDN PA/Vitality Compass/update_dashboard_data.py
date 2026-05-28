@@ -297,7 +297,7 @@ def main():
         header_idx = None
         total_idx = None
         for idx, r_row in df_backlog_pivot.iterrows():
-            val = str(r_row[0]).strip() if pd.notna(r_row[0]) else ""
+            val = str(r_row.iloc[0]).strip() if pd.notna(r_row.iloc[0]) else ""
             if val == 'AM' and any('Ngày N' in str(cell) for cell in r_row):
                 header_idx = idx
             elif val == 'TỔNG' and header_idx is not None:

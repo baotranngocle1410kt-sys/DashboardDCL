@@ -21,8 +21,8 @@
     },
     "backlog": {
       "value": 2699,
-      "vs_yesterday": -0.0022181146025878,
-      "vs_lastweek": 0.2683270676691729,
+      "vs_yesterday": 0.08089707649179015,
+      "vs_lastweek": 0.1509594882729211,
       "vs_lastmonth": 0.4589189189189189
     },
     "hr": {
@@ -74,21 +74,21 @@
       "volume": 69267,
       "gtc": 0.5694775289746343,
       "fd": 0.030635078753732756,
-      "backlog": 2078
+      "backlog": 2868
     },
     {
       "date": "2026-05-26",
       "volume": 73696,
       "gtc": 0.5964095744655776,
       "fd": 0.03047655232312802,
-      "backlog": 2210
+      "backlog": 2753
     },
     {
       "date": "2026-05-27",
       "volume": 74676,
       "gtc": 0.6071562483233649,
       "fd": 0.030612244899413284,
-      "backlog": 2240
+      "backlog": 2497
     }
   ],
   "provinces": [
@@ -2080,7 +2080,7 @@
       "Trong tuần qua, HRBP đã tuyển thành công **23 nhân viên mới** (OB) hỗ trợ lấp đầy các tuyến nóng."
     ],
     "lowlights": [
-      "Đơn tồn backlog (>5 ngày) tăng mạnh **+26.83%** so với tuần trước (từ 2,128 lên 2,699 đơn).",
+      "Đơn tồn backlog (>5 ngày) tăng mạnh **+15.10%** so với tuần trước (từ 2,345 lên 2,699 đơn).",
       "Toàn vùng đang **thiếu hụt thực tế 71 shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.",
       "Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 13 định biên) và **Đồng Tháp** (thiếu 18 định biên)."
     ],
