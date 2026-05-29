@@ -10,7 +10,7 @@ sys.stdout.reconfigure(encoding='utf-8')
 
 p_performance = r"C:\Users\Administrator\Desktop\AI 2026\Mentor\DCL - BÁO CÁO VẬN HÀNH.xlsx"
 p_backlog = r"C:\Users\Administrator\Desktop\AI 2026\Mentor\DCL - Đơn aging _5 ngày.xlsx"
-p_hr = r"C:\Users\Administrator\Desktop\AI 2026\Mentor\[ĐCL] - BÁO CÁO TUYỂN DỤNG DATA.xlsx"
+p_hr = r"C:\Users\Administrator\Desktop\AI 2026\Mentor\recruitment_live.xlsx"
 
 output_json = r"C:\Users\Administrator\Desktop\AI 2026\LDN PA\Vitality Compass\operations_data.json"
 output_md = r"C:\Users\Administrator\Desktop\AI 2026\LDN PA\Operations_Insights.md"
@@ -89,6 +89,7 @@ def main():
         p_hr = p_hr_local
     except Exception as e:
         print(f"⚠ Failed to download live recruitment sheet: {e}. Falling back to local file.")
+        p_hr = p_hr_local
         
     # Download Link 1 (GTC/Performance)
     print("Downloading Google Sheets Link 1...")
@@ -216,7 +217,7 @@ def main():
             
         df_hr = pd.read_excel(xl_hr, sheet_name=latest_hr_sheet)
     
-    # Find columns for Subtable 0
+    # Find columns for Subtable 0 (fallback)
     try:
         bc_col_idx = list(df_hr.columns).index('Bưu cục')
         df_sub0 = df_hr.iloc[:, bc_col_idx:bc_col_idx+16].copy()
@@ -230,26 +231,69 @@ def main():
         'NVPTTT_resign', 'NVPTTT_shortage_bs', 'YCTD', 'NVPTTT_ob_day', 'NVPTTT_ob_week', 
         'Data_Day', 'NVPTTT_shortage_actual', 'pct_dapung', 'HRBP', 'Status'
     ]
+
+    # Parse and combine all province subtables from columns 50 to 124
+    subtables_config = [
+        (50, 65, "VyLNK"),       # Subtable 1: Bến Tre
+        (65, 80, "VyLNK"),       # Subtable 2: Trà Vinh
+        (80, 95, "BìnhNLC"),     # Subtable 3: Vĩnh Long
+        (95, 110, "BìnhNLC"),    # Subtable 4: Đồng Tháp
+        (110, 124, "KhôiHM")     # Subtable 5: Tiền Giang
+    ]
     
-    # Clean rows
-    df_sub0['Bưu cục_clean'] = df_sub0['Bưu cục'].apply(clean_bc_name)
-    df_total_row = df_sub0[df_sub0['Bưu cục'] == 'TỔNG']
-    
-    # Exclude total rows and empty rows
-    df_bc_hr = df_sub0[(df_sub0['Bưu cục'].notna()) & (df_sub0['Bưu cục'] != 'TỔNG') & (df_sub0['Tỉnh'].notna())].copy()
-    
-    # Extract total KPIs for HR
-    if not df_total_row.empty:
-        total_shortage_actual = int(df_total_row.iloc[0]['NVPTTT_shortage_actual']) if pd.notna(df_total_row.iloc[0]['NVPTTT_shortage_actual']) else 0
-        total_shortage_bs = int(df_total_row.iloc[0]['NVPTTT_shortage_bs']) if pd.notna(df_total_row.iloc[0]['NVPTTT_shortage_bs']) else 0
-        total_resign_week = int(df_total_row.iloc[0]['NVPTTT_resign']) if pd.notna(df_total_row.iloc[0]['NVPTTT_resign']) else 0
-        total_ob_week = int(df_total_row.iloc[0]['NVPTTT_ob_week']) if pd.notna(df_total_row.iloc[0]['NVPTTT_ob_week']) else 0
+    def parse_subtable(df, start_col, end_col, default_hrbp):
+        sub = df.iloc[:, start_col:end_col].copy()
+        cols = list(sub.columns)
+        rename_dict = {}
+        standard_names = [
+            'Bưu cục', 'Tỉnh', 'AM', 'Tuyến thiếu', 'Định biên NVPTTT', 'Định biên NVXL', 
+            'NVPTTT_resign', 'NVPTTT_shortage_bs', 'YCTD', 'NVPTTT_ob_day', 'NVPTTT_ob_week', 
+            'Data_Day', 'NVPTTT_shortage_actual', 'pct_dapung', 'HRBP'
+        ]
+        for idx, name in enumerate(cols):
+            if idx < len(standard_names):
+                rename_dict[name] = standard_names[idx]
+        sub = sub.rename(columns=rename_dict)
+        if 'HRBP' not in sub.columns:
+            sub['HRBP'] = default_hrbp
+        else:
+            sub['HRBP'] = sub['HRBP'].fillna(default_hrbp)
+        if 'Status' not in sub.columns:
+            def get_status(row):
+                try:
+                    shortage = float(row['NVPTTT_shortage_actual'])
+                    return "Đủ" if shortage <= 0 else "Thiếu"
+                except:
+                    return "Đủ"
+            sub['Status'] = sub.apply(get_status, axis=1)
+        sub['Bưu cục_clean'] = sub['Bưu cục'].apply(clean_bc_name)
+        sub = sub[(sub['Bưu cục'].notna()) & (sub['Bưu cục'] != 'TỔNG') & (sub['Bưu cục'].astype(str).str.strip() != '')]
+        return sub
+
+    parsed_subs = []
+    for start, end, hrbp in subtables_config:
+        try:
+            sub_df = parse_subtable(df_hr, start, end, hrbp)
+            parsed_subs.append(sub_df)
+            print(f"✓ Parsed subtable columns {start}:{end} ({hrbp}). Count: {len(sub_df)} rows.")
+        except Exception as e:
+            print(f"⚠ Failed to parse subtable {start}:{end}: {e}")
+            
+    if parsed_subs:
+        df_bc_hr = pd.concat(parsed_subs, ignore_index=True)
+        print(f"✓ Combined recruitment data for all provinces. Total: {len(df_bc_hr)} bưu cục.")
     else:
-        # Sum manually if no TỔNG row
-        total_shortage_actual = int(df_bc_hr['NVPTTT_shortage_actual'].sum())
-        total_shortage_bs = int(df_bc_hr['NVPTTT_shortage_bs'].sum())
-        total_resign_week = int(df_bc_hr['NVPTTT_resign'].sum())
-        total_ob_week = int(df_bc_hr['NVPTTT_ob_week'].sum())
+        df_bc_hr = df_sub0[(df_sub0['Bưu cục'].notna()) & (df_sub0['Bưu cục'] != 'TỔNG') & (df_sub0['Tỉnh'].notna())].copy()
+        
+    # Standardize numeric columns
+    for col in ['NVPTTT_shortage_actual', 'NVPTTT_shortage_bs', 'NVPTTT_resign', 'NVPTTT_ob_week', 'Định biên NVPTTT', 'Định biên NVXL']:
+        if col in df_bc_hr.columns:
+            df_bc_hr[col] = pd.to_numeric(df_bc_hr[col], errors='coerce').fillna(0).astype(int)
+            
+    total_shortage_actual = int(df_bc_hr['NVPTTT_shortage_actual'].sum())
+    total_shortage_bs = int(df_bc_hr['NVPTTT_shortage_bs'].sum())
+    total_resign_week = int(df_bc_hr['NVPTTT_resign'].sum())
+    total_ob_week = int(df_bc_hr['NVPTTT_ob_week'].sum())
 
     # top5_data will be compiled later after bc_data is ready
     top5_data = []
