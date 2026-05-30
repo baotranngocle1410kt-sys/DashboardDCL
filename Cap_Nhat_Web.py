@@ -35,7 +35,9 @@ files_to_push = [
     r"LDN PA/Vitality Compass/app.js",
     r"LDN PA/Vitality Compass/update_dashboard_data.py",
     r"index.html",
-    r"styles.css"
+    r"LDN PA/Vitality Compass/index.html",
+    r"styles.css",
+    r"LDN PA/Vitality Compass/styles.css"
 ]
 
 try:
