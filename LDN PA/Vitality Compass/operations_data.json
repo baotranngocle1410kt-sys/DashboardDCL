@@ -26,9 +26,9 @@
       "vs_lastmonth": 0.4589189189189189
     },
     "hr": {
-      "total_shortage_actual": 67,
+      "total_shortage_actual": 69,
       "total_shortage_bs": 38,
-      "total_resign_week": 50,
+      "total_resign_week": 52,
       "total_ob_week": 37,
       "latest_week": 22
     }
@@ -153,9 +153,9 @@
       "backlog": 805,
       "backlog_change": 233,
       "hr": {
-        "shortage_actual": 11,
+        "shortage_actual": 13,
         "shortage_bs": 11,
-        "resign": 7,
+        "resign": 9,
         "ob": 13,
         "target_headcount": 222
       }
@@ -260,9 +260,9 @@
       },
       "status": "Cải thiện",
       "hr": {
-        "shortage_actual": 9,
+        "shortage_actual": 11,
         "shortage_bs": 8,
-        "resign": 4,
+        "resign": 6,
         "ob": 4,
         "target_headcount": 80
       }
@@ -1628,14 +1628,14 @@
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
-        "shortage_actual": 0,
+        "shortage_actual": 2,
         "shortage_bs": 0,
         "target_headcount": 10,
         "tuyen_thieu": "",
         "hrbp": "KhôiHM",
-        "status": "Đủ",
+        "status": "Thiếu",
         "ob_week": 0,
-        "resign_week": 0
+        "resign_week": 2
       }
     },
     {
@@ -2081,8 +2081,8 @@
     ],
     "lowlights": [
       "Đơn tồn backlog (>5 ngày) tăng mạnh **+15.10%** so với tuần trước (từ 2,345 lên 2,699 đơn).",
-      "Toàn vùng đang **thiếu hụt thực tế 67 shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.",
-      "Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 11 định biên) và **Đồng Tháp** (thiếu 17 định biên)."
+      "Toàn vùng đang **thiếu hụt thực tế 69 shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.",
+      "Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 13 định biên) và **Đồng Tháp** (thiếu 17 định biên)."
     ],
     "causes": [
       "Tỷ lệ nghỉ việc cao tập trung tại các BC trọng điểm: **Phó Cơ Điều** (nghỉ 7), **Chợ Lách** (nghỉ 4), **Mỹ Thọ** (nghỉ 4), **Khóm 3 Trần Hưng Đạo** (nghỉ 4), **Tân Nhuận Đông** (nghỉ 3).",
@@ -2098,132 +2098,44 @@
   },
   "dropped_bcs": [
     {
-      "am": "Nguyễn Anh Tùng",
-      "bc_name": "Bưu Cục 992 Đường Huyện 35-Vĩnh Kim-Châu Thành-Tiền Giang",
-      "khac": 9,
-      "shopee": 36,
-      "tts": 117,
-      "total": 162
-    },
-    {
-      "am": "Lê Minh Tuấn",
-      "bc_name": "Bưu Cục Khóm 3 Trần Hưng Đạo-Xã Tháp Mười-Đồng Tháp",
-      "khac": 24,
-      "shopee": 9,
-      "tts": 55,
-      "total": 88
-    },
-    {
       "am": "Lý Quài Nhân",
       "bc_name": "Bưu Cục Quốc Lộ 54-Xã Lai Vung-Đồng Tháp",
       "khac": 1,
-      "shopee": 1,
-      "tts": 75,
-      "total": 77
-    },
-    {
-      "am": "Nguyễn Thành Huy",
-      "bc_name": "Bưu Cục Khóm Thống Nhất-Xã Cầu Ngang-Trà Vinh",
-      "khac": 0,
       "shopee": 0,
-      "tts": 33,
-      "total": 33
-    },
-    {
-      "am": "Lâm Xuân Vinh",
-      "bc_name": "Bưu Cục Phước Hậu-Phước Mỹ Trung-Bến Tre",
-      "khac": 12,
-      "shopee": 9,
-      "tts": 7,
-      "total": 28
-    },
-    {
-      "am": "Lê Minh Tuấn",
-      "bc_name": "Bưu Cục Ấp Hậu Mỹ Phú 1-Cái Bè-Tiền Giang",
-      "khac": 14,
-      "shopee": 2,
-      "tts": 1,
-      "total": 17
-    },
-    {
-      "am": "Huỳnh Quốc Trung",
-      "bc_name": "Bưu Cục 86 Tiên Thuỷ-Châu Thành-Bến Tre",
-      "khac": 2,
-      "shopee": 1,
-      "tts": 11,
-      "total": 14
-    },
-    {
-      "am": "Lý Quài Nhân",
-      "bc_name": "Bưu Cục 19 Đường DT848-Sa Đéc-Đồng Tháp",
-      "khac": 6,
-      "shopee": 8,
-      "tts": 0,
-      "total": 14
+      "tts": 29,
+      "total": 30
     },
     {
       "am": "Nguyễn Việt Tới",
       "bc_name": "Bưu Cục 12-14 Bà Triệu-Cao Lãnh-Đồng Tháp",
+      "khac": 10,
+      "shopee": 7,
+      "tts": 1,
+      "total": 18
+    },
+    {
+      "am": "Lê Minh Tuấn",
+      "bc_name": "Bưu Cục Ấp Hậu Mỹ Phú 1-Cái Bè-Tiền Giang",
+      "khac": 8,
+      "shopee": 7,
+      "tts": 1,
+      "total": 16
+    },
+    {
+      "am": "Lý Quài Nhân",
+      "bc_name": "Bưu Cục Ấp Bình Hiệp A-Xã Lấp Vò-Đồng Tháp",
       "khac": 14,
       "shopee": 0,
       "tts": 0,
       "total": 14
     },
     {
-      "am": "Huỳnh Phương Duy",
-      "bc_name": "Bưu Cục QL57 KP3-Thị Trấn Chợ Lách-Bến Tre",
-      "khac": 8,
-      "shopee": 2,
-      "tts": 3,
-      "total": 13
-    },
-    {
-      "am": "Nguyễn Tuấn Anh",
-      "bc_name": "Bưu Cục Quốc Lộ 53-Xã Trung Thành-Vĩnh Long",
-      "khac": 9,
-      "shopee": 2,
-      "tts": 0,
-      "total": 11
-    },
-    {
-      "am": "Đoàn Công Tín",
-      "bc_name": "Bưu Cục 230 Ấp Bình Hạnh-Long Bình Điền-Chợ Gạo-Tiền Giang",
-      "khac": 10,
-      "shopee": 1,
-      "tts": 0,
-      "total": 11
-    },
-    {
       "am": "Lâm Xuân Vinh",
       "bc_name": "Bưu Cục 3/2 Thị Trấn Châu Thành-Bến Tre",
-      "khac": 2,
-      "shopee": 8,
+      "khac": 5,
+      "shopee": 6,
       "tts": 0,
-      "total": 10
-    },
-    {
-      "am": "Nguyễn Việt Tới",
-      "bc_name": "Bưu Cục Mỹ Thọ-Trần Quang Khải-Cao Lãnh-Đồng Tháp",
-      "khac": 8,
-      "shopee": 1,
-      "tts": 0,
-      "total": 9
-    },
-    {
-      "am": "Lâm Xuân Vinh",
-      "bc_name": "Bưu Cục Duyên Hải-Trà Vinh",
-      "khac": 6,
-      "shopee": 3,
-      "tts": 0,
-      "total": 9
-    },
-    {
-      "am": "Đoàn Công Tín",
-      "bc_name": "Bưu Cục 206 A Đoàn Thị Nghiệp-Mỹ Tho-Tiền Giang 01",
-      "khac": 8,
-      "shopee": 0,
-      "tts": 1,
-      "total": 9
+      "total": 11
     },
     {
       "am": "Nguyễn Thành Huy",
@@ -2234,146 +2146,234 @@
       "total": 8
     },
     {
-      "am": "Huỳnh Phương Duy",
-      "bc_name": "Bưu Cục KP2-Thị Trấn Ba Tri-Bến Tre",
-      "khac": 3,
-      "shopee": 4,
+      "am": "Đoàn Công Tín",
+      "bc_name": "Bưu Cục Quốc Lộ 50-Gò Công Tây-Tiền Giang",
+      "khac": 6,
+      "shopee": 1,
+      "tts": 1,
+      "total": 8
+    },
+    {
+      "am": "Đoàn Công Tín",
+      "bc_name": "Bưu Cục 206 A Đoàn Thị Nghiệp-Mỹ Tho-Tiền Giang 01",
+      "khac": 6,
+      "shopee": 1,
       "tts": 1,
       "total": 8
     },
     {
       "am": "Lê Minh Tuấn",
-      "bc_name": "Bưu Cục Tỉnh Lộ DT848-Xã Mỹ An Hưng-Đồng Tháp",
-      "khac": 1,
-      "shopee": 6,
-      "tts": 0,
-      "total": 7
-    },
-    {
-      "am": "Lê Minh Tuấn",
-      "bc_name": "Bưu Cục Đường Tỉnh 861-Xã Mỹ Lợi-Tiền Giang",
-      "khac": 1,
-      "shopee": 6,
-      "tts": 0,
-      "total": 7
-    },
-    {
-      "am": "Lê Minh Tuấn",
       "bc_name": "Bưu Cục QL1A Hòa Khánh-Cái Bè-Tiền Giang",
-      "khac": 3,
-      "shopee": 3,
+      "khac": 6,
+      "shopee": 1,
+      "tts": 0,
+      "total": 7
+    },
+    {
+      "am": "Lý Quài Nhân",
+      "bc_name": "Bưu Cục QL80-Xã Hòa Long-Đồng Tháp",
+      "khac": 6,
+      "shopee": 0,
       "tts": 0,
       "total": 6
     },
     {
       "am": "Lâm Xuân Vinh",
-      "bc_name": "Bưu Cục Ấp 2-Phú Nhuận-Bến Tre",
+      "bc_name": "Bưu Cục Duyên Hải-Trà Vinh",
+      "khac": 2,
+      "shopee": 4,
+      "tts": 0,
+      "total": 6
+    },
+    {
+      "am": "Huỳnh Quốc Trung",
+      "bc_name": "Bưu Cục 86 Tiên Thuỷ-Châu Thành-Bến Tre",
       "khac": 4,
-      "shopee": 1,
-      "tts": 1,
+      "shopee": 2,
+      "tts": 0,
+      "total": 6
+    },
+    {
+      "am": "Ngô Phan Mỹ Tú",
+      "bc_name": "Bưu Cục 286 Nguyễn Huệ-Tân Hồng-Đồng Tháp",
+      "khac": 6,
+      "shopee": 0,
+      "tts": 0,
+      "total": 6
+    },
+    {
+      "am": "Đoàn Công Tín",
+      "bc_name": "Bưu Cục 230 Ấp Bình Hạnh-Long Bình Điền-Chợ Gạo-Tiền Giang",
+      "khac": 4,
+      "shopee": 2,
+      "tts": 0,
       "total": 6
     },
     {
       "am": "Nguyễn Tuấn Anh",
-      "bc_name": "Bưu Cục 87 Lê Văn Vị-Cái Vồn-Bình Minh-Vĩnh Long",
+      "bc_name": "Bưu Cục Quốc Lộ 53-Xã Trung Thành-Vĩnh Long",
+      "khac": 5,
+      "shopee": 0,
+      "tts": 0,
+      "total": 5
+    },
+    {
+      "am": "Nguyễn Việt Tới",
+      "bc_name": "Bưu Cục Mỹ Thọ-Trần Quang Khải-Cao Lãnh-Đồng Tháp",
+      "khac": 2,
+      "shopee": 0,
+      "tts": 3,
+      "total": 5
+    },
+    {
+      "am": "Ngô Phan Mỹ Tú",
+      "bc_name": "Bưu Cục Hồng Ngự-Đồng Tháp",
+      "khac": 5,
+      "shopee": 0,
+      "tts": 0,
+      "total": 5
+    },
+    {
+      "am": "Nguyễn Việt Tới",
+      "bc_name": "Bưu Cục DT846 Phương Trà-Xã Ba Sao-Đồng Tháp",
       "khac": 3,
       "shopee": 0,
       "tts": 2,
       "total": 5
     },
     {
-      "am": "Ngô Phan Mỹ Tú",
-      "bc_name": "Bưu Cục Hồng Ngự-Đồng Tháp",
+      "am": "Nguyễn Tuấn Anh",
+      "bc_name": "Bưu Cục 73 Phó Cơ Điều-Phường Phước Hậu-Vĩnh Long",
+      "khac": 5,
+      "shopee": 0,
+      "tts": 0,
+      "total": 5
+    },
+    {
+      "am": "Nguyễn Thành Huy",
+      "bc_name": "Bưu Cục Võ Nguyên Giáp-Phú Tân-Bến Tre",
       "khac": 4,
       "shopee": 0,
       "tts": 0,
       "total": 4
     },
     {
-      "am": "Nguyễn Thành Huy",
-      "bc_name": "Bưu Cục Ấp Cây Hẹ-Phú Cần-Tiểu Cần-Trà Vinh",
-      "khac": 3,
-      "shopee": 1,
-      "tts": 0,
-      "total": 4
-    },
-    {
-      "am": "Lý Quài Nhân",
-      "bc_name": "Bưu Cục Ấp Bình Hiệp A-Xã Lấp Vò-Đồng Tháp",
-      "khac": 2,
-      "shopee": 1,
-      "tts": 1,
-      "total": 4
-    },
-    {
-      "am": "Lý Quài Nhân",
-      "bc_name": "Bưu Cục QL80-Xã Hòa Long-Đồng Tháp",
-      "khac": 3,
+      "am": "Ngô Phan Mỹ Tú",
+      "bc_name": "Bưu Cục QL 30-Thanh Bình-Đồng Tháp",
+      "khac": 4,
       "shopee": 0,
       "tts": 0,
-      "total": 3
+      "total": 4
     },
     {
       "am": "Nguyễn Anh Tùng",
       "bc_name": "Bưu Cục KP3 Phường 3-Gò Công-Tiền Giang",
       "khac": 3,
       "shopee": 0,
+      "tts": 1,
+      "total": 4
+    },
+    {
+      "am": "Nguyễn Anh Tùng",
+      "bc_name": "Bưu Cục Khu phố 1-Tân Phước-Tiền Giang",
+      "khac": 4,
+      "shopee": 0,
+      "tts": 0,
+      "total": 4
+    },
+    {
+      "am": "Huỳnh Phương Duy",
+      "bc_name": "Bưu Cục QL57 KP3-Thị Trấn Chợ Lách-Bến Tre",
+      "khac": 3,
+      "shopee": 0,
       "tts": 0,
       "total": 3
     },
     {
-      "am": "Nguyễn Tuấn Anh",
-      "bc_name": "Bưu Cục 355 Võ Tấn Đức-Tam Bình-Vĩnh Long",
+      "am": "Lâm Xuân Vinh",
+      "bc_name": "Bưu Cục Phước Hậu-Phước Mỹ Trung-Bến Tre",
+      "khac": 1,
+      "shopee": 1,
+      "tts": 1,
+      "total": 3
+    },
+    {
+      "am": "Nguyễn Thành Huy",
+      "bc_name": "Bưu cục Ấp 5A Thị Trấn Giồng Trôm-Giồng Trôm-Bến Tre",
       "khac": 2,
       "shopee": 1,
       "tts": 0,
       "total": 3
     },
     {
-      "am": "Nguyễn Thành Huy",
-      "bc_name": "Bưu Cục Võ Nguyên Giáp-Phú Tân-Bến Tre",
-      "khac": 2,
+      "am": "Nguyễn Anh Tùng",
+      "bc_name": "Bưu Cục 992 Đường Huyện 35-Vĩnh Kim-Châu Thành-Tiền Giang",
+      "khac": 0,
       "shopee": 0,
-      "tts": 0,
-      "total": 2
+      "tts": 3,
+      "total": 3
     },
     {
-      "am": "Ngô Phan Mỹ Tú",
-      "bc_name": "Bưu Cục Tam Nông-Đồng Tháp",
-      "khac": 2,
+      "am": "Nguyễn Tuấn Anh",
+      "bc_name": "Bưu Cục 87 Lê Văn Vị-Cái Vồn-Bình Minh-Vĩnh Long",
+      "khac": 1,
       "shopee": 0,
-      "tts": 0,
-      "total": 2
+      "tts": 2,
+      "total": 3
     },
     {
-      "am": "Ngô Phan Mỹ Tú",
-      "bc_name": "Bưu Cục QL 30-Thanh Bình-Đồng Tháp",
+      "am": "Lý Quài Nhân",
+      "bc_name": "Bưu Cục 19 Đường DT848-Sa Đéc-Đồng Tháp",
+      "khac": 3,
+      "shopee": 0,
+      "tts": 0,
+      "total": 3
+    },
+    {
+      "am": "Huỳnh Phương Duy",
+      "bc_name": "Bưu Cục Quốc Lộ 57-Xã Hương Mỹ-Bến Tre",
       "khac": 1,
       "shopee": 1,
       "tts": 0,
       "total": 2
     },
     {
-      "am": "Nguyễn Việt Tới",
-      "bc_name": "Bưu Cục DT846 Phương Trà-Xã Ba Sao-Đồng Tháp",
-      "khac": 0,
-      "shopee": 0,
-      "tts": 2,
-      "total": 2
-    },
-    {
-      "am": "Huỳnh Phương Duy",
-      "bc_name": "Bưu Cục Ấp Phú Long-Xã Hưng Khánh Trung-Bến Tre",
+      "am": "Nguyễn Tuấn Anh",
+      "bc_name": "Bưu Cục Quốc Lộ 53-Long Hồ-Vĩnh Long",
       "khac": 1,
       "shopee": 0,
       "tts": 1,
       "total": 2
     },
     {
-      "am": "Nguyễn Thành Huy",
-      "bc_name": "Bưu cục Ấp 5A Thị Trấn Giồng Trôm-Giồng Trôm-Bến Tre",
-      "khac": 1,
-      "shopee": 1,
+      "am": "Huỳnh Phương Duy",
+      "bc_name": "Bưu Cục Mỏ Cày Nam-Bến Tre",
+      "khac": 2,
+      "shopee": 0,
+      "tts": 0,
+      "total": 2
+    },
+    {
+      "am": "Huỳnh Phương Duy",
+      "bc_name": "Bưu Cục KP2-Thị Trấn Ba Tri-Bến Tre",
+      "khac": 2,
+      "shopee": 0,
+      "tts": 0,
+      "total": 2
+    },
+    {
+      "am": "Lê Minh Tuấn",
+      "bc_name": "Bưu Cục Khóm 3 Trần Hưng Đạo-Xã Tháp Mười-Đồng Tháp",
+      "khac": 2,
+      "shopee": 0,
+      "tts": 0,
+      "total": 2
+    },
+    {
+      "am": "Lê Minh Tuấn",
+      "bc_name": "Bưu Cục Đường Tỉnh 861-Xã Mỹ Lợi-Tiền Giang",
+      "khac": 0,
+      "shopee": 2,
       "tts": 0,
       "total": 2
     },
@@ -2384,22 +2384,6 @@
       "shopee": 0,
       "tts": 0,
       "total": 2
-    },
-    {
-      "am": "Nguyễn Anh Tùng",
-      "bc_name": "Bưu Cục 79 Đường Tỉnh 871-Xã Gia Thuận-Tiền Giang",
-      "khac": 2,
-      "shopee": 0,
-      "tts": 0,
-      "total": 2
-    },
-    {
-      "am": "Nguyễn Thành Huy",
-      "bc_name": "Bưu Cục Xoài Xiêm-Ngãi Xuyên-Trà Cú-Trà Vinh",
-      "khac": 1,
-      "shopee": 0,
-      "tts": 0,
-      "total": 1
     },
     {
       "am": "Nguyễn Tuấn Anh",
@@ -2418,16 +2402,16 @@
       "total": 1
     },
     {
-      "am": "Đoàn Công Tín",
-      "bc_name": "Bưu Cục Quốc Lộ 50-Gò Công Tây-Tiền Giang",
+      "am": "Lý Quài Nhân",
+      "bc_name": "Bưu Cục Tân Nhuận Đông-Châu Thành-Đồng Tháp",
       "khac": 1,
       "shopee": 0,
       "tts": 0,
       "total": 1
     },
     {
-      "am": "Huỳnh Phương Duy",
-      "bc_name": "Bưu Cục QL57-Bình Thạnh-Thạnh Phú-Bến Tre",
+      "am": "Ngô Phan Mỹ Tú",
+      "bc_name": "Bưu Cục Tam Nông-Đồng Tháp",
       "khac": 1,
       "shopee": 0,
       "tts": 0,
@@ -2442,16 +2426,8 @@
       "total": 1
     },
     {
-      "am": "Huỳnh Phương Duy",
-      "bc_name": "Bưu Cục Mỏ Cày Nam-Bến Tre",
-      "khac": 1,
-      "shopee": 0,
-      "tts": 0,
-      "total": 1
-    },
-    {
-      "am": "Nguyễn Anh Tùng",
-      "bc_name": "Bưu Cục Khu phố 1-Tân Phước-Tiền Giang",
+      "am": "Nguyễn Tuấn Anh",
+      "bc_name": "Bưu Cục Phước Long-Lộc Hòa-Long Hồ-Vĩnh Long",
       "khac": 1,
       "shopee": 0,
       "tts": 0,
@@ -2474,8 +2450,24 @@
       "total": 1
     },
     {
-      "am": "Nguyễn Tuấn Anh",
-      "bc_name": "Bưu Cục 73 Phó Cơ Điều-Phường Phước Hậu-Vĩnh Long",
+      "am": "Huỳnh Phương Duy",
+      "bc_name": "Bưu Cục Ấp Phú Long-Xã Hưng Khánh Trung-Bến Tre",
+      "khac": 1,
+      "shopee": 0,
+      "tts": 0,
+      "total": 1
+    },
+    {
+      "am": "Đoàn Công Tín",
+      "bc_name": "Bưu Cục 888 QL1A-Phường 2-Cai Lậy-Tiền Giang",
+      "khac": 1,
+      "shopee": 0,
+      "tts": 0,
+      "total": 1
+    },
+    {
+      "am": "Nguyễn Anh Tùng",
+      "bc_name": "Bưu Cục 79 Đường Tỉnh 871-Xã Gia Thuận-Tiền Giang",
       "khac": 1,
       "shopee": 0,
       "tts": 0,
@@ -2483,9 +2475,9 @@
     },
     {
       "am": "Nguyễn Tuấn Anh",
-      "bc_name": "Bưu Cục 57/4 Phan Văn Đáng-Vĩnh Long-Vĩnh Long",
-      "khac": 0,
-      "shopee": 1,
+      "bc_name": "Bưu Cục 07 Lê Lợi-Mang Thít-Vĩnh Long",
+      "khac": 1,
+      "shopee": 0,
       "tts": 0,
       "total": 1
     }

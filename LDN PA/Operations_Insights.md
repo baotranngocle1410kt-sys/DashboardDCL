@@ -9,7 +9,7 @@
 - **FD**: 3.06% (Biến động vs Tuần trước: ↗ +0.59% vs Tuần trước)
 - **Ontime**: 91.50%
 - **Backlog**: 2,699 (Biến động vs Tuần trước: ↗ +15.10% vs Tuần trước)
-- **Thiếu hụt Nhân sự**: Thiếu 67 shipper (Tuyển mới: 37 / Nghỉ việc: 50)
+- **Thiếu hụt Nhân sự**: Thiếu 69 shipper (Tuyển mới: 37 / Nghỉ việc: 52)
 
 ## 🔴 Cảnh báo Hôm nay (Alerts)
 - **BC 73 Phó Cơ Điều-Phường Phước Hậu-Vĩnh Long** có chỉ số GTC ngày 27/05/26 thấp hơn ngày hôm N-1 (26/05/26) 1.03%. So với cùng kỳ giảm 0.10% do Thiếu shipper giao chặng cuối, tồn đọng ca sáng., nhân sự đang thiếu 8/16 định biên, tuyến thiếu (Phường 3, Phường 4, Phưởng 5, Thanh Đức).
@@ -31,8 +31,8 @@
 
 ### Lowlights:
 - Đơn tồn backlog (>5 ngày) tăng mạnh **+15.10%** so với tuần trước (từ 2,345 lên 2,699 đơn).
-- Toàn vùng đang **thiếu hụt thực tế 67 shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.
-- Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 11 định biên) và **Đồng Tháp** (thiếu 17 định biên).
+- Toàn vùng đang **thiếu hụt thực tế 69 shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.
+- Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 13 định biên) và **Đồng Tháp** (thiếu 17 định biên).
 
 ## 🔮 Phân tích Nguyên nhân (Root Causes)
 - Tỷ lệ nghỉ việc cao tập trung tại các BC trọng điểm: **Phó Cơ Điều** (nghỉ 7), **Chợ Lách** (nghỉ 4), **Mỹ Thọ** (nghỉ 4), **Khóm 3 Trần Hưng Đạo** (nghỉ 4), **Tân Nhuận Đông** (nghỉ 3).
@@ -51,7 +51,7 @@
 | Ngô Phan Mỹ Tú | 76.15% | 1.64% | Mạnh | 16 | Thiếu 1/56 | BìnhNLC |
 | Nguyễn Thành Huy | 74.00% | 2.27% | Mạnh | 81 | Thiếu 3/128 | VyLNK |
 | Nguyễn Việt Tới | 69.93% | 1.88% | Mạnh | 68 | Thiếu 2/46 | BìnhNLC |
-| Lê Minh Tuấn | 66.20% | 1.85% | Cải thiện | 91 | Thiếu 9/80 | BìnhNLC |
+| Lê Minh Tuấn | 66.20% | 1.85% | Cải thiện | 91 | Thiếu 11/80 | BìnhNLC |
 | Lâm Xuân Vinh | 63.91% | 2.06% | Cải thiện | 153 | Thiếu 5/82 | VyLNK |
 | Lý Quài Nhân | 63.41% | 2.77% | Cải thiện | 75 | Thiếu 7/39 | BìnhNLC |
 | Huỳnh Phương Duy | 59.16% | 5.23% | Cải thiện | 131 | Thiếu 9/68 | VyLNK |
