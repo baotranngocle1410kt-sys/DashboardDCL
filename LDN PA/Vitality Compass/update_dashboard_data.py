@@ -77,19 +77,23 @@ def main():
     ssl._create_default_https_context = ssl._create_unverified_context
     
     # Download Recruitment (Link 3)
-    print("Downloading live recruitment sheet from Google Sheets...")
-    try:
-        gsheet_hr_url = "https://docs.google.com/spreadsheets/d/1si4PWd97eJhQDQUBXvEErjmNHGO8W1NrQVFnzzMIkDI/export?format=xlsx"
-        p_hr_local = r"C:\Users\Administrator\Desktop\AI 2026\Mentor\recruitment_live.xlsx"
-        req = urllib.request.Request(gsheet_hr_url, headers={'User-Agent': 'Mozilla/5.0'})
-        with urllib.request.urlopen(req, timeout=90) as response:
-            with open(p_hr_local, 'wb') as f:
-                f.write(response.read())
-        print("✓ Downloaded live recruitment sheet successfully.")
+    p_hr_local = r"C:\Users\Administrator\Desktop\AI 2026\Mentor\recruitment_live.xlsx"
+    if "--skip-hr" in sys.argv:
+        print("Skipping live recruitment sheet download (using local copy).")
         p_hr = p_hr_local
-    except Exception as e:
-        print(f"⚠ Failed to download live recruitment sheet: {e}. Falling back to local file.")
-        p_hr = p_hr_local
+    else:
+        print("Downloading live recruitment sheet from Google Sheets...")
+        try:
+            gsheet_hr_url = "https://docs.google.com/spreadsheets/d/1si4PWd97eJhQDQUBXvEErjmNHGO8W1NrQVFnzzMIkDI/export?format=xlsx"
+            req = urllib.request.Request(gsheet_hr_url, headers={'User-Agent': 'Mozilla/5.0'})
+            with urllib.request.urlopen(req, timeout=90) as response:
+                with open(p_hr_local, 'wb') as f:
+                    f.write(response.read())
+            print("✓ Downloaded live recruitment sheet successfully.")
+            p_hr = p_hr_local
+        except Exception as e:
+            print(f"⚠ Failed to download live recruitment sheet: {e}. Falling back to local file.")
+            p_hr = p_hr_local
         
     # Download Link 1 (GTC/Performance)
     print("Downloading Google Sheets Link 1...")
