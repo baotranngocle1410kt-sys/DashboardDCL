@@ -725,28 +725,6 @@ def main():
     else:
         wow_lowlights.append(f"Đơn tồn backlog (>5 ngày) tăng mạnh **+{bl_wow_pct:.2f}%** so với tuần trước (từ {lastweek_bl:,} lên {cur_bl:,} đơn).")
 
-    analysis = {
-        'highlights': wow_highlights + [
-            f"**Ngô Phan Mỹ Tú** là AM có tỷ lệ GTC cao nhất toàn vùng ({am_summary_gtc('Ngô Phan Mỹ Tú', am_data):.2%}), đồng thời duy trì lượng đơn tồn đọng cực thấp.",
-            f"Tỷ lệ chuyển trả (FD) toàn vùng duy trì ở mức an toàn là **{cur_fd:.2%}** ({fd_wow_text}).",
-            f"Trong tuần qua, HRBP đã tuyển thành công **{total_ob_week} nhân viên mới** (OB) hỗ trợ lấp đầy các tuyến nóng."
-        ],
-        'lowlights': wow_lowlights + [
-            f"Toàn vùng đang **thiếu hụt thực tế {total_shortage_actual} shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.",
-            f"Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu {province_summary_shortage('Tiền Giang', province_data)} định biên) và **Đồng Tháp** (thiếu {province_summary_shortage('Đồng Tháp', province_data)} định biên)."
-        ],
-        'causes': [
-            "Tỷ lệ nghỉ việc cao tập trung tại các BC trọng điểm: **Phó Cơ Điều** (nghỉ 7), **Chợ Lách** (nghỉ 4), **Mỹ Thọ** (nghỉ 4), **Khóm 3 Trần Hưng Đạo** (nghỉ 4), **Tân Nhuận Đông** (nghỉ 3).",
-            "Áp lực quá tải đơn hàng trong các ngày sale lớn và việc di chuyển qua các tuyến cù lao/đò dọc xa xôi (như tại Chợ Lách và Tân Nhuận Đông) làm giảm thu nhập thực tế, gây nản chí cho shipper mới.",
-            "Quy trình lựa hàng và phân tuyến tại kho chậm trễ khiến shipper rời kho muộn (sau 9h30 sáng), phải làm việc xuyên trưa dưới trời nắng nóng và thiếu kèm cặp cho shipper mới (OB)."
-        ],
-        'recommendations': [
-            "Yêu cầu AM (Tuấn Anh, Phương Duy, Việt Tới, Minh Tuấn, Quài Nhân) cắm chốt trực tiếp tại các bưu cục nóng để tháo gỡ khó khăn về tuyến và chia nhỏ tuyến giao phù hợp.",
-            "Đề xuất áp dụng phụ cấp xăng xe/đò phà đặc thù cho các tuyến cù lao (như An Bình, Bình Hòa Phước tại Chợ Lách) để giữ chân nhân sự.",
-            "Triển khai chương trình 'Buddy' kèm cặp shipper mới nhận việc trong 3 ngày đầu tiên và cam kết phân hàng trước 8h sáng để shipper ra kho sớm trước 9h sáng.",
-            "Yêu cầu HRBP (VyLNK, BìnhNLC) đẩy mạnh chạy Ads Facebook, dán banner tuyển dụng liên tục tại các bưu cục nóng và chuẩn bị nguồn cộng tác viên dự phòng."
-        ]
-    }
     
     # Fetch and parse dropped transfer orders from Google Sheet
     dropped_bcs = []
@@ -808,6 +786,68 @@ def main():
                 })
         except Exception as e:
             print(f"⚠ Failed to parse manual top 5: {e}")
+
+    # Build dynamic causes and recommendations from manual_top5
+    dynamic_causes = []
+    dynamic_recs = []
+    for item in manual_top5:
+        bc_name = item['bc_name']
+        details_text = item['details']
+        if not details_text:
+            continue
+            
+        parts = re.split(r'\* Phương án:|\* phương án:|\*Phương án:|\*Phương án|-----------|==============', details_text)
+        causes_str = parts[0].strip()
+        recs_str = parts[1].strip() if len(parts) > 1 else ""
+        
+        def get_bullets(block):
+            lines = []
+            for line in block.split('\n'):
+                line = line.strip()
+                if not line:
+                    continue
+                line = re.sub(r'^[\-\*\+\d\.\s]+', '', line).strip()
+                if line:
+                    lines.append(line)
+            return lines
+            
+        bc_causes = get_bullets(causes_str)
+        bc_recs = get_bullets(recs_str)
+        
+        if bc_causes:
+            combined_causes = "; ".join(bc_causes)
+            dynamic_causes.append(f"Tại **{bc_name}**: {combined_causes}")
+        if bc_recs:
+            combined_recs = "; ".join(bc_recs)
+            dynamic_recs.append(f"Tại **{bc_name}**: {combined_recs}")
+
+    if not dynamic_causes:
+        dynamic_causes = [
+            "Tỷ lệ nghỉ việc cao tập trung tại các BC trọng điểm: **Phó Cơ Điều** (nghỉ 7), **Chợ Lách** (nghỉ 4), **Mỹ Thọ** (nghỉ 4), **Khóm 3 Trần Hưng Đạo** (nghỉ 4), **Tân Nhuận Đông** (nghỉ 3).",
+            "Áp lực quá tải đơn hàng trong các ngày sale lớn và việc di chuyển qua các tuyến cù lao/đò dọc xa xôi (như tại Chợ Lách và Tân Nhuận Đông) làm giảm thu nhập thực tế, gây nản chí cho shipper mới.",
+            "Quy trình lựa hàng và phân tuyến tại kho chậm trễ khiến shipper rời kho muộn (sau 9h30 sáng), phải làm việc xuyên trưa dưới trời nắng nóng và thiếu kèm cặp cho shipper mới (OB)."
+        ]
+    if not dynamic_recs:
+        dynamic_recs = [
+            "Yêu cầu AM (Tuấn Anh, Phương Duy, Việt Tới, Minh Tuấn, Quài Nhân) cắm chốt trực tiếp tại các bưu cục nóng để tháo gỡ khó khăn về tuyến và chia nhỏ tuyến giao phù hợp.",
+            "Đề xuất áp dụng phụ cấp xăng xe/đò phà đặc thù cho các tuyến cù lao (như An Bình, Bình Hòa Phước tại Chợ Lách) để giữ chân nhân sự.",
+            "Triển khai chương trình 'Buddy' kèm cặp shipper mới nhận việc trong 3 ngày đầu tiên và cam kết phân hàng trước 8h sáng để shipper ra kho sớm trước 9h sáng.",
+            "Yêu cầu HRBP (VyLNK, BìnhNLC) đẩy mạnh chạy Ads Facebook, dán banner tuyển dụng liên tục tại các bưu cục nóng và chuẩn bị nguồn cộng tác viên dự phòng."
+        ]
+
+    analysis = {
+        'highlights': wow_highlights + [
+            f"**Ngô Phan Mỹ Tú** là AM có tỷ lệ GTC cao nhất toàn vùng ({am_summary_gtc('Ngô Phan Mỹ Tú', am_data):.2%}), đồng thời duy trì lượng đơn tồn đọng cực thấp.",
+            f"Tỷ lệ chuyển trả (FD) toàn vùng duy trì ở mức an toàn là **{cur_fd:.2%}** ({fd_wow_text}).",
+            f"Trong tuần qua, HRBP đã tuyển thành công **{total_ob_week} nhân viên mới** (OB) hỗ trợ lấp đầy các tuyến nóng."
+        ],
+        'lowlights': wow_lowlights + [
+            f"Toàn vùng đang **thiếu hụt thực tế {total_shortage_actual} shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.",
+            f"Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu {province_summary_shortage('Tiền Giang', province_data)} định biên) và **Đồng Tháp** (thiếu {province_summary_shortage('Đồng Tháp', province_data)} định biên)."
+        ],
+        'causes': dynamic_causes,
+        'recommendations': dynamic_recs
+    }
 
     # Build the dynamic top 5 from the master sheet (df_bc_hr) sorted by shortage descending
     df_bc_hr_sorted = df_bc_hr.sort_values(by='NVPTTT_shortage_actual', ascending=False)
