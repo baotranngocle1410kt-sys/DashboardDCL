@@ -522,19 +522,26 @@ def main():
     am_data = []
     for idx, row in df_bl_ams.iterrows():
         am = row['AM']
+        if pd.isna(am):
+            am_str = ""
+        else:
+            am_str = str(am).strip()
+        if not am_str or am_str.lower() == 'nan' or am_str.lower() == 'tổng':
+            continue
+            
         bl = int(row['Tổng'])
         bl_5_8 = int(row['5 - 8 ngày'])
         bl_8_15 = int(row['8 - 15 ngày'])
         bl_above_15 = int(row['Trên 15 ngày'])
         
         # Latest Performance
-        df_am_cur = latest_df[latest_df['am_name'] == am]
+        df_am_cur = latest_df[latest_df['am_name'] == am_str]
         a_gtc, a_fd, a_vol = calc_gtc_fd(df_am_cur)
-        df_am_yest = yest_df[yest_df['am_name'] == am]
+        df_am_yest = yest_df[yest_df['am_name'] == am_str]
         a_gtc_y, a_fd_y, _ = calc_gtc_fd(df_am_yest)
         
         # HR calculations for AM
-        df_am_hr = df_bc_hr[df_bc_hr['AM'].astype(str).str.strip().str.lower() == am.lower().strip()]
+        df_am_hr = df_bc_hr[df_bc_hr['AM'].astype(str).str.strip().str.lower() == am_str.lower()]
         a_shortage_actual = int(df_am_hr['NVPTTT_shortage_actual'].sum())
         a_shortage_bs = int(df_am_hr['NVPTTT_shortage_bs'].sum())
         a_resign = int(df_am_hr['NVPTTT_resign'].sum())
@@ -544,7 +551,7 @@ def main():
         status = "Mạnh" if a_gtc >= 0.67 else "Cải thiện" if a_gtc >= 0.55 else "Yếu"
         
         am_data.append({
-            'name': am,
+            'name': am_str,
             'volume': a_vol,
             'gtc': a_gtc,
             'gtc_change': float(a_gtc - a_gtc_y),
