@@ -17,7 +17,8 @@ git_exe = r"C:\Program Files\Git\cmd\git.exe"
 # 1. Cập nhật dữ liệu từ Google Sheets
 print(">>> BƯỚC 1: Đang tải và tổng hợp dữ liệu mới từ Google Sheets...")
 try:
-    result = subprocess.run(["python", "-u", script_update], check=True, capture_output=True, text=True, encoding='utf-8')
+    args_to_pass = sys.argv[1:]
+    result = subprocess.run(["python", "-u", script_update] + args_to_pass, check=True, capture_output=True, text=True, encoding='utf-8')
     print(result.stdout)
     print("✓ Tổng hợp dữ liệu thành công!")
 except subprocess.CalledProcessError as e:
@@ -47,11 +48,16 @@ try:
         if os.path.exists(file):
             subprocess.run([git_exe, "add", file], check=True)
 
-    # Git commit
-    now_str = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-    commit_msg = f"Auto-update data: {now_str}"
-    print(f"  * Đang tạo bản ghi commit: '{commit_msg}'...")
-    subprocess.run([git_exe, "commit", "-m", commit_msg], check=True)
+    # Git commit & push
+    # Check if there are staged changes
+    staged_check = subprocess.run([git_exe, "diff", "--cached", "--quiet"])
+    if staged_check.returncode == 1:
+        now_str = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+        commit_msg = f"Auto-update data: {now_str}"
+        print(f"  * Đang tạo bản ghi commit: '{commit_msg}'...")
+        subprocess.run([git_exe, "commit", "-m", commit_msg], check=True)
+    else:
+        print("  * Không có thay đổi mới nào để tạo commit.")
 
     # Git push
     print("  * Đang truyền dữ liệu lên GitHub...")
