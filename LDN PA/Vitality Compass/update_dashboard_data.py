@@ -194,7 +194,8 @@ def main():
                 tonghop_sheets.append((w, s))
                 
         if tonghop_sheets:
-            latest_week_num, latest_hr_sheet = max(tonghop_sheets, key=lambda x: x[0])
+            # Sort chronologically: weeks >= 40 are from 2025 (lesser chronological value), weeks < 40 are from 2026.
+            latest_week_num, latest_hr_sheet = max(tonghop_sheets, key=lambda x: x[0] if x[0] < 40 else x[0] - 100)
             print(f"✓ Selected latest available recruitment sheet: {latest_hr_sheet} (Week {latest_week_num})")
         else:
             latest_hr_sheet = 'Tổng hợp (T23)'

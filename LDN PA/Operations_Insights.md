@@ -9,17 +9,17 @@
 - **FD**: 3.40% (Biến động vs Tuần trước: ↗ +0.18% vs Tuần trước)
 - **Ontime**: 91.50%
 - **Backlog**: 1,497 (Biến động vs Tuần trước: ↘ -47.80% vs Tuần trước)
-- **Thiếu hụt Nhân sự**: Thiếu 50 shipper (Tuyển mới: 21 / Nghỉ việc: 29)
+- **Thiếu hụt Nhân sự**: Thiếu 70 shipper (Tuyển mới: 37 / Nghỉ việc: 55)
 
 ## 🔴 Cảnh báo Hôm nay (Alerts)
-- **BC Quốc Lộ 50-Gò Công Tây-Tiền Giang** có chỉ số GTC ngày 31/05/26 thấp hơn ngày hôm N-1 (30/05/26) 1.23%. So với cùng kỳ giảm 4.87% do Không rõ nguyên nhân, rủi ro sập luồng hàng cao!, nhân sự đang thiếu 3/14 định biên, tuyến thiếu (Thành Công, Yên Luông, Long Vĩnh, Thạnh Trị, Bình Tân, Đồng Sơn).
-- **BC 73 Phó Cơ Điều-Phường Phước Hậu-Vĩnh Long** có chỉ số GTC ngày 31/05/26 thấp hơn ngày hôm N-1 (30/05/26) 3.29%. So với cùng kỳ giảm 5.99% do Thiếu shipper giao chặng cuối, tồn đọng ca sáng., nhân sự đang thiếu 0/16 định biên, tuyến thiếu (0).
-- **BC 12-14 Bà Triệu-Cao Lãnh-Đồng Tháp** có chỉ số GTC ngày 31/05/26 thấp hơn ngày hôm N-1 (30/05/26) 2.53%. So với cùng kỳ giảm 1.21% do Không rõ nguyên nhân, rủi ro sập luồng hàng cao!, nhân sự đang thiếu 2/28 định biên.
-- **BC 206 A Đoàn Thị Nghiệp-Mỹ Tho-Tiền Giang 01** có chỉ số GTC ngày 31/05/26 thấp hơn ngày hôm N-1 (30/05/26) 20.33%. So với cùng kỳ giảm 4.14% do Không rõ nguyên nhân, rủi ro sập luồng hàng cao!, nhân sự đang thiếu 2/22 định biên.
-- **BC 992 Đường Huyện 35-Vĩnh Kim-Châu Thành-Tiền Giang** có chỉ số GTC ngày 31/05/26 thấp hơn ngày hôm N-1 (30/05/26) 4.51%. So với cùng kỳ giảm 18.17% do Tuyến giao hàng Vĩnh Kim bị chia cắt, shipper nghỉ đột xuất., nhân sự đang thiếu 3/15 định biên.
-- **BC Quốc Lộ 53-Xã Trung Thành-Vĩnh Long** có chỉ số GTC ngày 31/05/26 thấp hơn ngày hôm N-1 (30/05/26) 2.87%. So với cùng kỳ giảm 1.02% do Lượng đơn tăng đột biến 150% do khuyến mãi Shopee., nhân sự đang thiếu 0/39 định biên.
-- **BC Quốc Lộ 53-Long Hồ-Vĩnh Long** có chỉ số GTC ngày 31/05/26 thấp hơn ngày hôm N-1 (30/05/26) 7.47%. So với cùng kỳ giảm 2.51% do Lượng đơn tăng đột biến 150% do khuyến mãi Shopee., nhân sự đang thiếu 0/38 định biên.
-- **BC Hồng Ngự-Đồng Tháp** có chỉ số GTC ngày 31/05/26 thấp hơn ngày hôm N-1 (30/05/26) 3.25%. So với cùng kỳ giảm 4.92% do Không rõ nguyên nhân, rủi ro sập luồng hàng cao!, nhân sự đang thiếu 2/15 định biên.
+- **BC Quốc Lộ 50-Gò Công Tây-Tiền Giang** có chỉ số GTC ngày 31/05/26 thấp hơn ngày hôm N-1 (30/05/26) 1.23%. So với cùng kỳ giảm 4.87% do Không rõ nguyên nhân, rủi ro sập luồng hàng cao!, nhân sự đang thiếu 0/19 định biên, tuyến thiếu (Bình Tân, Long Bình, Vĩnh Hựu).
+- **BC 73 Phó Cơ Điều-Phường Phước Hậu-Vĩnh Long** có chỉ số GTC ngày 31/05/26 thấp hơn ngày hôm N-1 (30/05/26) 3.29%. So với cùng kỳ giảm 5.99% do Thiếu shipper giao chặng cuối, tồn đọng ca sáng., nhân sự đang thiếu 8/16 định biên, tuyến thiếu (Phường 3, Phường 4, Phưởng 5, Thanh Đức).
+- **BC 206 A Đoàn Thị Nghiệp-Mỹ Tho-Tiền Giang 01** có chỉ số GTC ngày 31/05/26 thấp hơn ngày hôm N-1 (30/05/26) 20.33%. So với cùng kỳ giảm 4.14% do Không rõ nguyên nhân, rủi ro sập luồng hàng cao!, nhân sự đang thiếu 2/21 định biên, tuyến thiếu (Trung An, Phước Thạnh).
+- **BC 992 Đường Huyện 35-Vĩnh Kim-Châu Thành-Tiền Giang** có chỉ số GTC ngày 31/05/26 thấp hơn ngày hôm N-1 (30/05/26) 4.51%. So với cùng kỳ giảm 18.17% do Tuyến giao hàng Vĩnh Kim bị chia cắt, shipper nghỉ đột xuất., nhân sự đang thiếu 2/17 định biên, tuyến thiếu (Long Định , Song Thuận , Bình Đức , Long Hưng , Đông Hoà , Nhị Bình).
+- **BC 230 Ấp Bình Hạnh-Long Bình Điền-Chợ Gạo-Tiền Giang** có chỉ số GTC ngày 31/05/26 thấp hơn ngày hôm N-1 (30/05/26) 0.04%. So với cùng kỳ giảm 11.67% do Không rõ nguyên nhân, rủi ro sập luồng hàng cao!, nhân sự đang thiếu 2/20 định biên.
+- **BC Quốc Lộ 53-Xã Trung Thành-Vĩnh Long** có chỉ số GTC ngày 31/05/26 thấp hơn ngày hôm N-1 (30/05/26) 2.87%. So với cùng kỳ giảm 1.02% do Lượng đơn tăng đột biến 150% do khuyến mãi Shopee., nhân sự đang thiếu 0/20 định biên.
+- **BC Quốc Lộ 53-Long Hồ-Vĩnh Long** có chỉ số GTC ngày 31/05/26 thấp hơn ngày hôm N-1 (30/05/26) 7.47%. So với cùng kỳ giảm 2.51% do Lượng đơn tăng đột biến 150% do khuyến mãi Shopee., nhân sự đang thiếu 4/10 định biên, tuyến thiếu (Thị trấn Long Hồ, Hoà Tịnh, Long Mỹ, Phước Hậu).
+- **BC 88 Ấp Thân Hòa-Thân Cửu Nghĩa-Châu Thành-Tiền Giang** có chỉ số GTC ngày 31/05/26 thấp hơn ngày hôm N-1 (30/05/26) 24.20%. So với cùng kỳ giảm 1.36% do Không rõ nguyên nhân, rủi ro sập luồng hàng cao!, nhân sự đang thiếu 0/19 định biên.
 
 ## 📈 Highlight / Lowlight
 ### Highlights:
@@ -28,11 +28,11 @@
 - Đơn tồn backlog (>5 ngày) kiểm soát tốt, giảm **-47.80%** so với tuần trước (từ 2,868 xuống 1,497 đơn).
 - **Ngô Phan Mỹ Tú** là AM có tỷ lệ GTC cao nhất toàn vùng (71.36%), đồng thời duy trì lượng đơn tồn đọng cực thấp.
 - Tỷ lệ chuyển trả (FD) toàn vùng duy trì ở mức an toàn là **3.40%** (↗ +0.18% vs Tuần trước).
-- Trong tuần qua, HRBP đã tuyển thành công **21 nhân viên mới** (OB) hỗ trợ lấp đầy các tuyến nóng.
+- Trong tuần qua, HRBP đã tuyển thành công **37 nhân viên mới** (OB) hỗ trợ lấp đầy các tuyến nóng.
 
 ### Lowlights:
-- Toàn vùng đang **thiếu hụt thực tế 50 shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.
-- Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 16 định biên) và **Đồng Tháp** (thiếu 14 định biên).
+- Toàn vùng đang **thiếu hụt thực tế 70 shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.
+- Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 12 định biên) và **Đồng Tháp** (thiếu 19 định biên).
 
 ## 🔮 Phân tích Nguyên nhân (Root Causes)
 - Tại **Bưu Cục Ấp 2-Phú Nhuận-Bến Tre**: Nhân sự: 7/11 (thiếu 4) + 2 nhân viên hỗ trợ; Bưu cục liên tục có nhân viên nghỉ ngang, té xe.; NVXL mới chưa quản lý được nhân sự tại BC, điều tiết giờ giấc xuất hàng.; Nhân viên 9h chưa rời khỏi kho.
@@ -51,17 +51,17 @@
 ## 📋 Đánh giá AM (Scorecard)
 | AM | GTC | FD | Trạng thái | Đơn Aging | Thiếu shipper | HRBP |
 | --- | --- | --- | --- | --- | --- | --- |
-| Ngô Phan Mỹ Tú | 71.36% | 2.03% | Mạnh | 11 | Thiếu 3/47 | BìnhNLC |
-| Nguyễn Thành Huy | 66.60% | 2.50% | Cải thiện | 46 | Thiếu 3/108 | NgọcPTB |
-| Nguyễn Việt Tới | 62.92% | 1.61% | Cải thiện | 36 | Thiếu 3/44 | BìnhNLC |
-| Lê Minh Tuấn | 62.15% | 2.17% | Cải thiện | 65 | Thiếu 6/60 | NgọcPTB |
-| Huỳnh Phương Duy | 59.28% | 3.45% | Cải thiện | 111 | Thiếu 1/45 | VyLNK |
-| Lý Quài Nhân | 58.13% | 3.74% | Cải thiện | 46 | Thiếu 3/26 | BìnhNLC |
-| Lâm Xuân Vinh | 51.27% | 2.68% | Yếu | 132 | Thiếu 9/54 | VyLNK |
-| Nguyễn Anh Tùng | 49.85% | 3.44% | Yếu | 175 | Thiếu 7/74 | BìnhNLC |
-| Đoàn Công Tín | 46.75% | 6.52% | Yếu | 232 | Thiếu 4/61 | NgọcPTB |
-| Nguyễn Tuấn Anh | 44.45% | 3.64% | Yếu | 592 | Thiếu 3/90 | VyLNK |
-| Huỳnh Quốc Trung | 38.53% | 2.78% | Yếu | 48 | Thiếu 2/31 | BìnhNLC |
+| Ngô Phan Mỹ Tú | 71.36% | 2.03% | Mạnh | 11 | Thiếu 2/56 | BìnhNLC |
+| Nguyễn Thành Huy | 66.60% | 2.50% | Cải thiện | 46 | Thiếu 5/128 | VyLNK |
+| Nguyễn Việt Tới | 62.92% | 1.61% | Cải thiện | 36 | Thiếu 2/46 | BìnhNLC |
+| Lê Minh Tuấn | 62.15% | 2.17% | Cải thiện | 65 | Thiếu 12/80 | BìnhNLC |
+| Huỳnh Phương Duy | 59.28% | 3.45% | Cải thiện | 111 | Thiếu 8/68 | VyLNK |
+| Lý Quài Nhân | 58.13% | 3.74% | Cải thiện | 46 | Thiếu 7/39 | BìnhNLC |
+| Lâm Xuân Vinh | 51.27% | 2.68% | Yếu | 132 | Thiếu 5/82 | VyLNK |
+| Nguyễn Anh Tùng | 49.85% | 3.44% | Yếu | 175 | Thiếu 4/89 | KhôiHM |
+| Đoàn Công Tín | 46.75% | 6.52% | Yếu | 232 | Thiếu 2/63 | KhôiHM |
+| Nguyễn Tuấn Anh | 44.45% | 3.64% | Yếu | 592 | Thiếu 18/135 | BìnhNLC |
+| Huỳnh Quốc Trung | 38.53% | 2.78% | Yếu | 48 | Thiếu 5/34 | VyLNK |
 
 ## 📦 Backlog Tracking
 - **Tổng Backlog >5 ngày**: 1,497 đơn
