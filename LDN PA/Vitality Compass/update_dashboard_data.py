@@ -78,7 +78,17 @@ def main():
     
     # Download Recruitment (Link 3)
     p_hr_local = r"C:\Users\Administrator\Desktop\AI 2026\Mentor\recruitment_live.xlsx"
-    if "--skip-hr" in sys.argv:
+    p_hr_user = r"C:\Users\Administrator\Desktop\AI 2026\Mentor\[ĐCL] - BÁO CÁO TUYỂN DỤNG DATA.xlsx"
+    
+    if os.path.exists(p_hr_user):
+        print("✓ Found local recruitment file '[ĐCL] - BÁO CÁO TUYỂN DỤNG DATA.xlsx'. Copying to recruitment_live.xlsx and skipping download.")
+        import shutil
+        try:
+            shutil.copy2(p_hr_user, p_hr_local)
+        except Exception as e:
+            print(f"⚠ Failed to copy local recruitment file: {e}")
+        p_hr = p_hr_local
+    elif "--skip-hr" in sys.argv:
         print("Skipping live recruitment sheet download (using local copy).")
         p_hr = p_hr_local
     else:
