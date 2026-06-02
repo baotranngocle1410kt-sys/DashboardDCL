@@ -183,41 +183,23 @@ def main():
     df_data['corrected_date'] = pd.to_datetime(df_data['Time Format']) 
     latest_gtc_date = df_data['corrected_date'].max()
     
-    # Align recruitment sheet with GTC data week first, then fallback to current calendar week, then max week
-    import datetime
-    gtc_week_num = latest_gtc_date.isocalendar()[1]
-    current_week_num = datetime.datetime.now().isocalendar()[1]
-    
     print("Reading recruitment sheet...")
     with pd.ExcelFile(p_hr) as xl_hr:
-        # Try GTC data week first
-        target_sheet_name = f"Tổng hợp (T{gtc_week_num})"
-        if target_sheet_name in xl_hr.sheet_names:
-            latest_hr_sheet = target_sheet_name
-            latest_week_num = gtc_week_num
-            print(f"✓ Found recruitment sheet matching GTC data week: {latest_hr_sheet}")
+        # Find all Tổng hợp (T\d+) sheets and select the one with max week number
+        tonghop_sheets = []
+        for s in xl_hr.sheet_names:
+            match = re.match(r'Tổng hợp \(T(\d+)\)', s)
+            if match:
+                w = int(match.group(1))
+                tonghop_sheets.append((w, s))
+                
+        if tonghop_sheets:
+            latest_week_num, latest_hr_sheet = max(tonghop_sheets, key=lambda x: x[0])
+            print(f"✓ Selected latest available recruitment sheet: {latest_hr_sheet} (Week {latest_week_num})")
         else:
-            # Try current calendar week
-            target_sheet_name = f"Tổng hợp (T{current_week_num})"
-            if target_sheet_name in xl_hr.sheet_names:
-                latest_hr_sheet = target_sheet_name
-                latest_week_num = current_week_num
-                print(f"✓ Found recruitment sheet matching current calendar week: {latest_hr_sheet}")
-            else:
-                # Fallback to absolute maximum week number found in the sheet
-                tonghop_sheets = []
-                for s in xl_hr.sheet_names:
-                    match = re.match(r'Tổng hợp \(T(\d+)\)', s)
-                    if match:
-                        w = int(match.group(1))
-                        tonghop_sheets.append((w, s))
-                if tonghop_sheets:
-                    latest_week_num, latest_hr_sheet = max(tonghop_sheets, key=lambda x: x[0])
-                    print(f"✓ Found latest available recruitment sheet: {latest_hr_sheet} (Week {latest_week_num})")
-                else:
-                    latest_hr_sheet = 'Tổng hợp (T21)'
-                    latest_week_num = 21
-                    print(f"⚠ Falling back to default recruitment sheet: {latest_hr_sheet}")
+            latest_hr_sheet = 'Tổng hợp (T23)'
+            latest_week_num = 23
+            print(f"⚠ No 'Tổng hợp (T*)' sheet found. Falling back to default: {latest_hr_sheet}")
             
         df_hr = pd.read_excel(xl_hr, sheet_name=latest_hr_sheet)
     
@@ -229,20 +211,20 @@ def main():
         print(f"⚠ Columns layout mismatch: {e}. Using raw indices.")
         df_sub0 = df_hr.iloc[:, 9:25].copy()
         
-    # Standardize subtable columns
+    # Standardize subtable columns (Subtable 0 has 16 columns including Status and HRBP)
     df_sub0.columns = [
         'Bưu cục', 'Tỉnh', 'AM', 'Tuyến thiếu', 'Định biên NVPTTT', 'Định biên NVXL', 
         'NVPTTT_resign', 'NVPTTT_shortage_bs', 'YCTD', 'NVPTTT_ob_day', 'NVPTTT_ob_week', 
         'Data_Day', 'NVPTTT_shortage_actual', 'pct_dapung', 'HRBP', 'Status'
     ]
 
-    # Parse and combine all province subtables from columns 50 to 124
+    # Parse and combine all province subtables from columns 52 to 126
     subtables_config = [
-        (50, 65, "VyLNK"),       # Subtable 1: Bến Tre
-        (65, 80, "VyLNK"),       # Subtable 2: Trà Vinh
-        (80, 95, "BìnhNLC"),     # Subtable 3: Vĩnh Long
-        (95, 110, "BìnhNLC"),    # Subtable 4: Đồng Tháp
-        (110, 124, "KhôiHM")     # Subtable 5: Tiền Giang
+        (52, 66, "VyLNK"),       # Subtable 1: Bến Tre
+        (67, 81, "VyLNK"),       # Subtable 2: Trà Vinh
+        (82, 96, "BìnhNLC"),     # Subtable 3: Vĩnh Long
+        (97, 111, "BìnhNLC"),    # Subtable 4: Đồng Tháp
+        (112, 126, "KhôiHM")     # Subtable 5: Tiền Giang
     ]
     
     def parse_subtable(df, start_col, end_col, default_hrbp):
@@ -252,24 +234,22 @@ def main():
         standard_names = [
             'Bưu cục', 'Tỉnh', 'AM', 'Tuyến thiếu', 'Định biên NVPTTT', 'Định biên NVXL', 
             'NVPTTT_resign', 'NVPTTT_shortage_bs', 'YCTD', 'NVPTTT_ob_day', 'NVPTTT_ob_week', 
-            'Data_Day', 'NVPTTT_shortage_actual', 'pct_dapung', 'HRBP'
+            'Data_Day', 'NVPTTT_shortage_actual', 'pct_dapung'
         ]
         for idx, name in enumerate(cols):
             if idx < len(standard_names):
                 rename_dict[name] = standard_names[idx]
         sub = sub.rename(columns=rename_dict)
-        if 'HRBP' not in sub.columns:
-            sub['HRBP'] = default_hrbp
-        else:
-            sub['HRBP'] = sub['HRBP'].fillna(default_hrbp)
-        if 'Status' not in sub.columns:
-            def get_status(row):
-                try:
-                    shortage = float(row['NVPTTT_shortage_actual'])
-                    return "Đủ" if shortage <= 0 else "Thiếu"
-                except:
-                    return "Đủ"
-            sub['Status'] = sub.apply(get_status, axis=1)
+        sub['HRBP'] = default_hrbp
+        
+        def get_status(row):
+            try:
+                shortage = float(row['NVPTTT_shortage_actual'])
+                return "Đủ" if shortage <= 0 else "Thiếu"
+            except:
+                return "Đủ"
+        sub['Status'] = sub.apply(get_status, axis=1)
+        
         sub['Bưu cục_clean'] = sub['Bưu cục'].apply(clean_bc_name)
         sub = sub[(sub['Bưu cục'].notna()) & (sub['Bưu cục'] != 'TỔNG') & (sub['Bưu cục'].astype(str).str.strip() != '')]
         return sub
@@ -301,6 +281,7 @@ def main():
 
     # top5_data will be compiled later after bc_data is ready
     top5_data = []
+
 
 
     # Date Corrections
@@ -627,14 +608,15 @@ def main():
         # Match HR information
         bc_clean = clean_bc_name(bc_name)
         hr_row = None
-        if bc_clean in hr_bc_cleaned:
-            hr_row = hr_bc_cleaned[bc_clean]
-        else:
-            # Try substring match
-            for c_key, raw_row in hr_bc_cleaned.items():
-                if bc_clean in c_key or c_key in bc_clean:
-                    hr_row = raw_row
-                    break
+        if bc_clean:
+            if bc_clean in hr_bc_cleaned:
+                hr_row = hr_bc_cleaned[bc_clean]
+            else:
+                # Try substring match
+                for c_key, raw_row in hr_bc_cleaned.items():
+                    if c_key and (c_key in bc_clean or bc_clean in c_key):
+                        hr_row = raw_row
+                        break
         
         # Extract HR values
         if hr_row is not None:
@@ -1162,17 +1144,24 @@ def main():
                 '25/05/2026': '2026-05-25'
             }
             
-            # Map daily headers to clean headers if daily headers were stored as timestamps
+            # Map daily headers to clean headers dynamically using pd.to_datetime
             daily_lbl_map = {}
             if fd_data['headers']['daily']:
                 for lbl in fd_data['headers']['daily']:
-                    # match label (e.g. '18/05/2026' or '18/05')
-                    clean_lbl = lbl.split(' ')[0]
-                    # check format
-                    parts = clean_lbl.split('/')
-                    if len(parts) >= 2:
-                        d_str = f"2026-{parts[1]}-{parts[0]}"
+                    try:
+                        dt = pd.to_datetime(lbl, dayfirst=True)
+                        d_str = dt.strftime('%Y-%m-%d')
                         daily_lbl_map[lbl] = d_str
+                    except:
+                        # Fallback to simple split
+                        try:
+                            clean_lbl = lbl.split(' ')[0]
+                            parts = clean_lbl.split('/')
+                            if len(parts) >= 2:
+                                d_str = f"2026-{parts[1]}-{parts[0]}"
+                                daily_lbl_map[lbl] = d_str
+                        except:
+                            pass
             
             if not daily_lbl_map:
                 daily_lbl_map = daily_dates_map

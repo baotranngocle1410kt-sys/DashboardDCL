@@ -1690,6 +1690,19 @@ function renderReturnRateView() {
   renderFdTable();
 }
 
+function formatDailyHeader(lbl) {
+  if (!lbl) return '';
+  const parts = lbl.split('/');
+  if (parts.length >= 2) {
+    return `${parts[0]}/${parts[1]}`;
+  }
+  const parts2 = lbl.split('-');
+  if (parts2.length >= 3) {
+    return `${parts2[2]}/${parts2[1]}`;
+  }
+  return lbl;
+}
+
 function renderFdKPIs() {
   const fdReport = repData.fd_report;
   if (!fdReport) return;
@@ -1698,9 +1711,13 @@ function renderFdKPIs() {
   
   const isGtb = activeFdMetric === 'gtb';
   
+  // Extract week and date label dynamically
+  const latestWeekLabel = fdReport.headers.weekly[6] ? fdReport.headers.weekly[6].replace('2026/', 'W') : 'W22';
+  const latestDailyLabel = fdReport.headers.daily[9] ? formatDailyHeader(fdReport.headers.daily[9]) : '25/05';
+  
   // Update Card Titles and Descriptions dynamically
-  const labelWeekly = isGtb ? 'Tỷ lệ GTB-TT Tuần W22' : 'Tỷ lệ Trả Tuần W22';
-  const labelDaily = isGtb ? 'Tỷ lệ GTB-TT Ngày 25/05' : 'Tỷ lệ Trả Ngày 25/05';
+  const labelWeekly = isGtb ? `Tỷ lệ GTB-TT Tuần ${latestWeekLabel}` : `Tỷ lệ Trả Tuần ${latestWeekLabel}`;
+  const labelDaily = isGtb ? `Tỷ lệ GTB-TT Ngày ${latestDailyLabel}` : `Tỷ lệ Trả Ngày ${latestDailyLabel}`;
   const labelRedCount = isGtb ? 'Bưu cục GTB-TT Thấp (<15%)' : 'Bưu cục Vượt Ngưỡng Đỏ (>8%)';
   const labelTarget = isGtb ? 'Mục Tiêu Khuyến Khích' : 'Mục Tiêu Định Hướng';
   
@@ -2135,14 +2152,20 @@ function renderFdTable() {
   }
   
   if (activeFdViewMode === 'weekly') {
+    const w18_lbl = fdReport.headers.weekly[2] || '2026/18';
+    const w19_lbl = fdReport.headers.weekly[3] || '2026/19';
+    const w20_lbl = fdReport.headers.weekly[4] || '2026/20';
+    const w21_lbl = fdReport.headers.weekly[5] || '2026/21';
+    const w22_lbl = fdReport.headers.weekly[6] || '2026/22';
+
     head.innerHTML = `
       <th>Bưu cục</th>
       <th>AM Phụ Trách</th>
-      <th style="text-align: center">2026/18</th>
-      <th style="text-align: center">2026/19</th>
-      <th style="text-align: center">2026/20</th>
-      <th style="text-align: center">2026/21</th>
-      <th style="text-align: center; font-weight: bold">2026/22</th>
+      <th style="text-align: center">${w18_lbl}</th>
+      <th style="text-align: center">${w19_lbl}</th>
+      <th style="text-align: center">${w20_lbl}</th>
+      <th style="text-align: center">${w21_lbl}</th>
+      <th style="text-align: center; font-weight: bold">${w22_lbl}</th>
       <th style="text-align: center">Biến động (Wow)</th>
       <th style="text-align: center">Thao tác</th>
     `;
@@ -2187,17 +2210,26 @@ function renderFdTable() {
       body.appendChild(tr);
     });
   } else {
+    const d18_lbl = formatDailyHeader(fdReport.headers.daily[2]) || '18/05';
+    const d19_lbl = formatDailyHeader(fdReport.headers.daily[3]) || '19/05';
+    const d20_lbl = formatDailyHeader(fdReport.headers.daily[4]) || '20/05';
+    const d21_lbl = formatDailyHeader(fdReport.headers.daily[5]) || '21/05';
+    const d22_lbl = formatDailyHeader(fdReport.headers.daily[6]) || '22/05';
+    const d23_lbl = formatDailyHeader(fdReport.headers.daily[7]) || '23/05';
+    const d24_lbl = formatDailyHeader(fdReport.headers.daily[8]) || '24/05';
+    const d25_lbl = formatDailyHeader(fdReport.headers.daily[9]) || '25/05';
+
     head.innerHTML = `
       <th>Bưu cục</th>
       <th>AM Phụ Trách</th>
-      <th style="text-align: center">18/05</th>
-      <th style="text-align: center">19/05</th>
-      <th style="text-align: center">20/05</th>
-      <th style="text-align: center">21/05</th>
-      <th style="text-align: center">22/05</th>
-      <th style="text-align: center">23/05</th>
-      <th style="text-align: center">24/05</th>
-      <th style="text-align: center; font-weight: bold">25/05</th>
+      <th style="text-align: center">${d18_lbl}</th>
+      <th style="text-align: center">${d19_lbl}</th>
+      <th style="text-align: center">${d20_lbl}</th>
+      <th style="text-align: center">${d21_lbl}</th>
+      <th style="text-align: center">${d22_lbl}</th>
+      <th style="text-align: center">${d23_lbl}</th>
+      <th style="text-align: center">${d24_lbl}</th>
+      <th style="text-align: center; font-weight: bold">${d25_lbl}</th>
       <th style="text-align: center">Biến động (DoD)</th>
       <th style="text-align: center">Thao tác</th>
     `;
@@ -2221,6 +2253,18 @@ function renderFdTable() {
       tr.className = 'fd-row-active';
       
       const changeVal = row.change_d1;
+      const hasChange = changeVal !== null && changeVal !== undefined && !isNaN(changeVal);
+      const arrow = hasChange ? (changeVal >= 0 ? '▲' : '▼') : '';
+      const sign = hasChange ? (changeVal >= 0 ? '+' : '') : '';
+      let changeCls = '';
+      if (hasChange) {
+        if (isGtb) {
+          changeCls = changeVal >= 0 ? 'up' : 'down';
+        } else {
+          changeCls = changeVal <= 0 ? 'up' : 'down';
+        }
+      }
+      
       let bcMatch = repData.bcs.find(b => clean_bc_name(b.name) === clean_bc_name(row.bc_name));
       const amTele = bcMatch ? bcMatch.am_tele : '';
       
