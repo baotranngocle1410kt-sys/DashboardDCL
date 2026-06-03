@@ -9,7 +9,7 @@
 - **FD**: 3.40% (Biến động vs Tuần trước: ↗ +0.18% vs Tuần trước)
 - **Ontime**: 91.50%
 - **Backlog**: 1,497 (Biến động vs Tuần trước: ↘ -47.80% vs Tuần trước)
-- **Thiếu hụt Nhân sự**: Thiếu 84 shipper (Tuyển mới: 5 / Nghỉ việc: 47)
+- **Thiếu hụt Nhân sự**: Thiếu 85 shipper (Tuyển mới: 5 / Nghỉ việc: 48)
 
 ## 🔴 Cảnh báo Hôm nay (Alerts)
 - **BC Quốc Lộ 50-Gò Công Tây-Tiền Giang** có chỉ số GTC ngày 31/05/26 thấp hơn ngày hôm N-1 (30/05/26) 1.23%. So với cùng kỳ giảm 4.87% do Không rõ nguyên nhân, rủi ro sập luồng hàng cao!, nhân sự đang thiếu 1/19 định biên, tuyến thiếu (Bình Tân, Long Bình, Vĩnh Hựu).
@@ -31,8 +31,8 @@
 - Trong tuần qua, HRBP đã tuyển thành công **5 nhân viên mới** (OB) hỗ trợ lấp đầy các tuyến nóng.
 
 ### Lowlights:
-- Toàn vùng đang **thiếu hụt thực tế 84 shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.
-- Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 19 định biên) và **Đồng Tháp** (thiếu 22 định biên).
+- Toàn vùng đang **thiếu hụt thực tế 85 shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.
+- Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 20 định biên) và **Đồng Tháp** (thiếu 22 định biên).
 
 ## 🔮 Phân tích Nguyên nhân (Root Causes)
 - Tại **Bưu Cục Ấp 2-Phú Nhuận-Bến Tre**: Nhân sự: 7/11 (thiếu 4) + 2 nhân viên hỗ trợ; Bưu cục liên tục có nhân viên nghỉ ngang, té xe.; NVXL mới chưa quản lý được nhân sự tại BC, điều tiết giờ giấc xuất hàng.; Nhân viên 9h chưa rời khỏi kho.
@@ -58,7 +58,7 @@
 | Huỳnh Phương Duy | 59.28% | 3.45% | Cải thiện | 111 | Thiếu 8/68 | VyLNK |
 | Lý Quài Nhân | 58.13% | 3.74% | Cải thiện | 46 | Thiếu 8/39 | BìnhNLC |
 | Lâm Xuân Vinh | 51.27% | 2.68% | Yếu | 132 | Thiếu 7/82 | VyLNK |
-| Nguyễn Anh Tùng | 49.85% | 3.44% | Yếu | 175 | Thiếu 8/89 | KhôiHM |
+| Nguyễn Anh Tùng | 49.85% | 3.44% | Yếu | 175 | Thiếu 9/89 | KhôiHM |
 | Đoàn Công Tín | 46.75% | 6.52% | Yếu | 232 | Thiếu 5/84 | KhôiHM |
 | Nguyễn Tuấn Anh | 44.45% | 3.64% | Yếu | 592 | Thiếu 18/135 | BìnhNLC |
 | Huỳnh Quốc Trung | 38.53% | 2.78% | Yếu | 48 | Thiếu 2/13 | VyLNK |

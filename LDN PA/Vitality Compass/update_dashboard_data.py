@@ -155,6 +155,7 @@ def main():
     # Download FD Report (Link 4)
     print("Downloading live FD report sheet from Google Sheets...")
     p_fd_xlsx = r"C:\Users\Administrator\Desktop\AI 2026\Mentor\fd_live.xlsx"
+    p_fd_user = r"C:\Users\Administrator\Desktop\AI 2026\Mentor\ĐCL - %Chuyển trả.xlsx"
     fd_success = False
     try:
         gsheet_fd_url = "https://docs.google.com/spreadsheets/d/1eJo3_M35Q-Qb3t9AzZkF22gZUCG5oETj-ZIew1DaFgA/export?format=xlsx"
@@ -166,6 +167,18 @@ def main():
         fd_success = True
     except Exception as e:
         print(f"⚠ Failed to download live FD report sheet: {e}. Falling back to local file.")
+        
+    if not fd_success:
+        if os.path.exists(p_fd_user):
+            print("✓ Falling back to local FD report file 'ĐCL - %Chuyển trả.xlsx'. Copying to fd_live.xlsx...")
+            import shutil
+            try:
+                shutil.copy2(p_fd_user, p_fd_xlsx)
+                fd_success = True
+            except Exception as ce:
+                print(f"⚠ Failed to copy local FD report file: {ce}")
+        else:
+            print("✓ Using existing fd_live.xlsx as fallback.")
         
     # Dynamic classification of Link 1 & Link 2
     for path, success, label in [(p_link1_local, link1_success, "Link 1"), (p_link2_local, link2_success, "Link 2")]:
@@ -1105,30 +1118,96 @@ def main():
             daily_agg['rate'] = daily_agg['Vol Chuyen Tra'] / daily_agg['Volume']
             daily_rates = {pd.Timestamp(r['corrected_date']).strftime('%Y-%m-%d'): r['rate'] for _, r in daily_agg.iterrows()}
 
+            # Calculate target week string based on latest_gtc_date
+            isocal = latest_gtc_date.isocalendar()
+            target_week_str = f"{isocal.year}/{isocal.week}"
+            
             sme_w_total = fd_data['sme']['kpis'].get('weekly_total', {})
             tts_w_total = fd_data['tts']['kpis'].get('weekly_total', {})
             sme_d_total = fd_data['sme']['kpis'].get('daily_total', {})
             tts_d_total = fd_data['tts']['kpis'].get('daily_total', {})
 
-            sme_w22 = sme_w_total.get('w22', 0.0793)
-            tts_w22 = tts_w_total.get('w22', 0.0699)
-            weighted_w22 = sme_w22 * 0.81 + tts_w22 * 0.19
-            factor = cur_fd / weighted_w22 if weighted_w22 > 0 else 0.40
+            # Match target week in weekly headers dynamically
+            weekly_headers = fd_data['headers']['weekly']
+            latest_week_key = 'w22'  # default fallback
+            
+            if target_week_str in weekly_headers:
+                col_idx = weekly_headers.index(target_week_str)
+                key_map = {2: 'w18', 3: 'w19', 4: 'w20', 5: 'w21', 6: 'w22'}
+                latest_week_key = key_map.get(col_idx, 'w22')
+            else:
+                target_week_str_zero = f"{isocal.year}/{isocal.week:02d}"
+                if target_week_str_zero in weekly_headers:
+                    col_idx = weekly_headers.index(target_week_str_zero)
+                    key_map = {2: 'w18', 3: 'w19', 4: 'w20', 5: 'w21', 6: 'w22'}
+                    latest_week_key = key_map.get(col_idx, 'w22')
 
-            w18_tot = (sme_w_total.get('w18', 0.0) * 0.81 + tts_w_total.get('w18', 0.0) * 0.19) * factor
-            w19_tot = (sme_w_total.get('w19', 0.0) * 0.81 + tts_w_total.get('w19', 0.0) * 0.19) * factor
-            w20_tot = (sme_w_total.get('w20', 0.0) * 0.81 + tts_w_total.get('w20', 0.0) * 0.19) * factor
-            w21_tot = (sme_w_total.get('w21', 0.0) * 0.81 + tts_w_total.get('w21', 0.0) * 0.19) * factor
-            w22_tot = cur_fd
+            sme_w_latest = sme_w_total.get(latest_week_key, 0.0793)
+            tts_w_latest = tts_w_total.get(latest_week_key, 0.0699)
+            weighted_latest = sme_w_latest * 0.81 + tts_w_latest * 0.19
+            factor = cur_fd / weighted_latest if weighted_latest > 0 else 0.40
 
-            d18_tot = (sme_d_total.get('d18', 0.0852) * 0.81 + tts_d_total.get('d18', 0.0539) * 0.19) * factor
-            d19_tot = daily_rates.get('2026-05-19', 0.024361)
-            d20_tot = daily_rates.get('2026-05-20', 0.024747)
-            d21_tot = daily_rates.get('2026-05-21', 0.026554)
-            d22_tot = daily_rates.get('2026-05-22', 0.028998)
-            d23_tot = daily_rates.get('2026-05-23', 0.025907)
-            d24_tot = daily_rates.get('2026-05-24', 0.032170)
-            d25_tot = daily_rates.get('2026-05-25', 0.030707)
+            weekly_tots = {}
+            for key in ['w18', 'w19', 'w20', 'w21', 'w22']:
+                if key == latest_week_key:
+                    weekly_tots[key] = cur_fd
+                else:
+                    sme_k = sme_w_total.get(key, 0.0)
+                    tts_k = tts_w_total.get(key, 0.0)
+                    weekly_tots[key] = (sme_k * 0.81 + tts_k * 0.19) * factor
+
+            w18_tot = weekly_tots['w18']
+            w19_tot = weekly_tots['w19']
+            w20_tot = weekly_tots['w20']
+            w21_tot = weekly_tots['w21']
+            w22_tot = weekly_tots['w22']
+
+            # Dynamic daily dates calculation (consecutive dates starting from the first daily header)
+            daily_dates_str = []
+            if fd_data['headers']['daily']:
+                first_lbl = fd_data['headers']['daily'][0]
+                first_date = None
+                match = re.search(r'(\d{1,2})/(\d{1,2})', str(first_lbl))
+                if match:
+                    day = int(match.group(1))
+                    month = int(match.group(2))
+                    first_date = pd.Timestamp(year=latest_gtc_date.year, month=month, day=day)
+                else:
+                    try:
+                        dt = pd.to_datetime(first_lbl, dayfirst=True)
+                        first_date = pd.Timestamp(year=latest_gtc_date.year, month=dt.month, day=dt.day)
+                    except:
+                        first_date = latest_gtc_date - pd.Timedelta(days=7)
+                
+                daily_dates = [first_date + pd.Timedelta(days=i) for i in range(8)]
+                daily_dates_str = [d.strftime('%Y-%m-%d') for d in daily_dates]
+            else:
+                daily_dates_str = [f"2026-05-{18+i}" for i in range(8)]
+
+            # Dynamically calculate d18_tot to d25_tot
+            daily_vals_tot = {}
+            for idx in range(8):
+                d_key = f"d{18 + idx}"
+                d_str = daily_dates_str[idx]
+                if d_str in daily_rates:
+                    daily_vals_tot[d_key] = daily_rates[d_str]
+                else:
+                    sme_val = sme_d_total.get(d_key, 0.0)
+                    tts_val = tts_d_total.get(d_key, 0.0)
+                    daily_vals_tot[d_key] = (sme_val * 0.81 + tts_val * 0.19) * factor
+
+            d18_tot = daily_vals_tot['d18']
+            d19_tot = daily_vals_tot['d19']
+            d20_tot = daily_vals_tot['d20']
+            d21_tot = daily_vals_tot['d21']
+            d22_tot = daily_vals_tot['d22']
+            d23_tot = daily_vals_tot['d23']
+            d24_tot = daily_vals_tot['d24']
+            d25_tot = daily_vals_tot['d25']
+
+            w_keys = ['w18', 'w19', 'w20', 'w21', 'w22']
+            latest_w_idx = w_keys.index(latest_week_key) if latest_week_key in w_keys else 4
+            prev_w_key = w_keys[max(0, latest_w_idx - 1)]
 
             fd_data['total'] = {
                 'weekly': [],
@@ -1142,7 +1221,7 @@ def main():
                         'w20': w20_tot,
                         'w21': w21_tot,
                         'w22': w22_tot,
-                        'change_wtd': float(w22_tot - w21_tot)
+                        'change_wtd': float(weekly_tots[latest_week_key] - weekly_tots[prev_w_key])
                     },
                     'daily_total': {
                         'am': 'TỔNG Vùng ĐCL',
@@ -1161,39 +1240,12 @@ def main():
                 }
             }
             
-            daily_dates_map = {
-                '18/05/2026': '2026-05-18',
-                '19/05/2026': '2026-05-19',
-                '20/05/2026': '2026-05-20',
-                '21/05/2026': '2026-05-21',
-                '22/05/2026': '2026-05-22',
-                '23/05/2026': '2026-05-23',
-                '24/05/2026': '2026-05-24',
-                '25/05/2026': '2026-05-25'
-            }
-            
-            # Map daily headers to clean headers dynamically using pd.to_datetime
+            # Map daily headers to clean headers dynamically (for post-office lookups)
             daily_lbl_map = {}
-            if fd_data['headers']['daily']:
-                for lbl in fd_data['headers']['daily']:
-                    try:
-                        dt = pd.to_datetime(lbl, dayfirst=True)
-                        d_str = dt.strftime('%Y-%m-%d')
-                        daily_lbl_map[lbl] = d_str
-                    except:
-                        # Fallback to simple split
-                        try:
-                            clean_lbl = lbl.split(' ')[0]
-                            parts = clean_lbl.split('/')
-                            if len(parts) >= 2:
-                                d_str = f"2026-{parts[1]}-{parts[0]}"
-                                daily_lbl_map[lbl] = d_str
-                        except:
-                            pass
+            for idx, lbl in enumerate(fd_data['headers']['daily']):
+                if idx < len(daily_dates_str):
+                    daily_lbl_map[lbl] = daily_dates_str[idx]
             
-            if not daily_lbl_map:
-                daily_lbl_map = daily_dates_map
-
             sorted_daily_lbls = sorted(list(daily_lbl_map.keys()))
             sme_weekly_lookup = {clean_bc_name(x['bc_name']): x for x in fd_data['sme']['weekly']}
             tts_weekly_lookup = {clean_bc_name(x['bc_name']): x for x in fd_data['tts']['weekly']}
@@ -1249,20 +1301,30 @@ def main():
 
                 sme_bc_item = sme_weekly_lookup.get(clean_name, {})
                 tts_bc_item = tts_weekly_lookup.get(clean_name, {})
-                w18_bc = (sme_bc_item.get('w18', 0.0) * 0.81 + tts_bc_item.get('w18', 0.0) * 0.19) * factor
-                w19_bc = (sme_bc_item.get('w19', 0.0) * 0.81 + tts_bc_item.get('w19', 0.0) * 0.19) * factor
-                w20_bc = (sme_bc_item.get('w20', 0.0) * 0.81 + tts_bc_item.get('w20', 0.0) * 0.19) * factor
-                w21_bc = (sme_bc_item.get('w21', 0.0) * 0.81 + tts_bc_item.get('w21', 0.0) * 0.19) * factor
                 
+                bc_weekly_vals = {}
+                for key in ['w18', 'w19', 'w20', 'w21', 'w22']:
+                    if key == latest_week_key:
+                        bc_weekly_vals[key] = w22_val if w22_val is not None else 0.0
+                    else:
+                        sme_k = sme_bc_item.get(key, 0.0)
+                        tts_k = tts_bc_item.get(key, 0.0)
+                        bc_weekly_vals[key] = (sme_k * 0.81 + tts_k * 0.19) * factor
+                
+                w_keys = ['w18', 'w19', 'w20', 'w21', 'w22']
+                latest_idx = w_keys.index(latest_week_key) if latest_week_key in w_keys else 4
+                prev_key = w_keys[max(0, latest_idx - 1)]
+                bc_change_wtd = float(bc_weekly_vals[latest_week_key] - bc_weekly_vals[prev_key]) if bc_weekly_vals[latest_week_key] is not None and bc_weekly_vals[prev_key] is not None else 0.0
+
                 fd_data['total']['weekly'].append({
                     'am': am,
                     'bc_name': bc_name,
-                    'w18': w18_bc,
-                    'w19': w19_bc,
-                    'w20': w20_bc,
-                    'w21': w21_bc,
-                    'w22': w22_val,
-                    'change_wtd': float(w22_val - w21_bc) if w22_val is not None and w21_bc else 0.0
+                    'w18': bc_weekly_vals['w18'],
+                    'w19': bc_weekly_vals['w19'],
+                    'w20': bc_weekly_vals['w20'],
+                    'w21': bc_weekly_vals['w21'],
+                    'w22': bc_weekly_vals['w22'],
+                    'change_wtd': bc_change_wtd
                 })
                 
                 daily_item = {
