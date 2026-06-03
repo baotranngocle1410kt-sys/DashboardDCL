@@ -1111,7 +1111,7 @@ function renderInsights() {
     el.innerHTML = '';
     items.forEach(item => {
       const li = document.createElement('li');
-      li.innerHTML = item;
+      li.textContent = item;
       el.appendChild(li);
     });
   };

@@ -1,4 +1,34 @@
 # Git ignore file for LDN PA project
+
+# === Temp Excel files ===
 ~$*.xlsx
 *.xlsx.tmp
 *.log
+
+# === Sensitive data files ===
+LDN PA/telegram_config.json
+LDN PA/Vitality Compass/operations_data.json
+
+# === Internal Excel reports (contain real operational data) ===
+Mentor/
+temp_recruitment.xlsx
+fd_live.xlsx
+
+# === Internal Python scripts & automation ===
+Cap_Nhat_Web.py
+Cap_Nhat_Web.bat
+Cap_Nhat_Web_Scheduled.bat
+Cap_Nhat_Web_Scheduled.ps1
+LDN PA/send_telegram_alerts.py
+LDN PA/Vitality Compass/update_dashboard_data.py
+LDN PA/Vitality Compass/inspect_*.py
+LDN PA/Vitality Compass/download_*.py
+LDN PA/Vitality Compass/test_*.py
+LDN PA/Vitality Compass/list_*.py
+
+# === Debug/temp files ===
+columns.txt
+sheets.txt
+inspect_sheets.txt
+history_columns.txt
+schedule_log.txt
