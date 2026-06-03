@@ -522,6 +522,7 @@ let telegramConfig = null;
 let activeFdMetric = 'total';
 let activeFdTrendMetric = 'weekly';
 let activeFdViewMode = 'weekly';
+let activeFdDimension = 'bc';
 let fdTableSearchQuery = '';
 let fdTrendChartObj = null;
 
@@ -1866,7 +1867,7 @@ function renderFdChart() {
     }
     title = isGtb ? 'Tỷ lệ GTB-TT theo Tuần (%)' : 'Tỷ lệ Trả theo Tuần (%)';
   } else {
-    labels = fdReport.headers.daily.slice(2); // '18/05/2026' to '25/05/2026'
+    labels = fdReport.headers.daily.slice(2, 10); // '18/05/2026' to '25/05/2026'
     if (dailyTotal) {
       data = [
         dailyTotal.d18 !== null && dailyTotal.d18 !== undefined ? (dailyTotal.d18 * 100).toFixed(2) : null,
@@ -2095,6 +2096,92 @@ function renderFdTop5() {
   });
 }
 
+function getProvinceOfBc(bcName) {
+  if (!repData || !repData.bcs) return 'N/A';
+  const cleanName = clean_bc_name(bcName);
+  const match = repData.bcs.find(b => clean_bc_name(b.name) === cleanName);
+  if (match) return match.province;
+  
+  const matchSub = repData.bcs.find(b => clean_bc_name(b.name).includes(cleanName) || cleanName.includes(clean_bc_name(b.name)));
+  return matchSub ? matchSub.province : 'N/A';
+}
+
+function getAggregatedFdData(list, keyType, isWeekly) {
+  const groups = {};
+  
+  list.forEach(row => {
+    if (row.bc_name === 'TỔNG Vùng ĐCL' || row.bc_name === 'Grand Total') return;
+    
+    let keyVal = 'N/A';
+    if (keyType === 'am') {
+      keyVal = row.am || 'N/A';
+    } else if (keyType === 'province') {
+      keyVal = getProvinceOfBc(row.bc_name);
+    }
+    
+    if (keyVal === 'N/A' || keyVal === 'nan' || !keyVal) return;
+    
+    if (!groups[keyVal]) {
+      groups[keyVal] = { name: keyVal, values: {}, count: {} };
+    }
+    
+    if (isWeekly) {
+      ['w18', 'w19', 'w20', 'w21', 'w22'].forEach(col => {
+        if (row[col] !== null && row[col] !== undefined && !isNaN(row[col])) {
+          if (!groups[keyVal].values[col]) {
+            groups[keyVal].values[col] = 0;
+            groups[keyVal].count[col] = 0;
+          }
+          groups[keyVal].values[col] += row[col];
+          groups[keyVal].count[col] += 1;
+        }
+      });
+    } else {
+      const numCols = repData.fd_report.headers.daily.length - 4;
+      for (let i = 18; i < 18 + numCols; i++) {
+        const col = `d${i}`;
+        if (row[col] !== null && row[col] !== undefined && !isNaN(row[col])) {
+          if (!groups[keyVal].values[col]) {
+            groups[keyVal].values[col] = 0;
+            groups[keyVal].count[col] = 0;
+          }
+          groups[keyVal].values[col] += row[col];
+          groups[keyVal].count[col] += 1;
+        }
+      }
+    }
+  });
+  
+  const avg = (sum, count) => count === 0 ? null : sum / count;
+  
+  return Object.values(groups).map(g => {
+    const res = {
+      bc_name: g.name,
+      am: keyType === 'am' ? g.name : '',
+      province: keyType === 'province' ? g.name : ''
+    };
+    
+    if (isWeekly) {
+      ['w18', 'w19', 'w20', 'w21', 'w22'].forEach(col => {
+        res[col] = g.count[col] ? avg(g.values[col], g.count[col]) : null;
+      });
+      res.change_wtd = (res.w22 !== null && res.w21 !== null) ? (res.w22 - res.w21) : null;
+    } else {
+      const numCols = repData.fd_report.headers.daily.length - 4;
+      for (let i = 18; i < 18 + numCols; i++) {
+        const col = `d${i}`;
+        res[col] = g.count[col] ? avg(g.values[col], g.count[col]) : null;
+      }
+      const d25_key = `d${18 + numCols - 1}`;
+      const d24_key = `d${18 + numCols - 2}`;
+      const d18_key = `d18`;
+      res.change_d1 = (res[d25_key] !== null && res[d24_key] !== null) ? (res[d25_key] - res[d24_key]) : null;
+      res.change_d7 = (res[d25_key] !== null && res[d18_key] !== null) ? (res[d25_key] - res[d18_key]) : null;
+    }
+    return res;
+  });
+}
+
 function renderFdTable() {
   const head = document.getElementById('fdRepTableHead');
   const body = document.getElementById('fdRepTableBody');
@@ -2105,15 +2192,25 @@ function renderFdTable() {
   const metricData = fdReport[activeFdMetric];
   if (!metricData) return;
   
-  let filteredWeekly = metricData.weekly.filter(bc => 
-    bc.bc_name.toLowerCase().includes(fdTableSearchQuery) || 
-    bc.am.toLowerCase().includes(fdTableSearchQuery)
-  );
+  let filteredWeekly = [];
+  let filteredDaily = [];
   
-  let filteredDaily = metricData.daily.filter(bc => 
-    bc.bc_name.toLowerCase().includes(fdTableSearchQuery) || 
-    bc.am.toLowerCase().includes(fdTableSearchQuery)
-  );
+  if (activeFdDimension === 'am' || activeFdDimension === 'province') {
+    filteredWeekly = getAggregatedFdData(metricData.weekly, activeFdDimension, true);
+    filteredDaily = getAggregatedFdData(metricData.daily, activeFdDimension, false);
+    
+    filteredWeekly = filteredWeekly.filter(row => row.bc_name.toLowerCase().includes(fdTableSearchQuery));
+    filteredDaily = filteredDaily.filter(row => row.bc_name.toLowerCase().includes(fdTableSearchQuery));
+  } else {
+    filteredWeekly = metricData.weekly.filter(bc => 
+      bc.bc_name.toLowerCase().includes(fdTableSearchQuery) || 
+      (bc.am && bc.am.toLowerCase().includes(fdTableSearchQuery))
+    );
+    filteredDaily = metricData.daily.filter(bc => 
+      bc.bc_name.toLowerCase().includes(fdTableSearchQuery) || 
+      (bc.am && bc.am.toLowerCase().includes(fdTableSearchQuery))
+    );
+  }
   
   function getFdCellClass(val) {
     if (val === null || val === undefined || val === '') return '';
@@ -2151,6 +2248,9 @@ function renderFdTable() {
     return `<span class="change-tag ${changeCls}">${arrow} ${sign}${(val * 100).toFixed(2)}%</span>`;
   }
   
+  const firstHeader = activeFdDimension === 'bc' ? 'Bưu cục' : activeFdDimension === 'am' ? 'Area Manager (AM)' : 'Tỉnh';
+  const secondHeader = activeFdDimension === 'bc' ? 'AM Phụ Trách' : '';
+  
   if (activeFdViewMode === 'weekly') {
     const w18_lbl = fdReport.headers.weekly[2] || '2026/18';
     const w19_lbl = fdReport.headers.weekly[3] || '2026/19';
@@ -2159,8 +2259,8 @@ function renderFdTable() {
     const w22_lbl = fdReport.headers.weekly[6] || '2026/22';
 
     head.innerHTML = `
-      <th>Bưu cục</th>
-      <th>AM Phụ Trách</th>
+      <th>${firstHeader}</th>
+      ${secondHeader ? `<th>${secondHeader}</th>` : ''}
       <th style="text-align: center">${w18_lbl}</th>
       <th style="text-align: center">${w19_lbl}</th>
       <th style="text-align: center">${w20_lbl}</th>
@@ -2185,16 +2285,27 @@ function renderFdTable() {
     });
     
     filteredWeekly.forEach(row => {
+      if (row.bc_name === 'TỔNG Vùng ĐCL' || row.bc_name === 'Grand Total') return;
       const tr = document.createElement('tr');
       tr.className = 'fd-row-active';
       
       const changeVal = row.change_wtd;
-      let bcMatch = repData.bcs.find(b => clean_bc_name(b.name) === clean_bc_name(row.bc_name));
-      const amTele = bcMatch ? bcMatch.am_tele : '';
+      
+      let amTele = '';
+      if (activeFdDimension === 'am') {
+        const match = repData.bcs.find(b => b.am && b.am.toLowerCase().trim() === row.bc_name.toLowerCase().trim());
+        amTele = match ? match.am_tele : '';
+      } else if (activeFdDimension === 'bc') {
+        let bcMatch = repData.bcs.find(b => clean_bc_name(b.name) === clean_bc_name(row.bc_name));
+        amTele = bcMatch ? bcMatch.am_tele : '';
+      }
+      
+      const btnLabel = activeFdDimension === 'province' ? 'Nhắc các AM' : 'Nhắc AM';
+      const amNameForAlert = activeFdDimension === 'bc' ? row.am : activeFdDimension === 'am' ? row.bc_name : 'AM thuộc ' + row.bc_name;
       
       tr.innerHTML = `
         <td><strong>${escapeHtml(row.bc_name)}</strong></td>
-        <td>👤 ${escapeHtml(row.am)}</td>
+        ${secondHeader ? `<td>👤 ${escapeHtml(row.am)}</td>` : ''}
         <td style="text-align: center" class="${getFdCellClass(row.w18)}">${formatValue(row.w18)}</td>
         <td style="text-align: center" class="${getFdCellClass(row.w19)}">${formatValue(row.w19)}</td>
         <td style="text-align: center" class="${getFdCellClass(row.w20)}">${formatValue(row.w20)}</td>
@@ -2204,7 +2315,7 @@ function renderFdTable() {
           ${renderChangeTagHtml(changeVal)}
         </td>
         <td style="text-align: center">
-          <button class="btn-nhac-am" onclick="sendTelegramFdAlert('${escapeHtml(row.bc_name)}', '${escapeHtml(row.am)}', '${escapeHtml(amTele)}', '${formatValue(row.w22)}', '${formatChangeText(changeVal)}', 'Kiểm tra tỷ lệ vận hành và đẩy mạnh GTB-TT của bưu cục')">Nhắc AM</button>
+          <button class="btn-nhac-am" onclick="sendTelegramFdAlert('${escapeHtml(row.bc_name)}', '${escapeHtml(amNameForAlert)}', '${escapeHtml(amTele)}', '${formatValue(row.w22)}', '${formatChangeText(changeVal)}', 'Kiểm tra tỷ lệ vận hành và đẩy mạnh GTB-TT')">${btnLabel}</button>
         </td>
       `;
       body.appendChild(tr);
@@ -2220,8 +2331,8 @@ function renderFdTable() {
     const d25_lbl = formatDailyHeader(fdReport.headers.daily[9]) || '25/05';
 
     head.innerHTML = `
-      <th>Bưu cục</th>
-      <th>AM Phụ Trách</th>
+      <th>${firstHeader}</th>
+      ${secondHeader ? `<th>${secondHeader}</th>` : ''}
       <th style="text-align: center">${d18_lbl}</th>
       <th style="text-align: center">${d19_lbl}</th>
       <th style="text-align: center">${d20_lbl}</th>
@@ -2249,6 +2360,7 @@ function renderFdTable() {
     });
     
     filteredDaily.forEach(row => {
+      if (row.bc_name === 'TỔNG Vùng ĐCL' || row.bc_name === 'Grand Total') return;
       const tr = document.createElement('tr');
       tr.className = 'fd-row-active';
       
@@ -2265,12 +2377,21 @@ function renderFdTable() {
         }
       }
       
-      let bcMatch = repData.bcs.find(b => clean_bc_name(b.name) === clean_bc_name(row.bc_name));
-      const amTele = bcMatch ? bcMatch.am_tele : '';
+      let amTele = '';
+      if (activeFdDimension === 'am') {
+        const match = repData.bcs.find(b => b.am && b.am.toLowerCase().trim() === row.bc_name.toLowerCase().trim());
+        amTele = match ? match.am_tele : '';
+      } else if (activeFdDimension === 'bc') {
+        let bcMatch = repData.bcs.find(b => clean_bc_name(b.name) === clean_bc_name(row.bc_name));
+        amTele = bcMatch ? bcMatch.am_tele : '';
+      }
+      
+      const btnLabel = activeFdDimension === 'province' ? 'Nhắc các AM' : 'Nhắc AM';
+      const amNameForAlert = activeFdDimension === 'bc' ? row.am : activeFdDimension === 'am' ? row.bc_name : 'AM thuộc ' + row.bc_name;
       
       tr.innerHTML = `
         <td><strong>${escapeHtml(row.bc_name)}</strong></td>
-        <td>👤 ${escapeHtml(row.am)}</td>
+        ${secondHeader ? `<td>👤 ${escapeHtml(row.am)}</td>` : ''}
         <td style="text-align: center" class="${getFdCellClass(row.d18)}">${formatValue(row.d18)}</td>
         <td style="text-align: center" class="${getFdCellClass(row.d19)}">${formatValue(row.d19)}</td>
         <td style="text-align: center" class="${getFdCellClass(row.d20)}">${formatValue(row.d20)}</td>
@@ -2283,7 +2404,7 @@ function renderFdTable() {
           <span class="change-tag ${changeCls}">${arrow} ${sign}${(changeVal * 100).toFixed(2)}%</span>
         </td>
         <td style="text-align: center">
-          <button class="btn-nhac-am" onclick="sendTelegramFdAlert('${escapeHtml(row.bc_name)}', '${escapeHtml(row.am)}', '${escapeHtml(amTele)}', '${formatValue(row.d25)}', '${formatChangeText(changeVal)}', 'Kiểm tra tỷ lệ trả trong ngày và đôn đốc thực hiện GTB-TT')">Nhắc AM</button>
+          <button class="btn-nhac-am" onclick="sendTelegramFdAlert('${escapeHtml(row.bc_name)}', '${escapeHtml(amNameForAlert)}', '${escapeHtml(amTele)}', '${formatValue(row.d25)}', '${formatChangeText(changeVal)}', 'Kiểm tra tỷ lệ trả trong ngày và đôn đốc thực hiện GTB-TT')">${btnLabel}</button>
         </td>
       `;
       body.appendChild(tr);
@@ -2298,6 +2419,19 @@ function switchFdViewMode(mode) {
   
   if (mode === 'weekly') document.getElementById('btnFdViewWeekly').classList.add('active');
   else document.getElementById('btnFdViewDaily').classList.add('active');
+  
+  renderFdTable();
+}
+
+function switchFdDimension(dim) {
+  activeFdDimension = dim;
+  document.getElementById('btnFdDimBc').classList.remove('active');
+  document.getElementById('btnFdDimAm').classList.remove('active');
+  document.getElementById('btnFdDimProvince').classList.remove('active');
+  
+  if (dim === 'bc') document.getElementById('btnFdDimBc').classList.add('active');
+  else if (dim === 'am') document.getElementById('btnFdDimAm').classList.add('active');
+  else if (dim === 'province') document.getElementById('btnFdDimProvince').classList.add('active');
   
   renderFdTable();
 }
@@ -2376,15 +2510,24 @@ async function sendTelegramFdAlert(bcName, amName, amTele, currentVal, changeTex
     const data = fdReport[metricKey];
     if (!data) return 'N/A';
     
-    const cleanTarget = clean_bc_name(bcName);
     const list = isDailyMode ? data.daily : data.weekly;
-    const match = list.find(row => clean_bc_name(row.bc_name) === cleanTarget);
     
-    if (!match) return 'N/A';
-    
-    const val = isDailyMode ? match.d25 : match.w22;
-    if (val === null || val === undefined) return 'N/A';
-    return (val * 100).toFixed(2) + '%';
+    if (activeFdDimension === 'am' || activeFdDimension === 'province') {
+      const aggList = getAggregatedFdData(list, activeFdDimension, !isDailyMode);
+      const cleanTarget = bcName.toLowerCase().trim();
+      const match = aggList.find(row => row.bc_name.toLowerCase().trim() === cleanTarget);
+      if (!match) return 'N/A';
+      const val = isDailyMode ? match.d25 : match.w22;
+      if (val === null || val === undefined) return 'N/A';
+      return (val * 100).toFixed(2) + '%';
+    } else {
+      const cleanTarget = clean_bc_name(bcName);
+      const match = list.find(row => clean_bc_name(row.bc_name) === cleanTarget);
+      if (!match) return 'N/A';
+      const val = isDailyMode ? match.d25 : match.w22;
+      if (val === null || val === undefined) return 'N/A';
+      return (val * 100).toFixed(2) + '%';
+    }
   }
 
   const isDaily = activeFdViewMode === 'daily';
@@ -2398,10 +2541,19 @@ async function sendTelegramFdAlert(bcName, amName, amTele, currentVal, changeTex
   const token = telegramConfig.BOT_TOKEN;
   const chatId = telegramConfig.CHAT_ID;
   
-  const text = `🚨 *[CẢNH BÁO CHỈ SỐ VẬN HÀNH & TỶ LỆ TRẢ]* 🚨\n\n` +
-               `*Bưu cục:* ${bcName}\n` +
-               `*AM Phụ Trách:* ${amName} (${amTele || '@chua_co_tele'})\n` +
-               `*Thời điểm:* ${modeText}\n\n` +
+  let labelHeader = `🚨 *[CẢNH BÁO CHỈ SỐ VẬN HÀNH & TỶ LỆ TRẢ]* 🚨`;
+  let detailLabel = `*Bưu cục:* ${bcName}\n*AM Phụ Trách:* ${amName} (${amTele || '@chua_co_tele'})\n*Thời điểm:* ${modeText}\n\n`;
+  
+  if (activeFdDimension === 'am') {
+    labelHeader = `🚨 *[CẢNH BÁO CHỈ SỐ VẬN HÀNH & TỶ LỆ TRẢ - AM]* 🚨`;
+    detailLabel = `*Area Manager:* ${bcName} (${amTele || '@chua_co_tele'})\n*Thời điểm:* ${modeText}\n\n`;
+  } else if (activeFdDimension === 'province') {
+    labelHeader = `🚨 *[CẢNH BÁO CHỈ SỐ VẬN HÀNH & TỶ LỆ TRẢ - TỈNH]* 🚨`;
+    detailLabel = `*Tỉnh:* ${bcName}\n*Thời điểm:* ${modeText}\n\n`;
+  }
+  
+  const text = `${labelHeader}\n\n` +
+               detailLabel +
                `*Chi tiết bộ chỉ số:* \n` +
                `• *%FD Tổng:* ${valTotal}\n` +
                `• *%FD SME COD:* ${valSme}\n` +

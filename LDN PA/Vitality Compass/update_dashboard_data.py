@@ -80,29 +80,46 @@ def main():
     p_hr_local = r"C:\Users\Administrator\Desktop\AI 2026\Mentor\recruitment_live.xlsx"
     p_hr_user = r"C:\Users\Administrator\Desktop\AI 2026\Mentor\[ĐCL] - BÁO CÁO TUYỂN DỤNG DATA.xlsx"
     
-    if os.path.exists(p_hr_user):
-        print("✓ Found local recruitment file '[ĐCL] - BÁO CÁO TUYỂN DỤNG DATA.xlsx'. Copying to recruitment_live.xlsx and skipping download.")
-        import shutil
-        try:
-            shutil.copy2(p_hr_user, p_hr_local)
-        except Exception as e:
-            print(f"⚠ Failed to copy local recruitment file: {e}")
-        p_hr = p_hr_local
-    elif "--skip-hr" in sys.argv:
-        print("Skipping live recruitment sheet download (using local copy).")
-        p_hr = p_hr_local
+    download_success = False
+    
+    if "--skip-hr" in sys.argv:
+        print("Skipping live recruitment sheet download as requested via argument.")
     else:
         print("Downloading live recruitment sheet from Google Sheets...")
         try:
             gsheet_hr_url = "https://docs.google.com/spreadsheets/d/1si4PWd97eJhQDQUBXvEErjmNHGO8W1NrQVFnzzMIkDI/export?format=xlsx"
-            req = urllib.request.Request(gsheet_hr_url, headers={'User-Agent': 'Mozilla/5.0'})
-            with urllib.request.urlopen(req, timeout=90) as response:
-                with open(p_hr_local, 'wb') as f:
-                    f.write(response.read())
-            print("✓ Downloaded live recruitment sheet successfully.")
-            p_hr = p_hr_local
+            import subprocess
+            try:
+                # Use PowerShell as primary because it handles large GSheet chunked exports on Windows reliably
+                cmd = ["powershell", "-Command", f"Invoke-WebRequest -Uri '{gsheet_hr_url}' -OutFile '{p_hr_local}'"]
+                subprocess.run(cmd, check=True, timeout=120)
+                download_success = True
+            except Exception as pe:
+                # Fallback to urllib
+                req = urllib.request.Request(gsheet_hr_url, headers={'User-Agent': 'Mozilla/5.0'})
+                with urllib.request.urlopen(req, timeout=90) as response:
+                    with open(p_hr_local, 'wb') as f:
+                        f.write(response.read())
+                download_success = True
+            
+            if download_success:
+                print("✓ Downloaded live recruitment sheet successfully.")
+                p_hr = p_hr_local
         except Exception as e:
-            print(f"⚠ Failed to download live recruitment sheet: {e}. Falling back to local file.")
+            print(f"⚠ Failed to download live recruitment sheet: {e}.")
+            
+    if not download_success:
+        if os.path.exists(p_hr_user):
+            print("✓ Falling back to local recruitment file '[ĐCL] - BÁO CÁO TUYỂN DỤNG DATA.xlsx'. Copying to recruitment_live.xlsx...")
+            import shutil
+            try:
+                shutil.copy2(p_hr_user, p_hr_local)
+                p_hr = p_hr_local
+            except Exception as e:
+                print(f"⚠ Failed to copy local recruitment file: {e}")
+                p_hr = p_hr_local
+        else:
+            print("✓ Using existing recruitment_live.xlsx as fallback.")
             p_hr = p_hr_local
         
     # Download Link 1 (GTC/Performance)

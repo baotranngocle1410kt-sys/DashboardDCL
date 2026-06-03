@@ -494,6 +494,11 @@
             <button class="dim-btn active" id="btnFdViewWeekly" onclick="switchFdViewMode('weekly')">Xem Theo Tuần</button>
             <button class="dim-btn" id="btnFdViewDaily" onclick="switchFdViewMode('daily')">Xem Theo Ngày</button>
           </div>
+          <div class="dim-toggles" style="margin-left: 15px; border-left: 1px solid var(--border); padding-left: 15px;">
+            <button class="dim-btn active" id="btnFdDimBc" onclick="switchFdDimension('bc')">Bưu cục</button>
+            <button class="dim-btn" id="btnFdDimAm" onclick="switchFdDimension('am')">AM</button>
+            <button class="dim-btn" id="btnFdDimProvince" onclick="switchFdDimension('province')">Tỉnh</button>
+          </div>
         </div>
         <input type="text" class="search-input" id="fdTableSearch" placeholder="Tìm kiếm bưu cục hoặc AM..." oninput="handleFdSearch()">
       </div>
