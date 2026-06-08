@@ -44,6 +44,7 @@
     <button class="tab-btn" id="tabReporting" onclick="switchTab('reporting')">📊 Báo cáo Vận hành</button>
     <button class="tab-btn" id="tabRecruitment" onclick="switchTab('recruitment')">👥 Nhân sự & Tuyển dụng</button>
     <button class="tab-btn" id="tabReturnRate" onclick="switchTab('return_rate')">📉 Quản lý Tỷ lệ Trả (%FD)</button>
+    <button class="tab-btn" id="tabTransferBacklog" onclick="switchTab('transfer_backlog')">📦 Backlog Luân Chuyển</button>
   </div>
 
   <!-- Main -->
@@ -514,6 +515,135 @@
             <!-- Dynamic rows -->
           </tbody>
         </table>
+      </div>
+    </div>
+  </main>
+
+  <!-- Transfer Backlog Dashboard -->
+  <main class="main transfer-backlog-view" id="appTransferBacklog" style="display:none">
+    <!-- Row 1: KPI Cards -->
+    <div class="kpi-grid-4">
+      <div class="kpi-card-rep">
+        <div class="kpi-card-title">Tồn Luân Chuyển (>24h)</div>
+        <div class="kpi-card-value" id="tbKpiTotal">0</div>
+        <div class="kpi-card-changes" id="tbKpiTotalChanges">
+          <span class="change-tag" id="tbKpiTotalChange">-- vs Lần trước</span>
+        </div>
+      </div>
+      <div class="kpi-card-rep">
+        <div class="kpi-card-title">Luân Chuyển Giao (LC Giao)</div>
+        <div class="kpi-card-value" id="tbKpiGiao">0</div>
+        <div class="kpi-card-changes" id="tbKpiGiaoChanges">
+          <span class="change-tag" id="tbKpiGiaoChange">-- vs Lần trước</span>
+        </div>
+      </div>
+      <div class="kpi-card-rep">
+        <div class="kpi-card-title">Luân Chuyển Trả (LC Trả)</div>
+        <div class="kpi-card-value" id="tbKpiTra">0</div>
+        <div class="kpi-card-changes" id="tbKpiTraChanges">
+          <span class="change-tag" id="tbKpiTraChange">-- vs Lần trước</span>
+        </div>
+      </div>
+      <div class="kpi-card-rep">
+        <div class="kpi-card-title">Cập nhật cuối</div>
+        <div class="kpi-card-value" id="tbKpiAsOf" style="font-size:18px; line-height:2.2; font-weight:600; color:var(--accent-teal)">--</div>
+        <div class="kpi-card-changes">
+          <span class="change-tag" id="tbKpiPrevAsOf">Lần trước: --</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2: Top 20 and Dimension Table -->
+    <div class="rep-row-2">
+      <!-- Top 20 post offices -->
+      <div class="card chart-card">
+        <div class="card-header">
+          <div class="card-title">🔥 Top 20 Bưu Cục Tồn Luân Chuyển Cao Nhất</div>
+          <span class="card-badge" style="background:rgba(244,63,94,0.15); color:var(--accent-rose)">Đơn >24H</span>
+        </div>
+        <div class="scrollable table-wrapper" style="height: 380px;">
+          <table class="rep-table">
+            <thead>
+              <tr>
+                <th style="width: 8%">STT</th>
+                <th style="width: 42%">Bưu Cục</th>
+                <th style="width: 20%">AM</th>
+                <th style="width: 10%; text-align:center">Giao</th>
+                <th style="width: 10%; text-align:center">Trả</th>
+                <th style="width: 10%; text-align:center">Tổng</th>
+                <th style="width: 10%; text-align:center">Chênh</th>
+              </tr>
+            </thead>
+            <tbody id="tbTop20TableBody">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Dimension summary -->
+      <div class="card insights-card">
+        <div class="card-header table-header-flex" style="border-bottom:none; margin-bottom:0; padding-bottom:0">
+          <div class="card-title-group">
+            <div class="card-title">📊 Thống kê chiều dữ liệu</div>
+          </div>
+          <div class="dim-toggles">
+            <button class="dim-btn active" id="btnTbDimProvince" onclick="switchTbDimension('province')">Tỉnh</button>
+            <button class="dim-btn" id="btnTbDimAm" onclick="switchTbDimension('am')">AM</button>
+            <button class="dim-btn" id="btnTbDimBc" onclick="switchTbDimension('bc')">Bưu Cục</button>
+          </div>
+        </div>
+        <div class="scrollable table-wrapper" style="height: 380px; margin-top:16px;">
+          <table class="rep-table">
+            <thead>
+              <tr id="tbDimTableHead">
+                <!-- Dynamic headers -->
+              </tr>
+            </thead>
+            <tbody id="tbDimTableBody">
+              <!-- Dynamic rows -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 3: Detail Search table -->
+    <div class="card table-card">
+      <div class="card-header table-header-flex">
+        <div class="card-title-group">
+          <div class="card-title">📋 Danh sách Chi tiết Đơn hàng Luân chuyển (>24h)</div>
+        </div>
+        <div style="display:flex; gap:12px; align-items:center;">
+          <input type="text" class="search-input" id="tbTableSearch" placeholder="Tìm đơn, bưu cục, AM, tỉnh..." oninput="handleTbSearch()">
+          <span style="font-size:12px; color:var(--text-muted)" id="tbDetailCount">Hiển thị: 0 đơn</span>
+        </div>
+      </div>
+      <div class="scrollable table-wrapper" style="max-height: 480px;">
+        <table class="rep-table">
+          <thead>
+            <tr>
+              <th>Mã đơn hàng</th>
+              <th>Loại đơn</th>
+              <th>Khách hàng</th>
+              <th>Trạng thái</th>
+              <th>Tuổi đơn (Giờ)</th>
+              <th>Bưu cục</th>
+              <th>Tỉnh</th>
+              <th>AM phụ trách</th>
+              <th>Phân loại</th>
+            </tr>
+          </thead>
+          <tbody id="tbDetailTableBody">
+            <!-- Dynamic rows -->
+          </tbody>
+        </table>
+      </div>
+      <!-- Pagination controls -->
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-top:14px; padding-top:12px; border-top:1px solid var(--border); font-size:12px; color:var(--text-secondary)">
+        <button class="btn btn-sm" id="btnTbPrevPage" onclick="changeTbPage(-1)">◀ Trang trước</button>
+        <span id="tbPaginationInfo">Trang 1 / 1</span>
+        <button class="btn btn-sm" id="btnTbNextPage" onclick="changeTbPage(1)">Trang sau ▶</button>
       </div>
     </div>
   </main>

@@ -145,6 +145,7 @@ async function refreshData() {
     renderChecklistSidePanel();
     renderDroppedBcs();
     renderReturnRateView();
+    renderTransferBacklogView();
   } else if (insightsContent) {
     parseAndRenderInsights(insightsContent);
   }
@@ -549,21 +550,25 @@ function switchTab(tabName) {
   const reportingMain = document.getElementById('appReporting');
   const recruitmentMain = document.getElementById('appRecruitment');
   const returnRateMain = document.getElementById('appReturnRate');
+  const transferBacklogMain = document.getElementById('appTransferBacklog');
   
   const tabCheck = document.getElementById('tabChecklist');
   const tabRep = document.getElementById('tabReporting');
   const tabRec = document.getElementById('tabRecruitment');
   const tabRet = document.getElementById('tabReturnRate');
+  const tabTb = document.getElementById('tabTransferBacklog');
 
   checklistMain.style.display = 'none';
   reportingMain.style.display = 'none';
   recruitmentMain.style.display = 'none';
   if (returnRateMain) returnRateMain.style.display = 'none';
+  if (transferBacklogMain) transferBacklogMain.style.display = 'none';
   
   tabCheck.classList.remove('active');
   tabRep.classList.remove('active');
   tabRec.classList.remove('active');
   if (tabRet) tabRet.classList.remove('active');
+  if (tabTb) tabTb.classList.remove('active');
 
   if (tabName === 'checklist') {
     checklistMain.style.display = 'grid';
@@ -590,6 +595,15 @@ function switchTab(tabName) {
     if (tabRet) tabRet.classList.add('active');
     if (repData) {
       setTimeout(renderReturnRateView, 50);
+    }
+  } else if (tabName === 'transfer_backlog') {
+    if (transferBacklogMain) {
+      transferBacklogMain.style.display = 'flex';
+      transferBacklogMain.style.flexDirection = 'column';
+    }
+    if (tabTb) tabTb.classList.add('active');
+    if (repData) {
+      setTimeout(renderTransferBacklogView, 50);
     }
   }
 }
@@ -2592,6 +2606,248 @@ async function sendTelegramFdAlert(bcName, amName, amTele, currentVal, changeTex
 function clean_bc_name(name) {
   if (!name) return "";
   return name.toLowerCase().replace("bưu cục", "").replace("bc", "").replace(/[\s\-]+/g, " ").trim();
+}
+
+// ===== TRANSFER BACKLOG STATE =====
+let activeTbDim = 'province';
+let tbSearchQuery = '';
+let tbCurrentPage = 1;
+const tbPageSize = 25;
+
+// ===== TRANSFER BACKLOG DASHBOARD RENDERING =====
+function renderTransferBacklogView() {
+  if (!repData || !repData.transfer_backlog) return;
+  const tb = repData.transfer_backlog;
+  
+  // Render KPIs
+  const kpis = tb.kpis;
+  document.getElementById('tbKpiTotal').textContent = kpis.total.toLocaleString();
+  document.getElementById('tbKpiGiao').textContent = kpis.giao.toLocaleString();
+  document.getElementById('tbKpiTra').textContent = kpis.tra.toLocaleString();
+  document.getElementById('tbKpiAsOf').textContent = kpis.as_of || '--';
+  
+  // Render KPI Changes
+  const diffTotal = kpis.total - kpis.prev_total;
+  const diffGiao = kpis.giao - kpis.prev_giao;
+  const diffTra = kpis.tra - kpis.prev_tra;
+  
+  const formatDiff = (diff) => {
+    const arrow = diff > 0 ? '▲' : diff < 0 ? '▼' : '±';
+    const sign = diff > 0 ? '+' : '';
+    const cls = diff > 0 ? 'down' : diff < 0 ? 'up' : ''; // For backlog, increase is bad (down), decrease is good (up)
+    return `<span class="change-tag ${cls}">${arrow} ${sign}${diff} vs Lần trước</span>`;
+  };
+  
+  document.getElementById('tbKpiTotalChanges').innerHTML = formatDiff(diffTotal);
+  document.getElementById('tbKpiGiaoChanges').innerHTML = formatDiff(diffGiao);
+  document.getElementById('tbKpiTraChanges').innerHTML = formatDiff(diffTra);
+  document.getElementById('tbKpiPrevAsOf').textContent = `Lần trước: ${kpis.prev_as_of || '--'}`;
+  
+  // Render Top 20 Table
+  renderTbTop20(tb.top_20);
+  
+  // Render Dimension Table
+  renderTbDimension(tb);
+  
+  // Render Detail Table
+  renderTbDetails(tb.orders);
+}
+
+function renderTbTop20(top20) {
+  const tbody = document.getElementById('tbTop20TableBody');
+  if (!tbody) return;
+  tbody.innerHTML = '';
+  
+  if (!top20 || top20.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center; color:var(--text-muted)">Không có dữ liệu bưu cục tồn cao</td></tr>';
+    return;
+  }
+  
+  top20.forEach(item => {
+    const tr = document.createElement('tr');
+    
+    // Check trend values to color
+    let chgVal = 0;
+    try {
+      const cleanChg = item.change_total.replace('+', '').replace('▲', '').replace('▼', '').trim();
+      chgVal = parseInt(cleanChg) || 0;
+      if (item.change_total.includes('-') || item.change_total.includes('▼')) chgVal = -chgVal;
+    } catch(e) {}
+    
+    const trendCls = chgVal > 0 ? 'color:var(--accent-rose)' : chgVal < 0 ? 'color:var(--accent-green)' : 'color:var(--text-muted)';
+    
+    tr.innerHTML = `
+      <td>${item.stt}</td>
+      <td style="font-weight:600; color:#fff">${escapeHtml(item.bc_name)}</td>
+      <td>👤 ${escapeHtml(item.am)}</td>
+      <td style="text-align:center">${item.giao}</td>
+      <td style="text-align:center">${item.tra}</td>
+      <td style="text-align:center; font-weight:700">${item.total}</td>
+      <td style="text-align:center; font-weight:600; ${trendCls}">${item.change_total}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+function switchTbDimension(dim) {
+  activeTbDim = dim;
+  document.getElementById('btnTbDimProvince').classList.remove('active');
+  document.getElementById('btnTbDimAm').classList.remove('active');
+  document.getElementById('btnTbDimBc').classList.remove('active');
+  
+  if (dim === 'province') document.getElementById('btnTbDimProvince').classList.add('active');
+  else if (dim === 'am') document.getElementById('btnTbDimAm').classList.add('active');
+  else if (dim === 'bc') document.getElementById('btnTbDimBc').classList.add('active');
+  
+  if (repData && repData.transfer_backlog) {
+    renderTbDimension(repData.transfer_backlog);
+  }
+}
+
+function renderTbDimension(tb) {
+  const thead = document.getElementById('tbDimTableHead');
+  const tbody = document.getElementById('tbDimTableBody');
+  if (!thead || !tbody) return;
+  
+  tbody.innerHTML = '';
+  let items = [];
+  
+  if (activeTbDim === 'province') {
+    thead.innerHTML = `
+      <th>Tỉnh</th>
+      <th style="text-align:center">LC Giao</th>
+      <th style="text-align:center">LC Trả</th>
+      <th style="text-align:center">Tổng Tồn</th>
+    `;
+    items = tb.provinces || [];
+  } else if (activeTbDim === 'am') {
+    thead.innerHTML = `
+      <th>Area Manager (AM)</th>
+      <th style="text-align:center">LC Giao</th>
+      <th style="text-align:center">LC Trả</th>
+      <th style="text-align:center">Tổng Tồn</th>
+    `;
+    items = tb.ams || [];
+  } else if (activeTbDim === 'bc') {
+    thead.innerHTML = `
+      <th>Bưu Cục</th>
+      <th>AM</th>
+      <th style="text-align:center">LC Giao</th>
+      <th style="text-align:center">LC Trả</th>
+      <th style="text-align:center">Tổng Tồn</th>
+    `;
+    items = tb.bcs || [];
+  }
+  
+  if (items.length === 0) {
+    const colSpan = activeTbDim === 'bc' ? 5 : 4;
+    tbody.innerHTML = `<tr><td colspan="${colSpan}" style="text-align:center; color:var(--text-muted)">Không có dữ liệu</td></tr>`;
+    return;
+  }
+  
+  items.forEach(item => {
+    const tr = document.createElement('tr');
+    if (activeTbDim === 'bc') {
+      tr.innerHTML = `
+        <td style="font-weight:600; color:#fff">${escapeHtml(item.name)}</td>
+        <td>👤 ${escapeHtml(item.am)}</td>
+        <td style="text-align:center">${item.giao}</td>
+        <td style="text-align:center">${item.tra}</td>
+        <td style="text-align:center; font-weight:700; color:var(--accent-amber)">${item.total}</td>
+      `;
+    } else {
+      tr.innerHTML = `
+        <td style="font-weight:600; color:#fff">${escapeHtml(item.name)}</td>
+        <td style="text-align:center">${item.giao}</td>
+        <td style="text-align:center">${item.tra}</td>
+        <td style="text-align:center; font-weight:700; color:var(--accent-amber)">${item.total}</td>
+      `;
+    }
+    tbody.appendChild(tr);
+  });
+}
+
+function handleTbSearch() {
+  tbSearchQuery = document.getElementById('tbTableSearch').value.toLowerCase().trim();
+  tbCurrentPage = 1;
+  if (repData && repData.transfer_backlog) {
+    renderTbDetails(repData.transfer_backlog.orders);
+  }
+}
+
+function changeTbPage(delta) {
+  tbCurrentPage += delta;
+  if (tbCurrentPage < 1) tbCurrentPage = 1;
+  if (repData && repData.transfer_backlog) {
+    renderTbDetails(repData.transfer_backlog.orders);
+  }
+}
+
+function renderTbDetails(orders) {
+  const tbody = document.getElementById('tbDetailTableBody');
+  if (!tbody) return;
+  tbody.innerHTML = '';
+  
+  if (!orders || orders.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="9" style="text-align:center; color:var(--text-muted)">Không có dữ liệu đơn hàng</td></tr>';
+    document.getElementById('tbDetailCount').textContent = 'Hiển thị: 0 đơn';
+    document.getElementById('tbPaginationInfo').textContent = 'Trang 1 / 1';
+    return;
+  }
+  
+  // Filter orders based on search query
+  let filtered = orders;
+  if (tbSearchQuery) {
+    filtered = orders.filter(o => 
+      o.order_id.toLowerCase().includes(tbSearchQuery) ||
+      o.bc_name.toLowerCase().includes(tbSearchQuery) ||
+      o.am.toLowerCase().includes(tbSearchQuery) ||
+      o.province.toLowerCase().includes(tbSearchQuery) ||
+      o.customer.toLowerCase().includes(tbSearchQuery) ||
+      o.status.toLowerCase().includes(tbSearchQuery) ||
+      o.type.toLowerCase().includes(tbSearchQuery)
+    );
+  }
+  
+  // Total details count display
+  document.getElementById('tbDetailCount').textContent = `Hiển thị: ${filtered.length.toLocaleString()} đơn`;
+  
+  // Pagination
+  const totalPages = Math.max(1, Math.ceil(filtered.length / tbPageSize));
+  if (tbCurrentPage > totalPages) tbCurrentPage = totalPages;
+  
+  document.getElementById('tbPaginationInfo').textContent = `Trang ${tbCurrentPage} / ${totalPages}`;
+  document.getElementById('btnTbPrevPage').disabled = tbCurrentPage === 1;
+  document.getElementById('btnTbNextPage').disabled = tbCurrentPage === totalPages;
+  
+  const startIdx = (tbCurrentPage - 1) * tbPageSize;
+  const pageItems = filtered.slice(startIdx, startIdx + tbPageSize);
+  
+  if (pageItems.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="9" style="text-align:center; color:var(--text-muted)">Không tìm thấy đơn hàng phù hợp</td></tr>';
+    return;
+  }
+  
+  pageItems.forEach(o => {
+    const tr = document.createElement('tr');
+    
+    const typeCls = o.type === 'Luân chuyển giao' ? 'color:var(--accent-blue)' : 'color:var(--accent-purple)';
+    const statusCls = o.status === 'Chưa đóng kiện' ? 'background:rgba(244,63,94,0.15); color:var(--accent-rose)' : 'background:rgba(45,212,191,0.15); color:var(--accent-teal)';
+    const typeLabel = o.type === 'Luân chuyển giao' ? '🚚 LC Giao' : '🔄 LC Trả';
+    
+    tr.innerHTML = `
+      <td style="font-family:monospace; font-weight:600; color:#fff">${o.order_id}</td>
+      <td style="font-weight:600; ${typeCls}">${typeLabel}</td>
+      <td>${escapeHtml(o.customer)}</td>
+      <td><span style="font-size:10px; font-weight:600; padding:2px 6px; border-radius:4px; ${statusCls}">${escapeHtml(o.status)}</span></td>
+      <td style="font-weight:600; text-align:center">${o.age_hours}</td>
+      <td>${escapeHtml(o.bc_name)}</td>
+      <td>${escapeHtml(o.province)}</td>
+      <td>👤 ${escapeHtml(o.am)}</td>
+      <td style="font-size:11px; color:var(--text-secondary); font-weight:500">${escapeHtml(o.aging_band)}</td>
+    `;
+    tbody.appendChild(tr);
+  });
 }
 
 // Auto-load server data on startup if available (Read-Only mode)

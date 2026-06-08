@@ -180,6 +180,21 @@ def main():
         else:
             print("✓ Using existing fd_live.xlsx as fallback.")
         
+    # Download Transfer Backlog (Link 5)
+    print("Downloading live Transfer Backlog sheet from Google Sheets...")
+    p_tb_xlsx = r"C:\Users\Administrator\Desktop\AI 2026\Mentor\DCL _24h chưa luân chuyển.xlsx"
+    tb_success = False
+    try:
+        gsheet_tb_url = "https://docs.google.com/spreadsheets/d/1zyZsYWuHeL2WiEu5O7rABZZpyWoH5wEacxXe5s-IQQw/export?format=xlsx"
+        req = urllib.request.Request(gsheet_tb_url, headers={'User-Agent': 'Mozilla/5.0'})
+        with urllib.request.urlopen(req, timeout=90) as response:
+            with open(p_tb_xlsx, 'wb') as f:
+                f.write(response.read())
+        print("✓ Downloaded Transfer Backlog sheet successfully.")
+        tb_success = True
+    except Exception as e:
+        print(f"⚠ Failed to download Transfer Backlog sheet: {e}. Falling back to local file.")
+        
     # Dynamic classification of Link 1 & Link 2
     for path, success, label in [(p_link1_local, link1_success, "Link 1"), (p_link2_local, link2_success, "Link 2")]:
         if success and os.path.exists(path):
@@ -1341,6 +1356,176 @@ def main():
         except Exception as e:
             print(f"⚠ Failed to parse fd_live.xlsx: {e}")
 
+    # 10.8 Parse Transfer Backlog Data (DCL _24h chưa luân chuyển.xlsx)
+    tb_data = {
+        'kpis': {
+            'giao': 0, 'tra': 0, 'total': 0,
+            'prev_giao': 0, 'prev_tra': 0, 'prev_total': 0,
+            'as_of': '', 'prev_as_of': ''
+        },
+        'top_20': [],
+        'ams': [],
+        'provinces': [],
+        'bcs': [],
+        'orders': []
+    }
+    
+    p_tb_xlsx = r"C:\Users\Administrator\Desktop\AI 2026\Mentor\DCL _24h chưa luân chuyển.xlsx"
+    if os.path.exists(p_tb_xlsx):
+        try:
+            print("Parsing Transfer Backlog Excel sheet...")
+            with pd.ExcelFile(p_tb_xlsx) as xls_tb:
+                # 1. Read Pivot sheet
+                df_pivot = pd.read_excel(xls_tb, sheet_name="Pivot", header=None)
+                
+                # Extract timestamps
+                as_of_val = str(df_pivot.iloc[1, 0]) if len(df_pivot) > 1 else ""
+                prev_as_of_val = str(df_pivot.iloc[1, 6]) if len(df_pivot) > 1 and df_pivot.shape[1] > 6 else ""
+                
+                def extract_time(text):
+                    m = re.search(r'\d{2}/\d{2}/\d{4} \d{2}:\d{2}', text)
+                    return m.group(0) if m else text
+                    
+                tb_data['kpis']['as_of'] = extract_time(as_of_val)
+                tb_data['kpis']['prev_as_of'] = extract_time(prev_as_of_val)
+                
+                # Extract Total KPIs (Row 2)
+                if len(df_pivot) > 2:
+                    tb_data['kpis']['giao'] = int(df_pivot.iloc[2, 3]) if pd.notna(df_pivot.iloc[2, 3]) else 0
+                    tb_data['kpis']['tra'] = int(df_pivot.iloc[2, 4]) if pd.notna(df_pivot.iloc[2, 4]) else 0
+                    tb_data['kpis']['total'] = int(df_pivot.iloc[2, 5]) if pd.notna(df_pivot.iloc[2, 5]) else 0
+                    
+                    tb_data['kpis']['prev_giao'] = int(df_pivot.iloc[2, 6]) if pd.notna(df_pivot.iloc[2, 6]) else 0
+                    tb_data['kpis']['prev_tra'] = int(df_pivot.iloc[2, 7]) if pd.notna(df_pivot.iloc[2, 7]) else 0
+                    tb_data['kpis']['prev_total'] = int(df_pivot.iloc[2, 8]) if pd.notna(df_pivot.iloc[2, 8]) else 0
+                
+                # Extract Top 20 (Rows 5 to 24)
+                for r_idx in range(5, min(25, len(df_pivot))):
+                    row_vals = df_pivot.iloc[r_idx]
+                    if pd.isna(row_vals[0]) or str(row_vals[0]).strip() == "":
+                        continue
+                    try:
+                        stt = int(row_vals[0])
+                        bc_name_val = str(row_vals[1]).strip()
+                        am_val = str(row_vals[2]).strip()
+                        
+                        giao_val = int(row_vals[3]) if pd.notna(row_vals[3]) else 0
+                        tra_val = int(row_vals[4]) if pd.notna(row_vals[4]) else 0
+                        tot_val = int(row_vals[5]) if pd.notna(row_vals[5]) else 0
+                        
+                        pg_val = int(row_vals[6]) if pd.notna(row_vals[6]) else 0
+                        pt_val = int(row_vals[7]) if pd.notna(row_vals[7]) else 0
+                        ptot_val = int(row_vals[8]) if pd.notna(row_vals[8]) else 0
+                        
+                        d_giao = str(row_vals[9]).strip()
+                        d_tra = str(row_vals[10]).strip()
+                        d_tot = str(row_vals[11]).strip()
+                        trend = str(row_vals[12]).strip() if pd.notna(row_vals[12]) else ""
+                        
+                        tb_data['top_20'].append({
+                            'stt': stt,
+                            'bc_name': bc_name_val,
+                            'am': am_val,
+                            'giao': giao_val,
+                            'tra': tra_val,
+                            'total': tot_val,
+                            'prev_giao': pg_val,
+                            'prev_tra': pt_val,
+                            'prev_total': ptot_val,
+                            'change_giao': d_giao,
+                            'change_tra': d_tra,
+                            'change_total': d_tot,
+                            'trend': trend
+                        })
+                    except Exception as ex_row:
+                        print(f"  ⚠ Failed to parse top 20 row {r_idx}: {ex_row}")
+                
+                # 2. Read Đơn treo luân chuyển GIAOTRẢ sheet for details
+                df_main = pd.read_excel(xls_tb, sheet_name="Đơn treo luân chuyển GIAOTRẢ")
+                
+                # Filter rows where BL is not in ['A. 0-6', 'B. 6-12', 'C. 12-24']
+                df_filtered = df_main[~df_main['BL'].isin(['A. 0-6', 'B. 6-12', 'C. 12-24'])].copy()
+                
+                # Fill NaNs
+                df_filtered['warehouse_name'] = df_filtered['warehouse_name'].fillna('Chưa xác định')
+                df_filtered['province_name'] = df_filtered['province_name'].fillna('Chưa xác định')
+                df_filtered['am_name'] = df_filtered['am_name'].fillna('Chưa phân công')
+                df_filtered['Loại đơn'] = df_filtered['Loại đơn'].fillna('Chưa rõ')
+                df_filtered['Khách hàng'] = df_filtered['Khách hàng'].fillna('Khác')
+                df_filtered['Trạng thái'] = df_filtered['Trạng thái'].fillna('-')
+                df_filtered['Thời gian tồn đọng'] = df_filtered['Thời gian tồn đọng'].fillna('-')
+                df_filtered['BL'] = df_filtered['BL'].fillna('Khác')
+                
+                # Map detail orders
+                for _, row in df_filtered.iterrows():
+                    try:
+                        bc_id = int(float(row['Mã bưu cục'])) if pd.notna(row['Mã bưu cục']) else 0
+                    except:
+                        bc_id = 0
+                        
+                    tb_data['orders'].append({
+                        'bc_id': bc_id,
+                        'order_id': str(row['Mã đơn hàng']).strip(),
+                        'type': str(row['Loại đơn']).strip(),
+                        'customer': str(row['Khách hàng']).strip(),
+                        'status': str(row['Trạng thái']).strip(),
+                        'age_hours': str(row['Thời gian tồn đọng']).strip(),
+                        'bc_name': str(row['warehouse_name']).strip(),
+                        'province': str(row['province_name']).strip(),
+                        'am': str(row['am_name']).strip(),
+                        'aging_band': str(row['BL']).strip()
+                    })
+                
+                # 3. Compute AM breakdown
+                am_groups = df_filtered.groupby('am_name')
+                for am_name, grp in am_groups:
+                    giao_cnt = int((grp['Loại đơn'] == 'Luân chuyển giao').sum())
+                    tra_cnt = int((grp['Loại đơn'] == 'Luân chuyển trả').sum())
+                    tb_data['ams'].append({
+                        'name': am_name,
+                        'giao': giao_cnt,
+                        'tra': tra_cnt,
+                        'total': len(grp)
+                    })
+                tb_data['ams'] = sorted(tb_data['ams'], key=lambda x: x['total'], reverse=True)
+                
+                # 4. Compute Province breakdown
+                prov_groups = df_filtered.groupby('province_name')
+                for prov_name, grp in prov_groups:
+                    giao_cnt = int((grp['Loại đơn'] == 'Luân chuyển giao').sum())
+                    tra_cnt = int((grp['Loại đơn'] == 'Luân chuyển trả').sum())
+                    tb_data['provinces'].append({
+                        'name': prov_name,
+                        'giao': giao_cnt,
+                        'tra': tra_cnt,
+                        'total': len(grp)
+                    })
+                tb_data['provinces'] = sorted(tb_data['provinces'], key=lambda x: x['total'], reverse=True)
+                
+                # 5. Compute Bưu cục breakdown
+                bc_groups = df_filtered.groupby(['Mã bưu cục', 'warehouse_name', 'province_name', 'am_name'])
+                for (bc_id_raw, bc_name, prov_name, am_name), grp in bc_groups:
+                    try:
+                        bc_id_val = int(float(bc_id_raw))
+                    except:
+                        bc_id_val = 0
+                    giao_cnt = int((grp['Loại đơn'] == 'Luân chuyển giao').sum())
+                    tra_cnt = int((grp['Loại đơn'] == 'Luân chuyển trả').sum())
+                    tb_data['bcs'].append({
+                        'id': bc_id_val,
+                        'name': bc_name,
+                        'province': prov_name,
+                        'am': am_name,
+                        'giao': giao_cnt,
+                        'tra': tra_cnt,
+                        'total': len(grp)
+                    })
+                tb_data['bcs'] = sorted(tb_data['bcs'], key=lambda x: x['total'], reverse=True)
+                
+            print(f"✓ Parsed Transfer Backlog successfully. Total details: {len(tb_data['orders'])} orders.")
+        except Exception as e:
+            print(f"⚠ Failed to parse Transfer Backlog Excel: {e}")
+
     # 11. Export JSON Data
 
     payload = {
@@ -1356,7 +1541,8 @@ def main():
             'top_5': top5_data,
             'latest_week': latest_week_num
         },
-        'fd_report': fd_data
+        'fd_report': fd_data,
+        'transfer_backlog': tb_data
     }
     
     with open(output_json, 'w', encoding='utf-8') as f:
