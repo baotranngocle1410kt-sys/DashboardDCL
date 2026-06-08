@@ -227,7 +227,7 @@ def main():
         df_hist = pd.read_excel(xls_perf, sheet_name="Lịch sử")
     print("Reading backlog sheets...")
     df_backlog_pivot = pd.read_excel(p_backlog, sheet_name="PIVOT")
-    df_backlog_raw = pd.read_excel(p_backlog, sheet_name="Đơn GIAO aging >5 ngày")
+    df_backlog_raw = pd.read_excel(p_backlog, sheet_name="Đơn GIAO aging >5 ngày", usecols=['BC'])
     
     # Group by BC to count backlogs dynamically
     bl_by_bc = {}
