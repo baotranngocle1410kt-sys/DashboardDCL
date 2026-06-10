@@ -15,7 +15,7 @@
 - **BC 206 A Đoàn Thị Nghiệp-Mỹ Tho-Tiền Giang 01** có chỉ số GTC ngày 07/06/26 thấp hơn ngày hôm N-1 (06/06/26) 18.36%. So với cùng kỳ giảm 3.63% do Không rõ nguyên nhân, rủi ro sập luồng hàng cao!, nhân sự đang thiếu 3/21 định biên, tuyến thiếu (Trung An, Phước Thạnh).
 - **BC 992 Đường Huyện 35-Vĩnh Kim-Châu Thành-Tiền Giang** có chỉ số GTC ngày 07/06/26 thấp hơn ngày hôm N-1 (06/06/26) 6.16%. So với cùng kỳ giảm 10.21% do Tuyến giao hàng Vĩnh Kim bị chia cắt, shipper nghỉ đột xuất., nhân sự đang thiếu 4/17 định biên, tuyến thiếu (Long Định , Song Thuận , Bình Đức , Long Hưng , Đông Hoà , Nhị Bình).
 - **BC 3/2 Thị Trấn Châu Thành-Bến Tre** có chỉ số GTC ngày 07/06/26 thấp hơn ngày hôm N-1 (06/06/26) 7.43%. So với cùng kỳ giảm 9.44% do Không rõ nguyên nhân, rủi ro sập luồng hàng cao!, nhân sự đang thiếu 4/14 định biên, tuyến thiếu (Giao Long, Phước Thạnh, Tam Phước).
-- **BC 73 Phó Cơ Điều-Phường Phước Hậu-Vĩnh Long** có chỉ số GTC ngày 07/06/26 thấp hơn ngày hôm N-1 (06/06/26) 3.28%. So với cùng kỳ giảm 4.50% do Thiếu shipper giao chặng cuối, tồn đọng ca sáng., nhân sự đang thiếu 9/16 định biên, tuyến thiếu (Phường 3, Phường 4, Phưởng 5, Thanh Đức).
+- **BC 73 Phó Cơ Điều-Phường Phước Hậu-Vĩnh Long** có chỉ số GTC ngày 07/06/26 thấp hơn ngày hôm N-1 (06/06/26) 3.28%. So với cùng kỳ giảm 4.50% do Thiếu shipper giao chặng cuối, tồn đọng ca sáng., nhân sự đang thiếu 9/14 định biên, tuyến thiếu (Phường 3, Phường 4, Phưởng 5, Thanh Đức).
 - **BC 88 Ấp Thân Hòa-Thân Cửu Nghĩa-Châu Thành-Tiền Giang** có chỉ số GTC ngày 07/06/26 thấp hơn ngày hôm N-1 (06/06/26) 25.17%. So với cùng kỳ giảm 7.39% do Không rõ nguyên nhân, rủi ro sập luồng hàng cao!, nhân sự đang thiếu 1/19 định biên.
 - **BC Quốc Lộ 50-Gò Công Tây-Tiền Giang** có chỉ số GTC ngày 07/06/26 thấp hơn ngày hôm N-1 (06/06/26) 0.18%. So với cùng kỳ giảm 20.94% do Không rõ nguyên nhân, rủi ro sập luồng hàng cao!, nhân sự đang thiếu 0/19 định biên, tuyến thiếu (Bình Tân, Long Bình, Vĩnh Hựu).
 - **BC Quốc Lộ 53-Xã Trung Thành-Vĩnh Long** có chỉ số GTC ngày 07/06/26 thấp hơn ngày hôm N-1 (06/06/26) 1.64%. So với cùng kỳ giảm 7.13% do Lượng đơn tăng đột biến 150% do khuyến mãi Shopee., nhân sự đang thiếu 0/20 định biên.
@@ -58,7 +58,7 @@
 | Lê Minh Tuấn | 63.31% | 3.04% | Cải thiện | 65 | Thiếu 11/80 | BìnhNLC |
 | Lý Quài Nhân | 62.22% | 4.02% | Cải thiện | 46 | Thiếu 8/39 | BìnhNLC |
 | Lâm Xuân Vinh | 53.52% | 4.96% | Yếu | 132 | Thiếu 5/82 | VyLNK |
-| Nguyễn Tuấn Anh | 52.32% | 4.20% | Yếu | 592 | Thiếu 21/135 | BìnhNLC |
+| Nguyễn Tuấn Anh | 52.32% | 4.20% | Yếu | 592 | Thiếu 21/133 | BìnhNLC |
 | Đoàn Công Tín | 51.68% | 2.56% | Yếu | 232 | Thiếu 6/84 | KhôiHM |
 | Huỳnh Quốc Trung | 45.52% | 10.25% | Yếu | 48 | Thiếu 2/13 | VyLNK |
 | Nguyễn Anh Tùng | 43.22% | 4.58% | Yếu | 175 | Thiếu 10/89 | KhôiHM |
