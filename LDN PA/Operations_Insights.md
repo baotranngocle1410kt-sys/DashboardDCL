@@ -9,7 +9,7 @@
 - **FD**: 3.60% (Biến động vs Tuần trước: ↗ +0.28% vs Tuần trước)
 - **Ontime**: 91.50%
 - **Backlog**: 1,497 (Biến động vs Tuần trước: ↘ -47.80% vs Tuần trước)
-- **Thiếu hụt Nhân sự**: Thiếu 67 shipper (Tuyển mới: 21 / Nghỉ việc: 43)
+- **Thiếu hụt Nhân sự**: Thiếu 68 shipper (Tuyển mới: 21 / Nghỉ việc: 45)
 
 ## 🔴 Cảnh báo Hôm nay (Alerts)
 - **BC 206 A Đoàn Thị Nghiệp-Mỹ Tho-Tiền Giang 01** có chỉ số GTC ngày 07/06/26 thấp hơn ngày hôm N-1 (06/06/26) 18.36%. So với cùng kỳ giảm 3.63% do Không rõ nguyên nhân, rủi ro sập luồng hàng cao!, nhân sự đang thiếu 3/21 định biên, tuyến thiếu (Trung An, Phước Thạnh).
@@ -31,7 +31,7 @@
 - Trong tuần qua, HRBP đã tuyển thành công **21 nhân viên mới** (OB) hỗ trợ lấp đầy các tuyến nóng.
 
 ### Lowlights:
-- Toàn vùng đang **thiếu hụt thực tế 67 shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.
+- Toàn vùng đang **thiếu hụt thực tế 68 shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.
 - Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 18 định biên) và **Đồng Tháp** (thiếu 21 định biên).
 
 ## 🔮 Phân tích Nguyên nhân (Root Causes)
@@ -52,7 +52,7 @@
 | AM | GTC | FD | Trạng thái | Đơn Aging | Thiếu shipper | HRBP |
 | --- | --- | --- | --- | --- | --- | --- |
 | Ngô Phan Mỹ Tú | 74.16% | 2.46% | Mạnh | 11 | Thiếu 2/56 | BìnhNLC |
-| Huỳnh Phương Duy | 70.70% | 2.50% | Mạnh | 111 | Thiếu 3/68 | VyLNK |
+| Huỳnh Phương Duy | 70.70% | 2.50% | Mạnh | 111 | Thiếu 4/68 | VyLNK |
 | Nguyễn Thành Huy | 70.58% | 2.73% | Mạnh | 46 | Thiếu 4/128 | VyLNK |
 | Nguyễn Việt Tới | 69.36% | 3.18% | Mạnh | 36 | Thiếu 4/46 | BìnhNLC |
 | Lê Minh Tuấn | 63.31% | 3.04% | Cải thiện | 65 | Thiếu 9/80 | BìnhNLC |
