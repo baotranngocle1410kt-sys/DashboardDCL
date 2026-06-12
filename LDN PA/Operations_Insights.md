@@ -9,7 +9,7 @@
 - **FD**: 3.60% (Biến động vs Tuần trước: ↗ +0.28% vs Tuần trước)
 - **Ontime**: 91.50%
 - **Backlog**: 1,497 (Biến động vs Tuần trước: ↘ -47.80% vs Tuần trước)
-- **Thiếu hụt Nhân sự**: Thiếu 67 shipper (Tuyển mới: 22 / Nghỉ việc: 45)
+- **Thiếu hụt Nhân sự**: Thiếu 70 shipper (Tuyển mới: 22 / Nghỉ việc: 45)
 
 ## 🔴 Cảnh báo Hôm nay (Alerts)
 - **BC 206 A Đoàn Thị Nghiệp-Mỹ Tho-Tiền Giang 01** có chỉ số GTC ngày 07/06/26 thấp hơn ngày hôm N-1 (06/06/26) 18.36%. So với cùng kỳ giảm 3.63% do Không rõ nguyên nhân, rủi ro sập luồng hàng cao!, nhân sự đang thiếu 3/21 định biên, tuyến thiếu (Trung An, Phước Thạnh).
@@ -31,8 +31,8 @@
 - Trong tuần qua, HRBP đã tuyển thành công **22 nhân viên mới** (OB) hỗ trợ lấp đầy các tuyến nóng.
 
 ### Lowlights:
-- Toàn vùng đang **thiếu hụt thực tế 67 shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.
-- Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 18 định biên) và **Đồng Tháp** (thiếu 21 định biên).
+- Toàn vùng đang **thiếu hụt thực tế 70 shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.
+- Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 21 định biên) và **Đồng Tháp** (thiếu 21 định biên).
 
 ## 🔮 Phân tích Nguyên nhân (Root Causes)
 - Tại **Bưu Cục Ấp 2-Phú Nhuận-Bến Tre**: Nhân sự: 7/11 (thiếu 4) + 2 nhân viên hỗ trợ; Bưu cục liên tục có nhân viên nghỉ ngang, té xe.; NVXL mới chưa quản lý được nhân sự tại BC, điều tiết giờ giấc xuất hàng.; Nhân viên 9h chưa rời khỏi kho.
@@ -59,7 +59,7 @@
 | Lý Quài Nhân | 62.22% | 4.02% | Cải thiện | 46 | Thiếu 8/39 | BìnhNLC |
 | Lâm Xuân Vinh | 53.52% | 4.96% | Yếu | 132 | Thiếu 4/82 | VyLNK |
 | Nguyễn Tuấn Anh | 52.32% | 4.20% | Yếu | 592 | Thiếu 15/133 | BìnhNLC |
-| Đoàn Công Tín | 51.68% | 2.56% | Yếu | 232 | Thiếu 6/84 | KhôiHM |
+| Đoàn Công Tín | 51.68% | 2.56% | Yếu | 232 | Thiếu 9/84 | KhôiHM |
 | Huỳnh Quốc Trung | 45.52% | 10.25% | Yếu | 48 | Thiếu 1/13 | VyLNK |
 | Nguyễn Anh Tùng | 43.22% | 4.58% | Yếu | 175 | Thiếu 10/89 | KhôiHM |
 
