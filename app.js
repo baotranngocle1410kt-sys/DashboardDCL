@@ -1,57 +1,42 @@
-// ===== AUTHENTICATION MODULE =====
-// Thay YOUR_GOOGLE_CLIENT_ID bằng Client ID từ Google Cloud Console
-const GOOGLE_CLIENT_ID = 'YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com';
-const ALLOWED_DOMAIN = 'ghn.vn';
+// ===== AUTHENTICATION MODULE (Password-based) =====
 const SESSION_KEY = 'dcl_auth_session';
 const SESSION_DURATION_MS = 8 * 60 * 60 * 1000; // 8 giờ
+// SHA-256 hash of the password — thay đổi bằng cách hash mật khẩu mới
+const PASSWORD_HASH = '9e702dbbe8498f5c6108324494e11e39a9fd54b4547094d20ccd5c6b84530d43';
 
-function decodeJWT(token) {
-  try {
-    const base64Url = token.split('.')[1];
-    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    const jsonPayload = decodeURIComponent(
-      window.atob(base64)
-        .split('')
-        .map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
-        .join('')
-    );
-    return JSON.parse(jsonPayload);
-  } catch (e) {
-    console.error('Failed to decode JWT:', e);
-    return null;
-  }
+async function sha256(message) {
+  const msgBuffer = new TextEncoder().encode(message);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
-function handleCredentialResponse(response) {
-  const payload = decodeJWT(response.credential);
-  if (!payload) {
-    showLoginError('Không thể xác thực token. Vui lòng thử lại.');
+async function handlePasswordLogin() {
+  const input = document.getElementById('loginPassword');
+  const password = input ? input.value : '';
+
+  if (!password) {
+    showLoginError('⚠️ Vui lòng nhập mật khẩu.');
     return;
   }
 
-  // Kiểm tra domain email
-  const email = payload.email || '';
-  const hd = payload.hd || '';
+  const hash = await sha256(password);
 
-  if (hd !== ALLOWED_DOMAIN && !email.endsWith('@' + ALLOWED_DOMAIN)) {
-    showLoginError(`⛔ Email "${email}" không thuộc domain @${ALLOWED_DOMAIN}. Chỉ nhân viên GHN mới được truy cập.`);
+  if (hash !== PASSWORD_HASH) {
+    showLoginError('⛔ Mật khẩu không đúng. Vui lòng thử lại.');
+    if (input) { input.value = ''; input.focus(); }
     return;
   }
 
-  // Lưu session
-  const userData = {
-    name: payload.name || '',
-    email: payload.email || '',
-    picture: payload.picture || '',
-    hd: payload.hd || '',
-    exp: Date.now() + SESSION_DURATION_MS
-  };
-  localStorage.setItem(SESSION_KEY, JSON.stringify(userData));
+  // Mật khẩu đúng → lưu session
+  const session = { authenticated: true, exp: Date.now() + SESSION_DURATION_MS };
+  localStorage.setItem(SESSION_KEY, JSON.stringify(session));
 
   // Hiện dashboard
   hideLoginScreen();
-  updateUserInfo(userData);
-  showToast(`✅ Xin chào, ${userData.name}!`);
+  const logoutBtn = document.getElementById('logoutBtn');
+  if (logoutBtn) logoutBtn.style.display = 'flex';
+  showToast('✅ Đăng nhập thành công! Chào mừng bạn.');
 }
 
 function checkSession() {
@@ -59,7 +44,7 @@ function checkSession() {
     const raw = localStorage.getItem(SESSION_KEY);
     if (!raw) return null;
     const session = JSON.parse(raw);
-    if (!session.exp || Date.now() > session.exp) {
+    if (!session.exp || Date.now() > session.exp || !session.authenticated) {
       localStorage.removeItem(SESSION_KEY);
       return null;
     }
@@ -72,10 +57,6 @@ function checkSession() {
 
 function logout() {
   localStorage.removeItem(SESSION_KEY);
-  // Revoke Google session
-  if (typeof google !== 'undefined' && google.accounts && google.accounts.id) {
-    google.accounts.id.disableAutoSelect();
-  }
   showLoginScreen();
   showToast('👋 Đã đăng xuất thành công.');
 }
@@ -91,9 +72,17 @@ function showLoginScreen() {
     if (el) el.style.display = 'none';
   });
 
-  // Ẩn user info
-  const userInfo = document.getElementById('userInfo');
-  if (userInfo) userInfo.style.display = 'none';
+  // Ẩn logout button
+  const logoutBtn = document.getElementById('logoutBtn');
+  if (logoutBtn) logoutBtn.style.display = 'none';
+
+  // Clear password input
+  const input = document.getElementById('loginPassword');
+  if (input) { input.value = ''; }
+
+  // Clear error
+  const errorEl = document.getElementById('loginError');
+  if (errorEl) errorEl.style.display = 'none';
 }
 
 function hideLoginScreen() {
@@ -103,21 +92,6 @@ function hideLoginScreen() {
   // Hiện onboarding (sẽ tự ẩn khi chọn folder)
   const onboarding = document.getElementById('onboarding');
   if (onboarding) onboarding.style.display = 'flex';
-}
-
-function updateUserInfo(userData) {
-  const userInfo = document.getElementById('userInfo');
-  const userName = document.getElementById('userName');
-  const userEmail = document.getElementById('userEmail');
-  const userAvatar = document.getElementById('userAvatar');
-
-  if (userInfo) userInfo.style.display = 'flex';
-  if (userName) userName.textContent = userData.name;
-  if (userEmail) userEmail.textContent = userData.email;
-  if (userAvatar) {
-    userAvatar.src = userData.picture || '';
-    userAvatar.style.display = userData.picture ? 'block' : 'none';
-  }
 }
 
 function showLoginError(msg) {
@@ -132,46 +106,26 @@ function showLoginError(msg) {
   }
 }
 
-function initGoogleAuth() {
-  if (typeof google === 'undefined' || !google.accounts) {
-    // GIS library chưa load xong, thử lại sau 500ms
-    setTimeout(initGoogleAuth, 500);
-    return;
-  }
-
-  google.accounts.id.initialize({
-    client_id: GOOGLE_CLIENT_ID,
-    callback: handleCredentialResponse,
-    auto_select: false,
-    cancel_on_tap_outside: true
-  });
-
-  google.accounts.id.renderButton(
-    document.getElementById('googleBtnArea'),
-    {
-      theme: 'filled_blue',
-      size: 'large',
-      shape: 'rectangular',
-      text: 'signin_with',
-      width: 300,
-      locale: 'vi'
-    }
-  );
-}
-
 // ===== AUTH INITIALIZATION ON PAGE LOAD =====
 document.addEventListener('DOMContentLoaded', () => {
   const session = checkSession();
   if (session) {
     // Session còn hạn → vào dashboard
     hideLoginScreen();
-    updateUserInfo(session);
+    const logoutBtn = document.getElementById('logoutBtn');
+    if (logoutBtn) logoutBtn.style.display = 'flex';
   } else {
     // Chưa đăng nhập → hiện login
     showLoginScreen();
   }
-  // Khởi tạo Google Sign-In button
-  initGoogleAuth();
+
+  // Enter key để đăng nhập
+  const passwordInput = document.getElementById('loginPassword');
+  if (passwordInput) {
+    passwordInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') handlePasswordLogin();
+    });
+  }
 });
 
 // ===== STATE =====
@@ -224,9 +178,12 @@ async function selectFolder() {
     document.getElementById('appHeader').style.display = 'flex';
     document.getElementById('appTabs').style.display = 'flex';
     
-    // Restore user info if logged in
+    // Restore logout button if logged in
     const session = checkSession();
-    if (session) updateUserInfo(session);
+    if (session) {
+      const logoutBtn = document.getElementById('logoutBtn');
+      if (logoutBtn) logoutBtn.style.display = 'flex';
+    }
     
     // Show the active tab correctly instead of forcing appMain grid
     switchTab(activeTab);
