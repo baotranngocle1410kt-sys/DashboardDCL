@@ -708,7 +708,10 @@ async function loadTelegramConfig() {
   if (confStr) {
     try {
       telegramConfig = JSON.parse(confStr);
-    } catch(e) {}
+      console.log('✅ Telegram config loaded:', telegramConfig.CHAT_ID ? 'OK' : 'Missing CHAT_ID');
+    } catch(e) {
+      console.error('❌ Failed to parse telegram_config.json:', e);
+    }
   }
 }
 
@@ -1088,9 +1091,11 @@ async function sendDroppedAlert(bcName, amName, amTele, khac, shopee, tts, total
     showToast("⚠️ Vui lòng cấu hình BOT_TOKEN & CHAT_ID trong file telegram_config.json");
     return;
   }
+  if (!checkTelegramRateLimit()) return;
   
   const token = telegramConfig.BOT_TOKEN;
   const chatId = telegramConfig.CHAT_ID;
+  const threadId = telegramConfig.THREAD_ID;
   
   const text = `🚨 *[CẢNH BÁO RỚT LUÂN CHUYỂN]* 🚨\n\n*Bưu cục:* ${bcName}\n*AM Phụ Trách:* ${amName} (${amTele || '@chua_co_tele'})\n\n*Tổng đơn LẤY rớt luân chuyển:* *${total}* đơn\n  • Shopee: ${shopee} đơn\n  • TiktokShop: ${tts} đơn\n  • Khác: ${khac} đơn\n\n👉 Đề nghị AM kiểm tra lý do và xử lý bàn giao luân chuyển gấp trong ca!`;
   
@@ -1098,15 +1103,14 @@ async function sendDroppedAlert(bcName, amName, amTele, khac, shopee, tts, total
   
   showToast(`💬 Đang gửi tin nhắn nhắc nhở tới Telegram...`);
   
+  const payload = { chat_id: chatId, text: text, parse_mode: 'Markdown' };
+  if (threadId) payload.message_thread_id = threadId;
+  
   try {
     const res = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        chat_id: chatId,
-        text: text,
-        parse_mode: 'Markdown'
-      })
+      body: JSON.stringify(payload)
     });
     
     if (res.ok) {
@@ -1483,9 +1487,11 @@ async function sendTelegramAlert(bcName, amName, amTele, gtcVal, changeText, bac
     showToast("⚠️ Vui lòng cấu hình BOT_TOKEN & CHAT_ID trong file telegram_config.json");
     return;
   }
+  if (!checkTelegramRateLimit()) return;
   
   const token = telegramConfig.BOT_TOKEN;
   const chatId = telegramConfig.CHAT_ID;
+  const threadId = telegramConfig.THREAD_ID;
   
   const text = `🚨 *[CẢNH BÁO VẬN HÀNH]* 🚨\n\n*Bưu cục:* ${bcName}\n*AM Phụ Trách:* ${amName} (${amTele || '@chua_co_tele'})\n\n*Tỷ lệ GTC hiện tại:* ${gtcVal} (Biến động N-1: ${changeText})\n*Đơn Tồn > 5 ngày:* ${backlog} đơn\n\n*Nguyên nhân:* ${cause}\n\n👉 Đề nghị AM vào kiểm tra và xử lý luồng hàng gấp!`;
   
@@ -1493,15 +1499,14 @@ async function sendTelegramAlert(bcName, amName, amTele, gtcVal, changeText, bac
   
   showToast(`💬 Đang gửi tin nhắn nhắc nhở tới Telegram...`);
   
+  const payload = { chat_id: chatId, text: text, parse_mode: 'Markdown' };
+  if (threadId) payload.message_thread_id = threadId;
+  
   try {
     const res = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        chat_id: chatId,
-        text: text,
-        parse_mode: 'Markdown'
-      })
+      body: JSON.stringify(payload)
     });
     
     if (res.ok) {
@@ -2685,6 +2690,7 @@ async function sendTelegramFdAlert(bcName, amName, amTele, currentVal, changeTex
     showToast("⚠️ Vui lòng cấu hình BOT_TOKEN & CHAT_ID trong file telegram_config.json");
     return;
   }
+  if (!checkTelegramRateLimit()) return;
   
   const fdReport = repData.fd_report;
   
@@ -2745,19 +2751,19 @@ async function sendTelegramFdAlert(bcName, amName, amTele, currentVal, changeTex
                `*Nguyên nhân/Nội dung nhắc nhở:* ${cause}\n\n` +
                `👉 *Hành động yêu cầu:* Đề nghị AM nhanh chóng rà soát các đơn giao không thành công, thúc đẩy shipper thực hiện thu cước hoàn (GTB-TT) đúng quy trình, kiểm soát ca giao tối và xử lý dứt điểm các đơn tồn đọng!`;
   
+  const threadId = telegramConfig.THREAD_ID;
   const url = `https://api.telegram.org/bot${token}/sendMessage`;
   
   showToast(`💬 Đang gửi cảnh báo qua Telegram...`);
+  
+  const payload = { chat_id: chatId, text: text, parse_mode: 'Markdown' };
+  if (threadId) payload.message_thread_id = threadId;
   
   try {
     const res = await fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        chat_id: chatId,
-        text: text,
-        parse_mode: 'Markdown'
-      })
+      body: JSON.stringify(payload)
     });
     
     if (res.ok) {
