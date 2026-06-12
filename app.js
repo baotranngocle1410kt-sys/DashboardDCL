@@ -874,11 +874,49 @@ function renderWorstBcs() {
         <span class="bc-backlog-badge ${blBadgeCls}" style="padding: 2px 6px; font-size: 10px; border-radius: 4px; display: inline-block;">${bc.backlog} đơn</span>
       </td>
       <td style="padding: 12px 6px; vertical-align: top; text-align: center;">
-        <button class="bc-btn bc-btn-primary" style="padding: 4px 8px; font-size: 11px; height: auto; width: auto; display: inline-block;" onclick="sendTelegramAlert('${escapeHtml(bc.name)}', '${escapeHtml(bc.am)}', '${escapeHtml(bc.am_tele)}', '${(bc.gtc*100).toFixed(2)}%', '${escapeHtml(changeText)}', '${bc.backlog}', '${escapeHtml(bc.cause)}')">Nhắc AM</button>
+        <button class="bc-btn bc-btn-primary" style="padding: 4px 8px; font-size: 11px; height: auto; width: auto; display: inline-block;" onclick="sendTop10Alert('${escapeHtml(bc.name)}', '${escapeHtml(bc.am)}', '${escapeHtml(bc.am_tele)}', '${(bc.gtc*100).toFixed(2)}%', '${escapeHtml(changeText)}', '${bc.backlog}', '${escapeHtml(bc.cause)}')">Nhắc AM</button>
       </td>
     `;
     container.appendChild(tr);
   });
+}
+
+async function sendTop10Alert(bcName, amName, amTele, gtcVal, changeText, backlog, cause) {
+  if (!telegramConfig || !telegramConfig.BOT_TOKEN || !telegramConfig.CHAT_ID) {
+    showToast("⚠️ Vui lòng cấu hình BOT_TOKEN & CHAT_ID trong file telegram_config.json");
+    return;
+  }
+  if (!checkTelegramRateLimit()) return;
+
+  const token = telegramConfig.BOT_TOKEN;
+  const chatId = telegramConfig.CHAT_ID;
+  const threadId = telegramConfig.THREADS && telegramConfig.THREADS.top10;
+
+  const text = `🚨 *[TOP 10 BƯU CỤC CẦN CHÚ Ý]* 🚨\n\n*Bưu cục:* ${bcName}\n*AM Phụ Trách:* ${amName} (${amTele || '@chua_co_tele'})\n\n*Tỷ lệ GTC hiện tại:* ${gtcVal} (Biến động N-1: ${changeText})\n*Đơn Tồn > 5 ngày:* ${backlog} đơn\n\n*Nguyên nhân:* ${cause}\n\n👉 Đề nghị AM vào kiểm tra và xử lý luồng hàng gấp!`;
+
+  const url = `https://api.telegram.org/bot${token}/sendMessage`;
+
+  showToast(`💬 Đang gửi cảnh báo Top 10 tới Telegram...`);
+
+  const payload = { chat_id: chatId, text: text, parse_mode: 'Markdown' };
+  if (threadId) payload.message_thread_id = threadId;
+
+  try {
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    if (res.ok) {
+      showToast("✅ Đã gửi cảnh báo Telegram thành công!");
+    } else {
+      const err = await res.json();
+      showToast(`❌ Gửi Telegram thất bại: ${err.description}`);
+    }
+  } catch (e) {
+    showToast(`❌ Gửi Telegram thất bại: ${e.message}`);
+  }
 }
 
 function renderChecklistSidePanel() {

@@ -4,6 +4,7 @@
   "THREADS": {
     "van_hanh": 16,
     "trong_tam": 16,
+    "top10": 16,
     "fd": 217,
     "backlog_lc": 16376,
     "nhan_su": 8
