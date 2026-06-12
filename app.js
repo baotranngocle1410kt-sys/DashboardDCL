@@ -68,13 +68,16 @@ function enterDashboard() {
   const onboarding = document.getElementById('onboarding');
   if (onboarding) onboarding.style.display = 'none';
 
-  // Hiện header, tabs, dashboard
+  // Hiện header, tabs
   document.getElementById('appHeader').style.display = 'flex';
   document.getElementById('appTabs').style.display = 'flex';
 
   // Hiện logout button
   const logoutBtn = document.getElementById('logoutBtn');
   if (logoutBtn) logoutBtn.style.display = 'flex';
+
+  // Hiện tab nội dung
+  switchTab(activeTab || 'checklist');
 
   // Load dữ liệu tự động qua HTTP fetch
   refreshData();
