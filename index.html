@@ -6,12 +6,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TỔNG QUAN VÙNG ĐCL — Trung tâm Chỉ huy</title>
   <meta name="description" content="Dashboard quản trị công việc cá nhân & vận hành GHN">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' cdn.jsdelivr.net 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'self' api.telegram.org; img-src 'self' data:; font-src 'self';">
+  <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' cdn.jsdelivr.net accounts.google.com 'unsafe-inline'; style-src 'self' 'unsafe-inline' accounts.google.com; connect-src 'self' api.telegram.org accounts.google.com; img-src 'self' data: *.googleusercontent.com; font-src 'self' fonts.gstatic.com; frame-src accounts.google.com;">
   <link rel="stylesheet" href="styles.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 
 <body>
+
+  <!-- Login Screen -->
+  <div class="login-screen" id="loginScreen">
+    <div class="login-card">
+      <div class="login-logo">🧭</div>
+      <div class="login-title">TỔNG QUAN VÙNG ĐCL</div>
+      <div class="login-subtitle">Trung tâm Chỉ huy Vận hành — GHN<br>Đăng nhập để truy cập Dashboard</div>
+      <div class="login-divider">Xác thực tài khoản</div>
+      <div class="login-google-btn-area" id="googleBtnArea">
+        <!-- Google Sign-In button rendered here by GIS -->
+      </div>
+      <div class="login-error" id="loginError"></div>
+      <div class="login-domain-notice">
+        <span class="notice-icon">🔒</span>
+        <span>Chỉ tài khoản email <strong>@ghn.vn</strong> được phép truy cập hệ thống này.</span>
+      </div>
+      <div class="login-footer">GHN Express — Hệ thống nội bộ</div>
+    </div>
+  </div>
 
   <!-- Onboarding -->
   <div class="onboarding" id="onboarding">
@@ -35,6 +56,14 @@
     <div class="header-actions">
       <button class="btn" onclick="refreshData()">🔄 Làm mới</button>
       <button class="btn" onclick="selectFolder()">📂 Đổi thư mục</button>
+      <div class="user-info" id="userInfo" style="display:none">
+        <img class="user-avatar" id="userAvatar" src="" alt="Avatar">
+        <div>
+          <div class="user-name" id="userName"></div>
+          <div class="user-email" id="userEmail"></div>
+        </div>
+        <button class="btn-logout" onclick="logout()">🚪 Đăng xuất</button>
+      </div>
     </div>
   </header>
 

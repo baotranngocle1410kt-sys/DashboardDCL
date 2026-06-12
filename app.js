@@ -1,3 +1,179 @@
+// ===== AUTHENTICATION MODULE =====
+// Thay YOUR_GOOGLE_CLIENT_ID bằng Client ID từ Google Cloud Console
+const GOOGLE_CLIENT_ID = 'YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com';
+const ALLOWED_DOMAIN = 'ghn.vn';
+const SESSION_KEY = 'dcl_auth_session';
+const SESSION_DURATION_MS = 8 * 60 * 60 * 1000; // 8 giờ
+
+function decodeJWT(token) {
+  try {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(
+      window.atob(base64)
+        .split('')
+        .map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
+        .join('')
+    );
+    return JSON.parse(jsonPayload);
+  } catch (e) {
+    console.error('Failed to decode JWT:', e);
+    return null;
+  }
+}
+
+function handleCredentialResponse(response) {
+  const payload = decodeJWT(response.credential);
+  if (!payload) {
+    showLoginError('Không thể xác thực token. Vui lòng thử lại.');
+    return;
+  }
+
+  // Kiểm tra domain email
+  const email = payload.email || '';
+  const hd = payload.hd || '';
+
+  if (hd !== ALLOWED_DOMAIN && !email.endsWith('@' + ALLOWED_DOMAIN)) {
+    showLoginError(`⛔ Email "${email}" không thuộc domain @${ALLOWED_DOMAIN}. Chỉ nhân viên GHN mới được truy cập.`);
+    return;
+  }
+
+  // Lưu session
+  const userData = {
+    name: payload.name || '',
+    email: payload.email || '',
+    picture: payload.picture || '',
+    hd: payload.hd || '',
+    exp: Date.now() + SESSION_DURATION_MS
+  };
+  localStorage.setItem(SESSION_KEY, JSON.stringify(userData));
+
+  // Hiện dashboard
+  hideLoginScreen();
+  updateUserInfo(userData);
+  showToast(`✅ Xin chào, ${userData.name}!`);
+}
+
+function checkSession() {
+  try {
+    const raw = localStorage.getItem(SESSION_KEY);
+    if (!raw) return null;
+    const session = JSON.parse(raw);
+    if (!session.exp || Date.now() > session.exp) {
+      localStorage.removeItem(SESSION_KEY);
+      return null;
+    }
+    return session;
+  } catch (e) {
+    localStorage.removeItem(SESSION_KEY);
+    return null;
+  }
+}
+
+function logout() {
+  localStorage.removeItem(SESSION_KEY);
+  // Revoke Google session
+  if (typeof google !== 'undefined' && google.accounts && google.accounts.id) {
+    google.accounts.id.disableAutoSelect();
+  }
+  showLoginScreen();
+  showToast('👋 Đã đăng xuất thành công.');
+}
+
+function showLoginScreen() {
+  const loginScreen = document.getElementById('loginScreen');
+  if (loginScreen) loginScreen.style.display = 'flex';
+
+  // Ẩn tất cả dashboard
+  const ids = ['onboarding', 'appHeader', 'appTabs', 'appMain', 'appReporting', 'appRecruitment', 'appReturnRate', 'appTransferBacklog'];
+  ids.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.style.display = 'none';
+  });
+
+  // Ẩn user info
+  const userInfo = document.getElementById('userInfo');
+  if (userInfo) userInfo.style.display = 'none';
+}
+
+function hideLoginScreen() {
+  const loginScreen = document.getElementById('loginScreen');
+  if (loginScreen) loginScreen.style.display = 'none';
+
+  // Hiện onboarding (sẽ tự ẩn khi chọn folder)
+  const onboarding = document.getElementById('onboarding');
+  if (onboarding) onboarding.style.display = 'flex';
+}
+
+function updateUserInfo(userData) {
+  const userInfo = document.getElementById('userInfo');
+  const userName = document.getElementById('userName');
+  const userEmail = document.getElementById('userEmail');
+  const userAvatar = document.getElementById('userAvatar');
+
+  if (userInfo) userInfo.style.display = 'flex';
+  if (userName) userName.textContent = userData.name;
+  if (userEmail) userEmail.textContent = userData.email;
+  if (userAvatar) {
+    userAvatar.src = userData.picture || '';
+    userAvatar.style.display = userData.picture ? 'block' : 'none';
+  }
+}
+
+function showLoginError(msg) {
+  const errorEl = document.getElementById('loginError');
+  if (errorEl) {
+    errorEl.textContent = msg;
+    errorEl.style.display = 'block';
+    // Re-trigger animation
+    errorEl.style.animation = 'none';
+    errorEl.offsetHeight; // force reflow
+    errorEl.style.animation = 'shakeError 0.4s ease';
+  }
+}
+
+function initGoogleAuth() {
+  if (typeof google === 'undefined' || !google.accounts) {
+    // GIS library chưa load xong, thử lại sau 500ms
+    setTimeout(initGoogleAuth, 500);
+    return;
+  }
+
+  google.accounts.id.initialize({
+    client_id: GOOGLE_CLIENT_ID,
+    callback: handleCredentialResponse,
+    auto_select: false,
+    cancel_on_tap_outside: true
+  });
+
+  google.accounts.id.renderButton(
+    document.getElementById('googleBtnArea'),
+    {
+      theme: 'filled_blue',
+      size: 'large',
+      shape: 'rectangular',
+      text: 'signin_with',
+      width: 300,
+      locale: 'vi'
+    }
+  );
+}
+
+// ===== AUTH INITIALIZATION ON PAGE LOAD =====
+document.addEventListener('DOMContentLoaded', () => {
+  const session = checkSession();
+  if (session) {
+    // Session còn hạn → vào dashboard
+    hideLoginScreen();
+    updateUserInfo(session);
+  } else {
+    // Chưa đăng nhập → hiện login
+    showLoginScreen();
+  }
+  // Khởi tạo Google Sign-In button
+  initGoogleAuth();
+});
+
 // ===== STATE =====
 let dirHandle = null;
 let taskSystemsContent = '';
@@ -5,6 +181,7 @@ let notebookContent = '';
 let routineContent = '';
 let quickType = 'idea';
 let radarChart = null;
+
 
 // ===== SECTION MAP =====
 const SECTION_MAP = {
@@ -46,6 +223,10 @@ async function selectFolder() {
     document.getElementById('onboarding').style.display = 'none';
     document.getElementById('appHeader').style.display = 'flex';
     document.getElementById('appTabs').style.display = 'flex';
+    
+    // Restore user info if logged in
+    const session = checkSession();
+    if (session) updateUserInfo(session);
     
     // Show the active tab correctly instead of forcing appMain grid
     switchTab(activeTab);
@@ -490,9 +671,12 @@ function updateRadar() {
 
 // ===== HELPERS =====
 function escapeHtml(s) {
-  const d = document.createElement('div');
-  d.textContent = s;
-  return d.innerHTML;
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 }
 
 function showToast(msg) {
