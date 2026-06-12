@@ -18,7 +18,14 @@
       "email": "test@ghn.vn",
       "passwordHash": "f92c0d368034f21dbc2d3885843365f182cdf7033a4849655af44482ec7254da",
       "role": "user",
-      "name": "testt",
+      "name": "testttt",
+      "createdAt": "2026-06-12"
+    },
+    {
+      "email": "minhnn@ghn.vn",
+      "passwordHash": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
+      "role": "user",
+      "name": "Minh NN",
       "createdAt": "2026-06-12"
     }
   ],
