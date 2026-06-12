@@ -1,6 +1,4 @@
-// ===== AUTHENTICATION MODULE (Password-based) =====
-const SESSION_KEY = 'dcl_auth_session';
-const SESSION_DURATION_MS = 8 * 60 * 60 * 1000; // 8 giờ
+// ===== AUTHENTICATION MODULE (Password-based, no session persistence) =====
 // SHA-256 hash of the password — thay đổi bằng cách hash mật khẩu mới
 const PASSWORD_HASH = '9e702dbbe8498f5c6108324494e11e39a9fd54b4547094d20ccd5c6b84530d43';
 
@@ -28,33 +26,12 @@ async function handlePasswordLogin() {
     return;
   }
 
-  // Mật khẩu đúng → lưu session
-  const session = { authenticated: true, exp: Date.now() + SESSION_DURATION_MS };
-  localStorage.setItem(SESSION_KEY, JSON.stringify(session));
-
-  // Vào thẳng dashboard
+  // Mật khẩu đúng → vào thẳng dashboard
   enterDashboard();
   showToast('✅ Đăng nhập thành công! Chào mừng bạn.');
 }
 
-function checkSession() {
-  try {
-    const raw = localStorage.getItem(SESSION_KEY);
-    if (!raw) return null;
-    const session = JSON.parse(raw);
-    if (!session.exp || Date.now() > session.exp || !session.authenticated) {
-      localStorage.removeItem(SESSION_KEY);
-      return null;
-    }
-    return session;
-  } catch (e) {
-    localStorage.removeItem(SESSION_KEY);
-    return null;
-  }
-}
-
 function logout() {
-  localStorage.removeItem(SESSION_KEY);
   showLoginScreen();
   showToast('👋 Đã đăng xuất thành công.');
 }
@@ -83,13 +60,9 @@ function showLoginScreen() {
   if (errorEl) errorEl.style.display = 'none';
 }
 
-function hideLoginScreen() {
+function enterDashboard() {
   const loginScreen = document.getElementById('loginScreen');
   if (loginScreen) loginScreen.style.display = 'none';
-}
-
-function enterDashboard() {
-  hideLoginScreen();
 
   // Ẩn onboarding
   const onboarding = document.getElementById('onboarding');
@@ -112,23 +85,16 @@ function showLoginError(msg) {
   if (errorEl) {
     errorEl.textContent = msg;
     errorEl.style.display = 'block';
-    // Re-trigger animation
     errorEl.style.animation = 'none';
-    errorEl.offsetHeight; // force reflow
+    errorEl.offsetHeight;
     errorEl.style.animation = 'shakeError 0.4s ease';
   }
 }
 
 // ===== AUTH INITIALIZATION ON PAGE LOAD =====
 document.addEventListener('DOMContentLoaded', () => {
-  const session = checkSession();
-  if (session) {
-    // Session còn hạn → vào dashboard luôn
-    enterDashboard();
-  } else {
-    // Chưa đăng nhập → hiện login
-    showLoginScreen();
-  }
+  // Luôn hiện login screen khi mở trang
+  showLoginScreen();
 
   // Enter key để đăng nhập
   const passwordInput = document.getElementById('loginPassword');
