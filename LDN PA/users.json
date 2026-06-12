@@ -6,6 +6,13 @@
       "role": "owner",
       "name": "Trần LNB",
       "createdAt": "2026-06-12"
+    },
+    {
+      "email": "datlt@ghn.vn",
+      "passwordHash": "f92c0d368034f21dbc2d3885843365f182cdf7033a4849655af44482ec7254da",
+      "role": "user",
+      "name": "dat",
+      "createdAt": "2026-06-12"
     }
   ],
   "github": {
