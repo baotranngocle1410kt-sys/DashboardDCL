@@ -32,10 +32,8 @@ async function handlePasswordLogin() {
   const session = { authenticated: true, exp: Date.now() + SESSION_DURATION_MS };
   localStorage.setItem(SESSION_KEY, JSON.stringify(session));
 
-  // Hiện dashboard
-  hideLoginScreen();
-  const logoutBtn = document.getElementById('logoutBtn');
-  if (logoutBtn) logoutBtn.style.display = 'flex';
+  // Vào thẳng dashboard
+  enterDashboard();
   showToast('✅ Đăng nhập thành công! Chào mừng bạn.');
 }
 
@@ -88,10 +86,25 @@ function showLoginScreen() {
 function hideLoginScreen() {
   const loginScreen = document.getElementById('loginScreen');
   if (loginScreen) loginScreen.style.display = 'none';
+}
 
-  // Hiện onboarding (sẽ tự ẩn khi chọn folder)
+function enterDashboard() {
+  hideLoginScreen();
+
+  // Ẩn onboarding
   const onboarding = document.getElementById('onboarding');
-  if (onboarding) onboarding.style.display = 'flex';
+  if (onboarding) onboarding.style.display = 'none';
+
+  // Hiện header, tabs, dashboard
+  document.getElementById('appHeader').style.display = 'flex';
+  document.getElementById('appTabs').style.display = 'flex';
+
+  // Hiện logout button
+  const logoutBtn = document.getElementById('logoutBtn');
+  if (logoutBtn) logoutBtn.style.display = 'flex';
+
+  // Load dữ liệu tự động qua HTTP fetch
+  refreshData();
 }
 
 function showLoginError(msg) {
@@ -110,10 +123,8 @@ function showLoginError(msg) {
 document.addEventListener('DOMContentLoaded', () => {
   const session = checkSession();
   if (session) {
-    // Session còn hạn → vào dashboard
-    hideLoginScreen();
-    const logoutBtn = document.getElementById('logoutBtn');
-    if (logoutBtn) logoutBtn.style.display = 'flex';
+    // Session còn hạn → vào dashboard luôn
+    enterDashboard();
   } else {
     // Chưa đăng nhập → hiện login
     showLoginScreen();
