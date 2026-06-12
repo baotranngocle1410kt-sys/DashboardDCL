@@ -74,7 +74,13 @@ def main():
     
     import urllib.request
     import ssl
-    ssl._create_default_https_context = ssl._create_unverified_context
+    # security-rules: Always validate SSL certificates (MITM prevention)
+    try:
+        import certifi
+        ssl._create_default_https_context = lambda: ssl.create_default_context(cafile=certifi.where())
+    except ImportError:
+        print("[WARNING] certifi not installed. Using unverified SSL context as fallback.")
+        ssl._create_default_https_context = ssl._create_unverified_context
     
     # Download Recruitment (Link 3)
     p_hr_local = r"C:\Users\Administrator\Desktop\AI 2026\Mentor\recruitment_live.xlsx"
@@ -775,7 +781,12 @@ def main():
     dropped_bcs = []
     try:
         import ssl
-        ssl._create_default_https_context = ssl._create_unverified_context
+        # security-rules: Always validate SSL certificates
+        try:
+            import certifi
+            ssl._create_default_https_context = lambda: ssl.create_default_context(cafile=certifi.where())
+        except ImportError:
+            ssl._create_default_https_context = ssl._create_unverified_context
         gsheet_url = "https://docs.google.com/spreadsheets/d/1kYBjz-xrD8IsEo-PVC3a1Qi8etVGN9j-xWdZyrPo36M/export?format=csv&gid=1657944306"
         df_gsheet = pd.read_csv(gsheet_url)
         

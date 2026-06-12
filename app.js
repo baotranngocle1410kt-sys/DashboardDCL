@@ -2,6 +2,27 @@
 // SHA-256 hash of the password — thay đổi bằng cách hash mật khẩu mới
 const PASSWORD_HASH = '9e702dbbe8498f5c6108324494e11e39a9fd54b4547094d20ccd5c6b84530d43';
 
+// Brute-force lockout (security-rules: account lockout after repeated failures)
+const MAX_FAILED_ATTEMPTS = 5;
+const LOCKOUT_DURATION_MS = 60 * 1000; // 60 giây
+let failedAttempts = 0;
+let lockoutUntil = 0;
+
+// Telegram rate limiting (security-rules: rate limiting on outbound requests)
+const TELEGRAM_COOLDOWN_MS = 30 * 1000; // 30 giây giữa mỗi lần gửi
+let lastTelegramSendTime = 0;
+
+function checkTelegramRateLimit() {
+  const now = Date.now();
+  if (now - lastTelegramSendTime < TELEGRAM_COOLDOWN_MS) {
+    const waitSec = Math.ceil((TELEGRAM_COOLDOWN_MS - (now - lastTelegramSendTime)) / 1000);
+    showToast(`⏳ Vui lòng đợi ${waitSec}s trước khi gửi tin nhắn tiếp.`);
+    return false;
+  }
+  lastTelegramSendTime = now;
+  return true;
+}
+
 async function sha256(message) {
   const msgBuffer = new TextEncoder().encode(message);
   const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
@@ -10,6 +31,13 @@ async function sha256(message) {
 }
 
 async function handlePasswordLogin() {
+  // Kiểm tra lockout
+  if (Date.now() < lockoutUntil) {
+    const waitSec = Math.ceil((lockoutUntil - Date.now()) / 1000);
+    showLoginError(`🔒 Tài khoản tạm khóa. Thử lại sau ${waitSec} giây.`);
+    return;
+  }
+
   const input = document.getElementById('loginPassword');
   const password = input ? input.value : '';
 
@@ -21,12 +49,31 @@ async function handlePasswordLogin() {
   const hash = await sha256(password);
 
   if (hash !== PASSWORD_HASH) {
-    showLoginError('⛔ Mật khẩu không đúng. Vui lòng thử lại.');
+    failedAttempts++;
+    if (failedAttempts >= MAX_FAILED_ATTEMPTS) {
+      lockoutUntil = Date.now() + LOCKOUT_DURATION_MS;
+      failedAttempts = 0;
+      showLoginError(`🔒 Quá ${MAX_FAILED_ATTEMPTS} lần sai. Tạm khóa 60 giây.`);
+      // Countdown timer
+      const errorEl = document.getElementById('loginError');
+      const interval = setInterval(() => {
+        const remain = Math.ceil((lockoutUntil - Date.now()) / 1000);
+        if (remain <= 0) {
+          clearInterval(interval);
+          if (errorEl) errorEl.style.display = 'none';
+        } else if (errorEl) {
+          errorEl.textContent = `🔒 Tạm khóa. Thử lại sau ${remain} giây...`;
+        }
+      }, 1000);
+    } else {
+      showLoginError(`⛔ Mật khẩu không đúng. Còn ${MAX_FAILED_ATTEMPTS - failedAttempts} lần thử.`);
+    }
     if (input) { input.value = ''; input.focus(); }
     return;
   }
 
-  // Mật khẩu đúng → vào thẳng dashboard
+  // Mật khẩu đúng → reset counter, vào dashboard
+  failedAttempts = 0;
   enterDashboard();
   showToast('✅ Đăng nhập thành công! Chào mừng bạn.');
 }
