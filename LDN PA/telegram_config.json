@@ -1,5 +1,11 @@
 {
   "BOT_TOKEN": "8894541466:AAHibZ7meFquB5ZyLvVpPt3BH0aK2VsMOao",
   "CHAT_ID": "-1002499219638",
-  "THREAD_ID": 16
+  "THREADS": {
+    "van_hanh": 16,
+    "trong_tam": 16,
+    "fd": 217,
+    "backlog_lc": 16376,
+    "nhan_su": 8
+  }
 }

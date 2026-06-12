@@ -1095,7 +1095,7 @@ async function sendDroppedAlert(bcName, amName, amTele, khac, shopee, tts, total
   
   const token = telegramConfig.BOT_TOKEN;
   const chatId = telegramConfig.CHAT_ID;
-  const threadId = telegramConfig.THREAD_ID;
+  const threadId = telegramConfig.THREADS && telegramConfig.THREADS.backlog_lc;
   
   const text = `🚨 *[CẢNH BÁO RỚT LUÂN CHUYỂN]* 🚨\n\n*Bưu cục:* ${bcName}\n*AM Phụ Trách:* ${amName} (${amTele || '@chua_co_tele'})\n\n*Tổng đơn LẤY rớt luân chuyển:* *${total}* đơn\n  • Shopee: ${shopee} đơn\n  • TiktokShop: ${tts} đơn\n  • Khác: ${khac} đơn\n\n👉 Đề nghị AM kiểm tra lý do và xử lý bàn giao luân chuyển gấp trong ca!`;
   
@@ -1491,7 +1491,7 @@ async function sendTelegramAlert(bcName, amName, amTele, gtcVal, changeText, bac
   
   const token = telegramConfig.BOT_TOKEN;
   const chatId = telegramConfig.CHAT_ID;
-  const threadId = telegramConfig.THREAD_ID;
+  const threadId = telegramConfig.THREADS && telegramConfig.THREADS.van_hanh;
   
   const text = `🚨 *[CẢNH BÁO VẬN HÀNH]* 🚨\n\n*Bưu cục:* ${bcName}\n*AM Phụ Trách:* ${amName} (${amTele || '@chua_co_tele'})\n\n*Tỷ lệ GTC hiện tại:* ${gtcVal} (Biến động N-1: ${changeText})\n*Đơn Tồn > 5 ngày:* ${backlog} đơn\n\n*Nguyên nhân:* ${cause}\n\n👉 Đề nghị AM vào kiểm tra và xử lý luồng hàng gấp!`;
   
@@ -2751,7 +2751,7 @@ async function sendTelegramFdAlert(bcName, amName, amTele, currentVal, changeTex
                `*Nguyên nhân/Nội dung nhắc nhở:* ${cause}\n\n` +
                `👉 *Hành động yêu cầu:* Đề nghị AM nhanh chóng rà soát các đơn giao không thành công, thúc đẩy shipper thực hiện thu cước hoàn (GTB-TT) đúng quy trình, kiểm soát ca giao tối và xử lý dứt điểm các đơn tồn đọng!`;
   
-  const threadId = telegramConfig.THREAD_ID;
+  const threadId = telegramConfig.THREADS && telegramConfig.THREADS.fd;
   const url = `https://api.telegram.org/bot${token}/sendMessage`;
   
   showToast(`💬 Đang gửi cảnh báo qua Telegram...`);
