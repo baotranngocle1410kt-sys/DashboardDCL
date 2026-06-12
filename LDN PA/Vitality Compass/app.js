@@ -1,15 +1,17 @@
-// ===== AUTHENTICATION MODULE (Password-based, no session persistence) =====
-// SHA-256 hash of the password — thay đổi bằng cách hash mật khẩu mới
-const PASSWORD_HASH = '9e702dbbe8498f5c6108324494e11e39a9fd54b4547094d20ccd5c6b84530d43';
+// ===== AUTHENTICATION MODULE (Email + Password, User Whitelist) =====
+let currentUser = null;
+let usersData = null;
+let usersFileSha = null; // For GitHub API updates
+let pendingUserChanges = false;
 
-// Brute-force lockout (security-rules: account lockout after repeated failures)
+// Brute-force lockout
 const MAX_FAILED_ATTEMPTS = 5;
-const LOCKOUT_DURATION_MS = 60 * 1000; // 60 giây
+const LOCKOUT_DURATION_MS = 60 * 1000;
 let failedAttempts = 0;
 let lockoutUntil = 0;
 
-// Telegram rate limiting (security-rules: rate limiting on outbound requests)
-const TELEGRAM_COOLDOWN_MS = 30 * 1000; // 30 giây giữa mỗi lần gửi
+// Telegram rate limiting
+const TELEGRAM_COOLDOWN_MS = 30 * 1000;
 let lastTelegramSendTime = 0;
 
 function checkTelegramRateLimit() {
@@ -30,55 +32,95 @@ async function sha256(message) {
   return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
-async function handlePasswordLogin() {
-  // Kiểm tra lockout
+async function loadUsers() {
+  const str = await readFile('users.json');
+  if (str) {
+    try {
+      usersData = JSON.parse(str);
+      console.log('✅ Users loaded:', usersData.users.length, 'accounts');
+    } catch(e) {
+      console.error('❌ Failed to parse users.json:', e);
+    }
+  }
+}
+
+async function handleLogin() {
+  // Lockout check
   if (Date.now() < lockoutUntil) {
     const waitSec = Math.ceil((lockoutUntil - Date.now()) / 1000);
-    showLoginError(`🔒 Tài khoản tạm khóa. Thử lại sau ${waitSec} giây.`);
+    showLoginError(`🔒 Tạm khóa. Thử lại sau ${waitSec} giây.`);
     return;
   }
 
-  const input = document.getElementById('loginPassword');
-  const password = input ? input.value : '';
+  const emailInput = document.getElementById('loginEmail');
+  const passInput = document.getElementById('loginPassword');
+  const email = emailInput ? emailInput.value.trim().toLowerCase() : '';
+  const password = passInput ? passInput.value : '';
 
-  if (!password) {
-    showLoginError('⚠️ Vui lòng nhập mật khẩu.');
+  if (!email || !password) {
+    showLoginError('⚠️ Vui lòng nhập email và mật khẩu.');
+    return;
+  }
+
+  // Load users if not loaded
+  if (!usersData) await loadUsers();
+
+  if (!usersData || !usersData.users || usersData.users.length === 0) {
+    showLoginError('⚠️ Không thể tải danh sách người dùng.');
+    return;
+  }
+
+  const user = usersData.users.find(u => u.email.toLowerCase() === email);
+
+  if (!user) {
+    failedAttempts++;
+    handleFailedAttempt(passInput);
+    return;
+  }
+
+  if (user.role === 'blocked') {
+    showLoginError('🚫 Tài khoản đã bị khóa. Liên hệ Owner.');
     return;
   }
 
   const hash = await sha256(password);
 
-  if (hash !== PASSWORD_HASH) {
+  if (hash !== user.passwordHash) {
     failedAttempts++;
-    if (failedAttempts >= MAX_FAILED_ATTEMPTS) {
-      lockoutUntil = Date.now() + LOCKOUT_DURATION_MS;
-      failedAttempts = 0;
-      showLoginError(`🔒 Quá ${MAX_FAILED_ATTEMPTS} lần sai. Tạm khóa 60 giây.`);
-      // Countdown timer
-      const errorEl = document.getElementById('loginError');
-      const interval = setInterval(() => {
-        const remain = Math.ceil((lockoutUntil - Date.now()) / 1000);
-        if (remain <= 0) {
-          clearInterval(interval);
-          if (errorEl) errorEl.style.display = 'none';
-        } else if (errorEl) {
-          errorEl.textContent = `🔒 Tạm khóa. Thử lại sau ${remain} giây...`;
-        }
-      }, 1000);
-    } else {
-      showLoginError(`⛔ Mật khẩu không đúng. Còn ${MAX_FAILED_ATTEMPTS - failedAttempts} lần thử.`);
-    }
-    if (input) { input.value = ''; input.focus(); }
+    handleFailedAttempt(passInput);
     return;
   }
 
-  // Mật khẩu đúng → reset counter, vào dashboard
+  // Success
   failedAttempts = 0;
+  currentUser = user;
   enterDashboard();
-  showToast('✅ Đăng nhập thành công! Chào mừng bạn.');
+  showToast(`✅ Xin chào, ${escapeHtml(user.name)}!`);
+}
+
+function handleFailedAttempt(passInput) {
+  if (failedAttempts >= MAX_FAILED_ATTEMPTS) {
+    lockoutUntil = Date.now() + LOCKOUT_DURATION_MS;
+    failedAttempts = 0;
+    showLoginError(`🔒 Quá ${MAX_FAILED_ATTEMPTS} lần sai. Tạm khóa 60 giây.`);
+    const errorEl = document.getElementById('loginError');
+    const interval = setInterval(() => {
+      const remain = Math.ceil((lockoutUntil - Date.now()) / 1000);
+      if (remain <= 0) {
+        clearInterval(interval);
+        if (errorEl) errorEl.style.display = 'none';
+      } else if (errorEl) {
+        errorEl.textContent = `🔒 Tạm khóa. Thử lại sau ${remain} giây...`;
+      }
+    }, 1000);
+  } else {
+    showLoginError(`⛔ Email hoặc mật khẩu không đúng. Còn ${MAX_FAILED_ATTEMPTS - failedAttempts} lần thử.`);
+  }
+  if (passInput) { passInput.value = ''; passInput.focus(); }
 }
 
 function logout() {
+  currentUser = null;
   showLoginScreen();
   showToast('👋 Đã đăng xuất thành công.');
 }
@@ -87,22 +129,24 @@ function showLoginScreen() {
   const loginScreen = document.getElementById('loginScreen');
   if (loginScreen) loginScreen.style.display = 'flex';
 
-  // Ẩn tất cả dashboard
   const ids = ['onboarding', 'appHeader', 'appTabs', 'appMain', 'appReporting', 'appRecruitment', 'appReturnRate', 'appTransferBacklog'];
   ids.forEach(id => {
     const el = document.getElementById(id);
     if (el) el.style.display = 'none';
   });
 
-  // Ẩn logout button
   const logoutBtn = document.getElementById('logoutBtn');
   if (logoutBtn) logoutBtn.style.display = 'none';
+  const adminBtn = document.getElementById('adminBtn');
+  if (adminBtn) adminBtn.style.display = 'none';
+  const greeting = document.getElementById('userGreeting');
+  if (greeting) greeting.style.display = 'none';
 
-  // Clear password input
-  const input = document.getElementById('loginPassword');
-  if (input) { input.value = ''; }
-
-  // Clear error
+  // Clear inputs
+  const emailInput = document.getElementById('loginEmail');
+  const passInput = document.getElementById('loginPassword');
+  if (emailInput) emailInput.value = '';
+  if (passInput) passInput.value = '';
   const errorEl = document.getElementById('loginError');
   if (errorEl) errorEl.style.display = 'none';
 }
@@ -110,23 +154,35 @@ function showLoginScreen() {
 function enterDashboard() {
   const loginScreen = document.getElementById('loginScreen');
   if (loginScreen) loginScreen.style.display = 'none';
-
-  // Ẩn onboarding
   const onboarding = document.getElementById('onboarding');
   if (onboarding) onboarding.style.display = 'none';
 
-  // Hiện header, tabs
   document.getElementById('appHeader').style.display = 'flex';
   document.getElementById('appTabs').style.display = 'flex';
 
-  // Hiện logout button
   const logoutBtn = document.getElementById('logoutBtn');
   if (logoutBtn) logoutBtn.style.display = 'flex';
 
-  // Hiện tab nội dung
-  switchTab(activeTab || 'checklist');
+  // User greeting
+  if (currentUser) {
+    const greeting = document.getElementById('userGreeting');
+    const nameEl = document.getElementById('userName');
+    const badgeEl = document.getElementById('userRoleBadge');
+    if (greeting) greeting.style.display = 'flex';
+    if (nameEl) nameEl.textContent = currentUser.name;
+    if (badgeEl) {
+      badgeEl.textContent = currentUser.role === 'owner' ? '👑 Owner' : '👤 User';
+      badgeEl.className = 'user-role-badge role-' + currentUser.role;
+    }
 
-  // Load dữ liệu tự động qua HTTP fetch
+    // Show admin button for owners
+    if (currentUser.role === 'owner') {
+      const adminBtn = document.getElementById('adminBtn');
+      if (adminBtn) adminBtn.style.display = 'inline-flex';
+    }
+  }
+
+  switchTab(activeTab || 'checklist');
   refreshData();
 }
 
@@ -141,16 +197,202 @@ function showLoginError(msg) {
   }
 }
 
+// ===== ADMIN PANEL (Owner Only) =====
+function openAdminPanel() {
+  if (!currentUser || currentUser.role !== 'owner') return;
+  document.getElementById('adminOverlay').style.display = 'flex';
+  renderAdminUserTable();
+}
+
+function closeAdminPanel() {
+  document.getElementById('adminOverlay').style.display = 'none';
+}
+
+function renderAdminUserTable() {
+  const tbody = document.getElementById('adminUserTableBody');
+  const countEl = document.getElementById('adminUserCount');
+  if (!tbody || !usersData) return;
+
+  tbody.innerHTML = '';
+  countEl.textContent = usersData.users.length;
+
+  usersData.users.forEach((user, idx) => {
+    const tr = document.createElement('tr');
+    const isBlocked = user.role === 'blocked';
+    const isOwner = user.role === 'owner';
+    const roleBadge = isOwner ? '<span class="badge-owner">👑 Owner</span>' :
+                      isBlocked ? '<span class="badge-blocked">🚫 Blocked</span>' :
+                      '<span class="badge-user">👤 User</span>';
+
+    tr.innerHTML = `
+      <td>${escapeHtml(user.name)}</td>
+      <td>${escapeHtml(user.email)}</td>
+      <td>${roleBadge}</td>
+      <td>${user.createdAt || 'N/A'}</td>
+      <td>
+        ${!isOwner ? `
+          <button class="admin-btn-sm ${isBlocked ? 'btn-unblock' : 'btn-block'}" onclick="adminToggleBlock(${idx})">
+            ${isBlocked ? '✅ Mở khóa' : '🚫 Khóa'}
+          </button>
+          <button class="admin-btn-sm btn-delete" onclick="adminDeleteUser(${idx})">❌ Xóa</button>
+        ` : '<span style="color:var(--text-muted);font-size:11px;">Không thể sửa</span>'}
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+async function adminAddUser() {
+  const name = document.getElementById('adminNewName').value.trim();
+  const email = document.getElementById('adminNewEmail').value.trim().toLowerCase();
+  const pass = document.getElementById('adminNewPass').value;
+  const role = document.getElementById('adminNewRole').value;
+
+  if (!name || !email || !pass) {
+    showToast('⚠️ Vui lòng nhập đủ tên, email và mật khẩu.');
+    return;
+  }
+
+  if (usersData.users.find(u => u.email.toLowerCase() === email)) {
+    showToast('⚠️ Email đã tồn tại.');
+    return;
+  }
+
+  const hash = await sha256(pass);
+  usersData.users.push({
+    email: email,
+    passwordHash: hash,
+    role: role,
+    name: name,
+    createdAt: new Date().toISOString().split('T')[0]
+  });
+
+  pendingUserChanges = true;
+  document.getElementById('adminNewName').value = '';
+  document.getElementById('adminNewEmail').value = '';
+  document.getElementById('adminNewPass').value = '';
+  renderAdminUserTable();
+  showToast(`✅ Đã thêm user: ${name}. Bấm "💾 Lưu" để áp dụng.`);
+  updateSaveInfo();
+}
+
+function adminToggleBlock(idx) {
+  const user = usersData.users[idx];
+  if (!user || user.role === 'owner') return;
+  user.role = user.role === 'blocked' ? 'user' : 'blocked';
+  pendingUserChanges = true;
+  renderAdminUserTable();
+  showToast(`${user.role === 'blocked' ? '🚫 Đã khóa' : '✅ Đã mở khóa'}: ${user.name}`);
+  updateSaveInfo();
+}
+
+function adminDeleteUser(idx) {
+  const user = usersData.users[idx];
+  if (!user || user.role === 'owner') return;
+  if (!confirm(`Xóa user "${user.name}" (${user.email})?`)) return;
+  usersData.users.splice(idx, 1);
+  pendingUserChanges = true;
+  renderAdminUserTable();
+  showToast(`❌ Đã xóa: ${user.name}`);
+  updateSaveInfo();
+}
+
+function updateSaveInfo() {
+  const el = document.getElementById('adminSaveInfo');
+  if (el) {
+    el.textContent = pendingUserChanges ? '⚠️ Có thay đổi chưa lưu!' : '✅ Đã lưu.';
+    el.style.color = pendingUserChanges ? 'var(--accent-amber)' : 'var(--accent-green)';
+  }
+}
+
+async function adminSaveUsers() {
+  if (!pendingUserChanges) {
+    showToast('ℹ️ Không có thay đổi.');
+    return;
+  }
+
+  // Prompt for GitHub token if not cached
+  let ghToken = sessionStorage.getItem('gh_token');
+  if (!ghToken) {
+    ghToken = prompt('Nhập GitHub Personal Access Token để lưu:\n(Tạo tại: github.com > Settings > Developer settings > Personal access tokens > Tokens (classic) > Generate new token > chọn "repo" scope)');
+    if (!ghToken) return;
+    sessionStorage.setItem('gh_token', ghToken);
+  }
+
+  const ghConfig = usersData.github;
+  const apiUrl = `https://api.github.com/repos/${ghConfig.owner}/${ghConfig.repo}/contents/${ghConfig.filePath}`;
+
+  showToast('💾 Đang lưu...');
+
+  try {
+    // Get current file SHA
+    const getRes = await fetch(apiUrl, {
+      headers: { 'Authorization': `token ${ghToken}` }
+    });
+    let fileSha = '';
+    if (getRes.ok) {
+      const fileData = await getRes.json();
+      fileSha = fileData.sha;
+    }
+
+    // Prepare content
+    const jsonStr = JSON.stringify(usersData, null, 2);
+    const base64Content = btoa(unescape(encodeURIComponent(jsonStr)));
+
+    // Push to GitHub
+    const putRes = await fetch(apiUrl, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `token ${ghToken}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        message: `Update users.json - ${new Date().toLocaleString('vi-VN')}`,
+        content: base64Content,
+        sha: fileSha
+      })
+    });
+
+    if (putRes.ok) {
+      pendingUserChanges = false;
+      showToast('✅ Đã lưu thay đổi lên GitHub thành công!');
+      updateSaveInfo();
+    } else {
+      const err = await putRes.json();
+      if (putRes.status === 401) {
+        sessionStorage.removeItem('gh_token');
+        showToast('⛔ Token không hợp lệ. Thử lại.');
+      } else {
+        showToast(`❌ Lỗi: ${err.message}`);
+      }
+    }
+  } catch(e) {
+    showToast(`❌ Lỗi kết nối: ${e.message}`);
+  }
+}
+
 // ===== AUTH INITIALIZATION ON PAGE LOAD =====
-document.addEventListener('DOMContentLoaded', () => {
-  // Luôn hiện login screen khi mở trang
+document.addEventListener('DOMContentLoaded', async () => {
+  // Load users first
+  await loadUsers();
+
+  // Show login screen
   showLoginScreen();
 
-  // Enter key để đăng nhập
-  const passwordInput = document.getElementById('loginPassword');
-  if (passwordInput) {
-    passwordInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') handlePasswordLogin();
+  // Enter key for login
+  const passInput = document.getElementById('loginPassword');
+  if (passInput) {
+    passInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') handleLogin();
+    });
+  }
+  const emailInput = document.getElementById('loginEmail');
+  if (emailInput) {
+    emailInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const passEl = document.getElementById('loginPassword');
+        if (passEl) passEl.focus();
+      }
     });
   }
 });

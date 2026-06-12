@@ -1,0 +1,1 @@
+['Cấp Quản Lý', 'Chi tiết', 'Time', 'Volume', '% Gán', '% GTC', '% Chuyển trả', 'Leadtime', 'Vol GTC', 'ID Bưu cục', 'Time Format']

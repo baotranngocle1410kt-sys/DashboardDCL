@@ -8,7 +8,7 @@
   <meta name="description" content="Dashboard quản trị công việc cá nhân & vận hành GHN">
   <meta name="robots" content="noindex, nofollow">
   <!-- Security Headers (via meta tags for GitHub Pages) -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' cdn.jsdelivr.net 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'self' api.telegram.org; img-src 'self' data:; font-src 'self'; frame-ancestors 'none';">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' cdn.jsdelivr.net 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'self' api.telegram.org api.github.com; img-src 'self' data:; font-src 'self'; frame-ancestors 'none';">
   <meta http-equiv="X-Frame-Options" content="DENY">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -24,20 +24,66 @@
       <div class="login-logo">🧭</div>
       <div class="login-title">TỔNG QUAN VÙNG ĐCL</div>
       <div class="login-subtitle">Trung tâm Chỉ huy Vận hành — GHN<br>Đăng nhập để truy cập Dashboard</div>
-      <div class="login-divider">Nhập mật khẩu để truy cập</div>
+      <div class="login-divider">Đăng nhập bằng tài khoản được cấp</div>
       <div class="login-form">
         <div class="login-input-group">
-          <span class="login-input-icon">🔑</span>
-          <input type="password" class="login-input" id="loginPassword" placeholder="Nhập mật khẩu..." autocomplete="current-password">
+          <span class="login-input-icon">📧</span>
+          <input type="email" class="login-input" id="loginEmail" placeholder="Email công ty..." autocomplete="email">
         </div>
-        <button class="login-btn" id="loginBtn" onclick="handlePasswordLogin()">🔓 Đăng nhập</button>
+        <div class="login-input-group">
+          <span class="login-input-icon">🔑</span>
+          <input type="password" class="login-input" id="loginPassword" placeholder="Mật khẩu..." autocomplete="current-password">
+        </div>
+        <button class="login-btn" id="loginBtn" onclick="handleLogin()">🔓 Đăng nhập</button>
       </div>
       <div class="login-error" id="loginError"></div>
       <div class="login-domain-notice">
         <span class="notice-icon">🔒</span>
-        <span>Chỉ nhân viên được cấp mật khẩu mới được phép truy cập hệ thống này.</span>
+        <span>Chỉ tài khoản được Owner phê duyệt mới được truy cập.</span>
       </div>
       <div class="login-footer">GHN Express — Hệ thống nội bộ</div>
+    </div>
+  </div>
+
+  <!-- Admin Panel Modal (Owner only) -->
+  <div class="admin-overlay" id="adminOverlay" style="display:none" onclick="if(event.target===this)closeAdminPanel()">
+    <div class="admin-panel">
+      <div class="admin-header">
+        <h2>⚙️ Quản lý người dùng</h2>
+        <button class="admin-close" onclick="closeAdminPanel()">✕</button>
+      </div>
+      <div class="admin-add-form">
+        <h3>➕ Thêm user mới</h3>
+        <div class="admin-form-row">
+          <input type="text" id="adminNewName" placeholder="Tên hiển thị" class="admin-input">
+          <input type="email" id="adminNewEmail" placeholder="Email" class="admin-input">
+          <input type="password" id="adminNewPass" placeholder="Mật khẩu" class="admin-input">
+          <select id="adminNewRole" class="admin-input admin-select">
+            <option value="user">User</option>
+            <option value="owner">Owner</option>
+          </select>
+          <button class="admin-btn admin-btn-add" onclick="adminAddUser()">➕ Thêm</button>
+        </div>
+      </div>
+      <div class="admin-user-list">
+        <h3>👥 Danh sách người dùng (<span id="adminUserCount">0</span>)</h3>
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Tên</th>
+              <th>Email</th>
+              <th>Vai trò</th>
+              <th>Ngày tạo</th>
+              <th>Thao tác</th>
+            </tr>
+          </thead>
+          <tbody id="adminUserTableBody"></tbody>
+        </table>
+      </div>
+      <div class="admin-save-section">
+        <div class="admin-save-info" id="adminSaveInfo"></div>
+        <button class="admin-btn admin-btn-save" onclick="adminSaveUsers()">💾 Lưu thay đổi</button>
+      </div>
     </div>
   </div>
 
@@ -61,6 +107,12 @@
       </div>
     </div>
     <div class="header-actions">
+      <div class="user-greeting" id="userGreeting" style="display:none">
+        <span class="user-avatar" id="userAvatar">👤</span>
+        <span class="user-name" id="userName"></span>
+        <span class="user-role-badge" id="userRoleBadge"></span>
+      </div>
+      <button class="btn btn-admin" id="adminBtn" onclick="openAdminPanel()" style="display:none">⚙️ Quản lý</button>
       <button class="btn" onclick="refreshData()">🔄 Làm mới</button>
       <button class="btn-logout" id="logoutBtn" onclick="logout()" style="display:none">🚪 Đăng xuất</button>
     </div>

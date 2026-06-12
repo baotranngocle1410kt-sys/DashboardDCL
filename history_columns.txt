@@ -1,0 +1,1 @@
+['Ngày ghi nhận', 'ID Bưu cục', 'Tên Bưu cục', '%GTC 7 ngày (1)', '% GTC lịch sử tốt nhất (2)', 'Logic: So sánh (1) / (2)', 'Trạng thái']
