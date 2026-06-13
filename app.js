@@ -2036,14 +2036,9 @@ function renderHrDimensionTable() {
 
     const filtered = repData.provinces.filter(p => p.name.toLowerCase().includes(hrTableSearchQuery));
     filtered.forEach(p => {
-      // Find HRBP and Intern for this province
-      let hrbp = 'N/A';
-      let intern = 'N/A';
-      if (p.name === 'Bến Tre') { hrbp = 'VyLNK'; intern = 'Tuấn Hưng'; }
-      else if (p.name === 'Đồng Tháp') { hrbp = 'BìnhNLC'; intern = 'Phương Uyên'; }
-      else if (p.name === 'Tiền Giang') { hrbp = 'BìnhNLC'; intern = 'Phương Uyên + Mai Quý'; }
-      else if (p.name === 'Trà Vinh') { hrbp = 'VyLNK'; intern = 'Mai Quý'; }
-      else if (p.name === 'Vĩnh Long') { hrbp = 'VyLNK'; intern = 'Tuấn Hưng'; }
+      // Find HRBP and Intern for this province dynamically
+      let hrbp = p.hr && p.hr.hrbp ? p.hr.hrbp : 'N/A';
+      let intern = p.hr && p.hr.intern ? p.hr.intern : 'N/A';
 
       const tr = document.createElement('tr');
       tr.innerHTML = `

@@ -58,7 +58,7 @@
 | Lê Minh Tuấn | 63.31% | 3.04% | Cải thiện | 65 | Thiếu 9/80 | BìnhNLC |
 | Lý Quài Nhân | 62.22% | 4.02% | Cải thiện | 46 | Thiếu 7/39 | BìnhNLC |
 | Lâm Xuân Vinh | 53.52% | 4.96% | Yếu | 132 | Thiếu 4/82 | VyLNK |
-| Nguyễn Tuấn Anh | 52.32% | 4.20% | Yếu | 592 | Thiếu 15/133 | BìnhNLC |
+| Nguyễn Tuấn Anh | 52.32% | 4.20% | Yếu | 592 | Thiếu 15/133 | VyLNK |
 | Đoàn Công Tín | 51.68% | 2.56% | Yếu | 232 | Thiếu 9/84 | KhôiHM |
 | Huỳnh Quốc Trung | 45.52% | 10.25% | Yếu | 48 | Thiếu 1/13 | VyLNK |
 | Nguyễn Anh Tùng | 43.22% | 4.58% | Yếu | 175 | Thiếu 9/89 | KhôiHM |

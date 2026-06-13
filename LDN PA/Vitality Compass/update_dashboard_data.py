@@ -245,6 +245,7 @@ def main():
     latest_gtc_date = df_data['corrected_date'].max()
     
     print("Reading recruitment sheet...")
+    interns_map = {}
     with pd.ExcelFile(p_hr) as xl_hr:
         # Find all Tổng hợp (T\d+) sheets and select the one with max week number
         tonghop_sheets = []
@@ -264,6 +265,24 @@ def main():
             print(f"⚠ No 'Tổng hợp (T*)' sheet found. Falling back to default: {latest_hr_sheet}")
             
         df_hr = pd.read_excel(xl_hr, sheet_name=latest_hr_sheet)
+        
+        # Parse interns map from 'Cơ cấu Intern'
+        if 'Cơ cấu Intern' in xl_hr.sheet_names:
+            try:
+                df_intern = xl_hr.parse('Cơ cấu Intern', header=None)
+                for idx, row in df_intern.iterrows():
+                    if idx < 2:
+                        continue
+                    tỉnh = str(row[0]).strip() if pd.notna(row[0]) else ""
+                    if not tỉnh or tỉnh == 'TỔNG' or tỉnh == 'nan' or tỉnh == 'Tổng cộng':
+                        continue
+                    # Get active intern from column 7, fallback to column 4
+                    intern = str(row[7]).strip() if pd.notna(row[7]) and str(row[7]).strip() != 'nan' else str(row[4]).strip()
+                    if intern and intern != 'nan':
+                        interns_map[tỉnh.lower()] = intern
+                print("✓ Parsed HRBP Interns from 'Cơ cấu Intern' sheet:", interns_map)
+            except Exception as ie:
+                print(f"⚠ Failed to parse 'Cơ cấu Intern': {ie}")
     
     # Find columns for Subtable 0 (fallback)
     try:
@@ -280,56 +299,10 @@ def main():
         'Data_Day', 'NVPTTT_shortage_actual', 'pct_dapung', 'HRBP', 'Status'
     ]
 
-    # Parse and combine all province subtables from columns 52 to 126
-    subtables_config = [
-        (52, 66, "VyLNK"),       # Subtable 1: Bến Tre
-        (67, 81, "VyLNK"),       # Subtable 2: Trà Vinh
-        (82, 96, "BìnhNLC"),     # Subtable 3: Vĩnh Long
-        (97, 111, "BìnhNLC"),    # Subtable 4: Đồng Tháp
-        (112, 126, "KhôiHM")     # Subtable 5: Tiền Giang
-    ]
-    
-    def parse_subtable(df, start_col, end_col, default_hrbp):
-        sub = df.iloc[:, start_col:end_col].copy()
-        cols = list(sub.columns)
-        rename_dict = {}
-        standard_names = [
-            'Bưu cục', 'Tỉnh', 'AM', 'Tuyến thiếu', 'Định biên NVPTTT', 'Định biên NVXL', 
-            'NVPTTT_resign', 'NVPTTT_shortage_bs', 'YCTD', 'NVPTTT_ob_day', 'NVPTTT_ob_week', 
-            'Data_Day', 'NVPTTT_shortage_actual', 'pct_dapung'
-        ]
-        for idx, name in enumerate(cols):
-            if idx < len(standard_names):
-                rename_dict[name] = standard_names[idx]
-        sub = sub.rename(columns=rename_dict)
-        sub['HRBP'] = default_hrbp
-        
-        def get_status(row):
-            try:
-                shortage = float(row['NVPTTT_shortage_actual'])
-                return "Đủ" if shortage <= 0 else "Thiếu"
-            except:
-                return "Đủ"
-        sub['Status'] = sub.apply(get_status, axis=1)
-        
-        sub['Bưu cục_clean'] = sub['Bưu cục'].apply(clean_bc_name)
-        sub = sub[(sub['Bưu cục'].notna()) & (sub['Bưu cục'] != 'TỔNG') & (sub['Bưu cục'].astype(str).str.strip() != '')]
-        return sub
-
-    parsed_subs = []
-    for start, end, hrbp in subtables_config:
-        try:
-            sub_df = parse_subtable(df_hr, start, end, hrbp)
-            parsed_subs.append(sub_df)
-            print(f"✓ Parsed subtable columns {start}:{end} ({hrbp}). Count: {len(sub_df)} rows.")
-        except Exception as e:
-            print(f"⚠ Failed to parse subtable {start}:{end}: {e}")
-            
-    if parsed_subs:
-        df_bc_hr = pd.concat(parsed_subs, ignore_index=True)
-        print(f"✓ Combined recruitment data for all provinces. Total: {len(df_bc_hr)} bưu cục.")
-    else:
-        df_bc_hr = df_sub0[(df_sub0['Bưu cục'].notna()) & (df_sub0['Bưu cục'] != 'TỔNG') & (df_sub0['Tỉnh'].notna())].copy()
+    # Read headcount allocation and HRBP assignments directly from Subtable 0
+    df_bc_hr = df_sub0[(df_sub0['Bưu cục'].notna()) & (df_sub0['Bưu cục'] != 'TỔNG') & (df_sub0['Tỉnh'].notna()) & (df_sub0['Bưu cục'].astype(str).str.strip() != '')].copy()
+    df_bc_hr['Bưu cục_clean'] = df_bc_hr['Bưu cục'].apply(clean_bc_name)
+    print(f"✓ Parsed recruitment data from Subtable 0. Total: {len(df_bc_hr)} bưu cục.")
         
     # Standardize numeric columns
     for col in ['NVPTTT_shortage_actual', 'NVPTTT_shortage_bs', 'NVPTTT_resign', 'NVPTTT_ob_week', 'Định biên NVPTTT', 'Định biên NVXL']:
@@ -543,6 +516,13 @@ def main():
         p_ob = int(df_prov_hr['NVPTTT_ob_week'].sum())
         p_dinhiben = int(df_prov_hr['Định biên NVPTTT'].dropna().sum())
         
+        # Get HRBP dynamically from df_prov_hr
+        prov_hrbps = df_prov_hr['HRBP'].dropna().astype(str).str.strip().tolist()
+        p_hrbp = max(set(prov_hrbps), key=prov_hrbps.count) if prov_hrbps else "N/A"
+        
+        # Get Intern dynamically from interns_map
+        p_intern = interns_map.get(prov.lower(), "N/A")
+        
         province_data.append({
             'name': prov,
             'volume': p_vol,
@@ -557,7 +537,9 @@ def main():
                 'shortage_bs': p_shortage_bs,
                 'resign': p_resign,
                 'ob': p_ob,
-                'target_headcount': p_dinhiben
+                'target_headcount': p_dinhiben,
+                'hrbp': p_hrbp,
+                'intern': p_intern
             }
         })
         
