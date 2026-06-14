@@ -148,7 +148,7 @@ def main():
     p_link2_local = r"C:\Users\Administrator\Desktop\AI 2026\Mentor\link2_live.xlsx"
     link2_success = False
     try:
-        gsheet_link2_url = "https://docs.google.com/spreadsheets/d/1KSNCjtIxSYuVtFwYO9t8jz7rj-oU53lGZHe95H-7QMM/export?format=xlsx"
+        gsheet_link2_url = "https://docs.google.com/spreadsheets/d/1czdUAW8M9hJZ_OBk5fUgwJupOmahM6QW5AlufN36jaU/export?format=xlsx"
         req = urllib.request.Request(gsheet_link2_url, headers={'User-Agent': 'Mozilla/5.0'})
         with urllib.request.urlopen(req, timeout=90) as response:
             with open(p_link2_local, 'wb') as f:
@@ -210,9 +210,9 @@ def main():
                 if "Data ĐCL" in sheets:
                     p_performance = path
                     print(f"-> Assigned {label} to Performance Report (found 'Data ĐCL')")
-                elif "PIVOT" in sheets:
+                elif "PIVOT" in sheets or "aging>5" in sheets:
                     p_backlog = path
-                    print(f"-> Assigned {label} to Backlog Report (found 'PIVOT')")
+                    print(f"-> Assigned {label} to Backlog Report (found 'PIVOT' or 'aging>5')")
                 else:
                     print(f"-> {label} sheets: {sheets} (No matching template sheets found)")
             except Exception as e:
@@ -232,13 +232,69 @@ def main():
         df_cocau = pd.read_excel(xls_perf, sheet_name="CoCauVung")
         df_hist = pd.read_excel(xls_perf, sheet_name="Lịch sử")
     print("Reading backlog sheets...")
-    df_backlog_pivot = pd.read_excel(p_backlog, sheet_name="PIVOT")
-    df_backlog_raw = pd.read_excel(p_backlog, sheet_name="Đơn GIAO aging >5 ngày", usecols=['BC'])
-    
-    # Group by BC to count backlogs dynamically
+    xl_bl = pd.ExcelFile(p_backlog)
     bl_by_bc = {}
-    for bc_name_raw, grp in df_backlog_raw.groupby('BC'):
-        bl_by_bc[clean_bc_name(bc_name_raw)] = len(grp)
+    df_bl_ams = pd.DataFrame()
+    
+    if "aging>5" in xl_bl.sheet_names:
+        print("✓ Detected new backlog format ('aging>5' sheet)")
+        df_raw_bl = pd.read_excel(xl_bl, sheet_name="aging>5")
+        if 'vung' in df_raw_bl.columns:
+            df_dcl = df_raw_bl[df_raw_bl['vung'].astype(str).str.strip().str.upper() == 'ĐCL'].copy()
+        else:
+            df_dcl = df_raw_bl.copy()
+            
+        bc_col = 'bc' if 'bc' in df_dcl.columns else ('BC' if 'BC' in df_dcl.columns else '')
+        if bc_col:
+            for bc_name_raw, grp in df_dcl.groupby(bc_col):
+                bl_by_bc[clean_bc_name(bc_name_raw)] = len(grp)
+        
+        am_col = 'am_name' if 'am_name' in df_dcl.columns else ('AM' if 'AM' in df_dcl.columns else 'am')
+        days_col = 'BL số ngày' if 'BL số ngày' in df_dcl.columns else ('bl_so_ngay' if 'bl_so_ngay' in df_dcl.columns else 'BL số ngày')
+        
+        def get_bucket(days):
+            try:
+                val = float(days)
+                if val < 8:
+                    return '5 - 8 ngày'
+                elif val < 15:
+                    return '8 - 15 ngày'
+                else:
+                    return 'Trên 15 ngày'
+            except:
+                return '5 - 8 ngày'
+                  
+        if am_col in df_dcl.columns and days_col in df_dcl.columns:
+            rows_list = []
+            for am_val, grp in df_dcl.groupby(am_col):
+                if pd.isna(am_val):
+                    continue
+                am_str = str(am_val).strip()
+                if not am_str or am_str.lower() == 'nan' or am_str.lower() == 'tổng':
+                    continue
+                bucket_counts = {'5 - 8 ngày': 0, '8 - 15 ngày': 0, 'Trên 15 ngày': 0}
+                for days in grp[days_col]:
+                    bucket = get_bucket(days)
+                    bucket_counts[bucket] += 1
+                total = sum(bucket_counts.values())
+                rows_list.append({
+                    'AM': am_str,
+                    '5 - 8 ngày': bucket_counts['5 - 8 ngày'],
+                    '8 - 15 ngày': bucket_counts['8 - 15 ngày'],
+                    'Trên 15 ngày': bucket_counts['Trên 15 ngày'],
+                    'Tổng': total
+                })
+            df_bl_ams = pd.DataFrame(rows_list)
+        else:
+            print("⚠ Warning: am_col or days_col not found in new sheet layout!")
+            df_bl_ams = pd.DataFrame(columns=['AM', '5 - 8 ngày', '8 - 15 ngày', 'Trên 15 ngày', 'Tổng'])
+    else:
+        print("✓ Detected old backlog format ('PIVOT' sheet)")
+        df_backlog_pivot = pd.read_excel(xl_bl, sheet_name="PIVOT")
+        df_backlog_raw = pd.read_excel(xl_bl, sheet_name="Đơn GIAO aging >5 ngày", usecols=['BC'])
+        
+        for bc_name_raw, grp in df_backlog_raw.groupby('BC'):
+            bl_by_bc[clean_bc_name(bc_name_raw)] = len(grp)
     
     # 2. Date Corrections (Moved up to get current week number)
     df_data['corrected_date'] = pd.to_datetime(df_data['Time Format']) 
@@ -329,21 +385,36 @@ def main():
     lastweek_gtc_date = latest_gtc_date - pd.Timedelta(days=7)
     lastmonth_gtc_date = latest_gtc_date - pd.Timedelta(days=30)
     
-    # Clean Backlog Pivot
-    df_bl = df_backlog_pivot.copy()
-    df_bl.columns = [str(x).strip() for x in df_bl.iloc[0]]
-    df_bl = df_bl[1:].reset_index(drop=True)
-    
-    # AM Backlog Table
-    tong_idx = df_bl[df_bl['AM'] == 'TỔNG'].index
-    if len(tong_idx) > 0:
-        df_bl_ams = df_bl.iloc[:tong_idx[0]].copy()
-    else:
-        df_bl_ams = df_bl.dropna(subset=['AM']).copy()
+    # Clean Backlog Pivot (Old format only)
+    if 'df_backlog_pivot' in locals():
+        df_bl = df_backlog_pivot.copy()
+        df_bl.columns = [str(x).strip() for x in df_bl.iloc[0]]
+        df_bl = df_bl[1:].reset_index(drop=True)
         
-    for col in ['5 - 8 ngày', '8 - 15 ngày', 'Trên 15 ngày', 'Tổng']:
-        df_bl_ams[col] = pd.to_numeric(df_bl_ams[col], errors='coerce').fillna(0).astype(int)
-        
+        # AM Backlog Table
+        tong_idx = df_bl[df_bl['AM'] == 'TỔNG'].index
+        if len(tong_idx) > 0:
+            df_bl_ams = df_bl.iloc[:tong_idx[0]].copy()
+        else:
+            df_bl_ams = df_bl.dropna(subset=['AM']).copy()
+            
+        for col in ['5 - 8 ngày', '8 - 15 ngày', 'Trên 15 ngày', 'Tổng']:
+            df_bl_ams[col] = pd.to_numeric(df_bl_ams[col], errors='coerce').fillna(0).astype(int)
+            
+    # Load historical backlogs from existing JSON if available
+    json_backlog_history = {}
+    if os.path.exists(output_json):
+        try:
+            with open(output_json, 'r', encoding='utf-8') as f:
+                old_data = json.load(f)
+            if 'daily_trends' in old_data:
+                for trend in old_data['daily_trends']:
+                    if 'date' in trend and 'backlog' in trend:
+                        json_backlog_history[trend['date']] = int(trend['backlog'])
+            print(f"✓ Loaded {len(json_backlog_history)} historical backlog values from existing operations_data.json")
+        except Exception as je:
+            print(f"⚠ Failed to load historical backlog from JSON: {je}")
+
     backlog_history = {
         '2026-05-24': 2878,
         '2026-05-23': 2705,
@@ -354,46 +425,47 @@ def main():
         '2026-05-18': 2128,
         '2026-05-17': 1850
     }
+    backlog_history.update(json_backlog_history)
     
-    # Parse daily backlog totals dynamically from bottom of PIVOT sheet
+    # Parse daily backlog totals dynamically from bottom of PIVOT sheet (Old format only)
     parsed_history = {}
-    try:
-        header_idx = None
-        total_idx = None
-        for idx, r_row in df_backlog_pivot.iterrows():
-            val = str(r_row.iloc[0]).strip() if pd.notna(r_row.iloc[0]) else ""
-            if val == 'AM' and any('Ngày N' in str(cell) for cell in r_row):
-                header_idx = idx
-            elif val == 'TỔNG' and header_idx is not None:
-                total_idx = idx
-                
-        if header_idx is not None and total_idx is not None:
-            headers = df_backlog_pivot.iloc[header_idx].tolist()
-            totals = df_backlog_pivot.iloc[total_idx].tolist()
-            
-            for col_idx in range(1, len(headers)):
-                h_val = str(headers[col_idx]).strip() if pd.notna(headers[col_idx]) else ""
-                t_val = str(totals[col_idx]).strip() if pd.notna(totals[col_idx]) else ""
-                
-                if not h_val or not t_val:
-                    continue
-                date_match = re.search(r'\((\d{2}/\d{2})\)', h_val)
-                if not date_match:
-                    date_match = re.search(r'(\d{2}/\d{2})', h_val)
-                cnt_match = re.match(r'^([\d\.,]+)', t_val)
-                
-                if date_match and cnt_match:
-                    date_str = date_match.group(1)
-                    day, month = date_str.split('/')
-                    full_date = f"2026-{month}-{day}"
-                    cnt_str = cnt_match.group(1).replace('.', '').replace(',', '')
-                    parsed_history[full_date] = int(cnt_str)
+    if 'df_backlog_pivot' in locals():
+        try:
+            header_idx = None
+            total_idx = None
+            for idx, r_row in df_backlog_pivot.iterrows():
+                val = str(r_row.iloc[0]).strip() if pd.notna(r_row.iloc[0]) else ""
+                if val == 'AM' and any('Ngày N' in str(cell) for cell in r_row):
+                    header_idx = idx
+                elif val == 'TỔNG' and header_idx is not None:
+                    total_idx = idx
                     
-        # Update backlog_history with parsed values
-        for k, v in parsed_history.items():
-            backlog_history[k] = v
-    except Exception as e:
-        print(f"⚠ Failed to parse daily backlog history: {e}")
+            if header_idx is not None and total_idx is not None:
+                headers = df_backlog_pivot.iloc[header_idx].tolist()
+                totals = df_backlog_pivot.iloc[total_idx].tolist()
+                
+                for col_idx in range(1, len(headers)):
+                    h_val = str(headers[col_idx]).strip() if pd.notna(headers[col_idx]) else ""
+                    t_val = str(totals[col_idx]).strip() if pd.notna(totals[col_idx]) else ""
+                    
+                    if not h_val or not t_val:
+                        continue
+                    date_match = re.search(r'\((\d{2}/\d{2})\)', h_val)
+                    if not date_match:
+                        date_match = re.search(r'(\d{2}/\d{2})', h_val)
+                    cnt_match = re.match(r'^([\d\.,]+)', t_val)
+                    
+                    if date_match and cnt_match:
+                        date_str = date_match.group(1)
+                        day, month = date_str.split('/')
+                        full_date = f"2026-{month}-{day}"
+                        cnt_str = cnt_match.group(1).replace('.', '').replace(',', '')
+                        parsed_history[full_date] = int(cnt_str)
+                        
+            for k, v in parsed_history.items():
+                backlog_history[k] = v
+        except Exception as e:
+            print(f"⚠ Failed to parse daily backlog history: {e}")
     
     # Map Post Offices to AM and Province
     df_data_m = df_data.merge(df_cocau, left_on="ID Bưu cục", right_on="warehouse_id", how="left")
@@ -442,21 +514,38 @@ def main():
     lastmonth_fd = 0.0275 
     lastmonth_vol = cur_vol - 3500 
     
-    cur_bl = int(df_bl_ams['Tổng'].sum())
+    cur_bl = int(df_bl_ams['Tổng'].sum()) if not df_bl_ams.empty else 0
     
+    # Add today's backlog dynamically to backlog_history
+    try:
+        if 'df_dcl' in locals() and 'updated_time' in df_dcl.columns and not df_dcl['updated_time'].isna().all():
+            backlog_date_str = pd.to_datetime(df_dcl['updated_time'].max()).strftime('%Y-%m-%d')
+        else:
+            backlog_date_str = pd.to_datetime(latest_gtc_date).strftime('%Y-%m-%d')
+    except:
+        import datetime
+        backlog_date_str = datetime.datetime.now().strftime('%Y-%m-%d')
+        
+    backlog_history[backlog_date_str] = cur_bl
+    print(f"✓ Added today's backlog ({backlog_date_str}: {cur_bl} orders) to backlog_history")
+
     # Calculate relative backlogs dynamically
-    today_str = '2026-05-28'
-    if parsed_history:
-        today_str = max(parsed_history.keys())
+    today_str = pd.to_datetime(latest_gtc_date).strftime('%Y-%m-%d')
+    if backlog_history:
+        valid_dates = [d for d in backlog_history.keys() if d <= today_str]
+        if valid_dates:
+            today_str = max(valid_dates)
+        else:
+            today_str = max(backlog_history.keys())
         
     yest_dt = pd.to_datetime(today_str) - pd.Timedelta(days=1)
-    yest_bl = parsed_history.get(yest_dt.strftime('%Y-%m-%d'), 2705)
+    yest_bl = backlog_history.get(yest_dt.strftime('%Y-%m-%d'), 2705)
     
     lastweek_dt = pd.to_datetime(today_str) - pd.Timedelta(days=7)
-    lastweek_bl = parsed_history.get(lastweek_dt.strftime('%Y-%m-%d'), 2128)
+    lastweek_bl = backlog_history.get(lastweek_dt.strftime('%Y-%m-%d'), 2128)
     
     lastmonth_dt = pd.to_datetime(today_str) - pd.Timedelta(days=30)
-    lastmonth_bl = parsed_history.get(lastmonth_dt.strftime('%Y-%m-%d'), 1850)
+    lastmonth_bl = backlog_history.get(lastmonth_dt.strftime('%Y-%m-%d'), 1850)
     
     kpis = {
         'volume': {
