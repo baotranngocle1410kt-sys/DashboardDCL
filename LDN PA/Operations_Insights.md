@@ -8,7 +8,7 @@
 - **GTC**: 58.86% (Biến động vs Tuần trước: ↗ +3.72% vs Tuần trước)
 - **FD**: 3.60% (Biến động vs Tuần trước: ↗ +0.28% vs Tuần trước)
 - **Ontime**: 91.50%
-- **Backlog**: 1,994 (Biến động vs Tuần trước: ↗ +3.85% vs Tuần trước)
+- **Backlog**: 2,437 (Biến động vs Tuần trước: ↗ +26.93% vs Tuần trước)
 - **Thiếu hụt Nhân sự**: Thiếu 66 shipper (Tuyển mới: 30 / Nghỉ việc: 45)
 
 ## 🔴 Cảnh báo Hôm nay (Alerts)
@@ -30,7 +30,7 @@
 - Trong tuần qua, HRBP đã tuyển thành công **30 nhân viên mới** (OB) hỗ trợ lấp đầy các tuyến nóng.
 
 ### Lowlights:
-- Đơn tồn backlog (>5 ngày) tăng mạnh **+3.85%** so với tuần trước (từ 1,920 lên 1,994 đơn).
+- Đơn tồn backlog (>5 ngày) tăng mạnh **+26.93%** so với tuần trước (từ 1,920 lên 2,437 đơn).
 - Toàn vùng đang **thiếu hụt thực tế 66 shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.
 - Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 20 định biên) và **Đồng Tháp** (thiếu 20 định biên).
 
@@ -51,25 +51,25 @@
 ## 📋 Đánh giá AM (Scorecard)
 | AM | GTC | FD | Trạng thái | Đơn Aging | Thiếu shipper | HRBP |
 | --- | --- | --- | --- | --- | --- | --- |
-| Ngô Phan Mỹ Tú | 74.16% | 2.46% | Mạnh | 7 | Thiếu 2/56 | BìnhNLC |
-| Huỳnh Phương Duy | 70.70% | 2.50% | Mạnh | 21 | Thiếu 3/68 | VyLNK |
-| Nguyễn Thành Huy | 70.58% | 2.73% | Mạnh | 57 | Thiếu 3/128 | VyLNK |
-| Nguyễn Việt Tới | 69.36% | 3.18% | Mạnh | 36 | Thiếu 4/46 | BìnhNLC |
-| Lê Minh Tuấn | 63.31% | 3.04% | Cải thiện | 46 | Thiếu 9/80 | BìnhNLC |
-| Lý Quài Nhân | 62.22% | 4.02% | Cải thiện | 46 | Thiếu 7/39 | BìnhNLC |
-| Nguyễn Huỳnh Quốc Dũng | 59.93% | 1.92% | Cải thiện | 52 | Thiếu 0/0 | N/A |
-| Lâm Xuân Vinh | 53.52% | 4.96% | Yếu | 249 | Thiếu 4/82 | VyLNK |
-| Nguyễn Tuấn Anh | 52.32% | 4.20% | Yếu | 499 | Thiếu 15/133 | VyLNK |
-| Đoàn Công Tín | 51.68% | 2.56% | Yếu | 499 | Thiếu 9/84 | KhôiHM |
-| Huỳnh Quốc Trung | 45.52% | 10.25% | Yếu | 101 | Thiếu 1/13 | VyLNK |
-| Nguyễn Anh Tùng | 43.22% | 4.58% | Yếu | 381 | Thiếu 9/89 | KhôiHM |
+| Ngô Phan Mỹ Tú | 74.16% | 2.46% | Mạnh | 15 | Thiếu 2/56 | BìnhNLC |
+| Huỳnh Phương Duy | 70.70% | 2.50% | Mạnh | 19 | Thiếu 3/68 | VyLNK |
+| Nguyễn Thành Huy | 70.58% | 2.73% | Mạnh | 101 | Thiếu 3/128 | VyLNK |
+| Nguyễn Việt Tới | 69.36% | 3.18% | Mạnh | 44 | Thiếu 4/46 | BìnhNLC |
+| Lê Minh Tuấn | 63.31% | 3.04% | Cải thiện | 51 | Thiếu 9/80 | BìnhNLC |
+| Lý Quài Nhân | 62.22% | 4.02% | Cải thiện | 37 | Thiếu 7/39 | BìnhNLC |
+| Nguyễn Huỳnh Quốc Dũng | 59.93% | 1.92% | Cải thiện | 48 | Thiếu 0/0 | N/A |
+| Lâm Xuân Vinh | 53.52% | 4.96% | Yếu | 233 | Thiếu 4/82 | VyLNK |
+| Nguyễn Tuấn Anh | 52.32% | 4.20% | Yếu | 560 | Thiếu 15/133 | VyLNK |
+| Đoàn Công Tín | 51.68% | 2.56% | Yếu | 633 | Thiếu 9/84 | KhôiHM |
+| Huỳnh Quốc Trung | 45.52% | 10.25% | Yếu | 135 | Thiếu 1/13 | VyLNK |
+| Nguyễn Anh Tùng | 43.22% | 4.58% | Yếu | 561 | Thiếu 9/89 | KhôiHM |
 
 ## 📦 Backlog Tracking
-- **Tổng Backlog >5 ngày**: 1,994 đơn
+- **Tổng Backlog >5 ngày**: 2,437 đơn
 - **Chi tiết theo nhóm tuổi đơn**:
-  - 5 - 8 ngày: 1,627 đơn
-  - 8 - 15 ngày: 358 đơn
-  - Trên 15 ngày: 9 đơn
+  - 5 - 8 ngày: 1,923 đơn
+  - 8 - 15 ngày: 512 đơn
+  - Trên 15 ngày: 2 đơn
 
 ## 🛒 TiktokShop Metrics
 - GTC TiktokShop đạt 92.1% (tập trung tại các bưu cục trọng điểm).
