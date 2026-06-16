@@ -861,31 +861,63 @@ def main():
         gsheet_url = "https://docs.google.com/spreadsheets/d/1kYBjz-xrD8IsEo-PVC3a1Qi8etVGN9j-xWdZyrPo36M/export?format=csv&gid=1657944306"
         df_gsheet = pd.read_csv(gsheet_url)
         
-        # Pivot table columns O to T
-        df_pivot = df_gsheet.iloc[:, 14:20].copy()
-        df_pivot.columns = ['am', 'bc_name', 'khac', 'shopee', 'tts', 'total']
-        
-        # Drop row 0 (headers)
-        df_pivot = df_pivot.iloc[1:].reset_index(drop=True)
-        
-        # Clean rows
-        df_pivot = df_pivot[df_pivot['bc_name'].notna() & (df_pivot['bc_name'].astype(str).str.strip() != '')]
-        df_pivot = df_pivot[df_pivot['am'] != 'Grand Total']
-        df_pivot = df_pivot[df_pivot['bc_name'] != 'Grand Total']
-        
-        for col in ['khac', 'shopee', 'tts', 'total']:
-            df_pivot[col] = pd.to_numeric(df_pivot[col], errors='coerce').fillna(0).astype(int)
+        # Find where the pivot table starts in the sheet
+        row0 = df_gsheet.iloc[0].tolist() if not df_gsheet.empty else []
+        pivot_start_col = -1
+        # Scan from index 13 to end to find the pivot table header 'AM'
+        for i in range(13, len(row0)):
+            if str(row0[i]).strip() == 'AM':
+                pivot_start_col = i
+                break
+                
+        if pivot_start_col != -1:
+            header_map = {
+                'am': 'am',
+                'bưu cục': 'bc_name',
+                'khac': 'khac',
+                'khác': 'khac',
+                'shopee': 'shopee',
+                'tts': 'tts',
+                'grand total': 'total',
+                'tổng cộng': 'total',
+                'tổng': 'total'
+            }
             
-        for _, row in df_pivot.iterrows():
-            dropped_bcs.append({
-                'am': str(row['am']).strip(),
-                'bc_name': str(row['bc_name']).strip(),
-                'khac': int(row['khac']),
-                'shopee': int(row['shopee']),
-                'tts': int(row['tts']),
-                'total': int(row['total'])
-            })
-        print(f"✓ Parsed {len(dropped_bcs)} dropped transfer post offices successfully.")
+            pivot_cols = df_gsheet.iloc[:, pivot_start_col:].copy()
+            pivot_headers = [str(x).strip().lower() for x in row0[pivot_start_col:]]
+            
+            populated_cols = {}
+            for idx, h in enumerate(pivot_headers):
+                if h in header_map:
+                    target_col = header_map[h]
+                    col_data = pivot_cols.iloc[1:, idx].reset_index(drop=True)
+                    populated_cols[target_col] = col_data
+                    
+            df_pivot = pd.DataFrame(index=range(len(pivot_cols) - 1))
+            df_pivot['am'] = populated_cols.get('am', "").astype(str).str.strip()
+            df_pivot['bc_name'] = populated_cols.get('bc_name', "").astype(str).str.strip()
+            df_pivot['khac'] = pd.to_numeric(populated_cols.get('khac', 0), errors='coerce').fillna(0).astype(int)
+            df_pivot['shopee'] = pd.to_numeric(populated_cols.get('shopee', 0), errors='coerce').fillna(0).astype(int)
+            df_pivot['tts'] = pd.to_numeric(populated_cols.get('tts', 0), errors='coerce').fillna(0).astype(int)
+            df_pivot['total'] = pd.to_numeric(populated_cols.get('total', 0), errors='coerce').fillna(0).astype(int)
+            
+            # Clean rows
+            df_pivot = df_pivot[df_pivot['bc_name'].notna() & (df_pivot['bc_name'].astype(str).str.strip() != '')]
+            df_pivot = df_pivot[df_pivot['am'].str.lower() != 'grand total']
+            df_pivot = df_pivot[df_pivot['bc_name'].str.lower() != 'grand total']
+            
+            for _, row in df_pivot.iterrows():
+                dropped_bcs.append({
+                    'am': str(row['am']).strip(),
+                    'bc_name': str(row['bc_name']).strip(),
+                    'khac': int(row['khac']),
+                    'shopee': int(row['shopee']),
+                    'tts': int(row['tts']),
+                    'total': int(row['total'])
+                })
+            print(f"✓ Parsed {len(dropped_bcs)} dropped transfer post offices successfully.")
+        else:
+            print("⚠ Could not find 'AM' header for pivot table starting from column 13.")
     except Exception as e:
         print(f"⚠ Failed to fetch/parse dropped transfer orders: {e}")
 
@@ -1526,17 +1558,43 @@ def main():
                 df_main = pd.read_excel(xls_tb, sheet_name="Đơn treo luân chuyển GIAOTRẢ")
                 
                 # Filter rows where BL is not in ['A. 0-6', 'B. 6-12', 'C. 12-24']
-                df_filtered = df_main[~df_main['BL'].isin(['A. 0-6', 'B. 6-12', 'C. 12-24'])].copy()
+                bl_col = None
+                for col in df_main.columns:
+                    if str(col).strip().upper() == 'BL':
+                        bl_col = col
+                        break
                 
-                # Fill NaNs
-                df_filtered['warehouse_name'] = df_filtered['warehouse_name'].fillna('Chưa xác định')
-                df_filtered['province_name'] = df_filtered['province_name'].fillna('Chưa xác định')
-                df_filtered['am_name'] = df_filtered['am_name'].fillna('Chưa phân công')
-                df_filtered['Loại đơn'] = df_filtered['Loại đơn'].fillna('Chưa rõ')
-                df_filtered['Khách hàng'] = df_filtered['Khách hàng'].fillna('Khác')
-                df_filtered['Trạng thái'] = df_filtered['Trạng thái'].fillna('-')
-                df_filtered['Thời gian tồn đọng'] = df_filtered['Thời gian tồn đọng'].fillna('-')
-                df_filtered['BL'] = df_filtered['BL'].fillna('Khác')
+                if bl_col is not None:
+                    df_filtered = df_main[~df_main[bl_col].isin(['A. 0-6', 'B. 6-12', 'C. 12-24'])].copy()
+                else:
+                    df_filtered = df_main.copy()
+                
+                # Helper to fill na safely even if columns are named differently or missing
+                def safe_fillna(df, col_name, fill_value):
+                    actual_col = None
+                    for col in df.columns:
+                        if str(col).strip().lower() == col_name.lower():
+                            actual_col = col
+                            break
+                    if actual_col is not None:
+                        df[col_name] = df[actual_col].fillna(fill_value)
+                    else:
+                        df[col_name] = fill_value
+
+                safe_fillna(df_filtered, 'warehouse_name', 'Chưa xác định')
+                safe_fillna(df_filtered, 'province_name', 'Chưa xác định')
+                safe_fillna(df_filtered, 'am_name', 'Chưa phân công')
+                safe_fillna(df_filtered, 'Loại đơn', 'Chưa rõ')
+                safe_fillna(df_filtered, 'Khách hàng', 'Khác')
+                safe_fillna(df_filtered, 'Trạng thái', '-')
+                safe_fillna(df_filtered, 'Thời gian tồn đọng', '-')
+                safe_fillna(df_filtered, 'Mã bưu cục', 0)
+                safe_fillna(df_filtered, 'Mã đơn hàng', '')
+                
+                if bl_col is not None:
+                    df_filtered['BL'] = df_filtered[bl_col].fillna('Khác')
+                else:
+                    df_filtered['BL'] = 'Khác'
                 
                 # Map detail orders
                 for _, row in df_filtered.iterrows():
