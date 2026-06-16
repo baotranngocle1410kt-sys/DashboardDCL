@@ -40,7 +40,7 @@ function initGoogleSignIn() {
     setTimeout(initGoogleSignIn, 500);
     return;
   }
-  const client_id = (usersData && usersData.googleClientId) || 'YOUR_GOOGLE_CLIENT_ID';
+  const client_id = (usersData && usersData.googleClientId) || '330492298909-gp40ri4hda2iphhfo9qk50uf1c69pc8u.apps.googleusercontent.com';
   google.accounts.id.initialize({
     client_id: client_id,
     callback: handleCredentialResponse
