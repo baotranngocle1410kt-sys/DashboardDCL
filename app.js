@@ -1919,6 +1919,52 @@ async function sendTelegramAlert(bcName, amName, amTele, gtcVal, changeText, bac
   }
 }
 
+async function sendHrTelegramAlert(bcName, amName, amTele, hrbpName, shortageVal, targetHeadcount, tuyenVal, nghiVal, missingRoutes, actionPlan) {
+  if (!telegramConfig || !telegramConfig.BOT_TOKEN || !telegramConfig.CHAT_ID) {
+    showToast("⚠️ Vui lòng cấu hình BOT_TOKEN & CHAT_ID trong file telegram_config.json");
+    return;
+  }
+  if (!checkTelegramRateLimit()) return;
+  
+  const token = telegramConfig.BOT_TOKEN;
+  const chatId = telegramConfig.CHAT_ID;
+  const threadId = telegramConfig.THREADS && telegramConfig.THREADS.nhan_su; // thread ID 8
+  
+  const text = `🚨 *[CẢNH BÁO NHÂN SỰ & TUYỂN DỤNG]* 🚨\n\n` +
+               `*Bưu cục:* ${bcName}\n` +
+               `*AM Phụ Trách:* ${amName} (${amTele || '@chua_co_tele'})\n` +
+               `*HRBP Phụ Trách:* ${hrbpName || 'N/A'}\n\n` +
+               `*Tình trạng nhân sự:* Thiếu ${shortageVal} NV (Định biên: ${targetHeadcount})\n` +
+               `*Biến động tuần (Tuyển/Nghỉ):* +${tuyenVal} / -${nghiVal}\n` +
+               `*Tuyến giao hàng thiếu:* ${missingRoutes || 'Không có (Đủ tuyến)'}\n\n` +
+               `*Phương án xử lý:* ${actionPlan}\n\n` +
+               `👉 Đề nghị AM cắm chốt kho hỗ trợ, HRBP tập trung tuyển dụng bổ sung nhân sự gấp!`;
+               
+  const url = `https://api.telegram.org/bot${token}/sendMessage`;
+  
+  showToast(`💬 Đang gửi tin nhắn nhắc nhở tuyển dụng tới Telegram...`);
+  
+  const payload = { chat_id: chatId, text: text, parse_mode: 'Markdown' };
+  if (threadId) payload.message_thread_id = threadId;
+  
+  try {
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    
+    if (res.ok) {
+      showToast("✅ Đã gửi cảnh báo Telegram thành công!");
+    } else {
+      const err = await res.json();
+      showToast(`❌ Gửi Telegram thất bại: ${err.description}`);
+    }
+  } catch (e) {
+    showToast(`❌ Gửi Telegram thất bại: ${e.message}`);
+  }
+}
+
 // ===== RECRUITMENT DASHBOARD RENDERING =====
 function renderRecruitmentView() {
   if (!repData || !repData.kpis || !repData.kpis.hr) return;
@@ -2098,7 +2144,7 @@ function renderHrTop5() {
         <strong>Phương án xử lý:</strong> ${escapeHtml(item.action_plan || 'Phân bổ gán tuyến trước 8h sáng, chạy FB Ads tìm shipper thay thế. AM cắm chốt tại BC để hướng dẫn shipper mới.')}
       </div>
       <div style="display:flex; justify-content: flex-end; margin-top: 8px;">
-        <button class="bc-btn bc-btn-primary" style="flex:none; padding: 6px 14px; font-size:11px;" onclick="sendTelegramAlert('${escapeHtml(item.bc_name)}', '${escapeHtml(item.am)}', '${escapeHtml(amTele)}', '${bcMatch ? (bcMatch.gtc*100).toFixed(2)+'%' : 'N/A'}', '${escapeHtml(changeText)}', '${bcMatch ? bcMatch.backlog : 'N/A'}', 'Thiếu shipper chặng cuối và tuyến chạy xa')">💬 Nhắc AM & HRBP</button>
+        <button class="bc-btn bc-btn-primary" style="flex:none; padding: 6px 14px; font-size:11px;" onclick="sendHrTelegramAlert('${escapeHtml(item.bc_name)}', '${escapeHtml(item.am)}', '${escapeHtml(amTele)}', '${escapeHtml(bcMatch && bcMatch.hr ? bcMatch.hr.hrbp : 'N/A')}', ${shortageAccurate}, ${item.dinhiben_nvpttt}, ${item.tuyen_7d}, ${item.nghi_7d}, '${escapeHtml(missingRoutes)}', '${escapeHtml(item.action_plan || 'Phân bổ gán tuyến trước 8h sáng, chạy FB Ads tìm shipper thay thế. AM cắm chốt tại BC để hướng dẫn shipper mới.')}')">💬 Nhắc AM & HRBP</button>
       </div>
     `;
     container.appendChild(el);
