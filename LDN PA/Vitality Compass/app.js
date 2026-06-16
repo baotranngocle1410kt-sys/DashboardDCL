@@ -110,8 +110,17 @@ let failedAttempts = 0;
 let lockoutUntil = 0;
 
 // Telegram rate limiting
-const TELEGRAM_COOLDOWN_MS = 30 * 1000;
+const TELEGRAM_COOLDOWN_MS = 2 * 1000;
 let lastTelegramSendTime = 0;
+
+function escapeMarkdown(str) {
+  if (str === null || str === undefined) return '';
+  return String(str)
+    .replace(/_/g, '\\_')
+    .replace(/\*/g, '\\*')
+    .replace(/\[/g, '\\[')
+    .replace(/`/g, '\\`');
+}
 
 function checkTelegramRateLimit() {
   const now = Date.now();
@@ -1253,7 +1262,13 @@ async function sendTop10Alert(bcName, amName, amTele, gtcVal, changeText, backlo
   const chatId = telegramConfig.CHAT_ID;
   const threadId = telegramConfig.THREADS && telegramConfig.THREADS.top10;
 
-  const text = `🚨 *[TOP 10 BƯU CỤC CẦN CHÚ Ý]* 🚨\n\n*Bưu cục:* ${bcName}\n*AM Phụ Trách:* ${amName} (${amTele || '@chua_co_tele'})\n\n*Tỷ lệ GTC hiện tại:* ${gtcVal} (Biến động N-1: ${changeText})\n*Đơn Tồn > 5 ngày:* ${backlog} đơn\n\n*Nguyên nhân:* ${cause}\n\n👉 Đề nghị AM vào kiểm tra và xử lý luồng hàng gấp!`;
+  const text = `🚨 *[TOP 10 BƯU CỤC CẦN CHÚ Ý]* 🚨\n\n` +
+               `*Bưu cục:* ${escapeMarkdown(bcName)}\n` +
+               `*AM Phụ Trách:* ${escapeMarkdown(amName)} (${escapeMarkdown(amTele || '@chua_co_tele')})\n\n` +
+               `*Tỷ lệ GTC hiện tại:* ${escapeMarkdown(gtcVal)} (Biến động N-1: ${escapeMarkdown(changeText)})\n` +
+               `*Đơn Tồn > 5 ngày:* ${escapeMarkdown(backlog)} đơn\n\n` +
+               `*Nguyên nhân:* ${escapeMarkdown(cause)}\n\n` +
+               `👉 Đề nghị AM vào kiểm tra và xử lý luồng hàng gấp!`;
 
   const url = `https://api.telegram.org/bot${token}/sendMessage`;
 
@@ -1496,7 +1511,14 @@ async function sendDroppedAlert(bcName, amName, amTele, khac, shopee, tts, total
   const chatId = telegramConfig.CHAT_ID;
   const threadId = telegramConfig.THREADS && telegramConfig.THREADS.backlog_lc;
   
-  const text = `🚨 *[CẢNH BÁO RỚT LUÂN CHUYỂN]* 🚨\n\n*Bưu cục:* ${bcName}\n*AM Phụ Trách:* ${amName} (${amTele || '@chua_co_tele'})\n\n*Tổng đơn LẤY rớt luân chuyển:* *${total}* đơn\n  • Shopee: ${shopee} đơn\n  • TiktokShop: ${tts} đơn\n  • Khác: ${khac} đơn\n\n👉 Đề nghị AM kiểm tra lý do và xử lý bàn giao luân chuyển gấp trong ca!`;
+  const text = `🚨 *[CẢNH BÁO RỚT LUÂN CHUYỂN]* 🚨\n\n` +
+               `*Bưu cục:* ${escapeMarkdown(bcName)}\n` +
+               `*AM Phụ Trách:* ${escapeMarkdown(amName)} (${escapeMarkdown(amTele || '@chua_co_tele')})\n\n` +
+               `*Tổng đơn LẤY rớt luân chuyển:* *${escapeMarkdown(total)}* đơn\n` +
+               `  • Shopee: ${escapeMarkdown(shopee)} đơn\n` +
+               `  • TiktokShop: ${escapeMarkdown(tts)} đơn\n` +
+               `  • Khác: ${escapeMarkdown(khac)} đơn\n\n` +
+               `👉 Đề nghị AM kiểm tra lý do và xử lý bàn giao luân chuyển gấp trong ca!`;
   
   const url = `https://api.telegram.org/bot${token}/sendMessage`;
   
@@ -1892,7 +1914,13 @@ async function sendTelegramAlert(bcName, amName, amTele, gtcVal, changeText, bac
   const chatId = telegramConfig.CHAT_ID;
   const threadId = telegramConfig.THREADS && telegramConfig.THREADS.van_hanh;
   
-  const text = `🚨 *[CẢNH BÁO VẬN HÀNH]* 🚨\n\n*Bưu cục:* ${bcName}\n*AM Phụ Trách:* ${amName} (${amTele || '@chua_co_tele'})\n\n*Tỷ lệ GTC hiện tại:* ${gtcVal} (Biến động N-1: ${changeText})\n*Đơn Tồn > 5 ngày:* ${backlog} đơn\n\n*Nguyên nhân:* ${cause}\n\n👉 Đề nghị AM vào kiểm tra và xử lý luồng hàng gấp!`;
+  const text = `🚨 *[CẢNH BÁO VẬN HÀNH]* 🚨\n\n` +
+               `*Bưu cục:* ${escapeMarkdown(bcName)}\n` +
+               `*AM Phụ Trách:* ${escapeMarkdown(amName)} (${escapeMarkdown(amTele || '@chua_co_tele')})\n\n` +
+               `*Tỷ lệ GTC hiện tại:* ${escapeMarkdown(gtcVal)} (Biến động N-1: ${escapeMarkdown(changeText)})\n` +
+               `*Đơn Tồn > 5 ngày:* ${escapeMarkdown(backlog)} đơn\n\n` +
+               `*Nguyên nhân:* ${escapeMarkdown(cause)}\n\n` +
+               `👉 Đề nghị AM vào kiểm tra và xử lý luồng hàng gấp!`;
   
   const url = `https://api.telegram.org/bot${token}/sendMessage`;
   
@@ -1931,13 +1959,13 @@ async function sendHrTelegramAlert(bcName, amName, amTele, hrbpName, shortageVal
   const threadId = telegramConfig.THREADS && telegramConfig.THREADS.nhan_su; // thread ID 8
   
   const text = `🚨 *[CẢNH BÁO NHÂN SỰ & TUYỂN DỤNG]* 🚨\n\n` +
-               `*Bưu cục:* ${bcName}\n` +
-               `*AM Phụ Trách:* ${amName} (${amTele || '@chua_co_tele'})\n` +
-               `*HRBP Phụ Trách:* ${hrbpName || 'N/A'}\n\n` +
-               `*Tình trạng nhân sự:* Thiếu ${shortageVal} NV (Định biên: ${targetHeadcount})\n` +
-               `*Biến động tuần (Tuyển/Nghỉ):* +${tuyenVal} / -${nghiVal}\n` +
-               `*Tuyến giao hàng thiếu:* ${missingRoutes || 'Không có (Đủ tuyến)'}\n\n` +
-               `*Phương án xử lý:* ${actionPlan}\n\n` +
+               `*Bưu cục:* ${escapeMarkdown(bcName)}\n` +
+               `*AM Phụ Trách:* ${escapeMarkdown(amName)} (${escapeMarkdown(amTele || '@chua_co_tele')})\n` +
+               `*HRBP Phụ Trách:* ${escapeMarkdown(hrbpName || 'N/A')}\n\n` +
+               `*Tình trạng nhân sự:* Thiếu ${escapeMarkdown(shortageVal)} NV (Định biên: ${escapeMarkdown(targetHeadcount)})\n` +
+               `*Biến động tuần (Tuyển/Nghỉ):* +${escapeMarkdown(tuyenVal)} / -${escapeMarkdown(nghiVal)}\n` +
+               `*Tuyến giao hàng thiếu:* ${escapeMarkdown(missingRoutes) || 'Không có (Đủ tuyến)'}\n\n` +
+               `*Phương án xử lý:* ${escapeMarkdown(actionPlan)}\n\n` +
                `👉 Đề nghị AM cắm chốt kho hỗ trợ, HRBP tập trung tuyển dụng bổ sung nhân sự gấp!`;
                
   const url = `https://api.telegram.org/bot${token}/sendMessage`;
@@ -3175,25 +3203,25 @@ async function sendTelegramFdAlert(bcName, amName, amTele, currentVal, changeTex
   const chatId = telegramConfig.CHAT_ID;
   
   let labelHeader = `🚨 *[CẢNH BÁO CHỈ SỐ VẬN HÀNH & TỶ LỆ TRẢ]* 🚨`;
-  let detailLabel = `*Bưu cục:* ${bcName}\n*AM Phụ Trách:* ${amName} (${amTele || '@chua_co_tele'})\n*Thời điểm:* ${modeText}\n\n`;
+  let detailLabel = `*Bưu cục:* ${escapeMarkdown(bcName)}\n*AM Phụ Trách:* ${escapeMarkdown(amName)} (${escapeMarkdown(amTele || '@chua_co_tele')})\n*Thời điểm:* ${escapeMarkdown(modeText)}\n\n`;
   
   if (activeFdDimension === 'am') {
     labelHeader = `🚨 *[CẢNH BÁO CHỈ SỐ VẬN HÀNH & TỶ LỆ TRẢ - AM]* 🚨`;
-    detailLabel = `*Area Manager:* ${bcName} (${amTele || '@chua_co_tele'})\n*Thời điểm:* ${modeText}\n\n`;
+    detailLabel = `*Area Manager:* ${escapeMarkdown(bcName)} (${escapeMarkdown(amTele || '@chua_co_tele')})\n*Thời điểm:* ${escapeMarkdown(modeText)}\n\n`;
   } else if (activeFdDimension === 'province') {
     labelHeader = `🚨 *[CẢNH BÁO CHỈ SỐ VẬN HÀNH & TỶ LỆ TRẢ - TỈNH]* 🚨`;
-    detailLabel = `*Tỉnh:* ${bcName}\n*Thời điểm:* ${modeText}\n\n`;
+    detailLabel = `*Tỉnh:* ${escapeMarkdown(bcName)}\n*Thời điểm:* ${escapeMarkdown(modeText)}\n\n`;
   }
   
   const text = `${labelHeader}\n\n` +
                detailLabel +
                `*Chi tiết bộ chỉ số:* \n` +
-               `• *%FD Tổng:* ${valTotal}\n` +
-               `• *%FD SME COD:* ${valSme}\n` +
-               `• *%FD TikTok Shop:* ${valTts}\n` +
-               `• *%GTB-TT (Thất bại thu tiền):* *${valGtb}*\n\n` +
+               `• *%FD Tổng:* ${escapeMarkdown(valTotal)}\n` +
+               `• *%FD SME COD:* ${escapeMarkdown(valSme)}\n` +
+               `• *%FD TikTok Shop:* ${escapeMarkdown(valTts)}\n` +
+               `• *%GTB-TT (Thất bại thu tiền):* *${escapeMarkdown(valGtb)}*\n\n` +
                `*Lưu ý từ hệ thống:* Chỉ số GTB-TT cao giúp tăng tỷ lệ GTC và hạ tỷ lệ %FD thực tế, cần được AM đôn đốc nhân rộng ngay!\n\n` +
-               `*Nguyên nhân/Nội dung nhắc nhở:* ${cause}\n\n` +
+               `*Nguyên nhân/Nội dung nhắc nhở:* ${escapeMarkdown(cause)}\n\n` +
                `👉 *Hành động yêu cầu:* Đề nghị AM nhanh chóng rà soát các đơn giao không thành công, thúc đẩy shipper thực hiện thu cước hoàn (GTB-TT) đúng quy trình, kiểm soát ca giao tối và xử lý dứt điểm các đơn tồn đọng!`;
   
   const threadId = telegramConfig.THREADS && telegramConfig.THREADS.fd;
