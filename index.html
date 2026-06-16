@@ -8,12 +8,13 @@
   <meta name="description" content="Dashboard quản trị công việc cá nhân & vận hành GHN">
   <meta name="robots" content="noindex, nofollow">
   <!-- Security Headers (via meta tags for GitHub Pages) -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' cdn.jsdelivr.net 'unsafe-inline'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; connect-src 'self' api.telegram.org api.github.com; img-src 'self' data:; font-src 'self' fonts.gstatic.com; frame-ancestors 'none';">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' cdn.jsdelivr.net accounts.google.com 'unsafe-inline'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; connect-src 'self' api.telegram.org api.github.com accounts.google.com; img-src 'self' data: https://lh3.googleusercontent.com; font-src 'self' fonts.gstatic.com; frame-src 'self' accounts.google.com; frame-ancestors 'none';">
   <meta http-equiv="X-Frame-Options" content="DENY">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <link rel="stylesheet" href="styles.css?v=20260612">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 
 <body>
@@ -36,6 +37,8 @@
         </div>
         <button class="login-btn" id="loginBtn" onclick="handleLogin()">🔓 Đăng nhập</button>
       </div>
+      <div class="login-divider">Hoặc đăng nhập bằng Google</div>
+      <div id="googleBtn" style="display: flex; justify-content: center; width: 100%; margin-top: 10px;"></div>
       <div class="login-error" id="loginError"></div>
       <div class="login-domain-notice">
         <span class="notice-icon">🔒</span>
@@ -113,6 +116,7 @@
         <span class="user-role-badge" id="userRoleBadge"></span>
       </div>
       <button class="btn btn-admin" id="adminBtn" onclick="openAdminPanel()" style="display:none">⚙️ Quản lý</button>
+      <button class="btn" id="connectFolderBtn" onclick="selectFolder()" style="display:none">📂 Kết nối thư mục</button>
       <button class="btn" onclick="refreshData()">🔄 Làm mới</button>
       <button class="btn-logout" id="logoutBtn" onclick="logout()" style="display:none">🚪 Đăng xuất</button>
     </div>

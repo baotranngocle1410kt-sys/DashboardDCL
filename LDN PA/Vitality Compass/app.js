@@ -4,6 +4,95 @@ let usersData = null;
 let usersFileSha = null; // For GitHub API updates
 let pendingUserChanges = false;
 
+// Session and Google OAuth functions
+function checkSession() {
+  if (currentUser) return currentUser;
+  const sessionStr = localStorage.getItem('currentUser');
+  if (sessionStr) {
+    try {
+      currentUser = JSON.parse(sessionStr);
+      return currentUser;
+    } catch(e) {
+      localStorage.removeItem('currentUser');
+    }
+  }
+  return null;
+}
+
+function decodeJwt(token) {
+  try {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+    return JSON.parse(jsonPayload);
+  } catch (e) {
+    console.error("Failed to decode JWT:", e);
+    return null;
+  }
+}
+
+function initGoogleSignIn() {
+  const googleBtn = document.getElementById("googleBtn");
+  if (!googleBtn) return;
+  if (typeof google === 'undefined') {
+    setTimeout(initGoogleSignIn, 500);
+    return;
+  }
+  const client_id = (usersData && usersData.googleClientId) || 'YOUR_GOOGLE_CLIENT_ID';
+  google.accounts.id.initialize({
+    client_id: client_id,
+    callback: handleCredentialResponse
+  });
+  google.accounts.id.renderButton(
+    googleBtn,
+    { theme: "outline", size: "large", width: 280 }
+  );
+}
+
+async function handleCredentialResponse(response) {
+  try {
+    const responsePayload = decodeJwt(response.credential);
+    if (!responsePayload) {
+      showLoginError('⚠️ Đăng nhập Google thất bại (không thể giải mã).');
+      return;
+    }
+    const email = responsePayload.email.toLowerCase();
+    const name = responsePayload.name;
+    
+    if (!usersData) await loadUsers();
+    
+    if (!usersData || !usersData.users) {
+      showLoginError('⚠️ Không thể tải danh sách người dùng.');
+      return;
+    }
+    
+    let user = usersData.users.find(u => u.email.toLowerCase() === email);
+    
+    if (!user) {
+      showLoginError(`🚫 Tài khoản Google (${email}) chưa được phê duyệt. Liên hệ Owner.`);
+      return;
+    }
+    
+    if (user.role === 'blocked') {
+      showLoginError('🚫 Tài khoản đã bị khóa. Liên hệ Owner.');
+      return;
+    }
+    
+    currentUser = user;
+    currentUser.name = name; // sync name from Google
+    
+    localStorage.setItem('currentUser', JSON.stringify(currentUser));
+    
+    enterDashboard();
+    showToast(`✅ Đăng nhập Google thành công. Xin chào, ${escapeHtml(currentUser.name)}!`);
+  } catch (err) {
+    console.error('Google Auth Error:', err);
+    showLoginError('⚠️ Lỗi hệ thống khi đăng nhập bằng Google.');
+  }
+}
+
 // Brute-force lockout
 const MAX_FAILED_ATTEMPTS = 5;
 const LOCKOUT_DURATION_MS = 60 * 1000;
@@ -94,6 +183,7 @@ async function handleLogin() {
   // Success
   failedAttempts = 0;
   currentUser = user;
+  localStorage.setItem('currentUser', JSON.stringify(currentUser));
   enterDashboard();
   showToast(`✅ Xin chào, ${escapeHtml(user.name)}!`);
 }
@@ -121,8 +211,10 @@ function handleFailedAttempt(passInput) {
 
 function logout() {
   currentUser = null;
+  localStorage.removeItem('currentUser');
   showLoginScreen();
   showToast('👋 Đã đăng xuất thành công.');
+  initGoogleSignIn();
 }
 
 function showLoginScreen() {
@@ -141,6 +233,8 @@ function showLoginScreen() {
   if (adminBtn) adminBtn.style.display = 'none';
   const greeting = document.getElementById('userGreeting');
   if (greeting) greeting.style.display = 'none';
+  const connectBtn = document.getElementById('connectFolderBtn');
+  if (connectBtn) connectBtn.style.display = 'none';
 
   // Clear inputs
   const emailInput = document.getElementById('loginEmail');
@@ -162,6 +256,11 @@ function enterDashboard() {
 
   const logoutBtn = document.getElementById('logoutBtn');
   if (logoutBtn) logoutBtn.style.display = 'flex';
+
+  const connectBtn = document.getElementById('connectFolderBtn');
+  if (connectBtn) {
+    connectBtn.style.display = dirHandle ? 'none' : 'inline-flex';
+  }
 
   // User greeting
   if (currentUser) {
@@ -376,8 +475,15 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Load users first
   await loadUsers();
 
-  // Show login screen
-  showLoginScreen();
+  // Check if session exists
+  const sessionUser = checkSession();
+  if (sessionUser) {
+    currentUser = sessionUser;
+    enterDashboard();
+  } else {
+    showLoginScreen();
+    initGoogleSignIn();
+  }
 
   // Enter key for login
   const passInput = document.getElementById('loginPassword');
@@ -446,6 +552,9 @@ async function selectFolder() {
     document.getElementById('onboarding').style.display = 'none';
     document.getElementById('appHeader').style.display = 'flex';
     document.getElementById('appTabs').style.display = 'flex';
+    
+    const connectBtn = document.getElementById('connectFolderBtn');
+    if (connectBtn) connectBtn.style.display = 'none';
     
     // Restore logout button if logged in
     const session = checkSession();
@@ -3309,13 +3418,16 @@ async function initAutoLoad() {
   try {
     const testLoad = await readFile('Task Systems.md');
     if (testLoad) {
-      document.getElementById('onboarding').style.display = 'none';
-      document.getElementById('appHeader').style.display = 'flex';
-      document.getElementById('appTabs').style.display = 'flex';
-      
-      switchTab('checklist');
-      await refreshData();
-      showToast('👁️ Chế độ xem Chỉ Đọc (Dữ liệu từ GitHub)');
+      const session = checkSession();
+      if (session) {
+        document.getElementById('onboarding').style.display = 'none';
+        document.getElementById('appHeader').style.display = 'flex';
+        document.getElementById('appTabs').style.display = 'flex';
+        
+        switchTab('checklist');
+        await refreshData();
+        showToast('👁️ Chế độ xem Chỉ Đọc (Dữ liệu từ GitHub)');
+      }
     }
   } catch(e) {
     console.error("Autoload failed:", e);

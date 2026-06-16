@@ -284,7 +284,10 @@ def main():
                     'Trên 15 ngày': bucket_counts['Trên 15 ngày'],
                     'Tổng': total
                 })
-            df_bl_ams = pd.DataFrame(rows_list)
+            if rows_list:
+                df_bl_ams = pd.DataFrame(rows_list)
+            else:
+                df_bl_ams = pd.DataFrame(columns=['AM', '5 - 8 ngày', '8 - 15 ngày', 'Trên 15 ngày', 'Tổng'])
         else:
             print("⚠ Warning: am_col or days_col not found in new sheet layout!")
             df_bl_ams = pd.DataFrame(columns=['AM', '5 - 8 ngày', '8 - 15 ngày', 'Trên 15 ngày', 'Tổng'])
