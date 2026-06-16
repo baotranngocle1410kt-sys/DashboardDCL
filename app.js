@@ -70,6 +70,16 @@ async function handleCredentialResponse(response) {
     
     let user = usersData.users.find(u => u.email.toLowerCase() === email);
     
+    if (!user && email.endsWith('@ghn.vn')) {
+      user = {
+        email: email,
+        name: name,
+        role: 'user',
+        createdAt: new Date().toISOString().split('T')[0]
+      };
+      usersData.users.push(user);
+    }
+    
     if (!user) {
       showLoginError(`🚫 Tài khoản Google (${email}) chưa được phê duyệt. Liên hệ Owner.`);
       return;
