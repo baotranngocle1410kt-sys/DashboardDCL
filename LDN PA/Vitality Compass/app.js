@@ -110,7 +110,7 @@ let failedAttempts = 0;
 let lockoutUntil = 0;
 
 // Telegram rate limiting
-const TELEGRAM_COOLDOWN_MS = 2 * 1000;
+const TELEGRAM_COOLDOWN_MS = 5 * 1000;
 let lastTelegramSendTime = 0;
 
 function escapeMarkdown(str) {
