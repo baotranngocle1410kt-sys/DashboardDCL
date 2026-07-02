@@ -8,17 +8,17 @@
 - **GTC**: 56.16% (Biến động vs Tuần trước: ↗ +2.37% vs Tuần trước)
 - **FD**: 2.53% (Biến động vs Tuần trước: ↗ +0.18% vs Tuần trước)
 - **Ontime**: 91.50%
-- **Backlog**: 2,815 (Biến động vs Tuần trước: ↗ +8.56% vs Tuần trước)
-- **Thiếu hụt Nhân sự**: Thiếu 89 shipper (Tuyển mới: 0 / Nghỉ việc: 48)
+- **Backlog**: 2,776 (Biến động vs Tuần trước: ↗ +7.06% vs Tuần trước)
+- **Thiếu hụt Nhân sự**: Thiếu 74 shipper (Tuyển mới: 22 / Nghỉ việc: 48)
 
 ## 🔴 Cảnh báo Hôm nay (Alerts)
 - **(DTH) An Bình** có chỉ số GTC ngày 21/06/26 thấp hơn ngày hôm N-1 (20/06/26) 6.88%. So với cùng kỳ giảm 5.20% do Không rõ nguyên nhân, rủi ro sập luồng hàng cao!, nhân sự đang thiếu 2/18 định biên, tuyến thiếu (Thường Thới Tiền).
 - **(BTR) Phú Túc** có chỉ số GTC ngày 21/06/26 thấp hơn ngày hôm N-1 (20/06/26) 5.08%. So với cùng kỳ giảm 11.30% do Không rõ nguyên nhân, rủi ro sập luồng hàng cao!, nhân sự đang thiếu 6/16 định biên, tuyến thiếu (Giao Long, Phước Thạnh, Tam Phước).
 - **(TGI) Châu Thành** có chỉ số GTC ngày 21/06/26 thấp hơn ngày hôm N-1 (20/06/26) 9.13%. So với cùng kỳ giảm 1.65% do Không rõ nguyên nhân, rủi ro sập luồng hàng cao!, nhân sự đang thiếu 0/20 định biên.
-- **(TGI) Vĩnh Kim** có chỉ số GTC ngày 21/06/26 thấp hơn ngày hôm N-1 (20/06/26) 5.67%. So với cùng kỳ giảm 14.05% do Không rõ nguyên nhân, rủi ro sập luồng hàng cao!, nhân sự đang thiếu 2/17 định biên, tuyến thiếu (Long Định, Long Hưng).
+- **(TGI) Vĩnh Kim** có chỉ số GTC ngày 21/06/26 thấp hơn ngày hôm N-1 (20/06/26) 5.67%. So với cùng kỳ giảm 14.05% do Không rõ nguyên nhân, rủi ro sập luồng hàng cao!, nhân sự đang thiếu 1/17 định biên, tuyến thiếu (Long Định, Long Hưng).
 - **(VLO) Trung Thành** có chỉ số GTC ngày 21/06/26 thấp hơn ngày hôm N-1 (20/06/26) 1.33%. So với cùng kỳ giảm 3.15% do Không rõ nguyên nhân, rủi ro sập luồng hàng cao!, nhân sự đang thiếu 1/20 định biên, tuyến thiếu (Tân Quới Trung).
 - **(TGI) Đạo Thạnh** có chỉ số GTC ngày 21/06/26 thấp hơn ngày hôm N-1 (20/06/26) 12.29%. So với cùng kỳ giảm 9.27% do Không rõ nguyên nhân, rủi ro sập luồng hàng cao!, nhân sự đang thiếu 2/21 định biên, tuyến thiếu (Phước Thạnh, Phường 5).
-- **(TGI) Chợ Gạo** có chỉ số GTC ngày 21/06/26 thấp hơn ngày hôm N-1 (20/06/26) 14.62%. So với cùng kỳ giảm 2.65% do Không rõ nguyên nhân, rủi ro sập luồng hàng cao!, nhân sự đang thiếu 3/20 định biên, tuyến thiếu (Lương Hòa Lạc, Xã Phú Kiết, Hòa Định).
+- **(TGI) Chợ Gạo** có chỉ số GTC ngày 21/06/26 thấp hơn ngày hôm N-1 (20/06/26) 14.62%. So với cùng kỳ giảm 2.65% do Không rõ nguyên nhân, rủi ro sập luồng hàng cao!, nhân sự đang thiếu 1/20 định biên, tuyến thiếu (Lương Hòa Lạc, Xã Phú Kiết, Hòa Định).
 - **(TGI) Đồng Sơn** có chỉ số GTC ngày 21/06/26 thấp hơn ngày hôm N-1 (20/06/26) 1.46%. So với cùng kỳ giảm 7.77% do Không rõ nguyên nhân, rủi ro sập luồng hàng cao!, nhân sự đang thiếu 2/19 định biên, tuyến thiếu (Long Vĩnh, Tân Thạnh).
 
 ## 📈 Highlight / Lowlight
@@ -26,13 +26,13 @@
 - Tỷ lệ GTC toàn vùng (56.16%) cải thiện **+2.37%** so với cùng kỳ tuần trước (53.79%).
 - **Ngô Phan Mỹ Tú** là AM có tỷ lệ GTC cao nhất toàn vùng (66.37%), đồng thời duy trì lượng đơn tồn đọng cực thấp.
 - Tỷ lệ chuyển trả (FD) toàn vùng duy trì ở mức an toàn là **2.53%** (↗ +0.18% vs Tuần trước).
-- Trong tuần qua, HRBP đã tuyển thành công **0 nhân viên mới** (OB) hỗ trợ lấp đầy các tuyến nóng.
+- Trong tuần qua, HRBP đã tuyển thành công **22 nhân viên mới** (OB) hỗ trợ lấp đầy các tuyến nóng.
 
 ### Lowlights:
 - Sản lượng đơn toàn vùng đạt 67,521 đơn, suy giảm nhẹ **-21.88%** so với tuần trước.
-- Đơn tồn backlog (>5 ngày) tăng mạnh **+8.56%** so với tuần trước (từ 2,593 lên 2,815 đơn).
-- Toàn vùng đang **thiếu hụt thực tế 89 shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.
-- Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 28 định biên) và **Đồng Tháp** (thiếu 30 định biên).
+- Đơn tồn backlog (>5 ngày) tăng mạnh **+7.06%** so với tuần trước (từ 2,593 lên 2,776 đơn).
+- Toàn vùng đang **thiếu hụt thực tế 74 shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.
+- Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 24 định biên) và **Đồng Tháp** (thiếu 23 định biên).
 
 ## 🔮 Phân tích Nguyên nhân (Root Causes)
 - Tại **Bưu Cục Ấp 2-Phú Nhuận-Bến Tre**: Nhân sự: 7/11 (thiếu 4) + 2 nhân viên hỗ trợ; Bưu cục liên tục có nhân viên nghỉ ngang, té xe.; NVXL mới chưa quản lý được nhân sự tại BC, điều tiết giờ giấc xuất hàng.; Nhân viên 9h chưa rời khỏi kho.
@@ -51,25 +51,25 @@
 ## 📋 Đánh giá AM (Scorecard)
 | AM | GTC | FD | Trạng thái | Đơn Aging | Thiếu shipper | HRBP |
 | --- | --- | --- | --- | --- | --- | --- |
-| Nguyễn Thành Huy | 67.60% | 2.12% | Mạnh | 38 | Thiếu 8/127 | VyLNK |
-| Ngô Phan Mỹ Tú | 66.37% | 2.38% | Cải thiện | 35 | Thiếu 7/57 | BìnhNLC |
-| Nguyễn Việt Tới | 63.63% | 1.87% | Cải thiện | 12 | Thiếu 4/47 | BìnhNLC |
-| Lê Minh Tuấn | 59.01% | 2.47% | Cải thiện | 49 | Thiếu 11/82 | BìnhNLC |
-| Nguyễn Tuấn Anh | 57.02% | 2.90% | Cải thiện | 300 | Thiếu 11/135 | VyLNK |
-| Lý Quài Nhân | 54.03% | 3.83% | Yếu | 69 | Thiếu 12/60 | BìnhNLC |
-| Đoàn Công Tín | 48.43% | 2.75% | Yếu | 341 | Thiếu 16/84 | BìnhNLC |
-| Nguyễn Anh Tùng | 44.12% | 2.21% | Yếu | 273 | Thiếu 8/94 | BìnhNLC |
-| Lâm Xuân Vinh | 42.46% | 1.80% | Yếu | 1,239 | Thiếu 8/86 | VyLNK |
-| Huỳnh Quốc Trung | 38.03% | 7.35% | Yếu | 409 | Thiếu 2/11 | VyLNK |
-| Nguyễn Huỳnh Quốc Dũng | 0.00% | 0.00% | Yếu | 26 | Thiếu 0/9 | VyLNK |
-| Võ Hồng Chơn | 0.00% | 0.00% | Yếu | 24 | Thiếu 0/0 | N/A |
+| Nguyễn Thành Huy | 67.60% | 2.12% | Mạnh | 45 | Thiếu 5/127 | VyLNK |
+| Ngô Phan Mỹ Tú | 66.37% | 2.38% | Cải thiện | 28 | Thiếu 6/57 | BìnhNLC |
+| Nguyễn Việt Tới | 63.63% | 1.87% | Cải thiện | 25 | Thiếu 2/47 | BìnhNLC |
+| Lê Minh Tuấn | 59.01% | 2.47% | Cải thiện | 46 | Thiếu 9/82 | BìnhNLC |
+| Nguyễn Tuấn Anh | 57.02% | 2.90% | Cải thiện | 259 | Thiếu 10/135 | VyLNK |
+| Lý Quài Nhân | 54.03% | 3.83% | Yếu | 95 | Thiếu 10/60 | BìnhNLC |
+| Đoàn Công Tín | 48.43% | 2.75% | Yếu | 370 | Thiếu 13/84 | BìnhNLC |
+| Nguyễn Anh Tùng | 44.12% | 2.21% | Yếu | 208 | Thiếu 7/94 | BìnhNLC |
+| Lâm Xuân Vinh | 42.46% | 1.80% | Yếu | 1,169 | Thiếu 8/86 | VyLNK |
+| Huỳnh Quốc Trung | 38.03% | 7.35% | Yếu | 480 | Thiếu 2/11 | VyLNK |
+| Nguyễn Huỳnh Quốc Dũng | 0.00% | 0.00% | Yếu | 24 | Thiếu 0/9 | VyLNK |
+| Võ Hồng Chơn | 0.00% | 0.00% | Yếu | 27 | Thiếu 0/0 | N/A |
 
 ## 📦 Backlog Tracking
-- **Tổng Backlog >5 ngày**: 2,815 đơn
+- **Tổng Backlog >5 ngày**: 2,776 đơn
 - **Chi tiết theo nhóm tuổi đơn**:
-  - 5 - 8 ngày: 2,040 đơn
-  - 8 - 15 ngày: 739 đơn
-  - Trên 15 ngày: 36 đơn
+  - 5 - 8 ngày: 2,025 đơn
+  - 8 - 15 ngày: 724 đơn
+  - Trên 15 ngày: 27 đơn
 
 ## 🛒 TiktokShop Metrics
 - GTC TiktokShop đạt 92.1% (tập trung tại các bưu cục trọng điểm).
