@@ -897,12 +897,16 @@ def main():
                     populated_cols[target_col] = col_data
                     
             df_pivot = pd.DataFrame(index=range(len(pivot_cols) - 1))
-            df_pivot['am'] = populated_cols.get('am', "").astype(str).str.strip()
-            df_pivot['bc_name'] = populated_cols.get('bc_name', "").astype(str).str.strip()
-            df_pivot['khac'] = pd.to_numeric(populated_cols.get('khac', 0), errors='coerce').fillna(0).astype(int)
-            df_pivot['shopee'] = pd.to_numeric(populated_cols.get('shopee', 0), errors='coerce').fillna(0).astype(int)
-            df_pivot['tts'] = pd.to_numeric(populated_cols.get('tts', 0), errors='coerce').fillna(0).astype(int)
-            df_pivot['total'] = pd.to_numeric(populated_cols.get('total', 0), errors='coerce').fillna(0).astype(int)
+            for key, default_val in [('am', ""), ('bc_name', "")]:
+                if key in populated_cols:
+                    df_pivot[key] = populated_cols[key].astype(str).str.strip()
+                else:
+                    df_pivot[key] = default_val
+            for key in ['khac', 'shopee', 'tts', 'total']:
+                if key in populated_cols:
+                    df_pivot[key] = pd.to_numeric(populated_cols[key], errors='coerce').fillna(0).astype(int)
+                else:
+                    df_pivot[key] = 0
             
             # Clean rows
             df_pivot = df_pivot[df_pivot['bc_name'].notna() & (df_pivot['bc_name'].astype(str).str.strip() != '')]
