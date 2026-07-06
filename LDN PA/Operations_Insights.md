@@ -9,7 +9,7 @@
 - **FD**: 2.53% (Biến động vs Tuần trước: ↗ +0.18% vs Tuần trước)
 - **Ontime**: 91.50%
 - **Backlog**: 2,489 (Biến động vs Tuần trước: ↘ -4.01% vs Tuần trước)
-- **Thiếu hụt Nhân sự**: Thiếu 92 shipper (Tuyển mới: 0 / Nghỉ việc: 55)
+- **Thiếu hụt Nhân sự**: Thiếu 88 shipper (Tuyển mới: 0 / Nghỉ việc: 54)
 
 ## 🔴 Cảnh báo Hôm nay (Alerts)
 - **(DTH) An Bình** có chỉ số GTC ngày 21/06/26 thấp hơn ngày hôm N-1 (20/06/26) 6.88%. So với cùng kỳ giảm 5.20% do Không rõ nguyên nhân, rủi ro sập luồng hàng cao!, nhân sự đang thiếu 3/18 định biên, tuyến thiếu (Phước Thạnh (02), P10 (01), Trung An (01) và P05 (01).).
@@ -32,7 +32,7 @@ Xã An Phước(1), Xã Giao Hòa (1) Xã Giao Long(3),Xã Phú An Hòa(1)).
 
 ### Lowlights:
 - Sản lượng đơn toàn vùng đạt 67,521 đơn, suy giảm nhẹ **-21.88%** so với tuần trước.
-- Toàn vùng đang **thiếu hụt thực tế 92 shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.
+- Toàn vùng đang **thiếu hụt thực tế 88 shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.
 - Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 38 định biên) và **Đồng Tháp** (thiếu 18 định biên).
 
 ## 🔮 Phân tích Nguyên nhân (Root Causes)
@@ -56,7 +56,7 @@ Xã An Phước(1), Xã Giao Hòa (1) Xã Giao Long(3),Xã Phú An Hòa(1)).
 | Ngô Phan Mỹ Tú | 66.37% | 2.38% | Cải thiện | 24 | Thiếu 4/57 | BìnhNLC |
 | Nguyễn Việt Tới | 63.63% | 1.87% | Cải thiện | 34 | Thiếu 0/47 | BìnhNLC |
 | Lê Minh Tuấn | 59.01% | 2.47% | Cải thiện | 29 | Thiếu 7/82 | BìnhNLC |
-| Nguyễn Tuấn Anh | 57.02% | 2.90% | Cải thiện | 295 | Thiếu 11/135 | VyLNK |
+| Nguyễn Tuấn Anh | 57.02% | 2.90% | Cải thiện | 295 | Thiếu 7/135 | VyLNK |
 | Lý Quài Nhân | 54.03% | 3.83% | Yếu | 49 | Thiếu 11/60 | BìnhNLC |
 | Đoàn Công Tín | 48.43% | 2.75% | Yếu | 370 | Thiếu 14/63 | BìnhNLC |
 | Nguyễn Anh Tùng | 44.12% | 2.21% | Yếu | 102 | Thiếu 15/94 | BìnhNLC |
