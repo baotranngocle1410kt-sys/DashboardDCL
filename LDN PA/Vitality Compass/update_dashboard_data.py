@@ -30,6 +30,8 @@ def clean_bc_name(name):
     if not isinstance(name, str):
         return ""
     name = name.lower()
+    # Strip prefix like (btr), (dth), etc.
+    name = re.sub(r'^\([a-z]{3,4}\)', '', name).strip()
     name = name.replace("bưu cục", "").replace("bc", "").strip()
     name = name.replace("quốc lộ", "ql").replace("quoc lo", "ql")
     name = re.sub(r'[\s\-]+', ' ', name)
@@ -994,13 +996,25 @@ def main():
                 # Match old name to new name and AM
                 clean_old_bc = clean_bc_name(str(bc_n_raw))
                 bc_name_new = str(bc_n_raw).strip()
+                matched = False
                 if clean_old_bc in cocau_map:
                     bc_name_new = cocau_map[clean_old_bc]['new_name']
+                    matched = True
                 else:
                     for k_old, info in cocau_map.items():
                         if k_old in clean_old_bc or clean_old_bc in k_old:
                             bc_name_new = info['new_name']
+                            matched = True
                             break
+                if not matched:
+                    # Stage 3: Match clean new name as substring of old name
+                    for idx_c, row_c in df_cocau_raw.iterrows():
+                        new_name_raw = row_c['Bưu cục']
+                        if pd.notna(new_name_raw):
+                            clean_new = clean_bc_name(str(new_name_raw))
+                            if len(clean_new) >= 4 and clean_new in clean_old_bc:
+                                bc_name_new = str(new_name_raw).strip()
+                                break
                             
                 manual_top5.append({
                     'bc_name': bc_name_new,

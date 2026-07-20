@@ -522,7 +522,7 @@
       "gtc_vs_lastweek": -0.016505361500000038,
       "fd": 0.02579798863,
       "fd_change": -0.04798459867999999,
-      "backlog": 21,
+      "backlog": 6,
       "status": "Bất ổn",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -1527,9 +1527,9 @@
       "hr": {
         "shortage_actual": 0,
         "shortage_bs": 0,
-        "target_headcount": 13,
+        "target_headcount": 20,
         "tuyen_thieu": "",
-        "hrbp": "VyLNK",
+        "hrbp": "BìnhNLC",
         "status": "Đủ",
         "ob_week": 0,
         "resign_week": 0
@@ -1575,7 +1575,7 @@
       "gtc_vs_lastweek": 0.13106532930000003,
       "fd": 0.01547619048,
       "fd_change": -0.01426358647,
-      "backlog": 1,
+      "backlog": 46,
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
@@ -1957,12 +1957,12 @@
       "status": "Bất ổn",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
-        "shortage_actual": 3,
-        "shortage_bs": 3,
-        "target_headcount": 7,
-        "tuyen_thieu": "Thạnh Lộc, Mỹ Hạnh Đông, Phú Cường",
-        "hrbp": "BìnhNLC",
-        "status": "Thiếu",
+        "shortage_actual": 0,
+        "shortage_bs": 0,
+        "target_headcount": 8,
+        "tuyen_thieu": "Mỹ Phước Tây: 1",
+        "hrbp": "NgọcNTM",
+        "status": "Đủ",
         "ob_week": 0,
         "resign_week": 0
       }
@@ -2172,14 +2172,14 @@
     ],
     "causes": [
       "Tại **(BTR) An Hội**: Nhân sự: 7/11 (thiếu 4) + 2 nhân viên hỗ trợ; Bưu cục liên tục có nhân viên nghỉ ngang, té xe.; NVXL mới chưa quản lý được nhân sự tại BC, điều tiết giờ giấc xuất hàng.; Nhân viên 9h chưa rời khỏi kho.",
-      "Tại **Bưu Cục Quốc lộ 80-Vĩnh Thạnh-Lấp Vò-Đồng Tháp**: Số thiếu: 4 NVPTTT; Thiếu tuyến xã Mỹ An Hưng A, xã Mỹ An Hưng B, xã Hội An Đông; Nhân sự hiện tại: 9 NVPTTT (12 tuyến chạy); Nhân viên mới năng suất trung bình: GTC 35 đơn/ngày; Bưu cục có phân chia tuyến rõ ràng, hàng cồng kềnh còn để không gọn, hàng lấy về nhiều để giữa kho không kiểm soát được; NV ra khỏi kho trễ (10h) do tự lựa hàng và gọi lâu, NVXL không phân chia hàng trước cho NVPTTT; AM ngồi trực tiếp tại kho, NVXL có kinh nghiệm sắp xếp gán và điều hành; AM tick mất hàng (hơn 75 đơn), còn hàng vật lý chuyển trả về OE",
+      "Tại **(DTH) Lấp Vò**: Số thiếu: 4 NVPTTT; Thiếu tuyến xã Mỹ An Hưng A, xã Mỹ An Hưng B, xã Hội An Đông; Nhân sự hiện tại: 9 NVPTTT (12 tuyến chạy); Nhân viên mới năng suất trung bình: GTC 35 đơn/ngày; Bưu cục có phân chia tuyến rõ ràng, hàng cồng kềnh còn để không gọn, hàng lấy về nhiều để giữa kho không kiểm soát được; NV ra khỏi kho trễ (10h) do tự lựa hàng và gọi lâu, NVXL không phân chia hàng trước cho NVPTTT; AM ngồi trực tiếp tại kho, NVXL có kinh nghiệm sắp xếp gán và điều hành; AM tick mất hàng (hơn 75 đơn), còn hàng vật lý chuyển trả về OE",
       "Tại **(TGI) Châu Thành**: Số thiếu: 5 NVPTTT + 1 NVXL; Thiếu tuyến xã Tân Hương, xã Thân Cửu Nghĩa, xã Tam Hiệp, xã Tân Hội Đông; NVXL trực tiếp điều hành sắp xếp và gán chuyến cho nhân viên; Hàng tồn: 121 đơn",
       "Tại **(TVI) Duyên Hải**: Số thiếu 4; Bưu cục xảy ra chiếm dụng, nhân viên nghỉ ngang; Các tuyến chạy xa BC; Nhân viên mới vào năng suất chưa cao; NVXL có kinh nghiệm, sắp xếp layout, FIFO hàng hóa",
       "Tại **(DTH) Hòa Long**: Số thiếu: 2 NVPTTT; Thiếu tuyến xã Long Hưng B; Nhân viên mới năng suất trung bình: GTC 30 đơn/ngày; NVXL trực tiếp điều hành tại kho, tuy nhiên năng suất nhân viên không cao"
     ],
     "recommendations": [
       "Tại **(BTR) An Hội**: Tuyển thay thế NVXL ( NVXL mới đã OB ngày 19/8),; Chạy Ads FB; Đẩy mạnh tuyển dụng NVPTTT; AM cắm chốt hỗ trợ vận hành BC",
-      "Tại **Bưu Cục Quốc lộ 80-Vĩnh Thạnh-Lấp Vò-Đồng Tháp**: NVXL trực tiếp điều hành của nhân viên; Layout có sắp xếp, hàng cồng kềnh chưa gọn; AOV đã được điều chỉnh, không có tuyến AOV thấp; Đang thực hiện chạy FB Ads để hỗ trợ tuyển dụng, áp dụng chính sách giới thiệu nội bộ; Call check NV cũ nghỉ việc không vi phạm vào làm lại",
+      "Tại **(DTH) Lấp Vò**: NVXL trực tiếp điều hành của nhân viên; Layout có sắp xếp, hàng cồng kềnh chưa gọn; AOV đã được điều chỉnh, không có tuyến AOV thấp; Đang thực hiện chạy FB Ads để hỗ trợ tuyển dụng, áp dụng chính sách giới thiệu nội bộ; Call check NV cũ nghỉ việc không vi phạm vào làm lại",
       "Tại **(TGI) Châu Thành**: Đẩy mạnh tuyển dụng do cắt hàng nặng, nhân viên nghỉ do thu nhập giảm; NVXL tìm việc làm mới, đã có NVXL mới đang được đào tạo - AM phân chia lại các tuyến chạy và điều chỉnh lại AOV",
       "Tại **(TVI) Duyên Hải**: Triển khai dán banner tuyển dụng ở các khu vực lân cận; Triển khai chính sách giới thiệu nội bộ để đẩy nhanh tuyển dụng",
       "Tại **(DTH) Hòa Long**: Tuyển dụng cho bưu cục; AM họp kho để thúc đẩy tinh thần nhân viên; Sắp xếp lại layout: kho mới cần sắp xếp hàng hoá đúng chỗ"
@@ -7448,11 +7448,11 @@
         {
           "am": "Nguyễn Huỳnh Quốc Dũng",
           "bc_name": "(BTR) Thạnh Phú",
-          "w18": 0.01547619048,
-          "w19": 0.020871640362282805,
-          "w20": 0.019639106159106696,
-          "w21": 0.01684178170468739,
-          "w22": 0.022984977676897896,
+          "w18": 0.06625577812,
+          "w19": 0.06143815632690914,
+          "w20": 0.02970268743737363,
+          "w21": 0.029922224293290084,
+          "w22": 0.03827052634650011,
           "change_wtd": 0.0
         },
         {
@@ -7628,11 +7628,11 @@
         {
           "am": "Nguyễn Anh Tùng",
           "bc_name": "(TGI) Châu Thành",
-          "w18": 0.02579798863,
-          "w19": 0.047158228094085514,
-          "w20": 0.02644150285190505,
-          "w21": 0.0250089068364825,
-          "w22": 0.02504490615963009,
+          "w18": 0.01301775148,
+          "w19": 0.02066538194523226,
+          "w20": 0.015951536147832634,
+          "w21": 0.018054545787774243,
+          "w22": 0.01742868870256081,
           "change_wtd": 0.0
         },
         {
@@ -8152,16 +8152,16 @@
         {
           "am": "Nguyễn Huỳnh Quốc Dũng",
           "bc_name": "(BTR) Thạnh Phú",
-          "change_d1": 0.001695750529999998,
-          "change_d7": -0.004873784780000001,
-          "d18": 0.02839116719,
-          "d19": 0.03519668737,
-          "d20": 0.02337938363,
-          "d21": 0.0195473251,
-          "d22": 0.02973977695,
-          "d23": 0.01547619048,
-          "d24": 0.02182163188,
-          "d25": 0.02351738241
+          "change_d1": 0.02038799064,
+          "change_d7": 0.026657045219999995,
+          "d18": 0.0461192351,
+          "d19": 0.04419191919,
+          "d20": 0.05753424658,
+          "d21": 0.08620689655,
+          "d22": 0.06303236797,
+          "d23": 0.06625577812,
+          "d24": 0.05238828968,
+          "d25": 0.07277628032
         },
         {
           "am": "Huỳnh Quốc Trung",
@@ -8404,16 +8404,16 @@
         {
           "am": "Nguyễn Anh Tùng",
           "bc_name": "(TGI) Châu Thành",
-          "change_d1": -0.0005117973899999989,
-          "change_d7": -0.014723339760000002,
-          "d18": 0.059287183,
-          "d19": 0.05928411633,
-          "d20": 0.06312292359,
-          "d21": 0.09480626546,
-          "d22": 0.07378258731,
-          "d23": 0.02579798863,
-          "d24": 0.04507564063,
-          "d25": 0.04456384324
+          "change_d1": 0.001871234060000001,
+          "change_d7": -0.005164455009999999,
+          "d18": 0.02236135957,
+          "d19": 0.02171945701,
+          "d20": 0.02859960552,
+          "d21": 0.025,
+          "d22": 0.0354679803,
+          "d23": 0.01301775148,
+          "d24": 0.0153256705,
+          "d25": 0.01719690456
         },
         {
           "am": "Đoàn Công Tín",
