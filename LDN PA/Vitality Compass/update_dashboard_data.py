@@ -333,6 +333,7 @@ def main():
                 print(f"⚠ Failed to parse 'Cơ cấu Intern': {ie}")
                 
         # Read CoCauVung from recruitment_live.xlsx
+        cocau_map = {}
         try:
             print("Reading new AM/BC structure from recruitment_live.xlsx...")
             df_cocau_raw = pd.read_excel(xl_hr, sheet_name="Cơ cấu Vùng")
@@ -358,6 +359,18 @@ def main():
             }
             df_cocau['am_tele'] = df_cocau['am_name'].map(am_tele_map).fillna('')
             df_cocau['am_id'] = df_cocau_raw['ID AM'].fillna('').astype(str)
+            
+            # Populate cocau_map for old to new name translations
+            for idx_c, row_c in df_cocau_raw.iterrows():
+                old_name_raw = row_c['Bưu cục cũ']
+                new_name_raw = row_c['Bưu cục']
+                new_am_raw = row_c['AM']
+                if pd.notna(old_name_raw) and pd.notna(new_name_raw):
+                    clean_old = clean_bc_name(str(old_name_raw))
+                    cocau_map[clean_old] = {
+                        'new_name': str(new_name_raw).strip(),
+                        'new_am': str(new_am_raw).strip() if pd.notna(new_am_raw) else ''
+                    }
             print("✓ Loaded new AM/BC structure successfully.")
         except Exception as ce:
             print(f"⚠ Failed to load new AM/BC structure from Cơ cấu Vùng: {ce}")
@@ -976,8 +989,20 @@ def main():
                 bc_n_raw = row_t['TOP 5 Bưu Cục thiếu nhiều nhất theo Tuần']
                 if pd.isna(bc_n_raw) or str(bc_n_raw).strip().lower() == 'nan':
                     continue
+                
+                # Match old name to new name and AM
+                clean_old_bc = clean_bc_name(str(bc_n_raw))
+                bc_name_new = str(bc_n_raw).strip()
+                if clean_old_bc in cocau_map:
+                    bc_name_new = cocau_map[clean_old_bc]['new_name']
+                else:
+                    for k_old, info in cocau_map.items():
+                        if k_old in clean_old_bc or clean_old_bc in k_old:
+                            bc_name_new = info['new_name']
+                            break
+                            
                 manual_top5.append({
-                    'bc_name': str(bc_n_raw).strip(),
+                    'bc_name': bc_name_new,
                     'details': str(row_t['Unnamed: 11']).strip() if pd.notna(row_t['Unnamed: 11']) else "",
                     'volume': int(row_t['Unnamed: 2']) if pd.notna(row_t['Unnamed: 2']) else 0,
                     'vol_tts': int(row_t['Unnamed: 3']) if pd.notna(row_t['Unnamed: 3']) else 0,
