@@ -128,20 +128,10 @@ def main():
             print("✓ Using existing recruitment_live.xlsx as fallback.")
             p_hr = p_hr_local
         
-    # Download Link 1 (GTC/Performance)
-    print("Downloading Google Sheets Link 1...")
+    # Download Link 1 (GTC/Performance) - SKIPPED AS REQUESTED
+    print("Downloading Google Sheets Link 1 is skipped as requested.")
     p_link1_local = r"C:\Users\Administrator\Desktop\AI 2026\Mentor\link1_live.xlsx"
     link1_success = False
-    try:
-        gsheet_link1_url = "https://docs.google.com/spreadsheets/d/19TGb1gh8z0U9slERRqpOrh-WyP9Wh0yfMkj6OUIeH1Y/export?format=xlsx"
-        req = urllib.request.Request(gsheet_link1_url, headers={'User-Agent': 'Mozilla/5.0'})
-        with urllib.request.urlopen(req, timeout=90) as response:
-            with open(p_link1_local, 'wb') as f:
-                f.write(response.read())
-        print("✓ Downloaded Link 1 successfully.")
-        link1_success = True
-    except Exception as e:
-        print(f"⚠ Failed to download Link 1: {e}. Falling back to local file.")
         
     # Download Link 2 (Backlog)
     print("Downloading Google Sheets Link 2...")
@@ -229,10 +219,6 @@ def main():
     print("Reading performance report sheets...")
     with pd.ExcelFile(p_performance) as xls_perf:
         df_data = pd.read_excel(xls_perf, sheet_name="Data ĐCL")
-        df_cocau = pd.read_excel(xls_perf, sheet_name="CoCauVung")
-        # Replace Lâm Xuân Vinh with Nguyễn Huỳnh Quốc Dũng as requested
-        df_cocau['am_name'] = df_cocau['am_name'].replace('Lâm Xuân Vinh', 'Nguyễn Huỳnh Quốc Dũng')
-        df_cocau.loc[df_cocau['am_name'] == 'Nguyễn Huỳnh Quốc Dũng', 'am_tele'] = '@quocdung_bte'
         df_hist = pd.read_excel(xls_perf, sheet_name="Lịch sử")
     print("Reading backlog sheets...")
     xl_bl = pd.ExcelFile(p_backlog)
@@ -345,6 +331,38 @@ def main():
                 print("✓ Parsed HRBP Interns from 'Cơ cấu Intern' sheet:", interns_map)
             except Exception as ie:
                 print(f"⚠ Failed to parse 'Cơ cấu Intern': {ie}")
+                
+        # Read CoCauVung from recruitment_live.xlsx
+        try:
+            print("Reading new AM/BC structure from recruitment_live.xlsx...")
+            df_cocau_raw = pd.read_excel(xl_hr, sheet_name="Cơ cấu Vùng")
+            df_cocau = pd.DataFrame()
+            df_cocau['warehouse_id'] = df_cocau_raw['Mã BC']
+            df_cocau['warehouse_name'] = df_cocau_raw['Bưu cục']
+            df_cocau['province_name'] = df_cocau_raw['Tỉnh']
+            df_cocau['am_name'] = df_cocau_raw['AM']
+            
+            am_tele_map = {
+                'Nguyễn Tuấn Anh': '@Tuananh_kr',
+                'Nguyễn Huỳnh Quốc Dũng': '@DungBt',
+                'Huỳnh Quốc Trung': '@HuynhQTrung',
+                'Nguyễn Anh Tùng': '@jimmytho91',
+                'Nguyễn Việt Tới': '@OP_MN_CAOLANH_DONGTHAP_TOI',
+                'Lý Quài Nhân': '@lynhantv92',
+                'Đoàn Công Tín': '@congtind',
+                'Nguyễn Thành Huy': '@nguyenthanhhuytv',
+                'Lê Minh Tuấn': '@MinhTuanLM',
+                'Ngô Phan Mỹ Tú': '@MyTuNgoPhan',
+                'Võ Hồng Chơn': '@chonvh',
+                'Ngô Thị Bé Mi': '@bemi_tgi'
+            }
+            df_cocau['am_tele'] = df_cocau['am_name'].map(am_tele_map).fillna('')
+            df_cocau['am_id'] = df_cocau_raw['ID AM'].fillna('').astype(str)
+            print("✓ Loaded new AM/BC structure successfully.")
+        except Exception as ce:
+            print(f"⚠ Failed to load new AM/BC structure from Cơ cấu Vùng: {ce}")
+            # Fallback empty df with correct columns
+            df_cocau = pd.DataFrame(columns=['warehouse_id', 'warehouse_name', 'province_name', 'am_name', 'am_tele', 'am_id'])
     
     # Find columns for Subtable 0 (fallback)
     try:
@@ -473,8 +491,21 @@ def main():
         except Exception as e:
             print(f"⚠ Failed to parse daily backlog history: {e}")
     
+    # Clean keys before merge to prevent type mismatches (int vs float vs string)
+    def clean_id(val):
+        try:
+            if pd.isna(val):
+                return -1
+            return int(float(str(val).strip()))
+        except:
+            return -1
+
+    df_cocau['warehouse_id'] = df_cocau['warehouse_id'].apply(clean_id)
+    df_data['ID Bưu cục'] = df_data['ID Bưu cục'].apply(clean_id)
+
     # Map Post Offices to AM and Province
     df_data_m = df_data.merge(df_cocau, left_on="ID Bưu cục", right_on="warehouse_id", how="left")
+    df_data_m['warehouse_name'] = df_data_m['warehouse_name'].fillna(df_data_m['Chi tiết'])
     df_data_m['Vol Chuyen Tra'] = df_data_m['Volume'] * df_data_m['% Chuyển trả']
     
     # Extract Trend Data (Last 8 Days)
@@ -711,7 +742,7 @@ def main():
     hr_bc_cleaned = {clean_bc_name(row['Bưu cục']): row for idx, row in df_bc_hr.iterrows()}
 
     for idx, row in latest_df.iterrows():
-        bc_name = row['Chi tiết']
+        bc_name = row['warehouse_name']
         bc_id = row['ID Bưu cục']
         vol = int(row['Volume'])
         gtc = float(row['% GTC'])
@@ -1239,11 +1270,11 @@ def main():
                 fd_data['gtb'] = parse_sheet_fd('%GTB_TT')
                 
             # Build Total %FD dynamically from performance report df_data_m (Data ĐCL)
-            df_data_grouped = df_data_m.groupby(['corrected_date', 'Chi tiết'])['% Chuyển trả'].mean().reset_index()
+            df_data_grouped = df_data_m.groupby(['corrected_date', 'warehouse_name'])['% Chuyển trả'].mean().reset_index()
             dcl_fd_map = {}
             for _, row in df_data_grouped.iterrows():
                 dt_str = pd.Timestamp(row['corrected_date']).strftime('%Y-%m-%d')
-                clean_name = clean_bc_name(row['Chi tiết'])
+                clean_name = clean_bc_name(row['warehouse_name'])
                 if clean_name not in dcl_fd_map:
                     dcl_fd_map[clean_name] = {}
                 dcl_fd_map[clean_name][dt_str] = float(row['% Chuyển trả'])
@@ -1397,12 +1428,12 @@ def main():
                 clean_name = clean_bc_name(bc_name)
                 
                 w22_val = None
-                bc_latest_row = latest_df[latest_df['Chi tiết'].apply(clean_bc_name) == clean_name]
+                bc_latest_row = latest_df[latest_df['warehouse_name'].apply(clean_bc_name) == clean_name]
                 if not bc_latest_row.empty:
                     w22_val = float(bc_latest_row.iloc[0]['% Chuyển trả'])
                 else:
                     for idx, r_bc in latest_df.iterrows():
-                        if clean_bc_name(r_bc['Chi tiết']) in clean_name or clean_name in clean_bc_name(r_bc['Chi tiết']):
+                        if clean_bc_name(r_bc['warehouse_name']) in clean_name or clean_name in clean_bc_name(r_bc['warehouse_name']):
                             w22_val = float(r_bc['% Chuyển trả'])
                             break
                             
