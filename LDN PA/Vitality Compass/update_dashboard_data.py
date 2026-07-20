@@ -31,6 +31,7 @@ def clean_bc_name(name):
         return ""
     name = name.lower()
     name = name.replace("bưu cục", "").replace("bc", "").strip()
+    name = name.replace("quốc lộ", "ql").replace("quoc lo", "ql")
     name = re.sub(r'[\s\-]+', ' ', name)
     return name.strip()
 
