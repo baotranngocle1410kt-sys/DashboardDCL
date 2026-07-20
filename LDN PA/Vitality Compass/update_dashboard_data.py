@@ -230,6 +230,9 @@ def main():
     with pd.ExcelFile(p_performance) as xls_perf:
         df_data = pd.read_excel(xls_perf, sheet_name="Data ĐCL")
         df_cocau = pd.read_excel(xls_perf, sheet_name="CoCauVung")
+        # Replace Lâm Xuân Vinh with Nguyễn Huỳnh Quốc Dũng as requested
+        df_cocau['am_name'] = df_cocau['am_name'].replace('Lâm Xuân Vinh', 'Nguyễn Huỳnh Quốc Dũng')
+        df_cocau.loc[df_cocau['am_name'] == 'Nguyễn Huỳnh Quốc Dũng', 'am_tele'] = '@quocdung_bte'
         df_hist = pd.read_excel(xls_perf, sheet_name="Lịch sử")
     print("Reading backlog sheets...")
     xl_bl = pd.ExcelFile(p_backlog)

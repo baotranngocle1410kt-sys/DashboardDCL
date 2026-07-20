@@ -26,9 +26,9 @@
       "vs_lastmonth": -0.3093944099378882
     },
     "hr": {
-      "total_shortage_actual": 88,
+      "total_shortage_actual": 91,
       "total_shortage_bs": 37,
-      "total_resign_week": 51,
+      "total_resign_week": 54,
       "total_ob_week": 0,
       "latest_week": 30
     }
@@ -102,9 +102,9 @@
       "backlog": 497,
       "backlog_change": 131,
       "hr": {
-        "shortage_actual": 18,
+        "shortage_actual": 21,
         "shortage_bs": 12,
-        "resign": 6,
+        "resign": 9,
         "ob": 0,
         "target_headcount": 165,
         "hrbp": "NgọcNTM",
@@ -175,8 +175,8 @@
       "gtc_change": -0.06763871501233387,
       "fd": 0.02335063009700062,
       "fd_change": -0.007168310647064219,
-      "backlog": 40,
-      "backlog_change": 7,
+      "backlog": 281,
+      "backlog_change": 69,
       "hr": {
         "shortage_actual": 4,
         "shortage_bs": 0,
@@ -366,6 +366,28 @@
       }
     },
     {
+      "name": "Nguyễn Huỳnh Quốc Dũng",
+      "volume": 6930,
+      "gtc": 0.42453102454419905,
+      "gtc_change": -0.043401012781440096,
+      "fd": 0.018037518038834056,
+      "fd_change": -0.02757705413437886,
+      "backlog": 241,
+      "backlog_detail": {
+        "5_8": 199,
+        "8_15": 39,
+        "above_15": 3
+      },
+      "status": "Yếu",
+      "hr": {
+        "shortage_actual": 6,
+        "shortage_bs": 5,
+        "resign": 1,
+        "ob": 0,
+        "target_headcount": 74
+      }
+    },
+    {
       "name": "Huỳnh Quốc Trung",
       "volume": 1170,
       "gtc": 0.3803418803,
@@ -380,33 +402,11 @@
       },
       "status": "Yếu",
       "hr": {
-        "shortage_actual": 5,
+        "shortage_actual": 8,
         "shortage_bs": 1,
-        "resign": 4,
+        "resign": 7,
         "ob": 0,
         "target_headcount": 32
-      }
-    },
-    {
-      "name": "Nguyễn Huỳnh Quốc Dũng",
-      "volume": 1,
-      "gtc": 0.0,
-      "gtc_change": 0.0,
-      "fd": 0.0,
-      "fd_change": 0.0,
-      "backlog": 241,
-      "backlog_detail": {
-        "5_8": 199,
-        "8_15": 39,
-        "above_15": 3
-      },
-      "status": "Yếu",
-      "hr": {
-        "shortage_actual": 6,
-        "shortage_bs": 5,
-        "resign": 1,
-        "ob": 0,
-        "target_headcount": 74
       }
     },
     {
@@ -485,9 +485,9 @@
     {
       "id": 22101000,
       "name": "(BTR) Phú Túc",
-      "am": "Lâm Xuân Vinh",
+      "am": "Nguyễn Huỳnh Quốc Dũng",
       "am_id": "200407.0",
-      "am_tele": "@Vinhlxbentre",
+      "am_tele": "@quocdung_bte",
       "province": "Bến Tre",
       "volume": 2514,
       "gtc": 0.1356404137,
@@ -836,9 +836,9 @@
     {
       "id": 2410,
       "name": "(TVI) Duyên Hải",
-      "am": "Lâm Xuân Vinh",
+      "am": "Nguyễn Huỳnh Quốc Dũng",
       "am_id": "200407.0",
-      "am_tele": "@Vinhlxbentre",
+      "am_tele": "@quocdung_bte",
       "province": "Trà Vinh",
       "volume": 1246,
       "gtc": 0.544141252,
@@ -904,14 +904,14 @@
       "status": "Bất ổn",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "hr": {
-        "shortage_actual": 0,
+        "shortage_actual": 3,
         "shortage_bs": 0,
         "target_headcount": 11,
-        "tuyen_thieu": "Tiên Thủy (01) và Tiên Long (01)",
+        "tuyen_thieu": "Sơn Đông, Tân Phú, Tiên Thủy",
         "hrbp": "NgọcNTM",
-        "status": "Đủ",
+        "status": "Thiếu",
         "ob_week": 0,
-        "resign_week": 0
+        "resign_week": 3
       }
     },
     {
@@ -1241,9 +1241,9 @@
     {
       "id": 21583000,
       "name": "(BTR) Bình Đại",
-      "am": "Lâm Xuân Vinh",
+      "am": "Nguyễn Huỳnh Quốc Dũng",
       "am_id": "200407.0",
-      "am_tele": "@Vinhlxbentre",
+      "am_tele": "@quocdung_bte",
       "province": "Bến Tre",
       "volume": 955,
       "gtc": 0.7434554974,
@@ -1322,9 +1322,9 @@
     {
       "id": 22031000,
       "name": "(BTR) An Hội",
-      "am": "Lâm Xuân Vinh",
+      "am": "Nguyễn Huỳnh Quốc Dũng",
       "am_id": "200407.0",
-      "am_tele": "@Vinhlxbentre",
+      "am_tele": "@quocdung_bte",
       "province": "Bến Tre",
       "volume": 943,
       "gtc": 0.5429480382,
@@ -1916,9 +1916,9 @@
     {
       "id": 22337000,
       "name": "(BTR) Phước Mỹ Trung",
-      "am": "Lâm Xuân Vinh",
+      "am": "Nguyễn Huỳnh Quốc Dũng",
       "am_id": "200407.0",
-      "am_tele": "@Vinhlxbentre",
+      "am_tele": "@quocdung_bte",
       "province": "Bến Tre",
       "volume": 691,
       "gtc": 0.4413892909,
@@ -2024,9 +2024,9 @@
     {
       "id": 22868000,
       "name": "(BTR) Lộc Thuận",
-      "am": "Lâm Xuân Vinh",
+      "am": "Nguyễn Huỳnh Quốc Dũng",
       "am_id": "200407.0",
-      "am_tele": "@Vinhlxbentre",
+      "am_tele": "@quocdung_bte",
       "province": "Bến Tre",
       "volume": 580,
       "gtc": 0.6827586207,
@@ -2134,7 +2134,7 @@
       "name": "(BTR) Chợ Lách",
       "am": "Nguyễn Huỳnh Quốc Dũng",
       "am_id": "3126726.0",
-      "am_tele": "@DungBt",
+      "am_tele": "@quocdung_bte",
       "province": "Bến Tre",
       "volume": 1,
       "gtc": 0.0,
@@ -2167,7 +2167,7 @@
     ],
     "lowlights": [
       "Sản lượng đơn toàn vùng đạt 67,521 đơn, suy giảm nhẹ **-21.88%** so với tuần trước.",
-      "Toàn vùng đang **thiếu hụt thực tế 88 shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.",
+      "Toàn vùng đang **thiếu hụt thực tế 91 shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.",
       "Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 38 định biên) và **Đồng Tháp** (thiếu 20 định biên)."
     ],
     "causes": [
