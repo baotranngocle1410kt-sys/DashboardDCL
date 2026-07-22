@@ -131,10 +131,20 @@ def main():
             print("✓ Using existing recruitment_live.xlsx as fallback.")
             p_hr = p_hr_local
         
-    # Download Link 1 (GTC/Performance) - SKIPPED AS REQUESTED
-    print("Downloading Google Sheets Link 1 is skipped as requested.")
+    # Download Link 1 (GTC/Performance)
+    print("Downloading Google Sheets Link 1...")
     p_link1_local = r"C:\Users\Administrator\Desktop\AI 2026\Mentor\link1_live.xlsx"
     link1_success = False
+    try:
+        gsheet_link1_url = "https://docs.google.com/spreadsheets/d/19TGb1gh8z0U9slERRqpOrh-WyP9Wh0yfMkj6OUIeH1Y/export?format=xlsx"
+        req = urllib.request.Request(gsheet_link1_url, headers={'User-Agent': 'Mozilla/5.0'})
+        with urllib.request.urlopen(req, timeout=90) as response:
+            with open(p_link1_local, 'wb') as f:
+                f.write(response.read())
+        print("✓ Downloaded Link 1 successfully.")
+        link1_success = True
+    except Exception as e:
+        print(f"⚠ Failed to download Link 1: {e}. Falling back to local file.")
         
     # Download Link 2 (Backlog)
     print("Downloading Google Sheets Link 2...")
