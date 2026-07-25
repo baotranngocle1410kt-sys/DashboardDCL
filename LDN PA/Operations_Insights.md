@@ -8,8 +8,8 @@
 - **GTC**: 56.16% (Biến động vs Tuần trước: ↗ +2.37% vs Tuần trước)
 - **FD**: 2.53% (Biến động vs Tuần trước: ↗ +0.18% vs Tuần trước)
 - **Ontime**: 91.50%
-- **Backlog**: 1,795 (Biến động vs Tuần trước: ↘ -30.78% vs Tuần trước)
-- **Thiếu hụt Nhân sự**: Thiếu 87 shipper (Tuyển mới: 15 / Nghỉ việc: 63)
+- **Backlog**: 1,635 (Biến động vs Tuần trước: ↘ -36.95% vs Tuần trước)
+- **Thiếu hụt Nhân sự**: Thiếu 83 shipper (Tuyển mới: 21 / Nghỉ việc: 64)
 
 ## 🔴 Cảnh báo Hôm nay (Alerts)
 - **(DTH) An Bình** có chỉ số GTC ngày 21/06/26 thấp hơn ngày hôm N-1 (20/06/26) 6.88%. So với cùng kỳ giảm 5.20% do Không rõ nguyên nhân, rủi ro sập luồng hàng cao!, nhân sự đang thiếu 3/18 định biên, tuyến thiếu (Phước Thạnh (02), P10 (01), Trung An (01) và P05 (01).).
@@ -17,22 +17,22 @@
 - **(TGI) Châu Thành** có chỉ số GTC ngày 21/06/26 thấp hơn ngày hôm N-1 (20/06/26) 9.13%. So với cùng kỳ giảm 1.65% do Không rõ nguyên nhân, rủi ro sập luồng hàng cao!, nhân sự đang thiếu 0/20 định biên.
 - **(TGI) Vĩnh Kim** có chỉ số GTC ngày 21/06/26 thấp hơn ngày hôm N-1 (20/06/26) 5.67%. So với cùng kỳ giảm 14.05% do Không rõ nguyên nhân, rủi ro sập luồng hàng cao!, nhân sự đang thiếu 3/17 định biên, tuyến thiếu (Vĩnh Kim, Kim Sơn).
 - **(VLO) Trung Thành** có chỉ số GTC ngày 21/06/26 thấp hơn ngày hôm N-1 (20/06/26) 1.33%. So với cùng kỳ giảm 3.15% do Không rõ nguyên nhân, rủi ro sập luồng hàng cao!, nhân sự đang thiếu 3/20 định biên, tuyến thiếu (Tân Quới Trung, Quới Thiện, Tân An Luông, Trung Hiệp).
-- **(TGI) Đạo Thạnh** có chỉ số GTC ngày 21/06/26 thấp hơn ngày hôm N-1 (20/06/26) 12.29%. So với cùng kỳ giảm 9.27% do Không rõ nguyên nhân, rủi ro sập luồng hàng cao!, nhân sự đang thiếu 2/21 định biên, tuyến thiếu (Phước Thạnh, Phường 10, Trung An, Phường 5).
+- **(TGI) Đạo Thạnh** có chỉ số GTC ngày 21/06/26 thấp hơn ngày hôm N-1 (20/06/26) 12.29%. So với cùng kỳ giảm 9.27% do Không rõ nguyên nhân, rủi ro sập luồng hàng cao!, nhân sự đang thiếu 1/21 định biên, tuyến thiếu (Phước Thạnh, Phường 10, Trung An, Phường 5).
 - **(TGI) Chợ Gạo** có chỉ số GTC ngày 21/06/26 thấp hơn ngày hôm N-1 (20/06/26) 14.62%. So với cùng kỳ giảm 2.65% do Không rõ nguyên nhân, rủi ro sập luồng hàng cao!, nhân sự đang thiếu 2/20 định biên, tuyến thiếu (Lương Hòa Lạc, Mỹ Tịnh An).
 - **(TGI) Đồng Sơn** có chỉ số GTC ngày 21/06/26 thấp hơn ngày hôm N-1 (20/06/26) 1.46%. So với cùng kỳ giảm 7.77% do Không rõ nguyên nhân, rủi ro sập luồng hàng cao!, nhân sự đang thiếu 3/19 định biên.
 
 ## 📈 Highlight / Lowlight
 ### Highlights:
 - Tỷ lệ GTC toàn vùng (56.16%) cải thiện **+2.37%** so với cùng kỳ tuần trước (53.79%).
-- Đơn tồn backlog (>5 ngày) kiểm soát tốt, giảm **-30.78%** so với tuần trước (từ 2,593 xuống 1,795 đơn).
+- Đơn tồn backlog (>5 ngày) kiểm soát tốt, giảm **-36.95%** so với tuần trước (từ 2,593 xuống 1,635 đơn).
 - **Ngô Phan Mỹ Tú** là AM có tỷ lệ GTC cao nhất toàn vùng (66.37%), đồng thời duy trì lượng đơn tồn đọng cực thấp.
 - Tỷ lệ chuyển trả (FD) toàn vùng duy trì ở mức an toàn là **2.53%** (↗ +0.18% vs Tuần trước).
-- Trong tuần qua, HRBP đã tuyển thành công **15 nhân viên mới** (OB) hỗ trợ lấp đầy các tuyến nóng.
+- Trong tuần qua, HRBP đã tuyển thành công **21 nhân viên mới** (OB) hỗ trợ lấp đầy các tuyến nóng.
 
 ### Lowlights:
 - Sản lượng đơn toàn vùng đạt 67,521 đơn, suy giảm nhẹ **-21.88%** so với tuần trước.
-- Toàn vùng đang **thiếu hụt thực tế 87 shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.
-- Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 34 định biên) và **Đồng Tháp** (thiếu 16 định biên).
+- Toàn vùng đang **thiếu hụt thực tế 83 shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.
+- Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 30 định biên) và **Đồng Tháp** (thiếu 16 định biên).
 
 ## 🔮 Phân tích Nguyên nhân (Root Causes)
 - Tại **(BTR) An Hội**: Nhân sự: 7/11 (thiếu 4) + 2 nhân viên hỗ trợ; Bưu cục liên tục có nhân viên nghỉ ngang, té xe.; NVXL mới chưa quản lý được nhân sự tại BC, điều tiết giờ giấc xuất hàng.; Nhân viên 9h chưa rời khỏi kho.
@@ -51,25 +51,25 @@
 ## 📋 Đánh giá AM (Scorecard)
 | AM | GTC | FD | Trạng thái | Đơn Aging | Thiếu shipper | HRBP |
 | --- | --- | --- | --- | --- | --- | --- |
-| Võ Hồng Chơn | 66.98% | 1.81% | Cải thiện | 254 | Thiếu 12/80 | NgọcNTM |
-| Ngô Phan Mỹ Tú | 66.37% | 2.38% | Cải thiện | 11 | Thiếu 4/57 | NgọcNTM |
-| Nguyễn Thành Huy | 65.88% | 2.34% | Cải thiện | 50 | Thiếu 4/116 | VyLNK |
-| Ngô Thị Bé Mi | 65.58% | 2.49% | Cải thiện | 2 | Thiếu 2/39 | BìnhNLC |
-| Nguyễn Việt Tới | 63.63% | 1.87% | Cải thiện | 21 | Thiếu 1/47 | NgọcNTM |
-| Nguyễn Tuấn Anh | 57.02% | 2.90% | Cải thiện | 381 | Thiếu 8/135 | VyLNK |
-| Lê Minh Tuấn | 54.86% | 2.45% | Yếu | 23 | Thiếu 3/43 | NgọcNTM |
-| Lý Quài Nhân | 54.03% | 3.83% | Yếu | 82 | Thiếu 10/60 | NgọcNTM |
-| Đoàn Công Tín | 48.62% | 2.81% | Yếu | 157 | Thiếu 9/63 | BìnhNLC |
-| Nguyễn Huỳnh Quốc Dũng | 44.47% | 1.60% | Yếu | 354 | Thiếu 10/74 | NgọcNTM |
-| Huỳnh Quốc Trung | 44.13% | 4.40% | Yếu | 221 | Thiếu 5/32 | NgọcNTM |
-| Nguyễn Anh Tùng | 44.12% | 2.21% | Yếu | 239 | Thiếu 19/94 | BìnhNLC |
+| Võ Hồng Chơn | 66.98% | 1.81% | Cải thiện | 170 | Thiếu 12/80 | NgọcNTM |
+| Ngô Phan Mỹ Tú | 66.37% | 2.38% | Cải thiện | 12 | Thiếu 4/57 | NgọcNTM |
+| Nguyễn Thành Huy | 65.88% | 2.34% | Cải thiện | 43 | Thiếu 4/116 | VyLNK |
+| Ngô Thị Bé Mi | 65.58% | 2.49% | Cải thiện | 5 | Thiếu 1/39 | BìnhNLC |
+| Nguyễn Việt Tới | 63.63% | 1.87% | Cải thiện | 15 | Thiếu 1/47 | NgọcNTM |
+| Nguyễn Tuấn Anh | 57.02% | 2.90% | Cải thiện | 330 | Thiếu 8/135 | VyLNK |
+| Lê Minh Tuấn | 54.86% | 2.45% | Yếu | 35 | Thiếu 4/43 | NgọcNTM |
+| Lý Quài Nhân | 54.03% | 3.83% | Yếu | 106 | Thiếu 9/60 | NgọcNTM |
+| Đoàn Công Tín | 48.62% | 2.81% | Yếu | 79 | Thiếu 9/63 | BìnhNLC |
+| Nguyễn Huỳnh Quốc Dũng | 44.47% | 1.60% | Yếu | 422 | Thiếu 10/74 | NgọcNTM |
+| Huỳnh Quốc Trung | 44.13% | 4.40% | Yếu | 230 | Thiếu 4/32 | NgọcNTM |
+| Nguyễn Anh Tùng | 44.12% | 2.21% | Yếu | 188 | Thiếu 17/94 | BìnhNLC |
 
 ## 📦 Backlog Tracking
-- **Tổng Backlog >5 ngày**: 1,795 đơn
+- **Tổng Backlog >5 ngày**: 1,635 đơn
 - **Chi tiết theo nhóm tuổi đơn**:
-  - 5 - 8 ngày: 1,412 đơn
-  - 8 - 15 ngày: 356 đơn
-  - Trên 15 ngày: 27 đơn
+  - 5 - 8 ngày: 1,186 đơn
+  - 8 - 15 ngày: 427 đơn
+  - Trên 15 ngày: 22 đơn
 
 ## 🛒 TiktokShop Metrics
 - GTC TiktokShop đạt 92.1% (tập trung tại các bưu cục trọng điểm).
