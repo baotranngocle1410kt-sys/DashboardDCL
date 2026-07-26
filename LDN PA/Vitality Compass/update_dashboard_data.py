@@ -536,7 +536,7 @@ def main():
     
     # Extract Trend Data (Last 8 Days)
     daily_trends = []
-    dates_sorted = sorted(df_data_m['corrected_date'].unique())
+    dates_sorted = sorted([d for d in df_data_m['corrected_date'].unique() if pd.notna(d)])
     for d in dates_sorted:
         d_str = pd.Timestamp(d).strftime('%Y-%m-%d')
         df_d = df_data_m[df_data_m['corrected_date'] == d]
