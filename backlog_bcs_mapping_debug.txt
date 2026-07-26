@@ -1,0 +1,576 @@
+Total unique backlog bưu cục in ĐCL: 58
+
+Backlog BC: '(BTR) An Hội' | prefix: 'BTR' | name: 'An Hội'
+  Candidates in CoCauVung:
+    - ID: 22797000 | Name: Bưu Cục Tỉnh Lộ DT848-Xã Mỹ An Hưng-Đồng Tháp | AM: Lê Minh Tuấn | Prov: Đồng Tháp | Overlap: ['an']
+--------------------------------------------------------------------------------
+Backlog BC: '(BTR) Ba Tri' | prefix: 'BTR' | name: 'Ba Tri'
+  Candidates in CoCauVung:
+    - ID: 22003000 | Name: Bưu Cục KP2-Thị Trấn Ba Tri-Bến Tre | AM: Huỳnh Phương Duy | Prov: Bến Tre | Overlap: ['ba', 'tri']
+    - ID: 22812000 | Name: Bưu Cục DT846 Phương Trà-Xã Ba Sao-Đồng Tháp | AM: Nguyễn Việt Tới | Prov: Đồng Tháp | Overlap: ['ba']
+--------------------------------------------------------------------------------
+Backlog BC: '(BTR) Bình Đại' | prefix: 'BTR' | name: 'Bình Đại'
+  Candidates in CoCauVung:
+    - ID: 21583000 | Name: Bưu Cục QL57-Bình Thới-Bình Đại-Bến Tre | AM: Lâm Xuân Vinh | Prov: Bến Tre | Overlap: ['đại', 'bình']
+    - ID: 21582000 | Name: Bưu Cục QL57-Bình Thạnh-Thạnh Phú-Bến Tre | AM: Huỳnh Phương Duy | Prov: Bến Tre | Overlap: ['bình']
+    - ID: 20139000 | Name: Bưu Cục QL 30-Thanh Bình-Đồng Tháp | AM: Ngô Phan Mỹ Tú | Prov: Đồng Tháp | Overlap: ['bình']
+    - ID: 22316000 | Name: Bưu Cục 230 Ấp Bình Hạnh-Long Bình Điền-Chợ Gạo-Tiền Giang | AM: Đoàn Công Tín | Prov: Tiền Giang | Overlap: ['bình']
+    - ID: 20875000 | Name: Bưu Cục 355 Võ Tấn Đức-Tam Bình-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['bình']
+    - ID: 21374000 | Name: Bưu Cục 87 Lê Văn Vị-Cái Vồn-Bình Minh-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['bình']
+    - ID: 20731000 | Name: Bưu Cục Ấp Tân Thuận-Bình Tân-Vĩnh Long  | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['bình']
+    - ID: 22789000 | Name: Bưu Cục Ấp Bình Hiệp A-Xã Lấp Vò-Đồng Tháp | AM: Lý Quài Nhân | Prov: Đồng Tháp | Overlap: ['bình']
+--------------------------------------------------------------------------------
+Backlog BC: '(BTR) Giồng Trôm' | prefix: 'BTR' | name: 'Giồng Trôm'
+  Candidates in CoCauVung:
+    - ID: 20153000 | Name: Bưu Cục Ấp 5A Thị Trấn Giồng Trôm-Giồng Trôm-Bến Tre | AM: Nguyễn Thành Huy | Prov: Bến Tre | Overlap: ['trôm', 'giồng']
+--------------------------------------------------------------------------------
+Backlog BC: '(BTR) Hương Mỹ' | prefix: 'BTR' | name: 'Hương Mỹ'
+  Candidates in CoCauVung:
+    - ID: 22337000 | Name: Bưu Cục Phước Hậu-Phước Mỹ Trung-Bến Tre | AM: Lâm Xuân Vinh | Prov: Bến Tre | Overlap: ['mỹ']
+    - ID: 22080000 | Name: Bưu Cục Mỹ Thọ-Trần Quang Khải-Cao Lãnh-Đồng Tháp | AM: Nguyễn Việt Tới | Prov: Đồng Tháp | Overlap: ['mỹ']
+    - ID: 1199 | Name: Bưu Cục 206 A Đoàn Thị Nghiệp-Mỹ Tho-Tiền Giang 01 | AM: Đoàn Công Tín | Prov: Tiền Giang | Overlap: ['mỹ']
+    - ID: 20776000 | Name: Bưu Cục Ấp Hậu Mỹ Phú 1-Cái Bè-Tiền Giang | AM: Lê Minh Tuấn | Prov: Tiền Giang | Overlap: ['mỹ']
+    - ID: 20795000 | Name: Bưu Cục QL50 Phường 9-Mỹ Tho-Tiền Giang | AM: Nguyễn Anh Tùng | Prov: Tiền Giang | Overlap: ['mỹ']
+    - ID: 22797000 | Name: Bưu Cục Tỉnh Lộ DT848-Xã Mỹ An Hưng-Đồng Tháp | AM: Lê Minh Tuấn | Prov: Đồng Tháp | Overlap: ['mỹ']
+    - ID: 22869000 | Name: Bưu Cục Đường Tỉnh 861-Xã Mỹ Lợi-Tiền Giang | AM: Lê Minh Tuấn | Prov: Tiền Giang | Overlap: ['mỹ']
+    - ID: 22910000 | Name: Bưu Cục Quốc Lộ 57-Xã Hương Mỹ-Bến Tre | AM: Huỳnh Phương Duy | Prov: Bến Tre | Overlap: ['mỹ', 'hương']
+--------------------------------------------------------------------------------
+Backlog BC: '(BTR) Lộc Thuận' | prefix: 'BTR' | name: 'Lộc Thuận'
+  Candidates in CoCauVung:
+    - ID: 22868000 | Name: Bưu Cục Quốc Lộ 57B-Xã Lộc Thuận-Bến Tre | AM: Lâm Xuân Vinh | Prov: Bến Tre | Overlap: ['thuận', 'lộc']
+    - ID: 20731000 | Name: Bưu Cục Ấp Tân Thuận-Bình Tân-Vĩnh Long  | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['thuận']
+    - ID: 21665000 | Name: Bưu Cục Phước Long-Lộc Hòa-Long Hồ-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['lộc']
+    - ID: 22867000 | Name: Bưu Cục 79 Đường Tỉnh 871-Xã Gia Thuận-Tiền Giang | AM: Nguyễn Anh Tùng | Prov: Tiền Giang | Overlap: ['thuận']
+--------------------------------------------------------------------------------
+Backlog BC: '(BTR) Phú Túc' | prefix: 'BTR' | name: 'Phú Túc'
+  Candidates in CoCauVung:
+    - ID: 22031000 | Name: Bưu Cục Ấp 2-Phú Nhuận-Bến Tre | AM: Lâm Xuân Vinh | Prov: Bến Tre | Overlap: ['phú']
+    - ID: 21582000 | Name: Bưu Cục QL57-Bình Thạnh-Thạnh Phú-Bến Tre | AM: Huỳnh Phương Duy | Prov: Bến Tre | Overlap: ['phú']
+    - ID: 22876000 | Name: Bưu Cục Ấp Phú Long-Xã Hưng Khánh Trung-Bến Tre | AM: Huỳnh Phương Duy | Prov: Bến Tre | Overlap: ['phú']
+    - ID: 20776000 | Name: Bưu Cục Ấp Hậu Mỹ Phú 1-Cái Bè-Tiền Giang | AM: Lê Minh Tuấn | Prov: Tiền Giang | Overlap: ['phú']
+    - ID: 21992000 | Name: Bưu Cục Tỉnh Lộ 868-Phú Cường-Cai Lậy-Tiền Giang | AM: Đoàn Công Tín | Prov: Tiền Giang | Overlap: ['phú']
+    - ID: 21563000 | Name: Bưu Cục Ấp Cây Hẹ-Phú Cần-Tiểu Cần-Trà Vinh | AM: Nguyễn Thành Huy | Prov: Trà Vinh | Overlap: ['phú']
+    - ID: 22972000 | Name: Bưu Cục Võ Nguyên Giáp-Phú Tân-Bến Tre | AM: Nguyễn Thành Huy | Prov: Bến Tre | Overlap: ['phú']
+--------------------------------------------------------------------------------
+Backlog BC: '(BTR) Phước Mỹ Trung' | prefix: 'BTR' | name: 'Phước Mỹ Trung'
+  Candidates in CoCauVung:
+    - ID: 22337000 | Name: Bưu Cục Phước Hậu-Phước Mỹ Trung-Bến Tre | AM: Lâm Xuân Vinh | Prov: Bến Tre | Overlap: ['trung', 'mỹ', 'phước']
+    - ID: 22876000 | Name: Bưu Cục Ấp Phú Long-Xã Hưng Khánh Trung-Bến Tre | AM: Huỳnh Phương Duy | Prov: Bến Tre | Overlap: ['trung']
+    - ID: 22080000 | Name: Bưu Cục Mỹ Thọ-Trần Quang Khải-Cao Lãnh-Đồng Tháp | AM: Nguyễn Việt Tới | Prov: Đồng Tháp | Overlap: ['mỹ']
+    - ID: 1199 | Name: Bưu Cục 206 A Đoàn Thị Nghiệp-Mỹ Tho-Tiền Giang 01 | AM: Đoàn Công Tín | Prov: Tiền Giang | Overlap: ['mỹ']
+    - ID: 20776000 | Name: Bưu Cục Ấp Hậu Mỹ Phú 1-Cái Bè-Tiền Giang | AM: Lê Minh Tuấn | Prov: Tiền Giang | Overlap: ['mỹ']
+    - ID: 20227000 | Name: Bưu Cục Khu phố 1-Tân Phước-Tiền Giang | AM: Nguyễn Anh Tùng | Prov: Tiền Giang | Overlap: ['phước']
+    - ID: 21313000 | Name: Bưu Cục Long Trung-Cai Lậy-Tiền Giang | AM: Lê Minh Tuấn | Prov: Tiền Giang | Overlap: ['trung']
+    - ID: 20795000 | Name: Bưu Cục QL50 Phường 9-Mỹ Tho-Tiền Giang | AM: Nguyễn Anh Tùng | Prov: Tiền Giang | Overlap: ['mỹ']
+    - ID: 22387000 | Name: Bưu Cục 73 Phó Cơ Điều-Phường Phước Hậu-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['phước']
+    - ID: 21665000 | Name: Bưu Cục Phước Long-Lộc Hòa-Long Hồ-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['phước']
+    - ID: 22797000 | Name: Bưu Cục Tỉnh Lộ DT848-Xã Mỹ An Hưng-Đồng Tháp | AM: Lê Minh Tuấn | Prov: Đồng Tháp | Overlap: ['mỹ']
+    - ID: 22869000 | Name: Bưu Cục Đường Tỉnh 861-Xã Mỹ Lợi-Tiền Giang | AM: Lê Minh Tuấn | Prov: Tiền Giang | Overlap: ['mỹ']
+    - ID: 22910000 | Name: Bưu Cục Quốc Lộ 57-Xã Hương Mỹ-Bến Tre | AM: Huỳnh Phương Duy | Prov: Bến Tre | Overlap: ['mỹ']
+    - ID: 22916000 | Name: Bưu Cục Quốc Lộ 53-Xã Trung Thành-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['trung']
+--------------------------------------------------------------------------------
+Backlog BC: '(BTR) Sơn Đông' | prefix: 'BTR' | name: 'Sơn Đông'
+  Candidates in CoCauVung:
+    - ID: 22000000 | Name: Bưu Cục Tân Nhuận Đông-Châu Thành-Đồng Tháp | AM: Lý Quài Nhân | Prov: Đồng Tháp | Overlap: ['đông']
+    - ID: 21620000 | Name: Bưu Cục Sơn Thông-Phường 9-Tp.Trà Vinh-Trà Vinh | AM: Nguyễn Thành Huy | Prov: Trà Vinh | Overlap: ['sơn']
+--------------------------------------------------------------------------------
+Backlog BC: '(BTR) Thạnh Phú' | prefix: 'BTR' | name: 'Thạnh Phú'
+  Candidates in CoCauVung:
+    - ID: 22031000 | Name: Bưu Cục Ấp 2-Phú Nhuận-Bến Tre | AM: Lâm Xuân Vinh | Prov: Bến Tre | Overlap: ['phú']
+    - ID: 21582000 | Name: Bưu Cục QL57-Bình Thạnh-Thạnh Phú-Bến Tre | AM: Huỳnh Phương Duy | Prov: Bến Tre | Overlap: ['phú', 'thạnh']
+    - ID: 22876000 | Name: Bưu Cục Ấp Phú Long-Xã Hưng Khánh Trung-Bến Tre | AM: Huỳnh Phương Duy | Prov: Bến Tre | Overlap: ['phú']
+    - ID: 20776000 | Name: Bưu Cục Ấp Hậu Mỹ Phú 1-Cái Bè-Tiền Giang | AM: Lê Minh Tuấn | Prov: Tiền Giang | Overlap: ['phú']
+    - ID: 21992000 | Name: Bưu Cục Tỉnh Lộ 868-Phú Cường-Cai Lậy-Tiền Giang | AM: Đoàn Công Tín | Prov: Tiền Giang | Overlap: ['phú']
+    - ID: 21563000 | Name: Bưu Cục Ấp Cây Hẹ-Phú Cần-Tiểu Cần-Trà Vinh | AM: Nguyễn Thành Huy | Prov: Trà Vinh | Overlap: ['phú']
+    - ID: 22972000 | Name: Bưu Cục Võ Nguyên Giáp-Phú Tân-Bến Tre | AM: Nguyễn Thành Huy | Prov: Bến Tre | Overlap: ['phú']
+--------------------------------------------------------------------------------
+Backlog BC: '(BTR) Tiên Thủy' | prefix: 'BTR' | name: 'Tiên Thủy'
+  Candidates in CoCauVung:
+    - ID: 21998000 | Name: Bưu Cục 86 Tiên Thuỷ-Châu Thành-Bến Tre | AM: Huỳnh Quốc Trung | Prov: Bến Tre | Overlap: ['tiên']
+--------------------------------------------------------------------------------
+Backlog BC: '(DTH) An Bình' | prefix: 'DTH' | name: 'An Bình'
+  Candidates in CoCauVung:
+    - ID: 21583000 | Name: Bưu Cục QL57-Bình Thới-Bình Đại-Bến Tre | AM: Lâm Xuân Vinh | Prov: Bến Tre | Overlap: ['bình']
+    - ID: 21582000 | Name: Bưu Cục QL57-Bình Thạnh-Thạnh Phú-Bến Tre | AM: Huỳnh Phương Duy | Prov: Bến Tre | Overlap: ['bình']
+    - ID: 20139000 | Name: Bưu Cục QL 30-Thanh Bình-Đồng Tháp | AM: Ngô Phan Mỹ Tú | Prov: Đồng Tháp | Overlap: ['bình']
+    - ID: 22316000 | Name: Bưu Cục 230 Ấp Bình Hạnh-Long Bình Điền-Chợ Gạo-Tiền Giang | AM: Đoàn Công Tín | Prov: Tiền Giang | Overlap: ['bình']
+    - ID: 20875000 | Name: Bưu Cục 355 Võ Tấn Đức-Tam Bình-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['bình']
+    - ID: 21374000 | Name: Bưu Cục 87 Lê Văn Vị-Cái Vồn-Bình Minh-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['bình']
+    - ID: 20731000 | Name: Bưu Cục Ấp Tân Thuận-Bình Tân-Vĩnh Long  | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['bình']
+    - ID: 22789000 | Name: Bưu Cục Ấp Bình Hiệp A-Xã Lấp Vò-Đồng Tháp | AM: Lý Quài Nhân | Prov: Đồng Tháp | Overlap: ['bình']
+    - ID: 22797000 | Name: Bưu Cục Tỉnh Lộ DT848-Xã Mỹ An Hưng-Đồng Tháp | AM: Lê Minh Tuấn | Prov: Đồng Tháp | Overlap: ['an']
+--------------------------------------------------------------------------------
+Backlog BC: '(DTH) Ba Sao' | prefix: 'DTH' | name: 'Ba Sao'
+  Candidates in CoCauVung:
+    - ID: 22003000 | Name: Bưu Cục KP2-Thị Trấn Ba Tri-Bến Tre | AM: Huỳnh Phương Duy | Prov: Bến Tre | Overlap: ['ba']
+    - ID: 22812000 | Name: Bưu Cục DT846 Phương Trà-Xã Ba Sao-Đồng Tháp | AM: Nguyễn Việt Tới | Prov: Đồng Tháp | Overlap: ['ba', 'sao']
+--------------------------------------------------------------------------------
+Backlog BC: '(DTH) Cao Lãnh' | prefix: 'DTH' | name: 'Cao Lãnh'
+  Candidates in CoCauVung:
+    - ID: 1083 | Name: Bưu Cục 12-14 Bà Triệu-Cao Lãnh-Đồng Tháp | AM: Nguyễn Việt Tới | Prov: Đồng Tháp | Overlap: ['cao', 'lãnh']
+    - ID: 22080000 | Name: Bưu Cục Mỹ Thọ-Trần Quang Khải-Cao Lãnh-Đồng Tháp | AM: Nguyễn Việt Tới | Prov: Đồng Tháp | Overlap: ['cao', 'lãnh']
+--------------------------------------------------------------------------------
+Backlog BC: '(DTH) Hòa Long' | prefix: 'DTH' | name: 'Hòa Long'
+  Candidates in CoCauVung:
+    - ID: 22876000 | Name: Bưu Cục Ấp Phú Long-Xã Hưng Khánh Trung-Bến Tre | AM: Huỳnh Phương Duy | Prov: Bến Tre | Overlap: ['long']
+    - ID: 22372000 | Name: Bưu Cục QL80-Xã Hòa Long-Đồng Tháp | AM: Lý Quài Nhân | Prov: Đồng Tháp | Overlap: ['long', 'hòa']
+    - ID: 22316000 | Name: Bưu Cục 230 Ấp Bình Hạnh-Long Bình Điền-Chợ Gạo-Tiền Giang | AM: Đoàn Công Tín | Prov: Tiền Giang | Overlap: ['long']
+    - ID: 21991000 | Name: Bưu Cục 88 Ấp Thân Hòa-Thân Cửu Nghĩa-Châu Thành-Tiền Giang | AM: Nguyễn Anh Tùng | Prov: Tiền Giang | Overlap: ['hòa']
+    - ID: 21313000 | Name: Bưu Cục Long Trung-Cai Lậy-Tiền Giang | AM: Lê Minh Tuấn | Prov: Tiền Giang | Overlap: ['long']
+    - ID: 20798000 | Name: Bưu Cục QL1A Hòa Khánh-Cái Bè-Tiền Giang | AM: Lê Minh Tuấn | Prov: Tiền Giang | Overlap: ['hòa']
+    - ID: 22522000 | Name: Bưu Cục Khóm 3 TT Càng Long-Xã Càng Long-Trà Vinh | AM: Nguyễn Thành Huy | Prov: Trà Vinh | Overlap: ['long']
+    - ID: 20880000 | Name: Bưu Cục 07 Lê Lợi-Mang Thít-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 20875000 | Name: Bưu Cục 355 Võ Tấn Đức-Tam Bình-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 20908000 | Name: Bưu Cục 57/4 Phan Văn Đáng-Vĩnh Long-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 22387000 | Name: Bưu Cục 73 Phó Cơ Điều-Phường Phước Hậu-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 21374000 | Name: Bưu Cục 87 Lê Văn Vị-Cái Vồn-Bình Minh-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 20731000 | Name: Bưu Cục Ấp Tân Thuận-Bình Tân-Vĩnh Long  | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 21665000 | Name: Bưu Cục Phước Long-Lộc Hòa-Long Hồ-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long', 'hòa']
+    - ID: 20478000 | Name: Bưu Cục Tổ 1 Đường 30/4-Trà Ôn-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 22916000 | Name: Bưu Cục Quốc Lộ 53-Xã Trung Thành-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 22980000 | Name: Bưu Cục Quốc Lộ 53-Long Hồ-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+--------------------------------------------------------------------------------
+Backlog BC: '(DTH) Lai Vung' | prefix: 'DTH' | name: 'Lai Vung'
+  Candidates in CoCauVung:
+    - ID: 22877000 | Name: Bưu Cục Quốc Lộ 54-Xã Lai Vung-Đồng Tháp | AM: Lý Quài Nhân | Prov: Đồng Tháp | Overlap: ['lai', 'vung']
+--------------------------------------------------------------------------------
+Backlog BC: '(DTH) Lấp Vò' | prefix: 'DTH' | name: 'Lấp Vò'
+  Candidates in CoCauVung:
+    - ID: 22789000 | Name: Bưu Cục Ấp Bình Hiệp A-Xã Lấp Vò-Đồng Tháp | AM: Lý Quài Nhân | Prov: Đồng Tháp | Overlap: ['lấp', 'vò']
+--------------------------------------------------------------------------------
+Backlog BC: '(DTH) Mỹ An Hưng' | prefix: 'DTH' | name: 'Mỹ An Hưng'
+  Candidates in CoCauVung:
+    - ID: 22337000 | Name: Bưu Cục Phước Hậu-Phước Mỹ Trung-Bến Tre | AM: Lâm Xuân Vinh | Prov: Bến Tre | Overlap: ['mỹ']
+    - ID: 22876000 | Name: Bưu Cục Ấp Phú Long-Xã Hưng Khánh Trung-Bến Tre | AM: Huỳnh Phương Duy | Prov: Bến Tre | Overlap: ['hưng']
+    - ID: 22461000 | Name: Bưu Cục Khóm 3 Trần Hưng Đạo-Xã Tháp Mười-Đồng Tháp | AM: Lê Minh Tuấn | Prov: Đồng Tháp | Overlap: ['hưng']
+    - ID: 22080000 | Name: Bưu Cục Mỹ Thọ-Trần Quang Khải-Cao Lãnh-Đồng Tháp | AM: Nguyễn Việt Tới | Prov: Đồng Tháp | Overlap: ['mỹ']
+    - ID: 1199 | Name: Bưu Cục 206 A Đoàn Thị Nghiệp-Mỹ Tho-Tiền Giang 01 | AM: Đoàn Công Tín | Prov: Tiền Giang | Overlap: ['mỹ']
+    - ID: 20776000 | Name: Bưu Cục Ấp Hậu Mỹ Phú 1-Cái Bè-Tiền Giang | AM: Lê Minh Tuấn | Prov: Tiền Giang | Overlap: ['mỹ']
+    - ID: 20795000 | Name: Bưu Cục QL50 Phường 9-Mỹ Tho-Tiền Giang | AM: Nguyễn Anh Tùng | Prov: Tiền Giang | Overlap: ['mỹ']
+    - ID: 22797000 | Name: Bưu Cục Tỉnh Lộ DT848-Xã Mỹ An Hưng-Đồng Tháp | AM: Lê Minh Tuấn | Prov: Đồng Tháp | Overlap: ['an', 'mỹ', 'hưng']
+    - ID: 22869000 | Name: Bưu Cục Đường Tỉnh 861-Xã Mỹ Lợi-Tiền Giang | AM: Lê Minh Tuấn | Prov: Tiền Giang | Overlap: ['mỹ']
+    - ID: 22910000 | Name: Bưu Cục Quốc Lộ 57-Xã Hương Mỹ-Bến Tre | AM: Huỳnh Phương Duy | Prov: Bến Tre | Overlap: ['mỹ']
+--------------------------------------------------------------------------------
+Backlog BC: '(DTH) Mỹ Thọ' | prefix: 'DTH' | name: 'Mỹ Thọ'
+  Candidates in CoCauVung:
+    - ID: 22337000 | Name: Bưu Cục Phước Hậu-Phước Mỹ Trung-Bến Tre | AM: Lâm Xuân Vinh | Prov: Bến Tre | Overlap: ['mỹ']
+    - ID: 22080000 | Name: Bưu Cục Mỹ Thọ-Trần Quang Khải-Cao Lãnh-Đồng Tháp | AM: Nguyễn Việt Tới | Prov: Đồng Tháp | Overlap: ['thọ', 'mỹ']
+    - ID: 1199 | Name: Bưu Cục 206 A Đoàn Thị Nghiệp-Mỹ Tho-Tiền Giang 01 | AM: Đoàn Công Tín | Prov: Tiền Giang | Overlap: ['mỹ']
+    - ID: 20776000 | Name: Bưu Cục Ấp Hậu Mỹ Phú 1-Cái Bè-Tiền Giang | AM: Lê Minh Tuấn | Prov: Tiền Giang | Overlap: ['mỹ']
+    - ID: 20795000 | Name: Bưu Cục QL50 Phường 9-Mỹ Tho-Tiền Giang | AM: Nguyễn Anh Tùng | Prov: Tiền Giang | Overlap: ['mỹ']
+    - ID: 22797000 | Name: Bưu Cục Tỉnh Lộ DT848-Xã Mỹ An Hưng-Đồng Tháp | AM: Lê Minh Tuấn | Prov: Đồng Tháp | Overlap: ['mỹ']
+    - ID: 22869000 | Name: Bưu Cục Đường Tỉnh 861-Xã Mỹ Lợi-Tiền Giang | AM: Lê Minh Tuấn | Prov: Tiền Giang | Overlap: ['mỹ']
+    - ID: 22910000 | Name: Bưu Cục Quốc Lộ 57-Xã Hương Mỹ-Bến Tre | AM: Huỳnh Phương Duy | Prov: Bến Tre | Overlap: ['mỹ']
+--------------------------------------------------------------------------------
+Backlog BC: '(DTH) Sa Đéc' | prefix: 'DTH' | name: 'Sa Đéc'
+  Candidates in CoCauVung:
+    - ID: 22920000 | Name: Bưu Cục 19 Đường DT848-Sa Đéc-Đồng Tháp | AM: Lý Quài Nhân | Prov: Đồng Tháp | Overlap: ['sa', 'đéc']
+--------------------------------------------------------------------------------
+Backlog BC: '(DTH) Thanh Bình' | prefix: 'DTH' | name: 'Thanh Bình'
+  Candidates in CoCauVung:
+    - ID: 21583000 | Name: Bưu Cục QL57-Bình Thới-Bình Đại-Bến Tre | AM: Lâm Xuân Vinh | Prov: Bến Tre | Overlap: ['bình']
+    - ID: 21582000 | Name: Bưu Cục QL57-Bình Thạnh-Thạnh Phú-Bến Tre | AM: Huỳnh Phương Duy | Prov: Bến Tre | Overlap: ['bình']
+    - ID: 20139000 | Name: Bưu Cục QL 30-Thanh Bình-Đồng Tháp | AM: Ngô Phan Mỹ Tú | Prov: Đồng Tháp | Overlap: ['bình', 'thanh']
+    - ID: 22316000 | Name: Bưu Cục 230 Ấp Bình Hạnh-Long Bình Điền-Chợ Gạo-Tiền Giang | AM: Đoàn Công Tín | Prov: Tiền Giang | Overlap: ['bình']
+    - ID: 20875000 | Name: Bưu Cục 355 Võ Tấn Đức-Tam Bình-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['bình']
+    - ID: 21374000 | Name: Bưu Cục 87 Lê Văn Vị-Cái Vồn-Bình Minh-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['bình']
+    - ID: 20731000 | Name: Bưu Cục Ấp Tân Thuận-Bình Tân-Vĩnh Long  | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['bình']
+    - ID: 22789000 | Name: Bưu Cục Ấp Bình Hiệp A-Xã Lấp Vò-Đồng Tháp | AM: Lý Quài Nhân | Prov: Đồng Tháp | Overlap: ['bình']
+--------------------------------------------------------------------------------
+Backlog BC: '(DTH) Tháp Mười' | prefix: 'DTH' | name: 'Tháp Mười'
+  Candidates in CoCauVung:
+    - ID: 22372000 | Name: Bưu Cục QL80-Xã Hòa Long-Đồng Tháp | AM: Lý Quài Nhân | Prov: Đồng Tháp | Overlap: ['tháp']
+    - ID: 22461000 | Name: Bưu Cục Khóm 3 Trần Hưng Đạo-Xã Tháp Mười-Đồng Tháp | AM: Lê Minh Tuấn | Prov: Đồng Tháp | Overlap: ['mười', 'tháp']
+    - ID: 2498 | Name: Bưu Cục Tam Nông-Đồng Tháp | AM: Ngô Phan Mỹ Tú | Prov: Đồng Tháp | Overlap: ['tháp']
+    - ID: 22000000 | Name: Bưu Cục Tân Nhuận Đông-Châu Thành-Đồng Tháp | AM: Lý Quài Nhân | Prov: Đồng Tháp | Overlap: ['tháp']
+    - ID: 1083 | Name: Bưu Cục 12-14 Bà Triệu-Cao Lãnh-Đồng Tháp | AM: Nguyễn Việt Tới | Prov: Đồng Tháp | Overlap: ['tháp']
+    - ID: 20861000 | Name: Bưu Cục 286 Nguyễn Huệ-Tân Hồng-Đồng Tháp | AM: Ngô Phan Mỹ Tú | Prov: Đồng Tháp | Overlap: ['tháp']
+    - ID: 1933 | Name: Bưu Cục Hồng Ngự-Đồng Tháp | AM: Ngô Phan Mỹ Tú | Prov: Đồng Tháp | Overlap: ['tháp']
+    - ID: 22080000 | Name: Bưu Cục Mỹ Thọ-Trần Quang Khải-Cao Lãnh-Đồng Tháp | AM: Nguyễn Việt Tới | Prov: Đồng Tháp | Overlap: ['tháp']
+    - ID: 20139000 | Name: Bưu Cục QL 30-Thanh Bình-Đồng Tháp | AM: Ngô Phan Mỹ Tú | Prov: Đồng Tháp | Overlap: ['tháp']
+    - ID: 22789000 | Name: Bưu Cục Ấp Bình Hiệp A-Xã Lấp Vò-Đồng Tháp | AM: Lý Quài Nhân | Prov: Đồng Tháp | Overlap: ['tháp']
+    - ID: 22797000 | Name: Bưu Cục Tỉnh Lộ DT848-Xã Mỹ An Hưng-Đồng Tháp | AM: Lê Minh Tuấn | Prov: Đồng Tháp | Overlap: ['tháp']
+    - ID: 22812000 | Name: Bưu Cục DT846 Phương Trà-Xã Ba Sao-Đồng Tháp | AM: Nguyễn Việt Tới | Prov: Đồng Tháp | Overlap: ['tháp']
+    - ID: 22877000 | Name: Bưu Cục Quốc Lộ 54-Xã Lai Vung-Đồng Tháp | AM: Lý Quài Nhân | Prov: Đồng Tháp | Overlap: ['tháp']
+    - ID: 22920000 | Name: Bưu Cục 19 Đường DT848-Sa Đéc-Đồng Tháp | AM: Lý Quài Nhân | Prov: Đồng Tháp | Overlap: ['tháp']
+--------------------------------------------------------------------------------
+Backlog BC: '(DTH) Tràm Chim' | prefix: 'DTH' | name: 'Tràm Chim'
+  Candidates in CoCauVung:
+--------------------------------------------------------------------------------
+Backlog BC: '(DTH) Tân Hồng' | prefix: 'DTH' | name: 'Tân Hồng'
+  Candidates in CoCauVung:
+    - ID: 22000000 | Name: Bưu Cục Tân Nhuận Đông-Châu Thành-Đồng Tháp | AM: Lý Quài Nhân | Prov: Đồng Tháp | Overlap: ['tân']
+    - ID: 20861000 | Name: Bưu Cục 286 Nguyễn Huệ-Tân Hồng-Đồng Tháp | AM: Ngô Phan Mỹ Tú | Prov: Đồng Tháp | Overlap: ['hồng', 'tân']
+    - ID: 1933 | Name: Bưu Cục Hồng Ngự-Đồng Tháp | AM: Ngô Phan Mỹ Tú | Prov: Đồng Tháp | Overlap: ['hồng']
+    - ID: 20227000 | Name: Bưu Cục Khu phố 1-Tân Phước-Tiền Giang | AM: Nguyễn Anh Tùng | Prov: Tiền Giang | Overlap: ['tân']
+    - ID: 20731000 | Name: Bưu Cục Ấp Tân Thuận-Bình Tân-Vĩnh Long  | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['tân']
+    - ID: 22972000 | Name: Bưu Cục Võ Nguyên Giáp-Phú Tân-Bến Tre | AM: Nguyễn Thành Huy | Prov: Bến Tre | Overlap: ['tân']
+--------------------------------------------------------------------------------
+Backlog BC: '(DTH) Tân Nhuận Đông' | prefix: 'DTH' | name: 'Tân Nhuận Đông'
+  Candidates in CoCauVung:
+    - ID: 22031000 | Name: Bưu Cục Ấp 2-Phú Nhuận-Bến Tre | AM: Lâm Xuân Vinh | Prov: Bến Tre | Overlap: ['nhuận']
+    - ID: 22000000 | Name: Bưu Cục Tân Nhuận Đông-Châu Thành-Đồng Tháp | AM: Lý Quài Nhân | Prov: Đồng Tháp | Overlap: ['nhuận', 'tân', 'đông']
+    - ID: 20861000 | Name: Bưu Cục 286 Nguyễn Huệ-Tân Hồng-Đồng Tháp | AM: Ngô Phan Mỹ Tú | Prov: Đồng Tháp | Overlap: ['tân']
+    - ID: 20227000 | Name: Bưu Cục Khu phố 1-Tân Phước-Tiền Giang | AM: Nguyễn Anh Tùng | Prov: Tiền Giang | Overlap: ['tân']
+    - ID: 20731000 | Name: Bưu Cục Ấp Tân Thuận-Bình Tân-Vĩnh Long  | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['tân']
+    - ID: 22972000 | Name: Bưu Cục Võ Nguyên Giáp-Phú Tân-Bến Tre | AM: Nguyễn Thành Huy | Prov: Bến Tre | Overlap: ['tân']
+--------------------------------------------------------------------------------
+Backlog BC: '(TGI) Châu Thành' | prefix: 'TGI' | name: 'Châu Thành'
+  Candidates in CoCauVung:
+    - ID: 22101000 | Name: Bưu Cục 3/2 Thị Trấn Châu Thành-Bến Tre | AM: Lâm Xuân Vinh | Prov: Bến Tre | Overlap: ['châu', 'thành']
+    - ID: 21998000 | Name: Bưu Cục 86 Tiên Thuỷ-Châu Thành-Bến Tre | AM: Huỳnh Quốc Trung | Prov: Bến Tre | Overlap: ['châu', 'thành']
+    - ID: 22000000 | Name: Bưu Cục Tân Nhuận Đông-Châu Thành-Đồng Tháp | AM: Lý Quài Nhân | Prov: Đồng Tháp | Overlap: ['châu', 'thành']
+    - ID: 21991000 | Name: Bưu Cục 88 Ấp Thân Hòa-Thân Cửu Nghĩa-Châu Thành-Tiền Giang | AM: Nguyễn Anh Tùng | Prov: Tiền Giang | Overlap: ['châu', 'thành']
+    - ID: 21528000 | Name: Bưu Cục 992 Đường Huyện 35-Vĩnh Kim-Châu Thành-Tiền Giang | AM: Nguyễn Anh Tùng | Prov: Tiền Giang | Overlap: ['châu', 'thành']
+    - ID: 22521000 | Name: Bưu Cục Khóm 4 TT Châu Thành-Xã Châu Thành-Trà Vinh | AM: Nguyễn Thành Huy | Prov: Trà Vinh | Overlap: ['châu', 'thành']
+    - ID: 22916000 | Name: Bưu Cục Quốc Lộ 53-Xã Trung Thành-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['thành']
+--------------------------------------------------------------------------------
+Backlog BC: '(TGI) Chợ Gạo' | prefix: 'TGI' | name: 'Chợ Gạo'
+  Candidates in CoCauVung:
+    - ID: 21495000 | Name: Bưu Cục QL57 KP3-Thị Trấn Chợ Lách-Bến Tre | AM: Nguyễn Huỳnh Quốc Dũng | Prov: Bến Tre | Overlap: ['chợ']
+    - ID: 22316000 | Name: Bưu Cục 230 Ấp Bình Hạnh-Long Bình Điền-Chợ Gạo-Tiền Giang | AM: Đoàn Công Tín | Prov: Tiền Giang | Overlap: ['chợ', 'gạo']
+--------------------------------------------------------------------------------
+Backlog BC: '(TGI) Cái Bè' | prefix: 'TGI' | name: 'Cái Bè'
+  Candidates in CoCauVung:
+    - ID: 20776000 | Name: Bưu Cục Ấp Hậu Mỹ Phú 1-Cái Bè-Tiền Giang | AM: Lê Minh Tuấn | Prov: Tiền Giang | Overlap: ['bè', 'cái']
+    - ID: 20798000 | Name: Bưu Cục QL1A Hòa Khánh-Cái Bè-Tiền Giang | AM: Lê Minh Tuấn | Prov: Tiền Giang | Overlap: ['bè', 'cái']
+    - ID: 21374000 | Name: Bưu Cục 87 Lê Văn Vị-Cái Vồn-Bình Minh-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['cái']
+--------------------------------------------------------------------------------
+Backlog BC: '(TGI) Gia Thuận' | prefix: 'TGI' | name: 'Gia Thuận'
+  Candidates in CoCauVung:
+    - ID: 22868000 | Name: Bưu Cục Quốc Lộ 57B-Xã Lộc Thuận-Bến Tre | AM: Lâm Xuân Vinh | Prov: Bến Tre | Overlap: ['thuận']
+    - ID: 20731000 | Name: Bưu Cục Ấp Tân Thuận-Bình Tân-Vĩnh Long  | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['thuận']
+    - ID: 22867000 | Name: Bưu Cục 79 Đường Tỉnh 871-Xã Gia Thuận-Tiền Giang | AM: Nguyễn Anh Tùng | Prov: Tiền Giang | Overlap: ['thuận', 'gia']
+--------------------------------------------------------------------------------
+Backlog BC: '(TGI) Hậu Mỹ' | prefix: 'TGI' | name: 'Hậu Mỹ'
+  Candidates in CoCauVung:
+    - ID: 22337000 | Name: Bưu Cục Phước Hậu-Phước Mỹ Trung-Bến Tre | AM: Lâm Xuân Vinh | Prov: Bến Tre | Overlap: ['mỹ', 'hậu']
+    - ID: 22080000 | Name: Bưu Cục Mỹ Thọ-Trần Quang Khải-Cao Lãnh-Đồng Tháp | AM: Nguyễn Việt Tới | Prov: Đồng Tháp | Overlap: ['mỹ']
+    - ID: 1199 | Name: Bưu Cục 206 A Đoàn Thị Nghiệp-Mỹ Tho-Tiền Giang 01 | AM: Đoàn Công Tín | Prov: Tiền Giang | Overlap: ['mỹ']
+    - ID: 20776000 | Name: Bưu Cục Ấp Hậu Mỹ Phú 1-Cái Bè-Tiền Giang | AM: Lê Minh Tuấn | Prov: Tiền Giang | Overlap: ['mỹ', 'hậu']
+    - ID: 20795000 | Name: Bưu Cục QL50 Phường 9-Mỹ Tho-Tiền Giang | AM: Nguyễn Anh Tùng | Prov: Tiền Giang | Overlap: ['mỹ']
+    - ID: 22387000 | Name: Bưu Cục 73 Phó Cơ Điều-Phường Phước Hậu-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['hậu']
+    - ID: 22797000 | Name: Bưu Cục Tỉnh Lộ DT848-Xã Mỹ An Hưng-Đồng Tháp | AM: Lê Minh Tuấn | Prov: Đồng Tháp | Overlap: ['mỹ']
+    - ID: 22869000 | Name: Bưu Cục Đường Tỉnh 861-Xã Mỹ Lợi-Tiền Giang | AM: Lê Minh Tuấn | Prov: Tiền Giang | Overlap: ['mỹ']
+    - ID: 22910000 | Name: Bưu Cục Quốc Lộ 57-Xã Hương Mỹ-Bến Tre | AM: Huỳnh Phương Duy | Prov: Bến Tre | Overlap: ['mỹ']
+--------------------------------------------------------------------------------
+Backlog BC: '(TGI) Long Thuận' | prefix: 'TGI' | name: 'Long Thuận'
+  Candidates in CoCauVung:
+    - ID: 22868000 | Name: Bưu Cục Quốc Lộ 57B-Xã Lộc Thuận-Bến Tre | AM: Lâm Xuân Vinh | Prov: Bến Tre | Overlap: ['thuận']
+    - ID: 22876000 | Name: Bưu Cục Ấp Phú Long-Xã Hưng Khánh Trung-Bến Tre | AM: Huỳnh Phương Duy | Prov: Bến Tre | Overlap: ['long']
+    - ID: 22372000 | Name: Bưu Cục QL80-Xã Hòa Long-Đồng Tháp | AM: Lý Quài Nhân | Prov: Đồng Tháp | Overlap: ['long']
+    - ID: 22316000 | Name: Bưu Cục 230 Ấp Bình Hạnh-Long Bình Điền-Chợ Gạo-Tiền Giang | AM: Đoàn Công Tín | Prov: Tiền Giang | Overlap: ['long']
+    - ID: 21313000 | Name: Bưu Cục Long Trung-Cai Lậy-Tiền Giang | AM: Lê Minh Tuấn | Prov: Tiền Giang | Overlap: ['long']
+    - ID: 22522000 | Name: Bưu Cục Khóm 3 TT Càng Long-Xã Càng Long-Trà Vinh | AM: Nguyễn Thành Huy | Prov: Trà Vinh | Overlap: ['long']
+    - ID: 20880000 | Name: Bưu Cục 07 Lê Lợi-Mang Thít-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 20875000 | Name: Bưu Cục 355 Võ Tấn Đức-Tam Bình-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 20908000 | Name: Bưu Cục 57/4 Phan Văn Đáng-Vĩnh Long-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 22387000 | Name: Bưu Cục 73 Phó Cơ Điều-Phường Phước Hậu-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 21374000 | Name: Bưu Cục 87 Lê Văn Vị-Cái Vồn-Bình Minh-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 20731000 | Name: Bưu Cục Ấp Tân Thuận-Bình Tân-Vĩnh Long  | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['thuận', 'long']
+    - ID: 21665000 | Name: Bưu Cục Phước Long-Lộc Hòa-Long Hồ-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 20478000 | Name: Bưu Cục Tổ 1 Đường 30/4-Trà Ôn-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 22867000 | Name: Bưu Cục 79 Đường Tỉnh 871-Xã Gia Thuận-Tiền Giang | AM: Nguyễn Anh Tùng | Prov: Tiền Giang | Overlap: ['thuận']
+    - ID: 22916000 | Name: Bưu Cục Quốc Lộ 53-Xã Trung Thành-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 22980000 | Name: Bưu Cục Quốc Lộ 53-Long Hồ-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+--------------------------------------------------------------------------------
+Backlog BC: '(TGI) Long Tiên' | prefix: 'TGI' | name: 'Long Tiên'
+  Candidates in CoCauVung:
+    - ID: 21998000 | Name: Bưu Cục 86 Tiên Thuỷ-Châu Thành-Bến Tre | AM: Huỳnh Quốc Trung | Prov: Bến Tre | Overlap: ['tiên']
+    - ID: 22876000 | Name: Bưu Cục Ấp Phú Long-Xã Hưng Khánh Trung-Bến Tre | AM: Huỳnh Phương Duy | Prov: Bến Tre | Overlap: ['long']
+    - ID: 22372000 | Name: Bưu Cục QL80-Xã Hòa Long-Đồng Tháp | AM: Lý Quài Nhân | Prov: Đồng Tháp | Overlap: ['long']
+    - ID: 22316000 | Name: Bưu Cục 230 Ấp Bình Hạnh-Long Bình Điền-Chợ Gạo-Tiền Giang | AM: Đoàn Công Tín | Prov: Tiền Giang | Overlap: ['long']
+    - ID: 21313000 | Name: Bưu Cục Long Trung-Cai Lậy-Tiền Giang | AM: Lê Minh Tuấn | Prov: Tiền Giang | Overlap: ['long']
+    - ID: 22522000 | Name: Bưu Cục Khóm 3 TT Càng Long-Xã Càng Long-Trà Vinh | AM: Nguyễn Thành Huy | Prov: Trà Vinh | Overlap: ['long']
+    - ID: 20880000 | Name: Bưu Cục 07 Lê Lợi-Mang Thít-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 20875000 | Name: Bưu Cục 355 Võ Tấn Đức-Tam Bình-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 20908000 | Name: Bưu Cục 57/4 Phan Văn Đáng-Vĩnh Long-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 22387000 | Name: Bưu Cục 73 Phó Cơ Điều-Phường Phước Hậu-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 21374000 | Name: Bưu Cục 87 Lê Văn Vị-Cái Vồn-Bình Minh-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 20731000 | Name: Bưu Cục Ấp Tân Thuận-Bình Tân-Vĩnh Long  | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 21665000 | Name: Bưu Cục Phước Long-Lộc Hòa-Long Hồ-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 20478000 | Name: Bưu Cục Tổ 1 Đường 30/4-Trà Ôn-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 22916000 | Name: Bưu Cục Quốc Lộ 53-Xã Trung Thành-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 22980000 | Name: Bưu Cục Quốc Lộ 53-Long Hồ-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+--------------------------------------------------------------------------------
+Backlog BC: '(TGI) Mỹ Lợi' | prefix: 'TGI' | name: 'Mỹ Lợi'
+  Candidates in CoCauVung:
+    - ID: 22337000 | Name: Bưu Cục Phước Hậu-Phước Mỹ Trung-Bến Tre | AM: Lâm Xuân Vinh | Prov: Bến Tre | Overlap: ['mỹ']
+    - ID: 22080000 | Name: Bưu Cục Mỹ Thọ-Trần Quang Khải-Cao Lãnh-Đồng Tháp | AM: Nguyễn Việt Tới | Prov: Đồng Tháp | Overlap: ['mỹ']
+    - ID: 1199 | Name: Bưu Cục 206 A Đoàn Thị Nghiệp-Mỹ Tho-Tiền Giang 01 | AM: Đoàn Công Tín | Prov: Tiền Giang | Overlap: ['mỹ']
+    - ID: 20776000 | Name: Bưu Cục Ấp Hậu Mỹ Phú 1-Cái Bè-Tiền Giang | AM: Lê Minh Tuấn | Prov: Tiền Giang | Overlap: ['mỹ']
+    - ID: 20795000 | Name: Bưu Cục QL50 Phường 9-Mỹ Tho-Tiền Giang | AM: Nguyễn Anh Tùng | Prov: Tiền Giang | Overlap: ['mỹ']
+    - ID: 20880000 | Name: Bưu Cục 07 Lê Lợi-Mang Thít-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['lợi']
+    - ID: 22797000 | Name: Bưu Cục Tỉnh Lộ DT848-Xã Mỹ An Hưng-Đồng Tháp | AM: Lê Minh Tuấn | Prov: Đồng Tháp | Overlap: ['mỹ']
+    - ID: 22869000 | Name: Bưu Cục Đường Tỉnh 861-Xã Mỹ Lợi-Tiền Giang | AM: Lê Minh Tuấn | Prov: Tiền Giang | Overlap: ['lợi', 'mỹ']
+    - ID: 22910000 | Name: Bưu Cục Quốc Lộ 57-Xã Hương Mỹ-Bến Tre | AM: Huỳnh Phương Duy | Prov: Bến Tre | Overlap: ['mỹ']
+--------------------------------------------------------------------------------
+Backlog BC: '(TGI) Mỹ Phong' | prefix: 'TGI' | name: 'Mỹ Phong'
+  Candidates in CoCauVung:
+    - ID: 22337000 | Name: Bưu Cục Phước Hậu-Phước Mỹ Trung-Bến Tre | AM: Lâm Xuân Vinh | Prov: Bến Tre | Overlap: ['mỹ']
+    - ID: 22080000 | Name: Bưu Cục Mỹ Thọ-Trần Quang Khải-Cao Lãnh-Đồng Tháp | AM: Nguyễn Việt Tới | Prov: Đồng Tháp | Overlap: ['mỹ']
+    - ID: 1199 | Name: Bưu Cục 206 A Đoàn Thị Nghiệp-Mỹ Tho-Tiền Giang 01 | AM: Đoàn Công Tín | Prov: Tiền Giang | Overlap: ['mỹ']
+    - ID: 20776000 | Name: Bưu Cục Ấp Hậu Mỹ Phú 1-Cái Bè-Tiền Giang | AM: Lê Minh Tuấn | Prov: Tiền Giang | Overlap: ['mỹ']
+    - ID: 20795000 | Name: Bưu Cục QL50 Phường 9-Mỹ Tho-Tiền Giang | AM: Nguyễn Anh Tùng | Prov: Tiền Giang | Overlap: ['mỹ']
+    - ID: 22797000 | Name: Bưu Cục Tỉnh Lộ DT848-Xã Mỹ An Hưng-Đồng Tháp | AM: Lê Minh Tuấn | Prov: Đồng Tháp | Overlap: ['mỹ']
+    - ID: 22869000 | Name: Bưu Cục Đường Tỉnh 861-Xã Mỹ Lợi-Tiền Giang | AM: Lê Minh Tuấn | Prov: Tiền Giang | Overlap: ['mỹ']
+    - ID: 22910000 | Name: Bưu Cục Quốc Lộ 57-Xã Hương Mỹ-Bến Tre | AM: Huỳnh Phương Duy | Prov: Bến Tre | Overlap: ['mỹ']
+--------------------------------------------------------------------------------
+Backlog BC: '(TGI) Thanh Hòa' | prefix: 'TGI' | name: 'Thanh Hòa'
+  Candidates in CoCauVung:
+    - ID: 22372000 | Name: Bưu Cục QL80-Xã Hòa Long-Đồng Tháp | AM: Lý Quài Nhân | Prov: Đồng Tháp | Overlap: ['hòa']
+    - ID: 20139000 | Name: Bưu Cục QL 30-Thanh Bình-Đồng Tháp | AM: Ngô Phan Mỹ Tú | Prov: Đồng Tháp | Overlap: ['thanh']
+    - ID: 21991000 | Name: Bưu Cục 88 Ấp Thân Hòa-Thân Cửu Nghĩa-Châu Thành-Tiền Giang | AM: Nguyễn Anh Tùng | Prov: Tiền Giang | Overlap: ['hòa']
+    - ID: 20798000 | Name: Bưu Cục QL1A Hòa Khánh-Cái Bè-Tiền Giang | AM: Lê Minh Tuấn | Prov: Tiền Giang | Overlap: ['hòa']
+    - ID: 21665000 | Name: Bưu Cục Phước Long-Lộc Hòa-Long Hồ-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['hòa']
+--------------------------------------------------------------------------------
+Backlog BC: '(TGI) Thạnh Phú' | prefix: 'TGI' | name: 'Thạnh Phú'
+  Candidates in CoCauVung:
+    - ID: 22031000 | Name: Bưu Cục Ấp 2-Phú Nhuận-Bến Tre | AM: Lâm Xuân Vinh | Prov: Bến Tre | Overlap: ['phú']
+    - ID: 21582000 | Name: Bưu Cục QL57-Bình Thạnh-Thạnh Phú-Bến Tre | AM: Huỳnh Phương Duy | Prov: Bến Tre | Overlap: ['phú', 'thạnh']
+    - ID: 22876000 | Name: Bưu Cục Ấp Phú Long-Xã Hưng Khánh Trung-Bến Tre | AM: Huỳnh Phương Duy | Prov: Bến Tre | Overlap: ['phú']
+    - ID: 20776000 | Name: Bưu Cục Ấp Hậu Mỹ Phú 1-Cái Bè-Tiền Giang | AM: Lê Minh Tuấn | Prov: Tiền Giang | Overlap: ['phú']
+    - ID: 21992000 | Name: Bưu Cục Tỉnh Lộ 868-Phú Cường-Cai Lậy-Tiền Giang | AM: Đoàn Công Tín | Prov: Tiền Giang | Overlap: ['phú']
+    - ID: 21563000 | Name: Bưu Cục Ấp Cây Hẹ-Phú Cần-Tiểu Cần-Trà Vinh | AM: Nguyễn Thành Huy | Prov: Trà Vinh | Overlap: ['phú']
+    - ID: 22972000 | Name: Bưu Cục Võ Nguyên Giáp-Phú Tân-Bến Tre | AM: Nguyễn Thành Huy | Prov: Bến Tre | Overlap: ['phú']
+--------------------------------------------------------------------------------
+Backlog BC: '(TGI) Tân Phước 1' | prefix: 'TGI' | name: 'Tân Phước 1'
+  Candidates in CoCauVung:
+    - ID: 22337000 | Name: Bưu Cục Phước Hậu-Phước Mỹ Trung-Bến Tre | AM: Lâm Xuân Vinh | Prov: Bến Tre | Overlap: ['phước']
+    - ID: 22000000 | Name: Bưu Cục Tân Nhuận Đông-Châu Thành-Đồng Tháp | AM: Lý Quài Nhân | Prov: Đồng Tháp | Overlap: ['tân']
+    - ID: 20861000 | Name: Bưu Cục 286 Nguyễn Huệ-Tân Hồng-Đồng Tháp | AM: Ngô Phan Mỹ Tú | Prov: Đồng Tháp | Overlap: ['tân']
+    - ID: 20776000 | Name: Bưu Cục Ấp Hậu Mỹ Phú 1-Cái Bè-Tiền Giang | AM: Lê Minh Tuấn | Prov: Tiền Giang | Overlap: ['1']
+    - ID: 20227000 | Name: Bưu Cục Khu phố 1-Tân Phước-Tiền Giang | AM: Nguyễn Anh Tùng | Prov: Tiền Giang | Overlap: ['1', 'tân', 'phước']
+    - ID: 22387000 | Name: Bưu Cục 73 Phó Cơ Điều-Phường Phước Hậu-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['phước']
+    - ID: 20731000 | Name: Bưu Cục Ấp Tân Thuận-Bình Tân-Vĩnh Long  | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['tân']
+    - ID: 21665000 | Name: Bưu Cục Phước Long-Lộc Hòa-Long Hồ-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['phước']
+    - ID: 20478000 | Name: Bưu Cục Tổ 1 Đường 30/4-Trà Ôn-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['1']
+    - ID: 22972000 | Name: Bưu Cục Võ Nguyên Giáp-Phú Tân-Bến Tre | AM: Nguyễn Thành Huy | Prov: Bến Tre | Overlap: ['tân']
+--------------------------------------------------------------------------------
+Backlog BC: '(TGI) Vĩnh Kim' | prefix: 'TGI' | name: 'Vĩnh Kim'
+  Candidates in CoCauVung:
+    - ID: 21528000 | Name: Bưu Cục 992 Đường Huyện 35-Vĩnh Kim-Châu Thành-Tiền Giang | AM: Nguyễn Anh Tùng | Prov: Tiền Giang | Overlap: ['kim', 'vĩnh']
+    - ID: 20880000 | Name: Bưu Cục 07 Lê Lợi-Mang Thít-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['vĩnh']
+    - ID: 20875000 | Name: Bưu Cục 355 Võ Tấn Đức-Tam Bình-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['vĩnh']
+    - ID: 20908000 | Name: Bưu Cục 57/4 Phan Văn Đáng-Vĩnh Long-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['vĩnh']
+    - ID: 22387000 | Name: Bưu Cục 73 Phó Cơ Điều-Phường Phước Hậu-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['vĩnh']
+    - ID: 21374000 | Name: Bưu Cục 87 Lê Văn Vị-Cái Vồn-Bình Minh-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['vĩnh']
+    - ID: 20731000 | Name: Bưu Cục Ấp Tân Thuận-Bình Tân-Vĩnh Long  | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['vĩnh']
+    - ID: 21665000 | Name: Bưu Cục Phước Long-Lộc Hòa-Long Hồ-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['vĩnh']
+    - ID: 20478000 | Name: Bưu Cục Tổ 1 Đường 30/4-Trà Ôn-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['vĩnh']
+    - ID: 22916000 | Name: Bưu Cục Quốc Lộ 53-Xã Trung Thành-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['vĩnh']
+    - ID: 22980000 | Name: Bưu Cục Quốc Lộ 53-Long Hồ-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['vĩnh']
+--------------------------------------------------------------------------------
+Backlog BC: '(TGI) Đạo Thạnh' | prefix: 'TGI' | name: 'Đạo Thạnh'
+  Candidates in CoCauVung:
+    - ID: 21582000 | Name: Bưu Cục QL57-Bình Thạnh-Thạnh Phú-Bến Tre | AM: Huỳnh Phương Duy | Prov: Bến Tre | Overlap: ['thạnh']
+    - ID: 22461000 | Name: Bưu Cục Khóm 3 Trần Hưng Đạo-Xã Tháp Mười-Đồng Tháp | AM: Lê Minh Tuấn | Prov: Đồng Tháp | Overlap: ['đạo']
+--------------------------------------------------------------------------------
+Backlog BC: '(TGI) Đồng Sơn' | prefix: 'TGI' | name: 'Đồng Sơn'
+  Candidates in CoCauVung:
+    - ID: 22372000 | Name: Bưu Cục QL80-Xã Hòa Long-Đồng Tháp | AM: Lý Quài Nhân | Prov: Đồng Tháp | Overlap: ['đồng']
+    - ID: 22461000 | Name: Bưu Cục Khóm 3 Trần Hưng Đạo-Xã Tháp Mười-Đồng Tháp | AM: Lê Minh Tuấn | Prov: Đồng Tháp | Overlap: ['đồng']
+    - ID: 2498 | Name: Bưu Cục Tam Nông-Đồng Tháp | AM: Ngô Phan Mỹ Tú | Prov: Đồng Tháp | Overlap: ['đồng']
+    - ID: 22000000 | Name: Bưu Cục Tân Nhuận Đông-Châu Thành-Đồng Tháp | AM: Lý Quài Nhân | Prov: Đồng Tháp | Overlap: ['đồng']
+    - ID: 1083 | Name: Bưu Cục 12-14 Bà Triệu-Cao Lãnh-Đồng Tháp | AM: Nguyễn Việt Tới | Prov: Đồng Tháp | Overlap: ['đồng']
+    - ID: 20861000 | Name: Bưu Cục 286 Nguyễn Huệ-Tân Hồng-Đồng Tháp | AM: Ngô Phan Mỹ Tú | Prov: Đồng Tháp | Overlap: ['đồng']
+    - ID: 1933 | Name: Bưu Cục Hồng Ngự-Đồng Tháp | AM: Ngô Phan Mỹ Tú | Prov: Đồng Tháp | Overlap: ['đồng']
+    - ID: 22080000 | Name: Bưu Cục Mỹ Thọ-Trần Quang Khải-Cao Lãnh-Đồng Tháp | AM: Nguyễn Việt Tới | Prov: Đồng Tháp | Overlap: ['đồng']
+    - ID: 20139000 | Name: Bưu Cục QL 30-Thanh Bình-Đồng Tháp | AM: Ngô Phan Mỹ Tú | Prov: Đồng Tháp | Overlap: ['đồng']
+    - ID: 21620000 | Name: Bưu Cục Sơn Thông-Phường 9-Tp.Trà Vinh-Trà Vinh | AM: Nguyễn Thành Huy | Prov: Trà Vinh | Overlap: ['sơn']
+    - ID: 22789000 | Name: Bưu Cục Ấp Bình Hiệp A-Xã Lấp Vò-Đồng Tháp | AM: Lý Quài Nhân | Prov: Đồng Tháp | Overlap: ['đồng']
+    - ID: 22797000 | Name: Bưu Cục Tỉnh Lộ DT848-Xã Mỹ An Hưng-Đồng Tháp | AM: Lê Minh Tuấn | Prov: Đồng Tháp | Overlap: ['đồng']
+    - ID: 22812000 | Name: Bưu Cục DT846 Phương Trà-Xã Ba Sao-Đồng Tháp | AM: Nguyễn Việt Tới | Prov: Đồng Tháp | Overlap: ['đồng']
+    - ID: 22877000 | Name: Bưu Cục Quốc Lộ 54-Xã Lai Vung-Đồng Tháp | AM: Lý Quài Nhân | Prov: Đồng Tháp | Overlap: ['đồng']
+    - ID: 22920000 | Name: Bưu Cục 19 Đường DT848-Sa Đéc-Đồng Tháp | AM: Lý Quài Nhân | Prov: Đồng Tháp | Overlap: ['đồng']
+--------------------------------------------------------------------------------
+Backlog BC: '(TVI) Châu Thành' | prefix: 'TVI' | name: 'Châu Thành'
+  Candidates in CoCauVung:
+    - ID: 22101000 | Name: Bưu Cục 3/2 Thị Trấn Châu Thành-Bến Tre | AM: Lâm Xuân Vinh | Prov: Bến Tre | Overlap: ['châu', 'thành']
+    - ID: 21998000 | Name: Bưu Cục 86 Tiên Thuỷ-Châu Thành-Bến Tre | AM: Huỳnh Quốc Trung | Prov: Bến Tre | Overlap: ['châu', 'thành']
+    - ID: 22000000 | Name: Bưu Cục Tân Nhuận Đông-Châu Thành-Đồng Tháp | AM: Lý Quài Nhân | Prov: Đồng Tháp | Overlap: ['châu', 'thành']
+    - ID: 21991000 | Name: Bưu Cục 88 Ấp Thân Hòa-Thân Cửu Nghĩa-Châu Thành-Tiền Giang | AM: Nguyễn Anh Tùng | Prov: Tiền Giang | Overlap: ['châu', 'thành']
+    - ID: 21528000 | Name: Bưu Cục 992 Đường Huyện 35-Vĩnh Kim-Châu Thành-Tiền Giang | AM: Nguyễn Anh Tùng | Prov: Tiền Giang | Overlap: ['châu', 'thành']
+    - ID: 22521000 | Name: Bưu Cục Khóm 4 TT Châu Thành-Xã Châu Thành-Trà Vinh | AM: Nguyễn Thành Huy | Prov: Trà Vinh | Overlap: ['châu', 'thành']
+    - ID: 22916000 | Name: Bưu Cục Quốc Lộ 53-Xã Trung Thành-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['thành']
+--------------------------------------------------------------------------------
+Backlog BC: '(TVI) Càng Long' | prefix: 'TVI' | name: 'Càng Long'
+  Candidates in CoCauVung:
+    - ID: 22876000 | Name: Bưu Cục Ấp Phú Long-Xã Hưng Khánh Trung-Bến Tre | AM: Huỳnh Phương Duy | Prov: Bến Tre | Overlap: ['long']
+    - ID: 22372000 | Name: Bưu Cục QL80-Xã Hòa Long-Đồng Tháp | AM: Lý Quài Nhân | Prov: Đồng Tháp | Overlap: ['long']
+    - ID: 22316000 | Name: Bưu Cục 230 Ấp Bình Hạnh-Long Bình Điền-Chợ Gạo-Tiền Giang | AM: Đoàn Công Tín | Prov: Tiền Giang | Overlap: ['long']
+    - ID: 21313000 | Name: Bưu Cục Long Trung-Cai Lậy-Tiền Giang | AM: Lê Minh Tuấn | Prov: Tiền Giang | Overlap: ['long']
+    - ID: 22522000 | Name: Bưu Cục Khóm 3 TT Càng Long-Xã Càng Long-Trà Vinh | AM: Nguyễn Thành Huy | Prov: Trà Vinh | Overlap: ['long', 'càng']
+    - ID: 20880000 | Name: Bưu Cục 07 Lê Lợi-Mang Thít-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 20875000 | Name: Bưu Cục 355 Võ Tấn Đức-Tam Bình-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 20908000 | Name: Bưu Cục 57/4 Phan Văn Đáng-Vĩnh Long-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 22387000 | Name: Bưu Cục 73 Phó Cơ Điều-Phường Phước Hậu-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 21374000 | Name: Bưu Cục 87 Lê Văn Vị-Cái Vồn-Bình Minh-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 20731000 | Name: Bưu Cục Ấp Tân Thuận-Bình Tân-Vĩnh Long  | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 21665000 | Name: Bưu Cục Phước Long-Lộc Hòa-Long Hồ-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 20478000 | Name: Bưu Cục Tổ 1 Đường 30/4-Trà Ôn-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 22916000 | Name: Bưu Cục Quốc Lộ 53-Xã Trung Thành-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 22980000 | Name: Bưu Cục Quốc Lộ 53-Long Hồ-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+--------------------------------------------------------------------------------
+Backlog BC: '(TVI) Cầu Kè' | prefix: 'TVI' | name: 'Cầu Kè'
+  Candidates in CoCauVung:
+    - ID: 20748000 | Name: Bưu Cục Khóm 8-Cầu Kè-Trà Vinh | AM: Nguyễn Thành Huy | Prov: Trà Vinh | Overlap: ['kè', 'cầu']
+    - ID: 22479000 | Name: Bưu Cục Khóm Thống Nhất-Xã Cầu Ngang-Trà Vinh | AM: Nguyễn Thành Huy | Prov: Trà Vinh | Overlap: ['cầu']
+--------------------------------------------------------------------------------
+Backlog BC: '(TVI) Cầu Ngang' | prefix: 'TVI' | name: 'Cầu Ngang'
+  Candidates in CoCauVung:
+    - ID: 20748000 | Name: Bưu Cục Khóm 8-Cầu Kè-Trà Vinh | AM: Nguyễn Thành Huy | Prov: Trà Vinh | Overlap: ['cầu']
+    - ID: 22479000 | Name: Bưu Cục Khóm Thống Nhất-Xã Cầu Ngang-Trà Vinh | AM: Nguyễn Thành Huy | Prov: Trà Vinh | Overlap: ['ngang', 'cầu']
+--------------------------------------------------------------------------------
+Backlog BC: '(TVI) Duyên Hải' | prefix: 'TVI' | name: 'Duyên Hải'
+  Candidates in CoCauVung:
+    - ID: 2410 | Name: Bưu Cục Duyên Hải-Trà Vinh | AM: Lâm Xuân Vinh | Prov: Trà Vinh | Overlap: ['duyên', 'hải']
+--------------------------------------------------------------------------------
+Backlog BC: '(TVI) Tiểu Cần' | prefix: 'TVI' | name: 'Tiểu Cần'
+  Candidates in CoCauVung:
+    - ID: 21563000 | Name: Bưu Cục Ấp Cây Hẹ-Phú Cần-Tiểu Cần-Trà Vinh | AM: Nguyễn Thành Huy | Prov: Trà Vinh | Overlap: ['cần', 'tiểu']
+--------------------------------------------------------------------------------
+Backlog BC: '(TVI) Trà Cú' | prefix: 'TVI' | name: 'Trà Cú'
+  Candidates in CoCauVung:
+    - ID: 2410 | Name: Bưu Cục Duyên Hải-Trà Vinh | AM: Lâm Xuân Vinh | Prov: Trà Vinh | Overlap: ['trà']
+    - ID: 21563000 | Name: Bưu Cục Ấp Cây Hẹ-Phú Cần-Tiểu Cần-Trà Vinh | AM: Nguyễn Thành Huy | Prov: Trà Vinh | Overlap: ['trà']
+    - ID: 22521000 | Name: Bưu Cục Khóm 4 TT Châu Thành-Xã Châu Thành-Trà Vinh | AM: Nguyễn Thành Huy | Prov: Trà Vinh | Overlap: ['trà']
+    - ID: 20748000 | Name: Bưu Cục Khóm 8-Cầu Kè-Trà Vinh | AM: Nguyễn Thành Huy | Prov: Trà Vinh | Overlap: ['trà']
+    - ID: 21620000 | Name: Bưu Cục Sơn Thông-Phường 9-Tp.Trà Vinh-Trà Vinh | AM: Nguyễn Thành Huy | Prov: Trà Vinh | Overlap: ['trà']
+    - ID: 21497000 | Name: Bưu Cục Xoài Xiêm-Ngãi Xuyên-Trà Cú-Trà Vinh | AM: Nguyễn Thành Huy | Prov: Trà Vinh | Overlap: ['cú', 'trà']
+    - ID: 22479000 | Name: Bưu Cục Khóm Thống Nhất-Xã Cầu Ngang-Trà Vinh | AM: Nguyễn Thành Huy | Prov: Trà Vinh | Overlap: ['trà']
+    - ID: 22522000 | Name: Bưu Cục Khóm 3 TT Càng Long-Xã Càng Long-Trà Vinh | AM: Nguyễn Thành Huy | Prov: Trà Vinh | Overlap: ['trà']
+    - ID: 20478000 | Name: Bưu Cục Tổ 1 Đường 30/4-Trà Ôn-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['trà']
+    - ID: 22812000 | Name: Bưu Cục DT846 Phương Trà-Xã Ba Sao-Đồng Tháp | AM: Nguyễn Việt Tới | Prov: Đồng Tháp | Overlap: ['trà']
+--------------------------------------------------------------------------------
+Backlog BC: '(TVI) Trà Vinh' | prefix: 'TVI' | name: 'Trà Vinh'
+  Candidates in CoCauVung:
+    - ID: 2410 | Name: Bưu Cục Duyên Hải-Trà Vinh | AM: Lâm Xuân Vinh | Prov: Trà Vinh | Overlap: ['trà', 'vinh']
+    - ID: 21563000 | Name: Bưu Cục Ấp Cây Hẹ-Phú Cần-Tiểu Cần-Trà Vinh | AM: Nguyễn Thành Huy | Prov: Trà Vinh | Overlap: ['trà', 'vinh']
+    - ID: 22521000 | Name: Bưu Cục Khóm 4 TT Châu Thành-Xã Châu Thành-Trà Vinh | AM: Nguyễn Thành Huy | Prov: Trà Vinh | Overlap: ['trà', 'vinh']
+    - ID: 20748000 | Name: Bưu Cục Khóm 8-Cầu Kè-Trà Vinh | AM: Nguyễn Thành Huy | Prov: Trà Vinh | Overlap: ['trà', 'vinh']
+    - ID: 21620000 | Name: Bưu Cục Sơn Thông-Phường 9-Tp.Trà Vinh-Trà Vinh | AM: Nguyễn Thành Huy | Prov: Trà Vinh | Overlap: ['trà', 'vinh']
+    - ID: 21497000 | Name: Bưu Cục Xoài Xiêm-Ngãi Xuyên-Trà Cú-Trà Vinh | AM: Nguyễn Thành Huy | Prov: Trà Vinh | Overlap: ['trà', 'vinh']
+    - ID: 22479000 | Name: Bưu Cục Khóm Thống Nhất-Xã Cầu Ngang-Trà Vinh | AM: Nguyễn Thành Huy | Prov: Trà Vinh | Overlap: ['trà', 'vinh']
+    - ID: 22522000 | Name: Bưu Cục Khóm 3 TT Càng Long-Xã Càng Long-Trà Vinh | AM: Nguyễn Thành Huy | Prov: Trà Vinh | Overlap: ['trà', 'vinh']
+    - ID: 20478000 | Name: Bưu Cục Tổ 1 Đường 30/4-Trà Ôn-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['trà']
+    - ID: 22812000 | Name: Bưu Cục DT846 Phương Trà-Xã Ba Sao-Đồng Tháp | AM: Nguyễn Việt Tới | Prov: Đồng Tháp | Overlap: ['trà']
+--------------------------------------------------------------------------------
+Backlog BC: '(VLO) Cái Nhum' | prefix: 'VLO' | name: 'Cái Nhum'
+  Candidates in CoCauVung:
+    - ID: 20776000 | Name: Bưu Cục Ấp Hậu Mỹ Phú 1-Cái Bè-Tiền Giang | AM: Lê Minh Tuấn | Prov: Tiền Giang | Overlap: ['cái']
+    - ID: 20798000 | Name: Bưu Cục QL1A Hòa Khánh-Cái Bè-Tiền Giang | AM: Lê Minh Tuấn | Prov: Tiền Giang | Overlap: ['cái']
+    - ID: 21374000 | Name: Bưu Cục 87 Lê Văn Vị-Cái Vồn-Bình Minh-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['cái']
+--------------------------------------------------------------------------------
+Backlog BC: '(VLO) Cái Vồn' | prefix: 'VLO' | name: 'Cái Vồn'
+  Candidates in CoCauVung:
+    - ID: 20776000 | Name: Bưu Cục Ấp Hậu Mỹ Phú 1-Cái Bè-Tiền Giang | AM: Lê Minh Tuấn | Prov: Tiền Giang | Overlap: ['cái']
+    - ID: 20798000 | Name: Bưu Cục QL1A Hòa Khánh-Cái Bè-Tiền Giang | AM: Lê Minh Tuấn | Prov: Tiền Giang | Overlap: ['cái']
+    - ID: 21374000 | Name: Bưu Cục 87 Lê Văn Vị-Cái Vồn-Bình Minh-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['vồn', 'cái']
+--------------------------------------------------------------------------------
+Backlog BC: '(VLO) Long Châu' | prefix: 'VLO' | name: 'Long Châu'
+  Candidates in CoCauVung:
+    - ID: 22101000 | Name: Bưu Cục 3/2 Thị Trấn Châu Thành-Bến Tre | AM: Lâm Xuân Vinh | Prov: Bến Tre | Overlap: ['châu']
+    - ID: 21998000 | Name: Bưu Cục 86 Tiên Thuỷ-Châu Thành-Bến Tre | AM: Huỳnh Quốc Trung | Prov: Bến Tre | Overlap: ['châu']
+    - ID: 22876000 | Name: Bưu Cục Ấp Phú Long-Xã Hưng Khánh Trung-Bến Tre | AM: Huỳnh Phương Duy | Prov: Bến Tre | Overlap: ['long']
+    - ID: 22372000 | Name: Bưu Cục QL80-Xã Hòa Long-Đồng Tháp | AM: Lý Quài Nhân | Prov: Đồng Tháp | Overlap: ['long']
+    - ID: 22000000 | Name: Bưu Cục Tân Nhuận Đông-Châu Thành-Đồng Tháp | AM: Lý Quài Nhân | Prov: Đồng Tháp | Overlap: ['châu']
+    - ID: 22316000 | Name: Bưu Cục 230 Ấp Bình Hạnh-Long Bình Điền-Chợ Gạo-Tiền Giang | AM: Đoàn Công Tín | Prov: Tiền Giang | Overlap: ['long']
+    - ID: 21991000 | Name: Bưu Cục 88 Ấp Thân Hòa-Thân Cửu Nghĩa-Châu Thành-Tiền Giang | AM: Nguyễn Anh Tùng | Prov: Tiền Giang | Overlap: ['châu']
+    - ID: 21528000 | Name: Bưu Cục 992 Đường Huyện 35-Vĩnh Kim-Châu Thành-Tiền Giang | AM: Nguyễn Anh Tùng | Prov: Tiền Giang | Overlap: ['châu']
+    - ID: 21313000 | Name: Bưu Cục Long Trung-Cai Lậy-Tiền Giang | AM: Lê Minh Tuấn | Prov: Tiền Giang | Overlap: ['long']
+    - ID: 22521000 | Name: Bưu Cục Khóm 4 TT Châu Thành-Xã Châu Thành-Trà Vinh | AM: Nguyễn Thành Huy | Prov: Trà Vinh | Overlap: ['châu']
+    - ID: 22522000 | Name: Bưu Cục Khóm 3 TT Càng Long-Xã Càng Long-Trà Vinh | AM: Nguyễn Thành Huy | Prov: Trà Vinh | Overlap: ['long']
+    - ID: 20880000 | Name: Bưu Cục 07 Lê Lợi-Mang Thít-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 20875000 | Name: Bưu Cục 355 Võ Tấn Đức-Tam Bình-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 20908000 | Name: Bưu Cục 57/4 Phan Văn Đáng-Vĩnh Long-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 22387000 | Name: Bưu Cục 73 Phó Cơ Điều-Phường Phước Hậu-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 21374000 | Name: Bưu Cục 87 Lê Văn Vị-Cái Vồn-Bình Minh-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 20731000 | Name: Bưu Cục Ấp Tân Thuận-Bình Tân-Vĩnh Long  | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 21665000 | Name: Bưu Cục Phước Long-Lộc Hòa-Long Hồ-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 20478000 | Name: Bưu Cục Tổ 1 Đường 30/4-Trà Ôn-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 22916000 | Name: Bưu Cục Quốc Lộ 53-Xã Trung Thành-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 22980000 | Name: Bưu Cục Quốc Lộ 53-Long Hồ-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+--------------------------------------------------------------------------------
+Backlog BC: '(VLO) Long Hồ' | prefix: 'VLO' | name: 'Long Hồ'
+  Candidates in CoCauVung:
+    - ID: 22876000 | Name: Bưu Cục Ấp Phú Long-Xã Hưng Khánh Trung-Bến Tre | AM: Huỳnh Phương Duy | Prov: Bến Tre | Overlap: ['long']
+    - ID: 22372000 | Name: Bưu Cục QL80-Xã Hòa Long-Đồng Tháp | AM: Lý Quài Nhân | Prov: Đồng Tháp | Overlap: ['long']
+    - ID: 22316000 | Name: Bưu Cục 230 Ấp Bình Hạnh-Long Bình Điền-Chợ Gạo-Tiền Giang | AM: Đoàn Công Tín | Prov: Tiền Giang | Overlap: ['long']
+    - ID: 21313000 | Name: Bưu Cục Long Trung-Cai Lậy-Tiền Giang | AM: Lê Minh Tuấn | Prov: Tiền Giang | Overlap: ['long']
+    - ID: 22522000 | Name: Bưu Cục Khóm 3 TT Càng Long-Xã Càng Long-Trà Vinh | AM: Nguyễn Thành Huy | Prov: Trà Vinh | Overlap: ['long']
+    - ID: 20880000 | Name: Bưu Cục 07 Lê Lợi-Mang Thít-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 20875000 | Name: Bưu Cục 355 Võ Tấn Đức-Tam Bình-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 20908000 | Name: Bưu Cục 57/4 Phan Văn Đáng-Vĩnh Long-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 22387000 | Name: Bưu Cục 73 Phó Cơ Điều-Phường Phước Hậu-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 21374000 | Name: Bưu Cục 87 Lê Văn Vị-Cái Vồn-Bình Minh-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 20731000 | Name: Bưu Cục Ấp Tân Thuận-Bình Tân-Vĩnh Long  | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 21665000 | Name: Bưu Cục Phước Long-Lộc Hòa-Long Hồ-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long', 'hồ']
+    - ID: 20478000 | Name: Bưu Cục Tổ 1 Đường 30/4-Trà Ôn-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 22916000 | Name: Bưu Cục Quốc Lộ 53-Xã Trung Thành-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long']
+    - ID: 22980000 | Name: Bưu Cục Quốc Lộ 53-Long Hồ-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['long', 'hồ']
+--------------------------------------------------------------------------------
+Backlog BC: '(VLO) Phú Quới' | prefix: 'VLO' | name: 'Phú Quới'
+  Candidates in CoCauVung:
+    - ID: 22031000 | Name: Bưu Cục Ấp 2-Phú Nhuận-Bến Tre | AM: Lâm Xuân Vinh | Prov: Bến Tre | Overlap: ['phú']
+    - ID: 21582000 | Name: Bưu Cục QL57-Bình Thạnh-Thạnh Phú-Bến Tre | AM: Huỳnh Phương Duy | Prov: Bến Tre | Overlap: ['phú']
+    - ID: 22876000 | Name: Bưu Cục Ấp Phú Long-Xã Hưng Khánh Trung-Bến Tre | AM: Huỳnh Phương Duy | Prov: Bến Tre | Overlap: ['phú']
+    - ID: 20776000 | Name: Bưu Cục Ấp Hậu Mỹ Phú 1-Cái Bè-Tiền Giang | AM: Lê Minh Tuấn | Prov: Tiền Giang | Overlap: ['phú']
+    - ID: 21992000 | Name: Bưu Cục Tỉnh Lộ 868-Phú Cường-Cai Lậy-Tiền Giang | AM: Đoàn Công Tín | Prov: Tiền Giang | Overlap: ['phú']
+    - ID: 21563000 | Name: Bưu Cục Ấp Cây Hẹ-Phú Cần-Tiểu Cần-Trà Vinh | AM: Nguyễn Thành Huy | Prov: Trà Vinh | Overlap: ['phú']
+    - ID: 22972000 | Name: Bưu Cục Võ Nguyên Giáp-Phú Tân-Bến Tre | AM: Nguyễn Thành Huy | Prov: Bến Tre | Overlap: ['phú']
+--------------------------------------------------------------------------------
+Backlog BC: '(VLO) Phước Hậu' | prefix: 'VLO' | name: 'Phước Hậu'
+  Candidates in CoCauVung:
+    - ID: 22337000 | Name: Bưu Cục Phước Hậu-Phước Mỹ Trung-Bến Tre | AM: Lâm Xuân Vinh | Prov: Bến Tre | Overlap: ['hậu', 'phước']
+    - ID: 20776000 | Name: Bưu Cục Ấp Hậu Mỹ Phú 1-Cái Bè-Tiền Giang | AM: Lê Minh Tuấn | Prov: Tiền Giang | Overlap: ['hậu']
+    - ID: 20227000 | Name: Bưu Cục Khu phố 1-Tân Phước-Tiền Giang | AM: Nguyễn Anh Tùng | Prov: Tiền Giang | Overlap: ['phước']
+    - ID: 22387000 | Name: Bưu Cục 73 Phó Cơ Điều-Phường Phước Hậu-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['hậu', 'phước']
+    - ID: 21665000 | Name: Bưu Cục Phước Long-Lộc Hòa-Long Hồ-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['phước']
+--------------------------------------------------------------------------------
+Backlog BC: '(VLO) Tam Bình' | prefix: 'VLO' | name: 'Tam Bình'
+  Candidates in CoCauVung:
+    - ID: 21583000 | Name: Bưu Cục QL57-Bình Thới-Bình Đại-Bến Tre | AM: Lâm Xuân Vinh | Prov: Bến Tre | Overlap: ['bình']
+    - ID: 21582000 | Name: Bưu Cục QL57-Bình Thạnh-Thạnh Phú-Bến Tre | AM: Huỳnh Phương Duy | Prov: Bến Tre | Overlap: ['bình']
+    - ID: 2498 | Name: Bưu Cục Tam Nông-Đồng Tháp | AM: Ngô Phan Mỹ Tú | Prov: Đồng Tháp | Overlap: ['tam']
+    - ID: 20139000 | Name: Bưu Cục QL 30-Thanh Bình-Đồng Tháp | AM: Ngô Phan Mỹ Tú | Prov: Đồng Tháp | Overlap: ['bình']
+    - ID: 22316000 | Name: Bưu Cục 230 Ấp Bình Hạnh-Long Bình Điền-Chợ Gạo-Tiền Giang | AM: Đoàn Công Tín | Prov: Tiền Giang | Overlap: ['bình']
+    - ID: 20875000 | Name: Bưu Cục 355 Võ Tấn Đức-Tam Bình-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['bình', 'tam']
+    - ID: 21374000 | Name: Bưu Cục 87 Lê Văn Vị-Cái Vồn-Bình Minh-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['bình']
+    - ID: 20731000 | Name: Bưu Cục Ấp Tân Thuận-Bình Tân-Vĩnh Long  | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['bình']
+    - ID: 22789000 | Name: Bưu Cục Ấp Bình Hiệp A-Xã Lấp Vò-Đồng Tháp | AM: Lý Quài Nhân | Prov: Đồng Tháp | Overlap: ['bình']
+--------------------------------------------------------------------------------
+Backlog BC: '(VLO) Trung Thành' | prefix: 'VLO' | name: 'Trung Thành'
+  Candidates in CoCauVung:
+    - ID: 22337000 | Name: Bưu Cục Phước Hậu-Phước Mỹ Trung-Bến Tre | AM: Lâm Xuân Vinh | Prov: Bến Tre | Overlap: ['trung']
+    - ID: 22101000 | Name: Bưu Cục 3/2 Thị Trấn Châu Thành-Bến Tre | AM: Lâm Xuân Vinh | Prov: Bến Tre | Overlap: ['thành']
+    - ID: 21998000 | Name: Bưu Cục 86 Tiên Thuỷ-Châu Thành-Bến Tre | AM: Huỳnh Quốc Trung | Prov: Bến Tre | Overlap: ['thành']
+    - ID: 22876000 | Name: Bưu Cục Ấp Phú Long-Xã Hưng Khánh Trung-Bến Tre | AM: Huỳnh Phương Duy | Prov: Bến Tre | Overlap: ['trung']
+    - ID: 22000000 | Name: Bưu Cục Tân Nhuận Đông-Châu Thành-Đồng Tháp | AM: Lý Quài Nhân | Prov: Đồng Tháp | Overlap: ['thành']
+    - ID: 21991000 | Name: Bưu Cục 88 Ấp Thân Hòa-Thân Cửu Nghĩa-Châu Thành-Tiền Giang | AM: Nguyễn Anh Tùng | Prov: Tiền Giang | Overlap: ['thành']
+    - ID: 21528000 | Name: Bưu Cục 992 Đường Huyện 35-Vĩnh Kim-Châu Thành-Tiền Giang | AM: Nguyễn Anh Tùng | Prov: Tiền Giang | Overlap: ['thành']
+    - ID: 21313000 | Name: Bưu Cục Long Trung-Cai Lậy-Tiền Giang | AM: Lê Minh Tuấn | Prov: Tiền Giang | Overlap: ['trung']
+    - ID: 22521000 | Name: Bưu Cục Khóm 4 TT Châu Thành-Xã Châu Thành-Trà Vinh | AM: Nguyễn Thành Huy | Prov: Trà Vinh | Overlap: ['thành']
+    - ID: 22916000 | Name: Bưu Cục Quốc Lộ 53-Xã Trung Thành-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['trung', 'thành']
+--------------------------------------------------------------------------------
+Backlog BC: '(VLO) Trà Ôn' | prefix: 'VLO' | name: 'Trà Ôn'
+  Candidates in CoCauVung:
+    - ID: 2410 | Name: Bưu Cục Duyên Hải-Trà Vinh | AM: Lâm Xuân Vinh | Prov: Trà Vinh | Overlap: ['trà']
+    - ID: 21563000 | Name: Bưu Cục Ấp Cây Hẹ-Phú Cần-Tiểu Cần-Trà Vinh | AM: Nguyễn Thành Huy | Prov: Trà Vinh | Overlap: ['trà']
+    - ID: 22521000 | Name: Bưu Cục Khóm 4 TT Châu Thành-Xã Châu Thành-Trà Vinh | AM: Nguyễn Thành Huy | Prov: Trà Vinh | Overlap: ['trà']
+    - ID: 20748000 | Name: Bưu Cục Khóm 8-Cầu Kè-Trà Vinh | AM: Nguyễn Thành Huy | Prov: Trà Vinh | Overlap: ['trà']
+    - ID: 21620000 | Name: Bưu Cục Sơn Thông-Phường 9-Tp.Trà Vinh-Trà Vinh | AM: Nguyễn Thành Huy | Prov: Trà Vinh | Overlap: ['trà']
+    - ID: 21497000 | Name: Bưu Cục Xoài Xiêm-Ngãi Xuyên-Trà Cú-Trà Vinh | AM: Nguyễn Thành Huy | Prov: Trà Vinh | Overlap: ['trà']
+    - ID: 22479000 | Name: Bưu Cục Khóm Thống Nhất-Xã Cầu Ngang-Trà Vinh | AM: Nguyễn Thành Huy | Prov: Trà Vinh | Overlap: ['trà']
+    - ID: 22522000 | Name: Bưu Cục Khóm 3 TT Càng Long-Xã Càng Long-Trà Vinh | AM: Nguyễn Thành Huy | Prov: Trà Vinh | Overlap: ['trà']
+    - ID: 20478000 | Name: Bưu Cục Tổ 1 Đường 30/4-Trà Ôn-Vĩnh Long | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['ôn', 'trà']
+    - ID: 22812000 | Name: Bưu Cục DT846 Phương Trà-Xã Ba Sao-Đồng Tháp | AM: Nguyễn Việt Tới | Prov: Đồng Tháp | Overlap: ['trà']
+--------------------------------------------------------------------------------
+Backlog BC: '(VLO) Tân Quới' | prefix: 'VLO' | name: 'Tân Quới'
+  Candidates in CoCauVung:
+    - ID: 22000000 | Name: Bưu Cục Tân Nhuận Đông-Châu Thành-Đồng Tháp | AM: Lý Quài Nhân | Prov: Đồng Tháp | Overlap: ['tân']
+    - ID: 20861000 | Name: Bưu Cục 286 Nguyễn Huệ-Tân Hồng-Đồng Tháp | AM: Ngô Phan Mỹ Tú | Prov: Đồng Tháp | Overlap: ['tân']
+    - ID: 20227000 | Name: Bưu Cục Khu phố 1-Tân Phước-Tiền Giang | AM: Nguyễn Anh Tùng | Prov: Tiền Giang | Overlap: ['tân']
+    - ID: 20731000 | Name: Bưu Cục Ấp Tân Thuận-Bình Tân-Vĩnh Long  | AM: Nguyễn Tuấn Anh | Prov: Vĩnh Long | Overlap: ['tân']
+    - ID: 22972000 | Name: Bưu Cục Võ Nguyên Giáp-Phú Tân-Bến Tre | AM: Nguyễn Thành Huy | Prov: Bến Tre | Overlap: ['tân']
+--------------------------------------------------------------------------------

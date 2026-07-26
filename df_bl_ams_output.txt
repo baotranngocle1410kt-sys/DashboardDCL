@@ -1,0 +1,14 @@
+                  AM  5 - 8 ngày  8 - 15 ngày  Trên 15 ngày  Tổng
+0   Huỳnh Phương Duy          12            2             0    14
+1   Huỳnh Quốc Trung          97           56             0   153
+2      Lâm Xuân Vinh         411          196             4   611
+3       Lê Minh Tuấn          97           27             0   124
+4       Lý Quài Nhân         111            3             0   114
+5    Nguyễn Anh Tùng         468          331            11   810
+6   Nguyễn Thành Huy          42            4             1    47
+7    Nguyễn Tuấn Anh         567          452            18  1037
+8    Nguyễn Việt Tới          44           12             0    56
+9     Ngô Phan Mỹ Tú           5            0             0     5
+10     Đoàn Công Tín         436          185             3   624
+
+Total backlog sum: 3595

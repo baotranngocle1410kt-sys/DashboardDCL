@@ -1,0 +1,63 @@
+Total DCL backlog rows: 3595
+Successfully matched to AM: 0
+Unmatched: 3595
+
+Unmatched unique bưu cục names:
+- (DTH) An Bình
+- (TVI) Châu Thành
+- (BTR) Hương Mỹ
+- (BTR) Phước Mỹ Trung
+- (DTH) Mỹ Thọ
+- (BTR) Sơn Đông
+- (TGI) Long Thuận
+- (TGI) Đạo Thạnh
+- (TGI) Thạnh Phú
+- (DTH) Hòa Long
+- (TGI) Gia Thuận
+- (TGI) Hậu Mỹ
+- (TGI) Long Tiên
+- (VLO) Tân Quới
+- (BTR) An Hội
+- (BTR) Ba Tri
+- (DTH) Ba Sao
+- (VLO) Trà Ôn
+- (TVI) Cầu Kè
+- (DTH) Sa Đéc
+- (TVI) Tiểu Cần
+- (TGI) Châu Thành
+- (BTR) Thạnh Phú
+- (VLO) Tam Bình
+- (BTR) Lộc Thuận
+- (VLO) Long Châu
+- (TGI) Thanh Hòa
+- (TVI) Trà Cú
+- (DTH) Lai Vung
+- (DTH) Tháp Mười
+- (TVI) Càng Long
+- (TGI) Tân Phước 1
+- (BTR) Giồng Trôm
+- (TGI) Mỹ Phong
+- (DTH) Thanh Bình
+- (VLO) Long Hồ
+- (VLO) Phước Hậu
+- (TVI) Duyên Hải
+- (VLO) Phú Quới
+- (TVI) Cầu Ngang
+- (BTR) Tiên Thủy
+- (DTH) Lấp Vò
+- (VLO) Cái Nhum
+- (TVI) Trà Vinh
+- (DTH) Tràm Chim
+- (BTR) Phú Túc
+- (BTR) Bình Đại
+- (DTH) Cao Lãnh
+- (VLO) Trung Thành
+- (VLO) Cái Vồn
+- (TGI) Mỹ Lợi
+- (DTH) Tân Nhuận Đông
+- (TGI) Cái Bè
+- (TGI) Đồng Sơn
+- (TGI) Chợ Gạo
+- (TGI) Vĩnh Kim
+- (DTH) Tân Hồng
+- (DTH) Mỹ An Hưng

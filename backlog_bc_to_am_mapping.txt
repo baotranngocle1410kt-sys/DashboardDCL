@@ -1,0 +1,109 @@
+Total DCL backlog rows: 3595
+Merged backlog rows count: 134
+Mapped unique bc count: 16
+
+=== BACKLOG BC TO AM MAPPING RESULTS ===
+
+'(BTR) An Hội': { 'id': 22031000, 'am': 'Lâm Xuân Vinh', 'province': 'Bến Tre' },
+'(BTR) Ba Tri': { 'id': None, 'am': None, 'province': None }, # UNMAPPED
+'(BTR) Bình Đại': { 'id': None, 'am': None, 'province': None }, # UNMAPPED
+'(BTR) Giồng Trôm': { 'id': None, 'am': None, 'province': None }, # UNMAPPED
+'(BTR) Hương Mỹ': { 'id': None, 'am': None, 'province': None }, # UNMAPPED
+'(BTR) Lộc Thuận': { 'id': None, 'am': None, 'province': None }, # UNMAPPED
+'(BTR) Phú Túc': { 'id': 22101000, 'am': 'Lâm Xuân Vinh', 'province': 'Bến Tre' },
+'(BTR) Phước Mỹ Trung': { 'id': None, 'am': None, 'province': None }, # UNMAPPED
+'(BTR) Sơn Đông': { 'id': None, 'am': None, 'province': None }, # UNMAPPED
+'(BTR) Thạnh Phú': { 'id': None, 'am': None, 'province': None }, # UNMAPPED
+'(BTR) Tiên Thủy': { 'id': None, 'am': None, 'province': None }, # UNMAPPED
+'(DTH) An Bình': { 'id': None, 'am': None, 'province': None }, # UNMAPPED
+'(DTH) Ba Sao': { 'id': 22812000, 'am': 'Nguyễn Việt Tới', 'province': 'Đồng Tháp' },
+'(DTH) Cao Lãnh': { 'id': None, 'am': None, 'province': None }, # UNMAPPED
+'(DTH) Hòa Long': { 'id': None, 'am': None, 'province': None }, # UNMAPPED
+'(DTH) Lai Vung': { 'id': 22877000, 'am': 'Lý Quài Nhân', 'province': 'Đồng Tháp' },
+'(DTH) Lấp Vò': { 'id': None, 'am': None, 'province': None }, # UNMAPPED
+'(DTH) Mỹ An Hưng': { 'id': 22797000, 'am': 'Lê Minh Tuấn', 'province': 'Đồng Tháp' },
+'(DTH) Mỹ Thọ': { 'id': None, 'am': None, 'province': None }, # UNMAPPED
+'(DTH) Sa Đéc': { 'id': None, 'am': None, 'province': None }, # UNMAPPED
+'(DTH) Thanh Bình': { 'id': None, 'am': None, 'province': None }, # UNMAPPED
+'(DTH) Tháp Mười': { 'id': None, 'am': None, 'province': None }, # UNMAPPED
+'(DTH) Tràm Chim': { 'id': None, 'am': None, 'province': None }, # UNMAPPED
+'(DTH) Tân Hồng': { 'id': None, 'am': None, 'province': None }, # UNMAPPED
+'(DTH) Tân Nhuận Đông': { 'id': None, 'am': None, 'province': None }, # UNMAPPED
+'(TGI) Châu Thành': { 'id': 1933, 'am': 'Ngô Phan Mỹ Tú', 'province': 'Đồng Tháp' },
+'(TGI) Chợ Gạo': { 'id': None, 'am': None, 'province': None }, # UNMAPPED
+'(TGI) Cái Bè': { 'id': None, 'am': None, 'province': None }, # UNMAPPED
+'(TGI) Gia Thuận': { 'id': None, 'am': None, 'province': None }, # UNMAPPED
+'(TGI) Hậu Mỹ': { 'id': None, 'am': None, 'province': None }, # UNMAPPED
+'(TGI) Long Thuận': { 'id': 22270000, 'am': 'Nguyễn Anh Tùng', 'province': 'Tiền Giang' },
+'(TGI) Long Tiên': { 'id': None, 'am': None, 'province': None }, # UNMAPPED
+'(TGI) Mỹ Lợi': { 'id': None, 'am': None, 'province': None }, # UNMAPPED
+'(TGI) Mỹ Phong': { 'id': None, 'am': None, 'province': None }, # UNMAPPED
+'(TGI) Thanh Hòa': { 'id': None, 'am': None, 'province': None }, # UNMAPPED
+'(TGI) Thạnh Phú': { 'id': 21992000, 'am': 'Đoàn Công Tín', 'province': 'Tiền Giang' },
+'(TGI) Tân Phước 1': { 'id': None, 'am': None, 'province': None }, # UNMAPPED
+'(TGI) Vĩnh Kim': { 'id': 21528000, 'am': 'Nguyễn Anh Tùng', 'province': 'Tiền Giang' },
+'(TGI) Đạo Thạnh': { 'id': 1199, 'am': 'Đoàn Công Tín', 'province': 'Tiền Giang' },
+'(TGI) Đồng Sơn': { 'id': 20349000, 'am': 'Đoàn Công Tín', 'province': 'Tiền Giang' },
+'(TVI) Châu Thành': { 'id': None, 'am': None, 'province': None }, # UNMAPPED
+'(TVI) Càng Long': { 'id': None, 'am': None, 'province': None }, # UNMAPPED
+'(TVI) Cầu Kè': { 'id': None, 'am': None, 'province': None }, # UNMAPPED
+'(TVI) Cầu Ngang': { 'id': None, 'am': None, 'province': None }, # UNMAPPED
+'(TVI) Duyên Hải': { 'id': None, 'am': None, 'province': None }, # UNMAPPED
+'(TVI) Tiểu Cần': { 'id': 21563000, 'am': 'Nguyễn Thành Huy', 'province': 'Trà Vinh' },
+'(TVI) Trà Cú': { 'id': None, 'am': None, 'province': None }, # UNMAPPED
+'(TVI) Trà Vinh': { 'id': 21620000, 'am': 'Nguyễn Thành Huy', 'province': 'Trà Vinh' },
+'(VLO) Cái Nhum': { 'id': None, 'am': None, 'province': None }, # UNMAPPED
+'(VLO) Cái Vồn': { 'id': 21374000, 'am': 'Nguyễn Tuấn Anh', 'province': 'Vĩnh Long' },
+'(VLO) Long Châu': { 'id': None, 'am': None, 'province': None }, # UNMAPPED
+'(VLO) Long Hồ': { 'id': None, 'am': None, 'province': None }, # UNMAPPED
+'(VLO) Phú Quới': { 'id': None, 'am': None, 'province': None }, # UNMAPPED
+'(VLO) Phước Hậu': { 'id': 22387000, 'am': 'Nguyễn Tuấn Anh', 'province': 'Vĩnh Long' },
+'(VLO) Tam Bình': { 'id': None, 'am': None, 'province': None }, # UNMAPPED
+'(VLO) Trung Thành': { 'id': 22916000, 'am': 'Nguyễn Tuấn Anh', 'province': 'Vĩnh Long' },
+'(VLO) Trà Ôn': { 'id': None, 'am': None, 'province': None }, # UNMAPPED
+'(VLO) Tân Quới': { 'id': None, 'am': None, 'province': None }, # UNMAPPED
+
+
+=== UNMAPPED BCS ===
+- (BTR) Ba Tri
+- (BTR) Bình Đại
+- (BTR) Giồng Trôm
+- (BTR) Hương Mỹ
+- (BTR) Lộc Thuận
+- (BTR) Phước Mỹ Trung
+- (BTR) Sơn Đông
+- (BTR) Thạnh Phú
+- (BTR) Tiên Thủy
+- (DTH) An Bình
+- (DTH) Cao Lãnh
+- (DTH) Hòa Long
+- (DTH) Lấp Vò
+- (DTH) Mỹ Thọ
+- (DTH) Sa Đéc
+- (DTH) Thanh Bình
+- (DTH) Tháp Mười
+- (DTH) Tràm Chim
+- (DTH) Tân Hồng
+- (DTH) Tân Nhuận Đông
+- (TGI) Chợ Gạo
+- (TGI) Cái Bè
+- (TGI) Gia Thuận
+- (TGI) Hậu Mỹ
+- (TGI) Long Tiên
+- (TGI) Mỹ Lợi
+- (TGI) Mỹ Phong
+- (TGI) Thanh Hòa
+- (TGI) Tân Phước 1
+- (TVI) Châu Thành
+- (TVI) Càng Long
+- (TVI) Cầu Kè
+- (TVI) Cầu Ngang
+- (TVI) Duyên Hải
+- (TVI) Trà Cú
+- (VLO) Cái Nhum
+- (VLO) Long Châu
+- (VLO) Long Hồ
+- (VLO) Phú Quới
+- (VLO) Tam Bình
+- (VLO) Trà Ôn
+- (VLO) Tân Quới

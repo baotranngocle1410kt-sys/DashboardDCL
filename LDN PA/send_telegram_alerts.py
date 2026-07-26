@@ -62,15 +62,20 @@ def main():
         print("No critical post offices found. All parameters are within normal ranges.")
         return
         
+    def escape_html(text):
+        if not isinstance(text, str):
+            text = str(text)
+        return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
     # 4. Format Message
-    message = f"🚨 *[BÁO CẢNH BÁO VẬN HÀNH & NHÂN SỰ DCL]* 🚨\n📅 *Ngày dữ liệu:* {latest_date_str}\n\n"
-    message += f"📊 *Chỉ số toàn vùng:*\n"
+    message = f"🚨 <b>[BÁO CẢNH BÁO VẬN HÀNH &amp; NHÂN SỰ DCL]</b> 🚨\n📅 <b>Ngày dữ liệu:</b> {latest_date_str}\n\n"
+    message += f"📊 <b>Chỉ số toàn vùng:</b>\n"
     message += f"• GTC: {kpis.get('gtc', {}).get('value', 0)*100:.2f}%\n"
     message += f"• FD (Trả): {kpis.get('fd', {}).get('value', 0)*100:.2f}%\n"
     message += f"• Backlog: {kpis.get('backlog', {}).get('value', 0):,} đơn\n"
     message += f"• Nhân sự: Thiếu {kpis.get('hr', {}).get('total_shortage_actual', 0)} shipper\n\n"
     
-    message += f"🔥 *Danh sách bưu cục bất ổn:*\n\n"
+    message += f"🔥 <b>Danh sách bưu cục bất ổn:</b>\n\n"
     for bc in critical_bcs[:10]: # limit to top 10
         change_n1 = abs(bc["gtc_change"]) * 100
         # Compare to specific post office's GTC last week if available, otherwise fallback to 90%
@@ -87,13 +92,13 @@ def main():
         
         clean_cause = bc['cause']
             
-        message += f"📍 *{bc['name']}*\n"
-        message += f"  • {bc['name']} có chỉ số GTC ngày {latest_date_str} thấp hơn ngày hôm N-1 ({yest_date_str}) {change_n1:.2f}%. So với cùng kỳ giảm {change_baseline:.2f}% do {clean_cause}, {hr_text}{tuyen_text}.\n"
-        message += f"  • AM: {bc['am']} ({bc['am_tele'] or '@chua_co_tele'})\n"
-        message += f"  • Đơn tồn >5 ngày: *{bc['backlog']} đơn*\n\n"
+        message += f"📍 <b>{escape_html(bc['name'])}</b>\n"
+        message += f"  • {escape_html(bc['name'])} có chỉ số GTC ngày {latest_date_str} thấp hơn ngày hôm N-1 ({yest_date_str}) {change_n1:.2f}%. So với cùng kỳ giảm {change_baseline:.2f}% do {escape_html(clean_cause)}, {escape_html(hr_text)}{escape_html(tuyen_text)}.\n"
+        message += f"  • AM: {escape_html(bc['am'])} ({escape_html(bc['am_tele'] or '@chua_co_tele')})\n"
+        message += f"  • Đơn tồn &gt;5 ngày: <b>{bc['backlog']} đơn</b>\n\n"
         
     if len(critical_bcs) > 10:
-        message += f"_...và {len(critical_bcs) - 10} bưu cục khác._\n\n"
+        message += f"<i>...và {len(critical_bcs) - 10} bưu cục khác.</i>\n\n"
         
     message += "👉 Đề nghị các AM và HRBP phối hợp giải tỏa backlog và tuyển bổ sung shipper gấp!"
     bc_col_idx = 0 # dummy line for formatting
@@ -103,7 +108,7 @@ def main():
     payload = {
         "chat_id": chat_id,
         "text": message,
-        "parse_mode": "Markdown"
+        "parse_mode": "HTML"
     }
     
     data_bytes = json.dumps(payload).encode('utf-8')

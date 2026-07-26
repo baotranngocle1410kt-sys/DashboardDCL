@@ -1,0 +1,280 @@
+=== Sheet: Kiểm tra ===
+
+================================================================================
+
+=== Sheet: Báo cáo Performance ===
+Found term 'Thạnh Phú' in column 'Tên Bưu cục':
+   ID Bưu cục                           Tên Bưu cục  31/05/2026 - CN  01/06/2026 - T2  02/06/2026 - T3  03/06/2026 - T4  04/06/2026 - T5  05/06/2026 - T6  06/06/2026 - T7  07/06/2026 - CN   %GTC TB  % GTC lịch sử tốt nhất  Logic: So sánh   Trạng thái  Vol cần GTC hôm nay
+49   21582000  BC QL57-Bình Thạnh-Thạnh Phú-Bến Tre         0.714119         0.658602         0.724239         0.799772         0.797571         0.814028          0.79056         0.742777  0.763549                  0.7677        0.994593  Bình thường                  178
+----------------------------------------
+Found term 'Châu Thành' in column 'Tên Bưu cục':
+   ID Bưu cục                                             Tên Bưu cục  31/05/2026 - CN  01/06/2026 - T2  02/06/2026 - T3  03/06/2026 - T4  04/06/2026 - T5  05/06/2026 - T6  06/06/2026 - T7  07/06/2026 - CN   %GTC TB  % GTC lịch sử tốt nhất  Logic: So sánh      Trạng thái  Vol cần GTC hôm nay
+1    21528000    BC 992 Đường Huyện 35-Vĩnh Kim-Châu Thành-Tiền Giang         0.354065         0.356606         0.328818         0.332144         0.323314         0.299301         0.313494         0.251927  0.312933                  0.7194        0.434992  Nằm TOP Bất ổn                 4083
+4    22101000                      BC 3/2 Thị Trấn Châu Thành-Bến Tre         0.360902         0.461967         0.499194         0.442165         0.444556         0.429204         0.340777         0.266525  0.405269                  0.7135        0.568001  Nằm TOP Bất ổn                 2476
+6    21998000                      BC 86 Tiên Thuỷ-Châu Thành-Bến Tre         0.385306         0.452605         0.490028         0.512472         0.541783         0.478905         0.446071         0.455158  0.483309                  0.7639        0.632686  Nằm TOP Bất ổn                 1093
+12   22000000                  BC Tân Nhuận Đông-Châu Thành-Đồng Tháp         0.618831         0.616088         0.631698         0.602210         0.594032         0.624493         0.553013         0.564194  0.597660                  0.7500        0.796881    Cấp cảnh báo                  306
+13   21991000  BC 88 Ấp Thân Hòa-Thân Cửu Nghĩa-Châu Thành-Tiền Giang         0.416415         0.559932         0.680697         0.523557         0.643551         0.624420         0.594273         0.342564  0.565084                  0.6858        0.823978    Cấp cảnh báo                  485
+----------------------------------------
+
+================================================================================
+
+=== Sheet: Data ĐCL ===
+Found term 'Thạnh Phú' in column 'Chi tiết':
+       Cấp Quản Lý                              Chi tiết                   Time  Volume     % Gán     % GTC  % Chuyển trả   Leadtime  Vol GTC ID Bưu cục Time Format
+432  ĐCL - Bến Tre  BC QL57-Bình Thạnh-Thạnh Phú-Bến Tre     2026-06-04 - Thứ 5     988  0.991903  0.797571      0.018219  16.424165    788.0   21582000  2026-06-04
+433  ĐCL - Bến Tre  BC QL57-Bình Thạnh-Thạnh Phú-Bến Tre     2026-06-06 - Thứ 7    1017  0.996067  0.790560      0.018682  16.295739    804.0   21582000  2026-06-06
+434  ĐCL - Bến Tre  BC QL57-Bình Thạnh-Thạnh Phú-Bến Tre     2026-06-05 - Thứ 6     941  0.991498  0.814028      0.025505  15.886991    766.0   21582000  2026-06-05
+435  ĐCL - Bến Tre  BC QL57-Bình Thạnh-Thạnh Phú-Bến Tre  2026-06-07 - Chủ Nhật    1073  0.994408  0.742777      0.018639  15.922208    797.0   21582000  2026-06-07
+436  ĐCL - Bến Tre  BC QL57-Bình Thạnh-Thạnh Phú-Bến Tre     2026-06-02 - Thứ 3    1019  0.993131  0.724239      0.023553  15.525956    738.0   21582000  2026-06-02
+----------------------------------------
+Found term 'Châu Thành' in column 'Chi tiết':
+        Cấp Quản Lý                                Chi tiết                   Time  Volume     % Gán     % GTC  % Chuyển trả   Leadtime  Vol GTC ID Bưu cục Time Format
+16  ĐCL - Đồng Tháp  BC Tân Nhuận Đông-Châu Thành-Đồng Tháp     2026-06-04 - Thứ 5    1441  0.994448  0.594032      0.044414  18.683901    856.0   22000000  2026-06-04
+17  ĐCL - Đồng Tháp  BC Tân Nhuận Đông-Châu Thành-Đồng Tháp     2026-06-06 - Thứ 7    1311  0.963387  0.553013      0.048055  17.622407    725.0   22000000  2026-06-06
+18  ĐCL - Đồng Tháp  BC Tân Nhuận Đông-Châu Thành-Đồng Tháp     2026-06-05 - Thứ 6    1478  0.965494  0.624493      0.059540  18.249184    923.0   22000000  2026-06-05
+19  ĐCL - Đồng Tháp  BC Tân Nhuận Đông-Châu Thành-Đồng Tháp  2026-06-07 - Chủ Nhật    1402  0.989301  0.564194      0.057061  17.569620    791.0   22000000  2026-06-07
+20  ĐCL - Đồng Tháp  BC Tân Nhuận Đông-Châu Thành-Đồng Tháp     2026-06-02 - Thứ 3    1325  0.995472  0.631698      0.040000  18.591127    837.0   22000000  2026-06-02
+----------------------------------------
+
+================================================================================
+
+=== Sheet: Raw ===
+Found term 'Thạnh Phú' in column 'Chi tiết':
+        Cấp Quản Lý                              Chi tiết      Loại Hàng                   Time  Volume     % Gán     % GTC
+1296  ĐCL - Bến Tre  BC QL57-Bình Thạnh-Thạnh Phú-Bến Tre  Hàng Mới Ca 1     2026-06-06 - Thứ 7     791  0.996207  0.847029
+1297  ĐCL - Bến Tre  BC QL57-Bình Thạnh-Thạnh Phú-Bến Tre  Hàng Mới Ca 1     2026-06-01 - Thứ 2     490  0.989796  0.751020
+1298  ĐCL - Bến Tre  BC QL57-Bình Thạnh-Thạnh Phú-Bến Tre  Hàng Mới Ca 1  2026-05-31 - Chủ Nhật     495  0.997980  0.826263
+1299  ĐCL - Bến Tre  BC QL57-Bình Thạnh-Thạnh Phú-Bến Tre  Hàng Mới Ca 1     2026-06-02 - Thứ 3     769  0.998700  0.827048
+1300  ĐCL - Bến Tre  BC QL57-Bình Thạnh-Thạnh Phú-Bến Tre  Hàng Mới Ca 1  2026-06-07 - Chủ Nhật     872  0.996560  0.805046
+----------------------------------------
+Found term 'Châu Thành' in column 'Chi tiết':
+        Cấp Quản Lý                                Chi tiết      Loại Hàng                   Time  Volume     % Gán     % GTC
+48  ĐCL - Đồng Tháp  BC Tân Nhuận Đông-Châu Thành-Đồng Tháp  Hàng Mới Ca 1     2026-06-06 - Thứ 7     761  0.952694  0.747700
+49  ĐCL - Đồng Tháp  BC Tân Nhuận Đông-Châu Thành-Đồng Tháp  Hàng Mới Ca 1     2026-06-01 - Thứ 2     579  0.998273  0.727116
+50  ĐCL - Đồng Tháp  BC Tân Nhuận Đông-Châu Thành-Đồng Tháp  Hàng Mới Ca 1  2026-05-31 - Chủ Nhật     721  0.998613  0.730929
+51  ĐCL - Đồng Tháp  BC Tân Nhuận Đông-Châu Thành-Đồng Tháp  Hàng Mới Ca 1     2026-06-02 - Thứ 3     845  0.996450  0.714793
+52  ĐCL - Đồng Tháp  BC Tân Nhuận Đông-Châu Thành-Đồng Tháp  Hàng Mới Ca 1  2026-06-07 - Chủ Nhật     796  0.998744  0.750000
+----------------------------------------
+
+================================================================================
+
+=== Sheet: Hàng ca 1 + Hàng tồn (Ngày N) ===
+Found term 'An Hội' in column 'Phường/xã':
+     Mã bưu cục  COUNTA of Mã đơn hàng  Unnamed: 2  Unnamed: 3  Unnamed: 4  Unnamed: 5  Unnamed: 6  Mã bưu cục.1      Mã đơn hàng Loại đơn Khách hàng                       Phường/xã                    Trạng thái Thời gian tồn đọng
+434         NaN                    NaN         NaN         NaN         NaN         NaN         NaN      20880000  VNGH80204256610     Giao        TTS  Xã Tân An Hội, Huyện Mang Thít  Chưa có chuyến đi trong ngày                0_6
+456         NaN                    NaN         NaN         NaN         NaN         NaN         NaN      20880000         GYHGFVDC     Giao      OTHER  Xã Tân An Hội, Huyện Mang Thít  Chưa có chuyến đi trong ngày                0_6
+459         NaN                    NaN         NaN         NaN         NaN         NaN         NaN      20880000         GYH9KGQ7     Giao      OTHER  Xã Tân An Hội, Huyện Mang Thít  Chưa có chuyến đi trong ngày                0_6
+719         NaN                    NaN         NaN         NaN         NaN         NaN         NaN      20880000  VNGH80677356601     Giao        TTS  Xã Tân An Hội, Huyện Mang Thít  Chưa có chuyến đi trong ngày                0_6
+1067        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      20880000  VNGH80674866609     Giao        TTS  Xã Tân An Hội, Huyện Mang Thít  Chưa có chuyến đi trong ngày                0_6
+----------------------------------------
+Found term 'Sơn Đông' in column 'Phường/xã':
+      Mã bưu cục  COUNTA of Mã đơn hàng  Unnamed: 2  Unnamed: 3  Unnamed: 4  Unnamed: 5  Unnamed: 6  Mã bưu cục.1      Mã đơn hàng Loại đơn Khách hàng                       Phường/xã                    Trạng thái Thời gian tồn đọng
+31425        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      21998000         GYHV7V33     Giao      OTHER  Xã Sơn Đông, Thành phố Bến Tre  Chưa có chuyến đi trong ngày                0_6
+31430        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      21998000         GYHGUUL4     Giao     SHOPEE  Xã Sơn Đông, Thành phố Bến Tre  Chưa có chuyến đi trong ngày                0_6
+31432        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      21998000         GYHC69Q4     Giao     SHOPEE  Xã Sơn Đông, Thành phố Bến Tre  Chưa có chuyến đi trong ngày                0_6
+31564        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      21998000         GYH94GA4     Giao     SHOPEE  Xã Sơn Đông, Thành phố Bến Tre  Chưa có chuyến đi trong ngày                0_6
+31747        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      21998000  VNGH80835606701     Giao        TTS  Xã Sơn Đông, Thành phố Bến Tre  Chưa có chuyến đi trong ngày                0_6
+----------------------------------------
+Found term 'Đồng Sơn' in column 'Phường/xã':
+     Mã bưu cục  COUNTA of Mã đơn hàng  Unnamed: 2  Unnamed: 3  Unnamed: 4  Unnamed: 5  Unnamed: 6  Mã bưu cục.1      Mã đơn hàng Loại đơn Khách hàng                       Phường/xã                    Trạng thái Thời gian tồn đọng
+1316        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      20349000         GYHCDHQP     Giao      OTHER  Xã Đồng Sơn, Huyện Gò Công Tây  Chưa có chuyến đi trong ngày                0_6
+2020        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      20349000  VNGH80301276608     Giao        TTS  Xã Đồng Sơn, Huyện Gò Công Tây  Chưa có chuyến đi trong ngày                0_6
+2105        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      20349000         GYH78M39     Giao      OTHER  Xã Đồng Sơn, Huyện Gò Công Tây  Chưa có chuyến đi trong ngày                0_6
+2449        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      20349000         GYHVQHH3     Giao      OTHER  Xã Đồng Sơn, Huyện Gò Công Tây  Chưa có chuyến đi trong ngày                0_6
+3273        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      20349000  VNGH80318596609     Giao        TTS  Xã Đồng Sơn, Huyện Gò Công Tây  Chưa có chuyến đi trong ngày                0_6
+----------------------------------------
+Found term 'Đạo Thạnh' in column 'Phường/xã':
+     Mã bưu cục  COUNTA of Mã đơn hàng  Unnamed: 2  Unnamed: 3  Unnamed: 4  Unnamed: 5  Unnamed: 6  Mã bưu cục.1 Mã đơn hàng Loại đơn Khách hàng                       Phường/xã                    Trạng thái Thời gian tồn đọng
+745         NaN                    NaN         NaN         NaN         NaN         NaN         NaN          1199    GYHVPARM      Lấy     SHOPEE  Xã Đạo Thạnh, Thành phố Mỹ Tho  Chưa có chuyến đi trong ngày                0_6
+4736        NaN                    NaN         NaN         NaN         NaN         NaN         NaN          1199    GYH9NT8B     Giao     SHOPEE  Xã Đạo Thạnh, Thành phố Mỹ Tho  Chưa có chuyến đi trong ngày                0_6
+4749        NaN                    NaN         NaN         NaN         NaN         NaN         NaN          1199    GYH9K9DG     Giao     SHOPEE  Xã Đạo Thạnh, Thành phố Mỹ Tho  Chưa có chuyến đi trong ngày                0_6
+4751        NaN                    NaN         NaN         NaN         NaN         NaN         NaN          1199    GYH9PBVP     Giao     SHOPEE  Xã Đạo Thạnh, Thành phố Mỹ Tho  Chưa có chuyến đi trong ngày                0_6
+4752        NaN                    NaN         NaN         NaN         NaN         NaN         NaN          1199    GYHVLCK7     Giao      OTHER  Xã Đạo Thạnh, Thành phố Mỹ Tho  Chưa có chuyến đi trong ngày                0_6
+----------------------------------------
+Found term 'Tràm Chim' in column 'Phường/xã':
+    Mã bưu cục  COUNTA of Mã đơn hàng  Unnamed: 2  Unnamed: 3  Unnamed: 4  Unnamed: 5  Unnamed: 6  Mã bưu cục.1      Mã đơn hàng Loại đơn Khách hàng                           Phường/xã                    Trạng thái Thời gian tồn đọng
+88         NaN                    NaN         NaN         NaN         NaN         NaN         NaN          2498  VNGH80166306702      Lấy        TTS  Thị trấn Tràm Chim, Huyện Tam Nông  Chưa có chuyến đi trong ngày                0_6
+89         NaN                    NaN         NaN         NaN         NaN         NaN         NaN          2498  VNGH80815016702      Lấy        TTS  Thị trấn Tràm Chim, Huyện Tam Nông  Chưa có chuyến đi trong ngày                0_6
+93         NaN                    NaN         NaN         NaN         NaN         NaN         NaN          2498  VNGH80922716702      Lấy        TTS  Thị trấn Tràm Chim, Huyện Tam Nông  Chưa có chuyến đi trong ngày                0_6
+95         NaN                    NaN         NaN         NaN         NaN         NaN         NaN          2498  VNGH80307716702      Lấy        TTS  Thị trấn Tràm Chim, Huyện Tam Nông  Chưa có chuyến đi trong ngày                0_6
+130        NaN                    NaN         NaN         NaN         NaN         NaN         NaN          2498         GYH99VU9     Giao      OTHER  Thị trấn Tràm Chim, Huyện Tam Nông  Chưa có chuyến đi trong ngày                0_6
+----------------------------------------
+Found term 'Phú Túc' in column 'Phường/xã':
+      Mã bưu cục  COUNTA of Mã đơn hàng  Unnamed: 2  Unnamed: 3  Unnamed: 4  Unnamed: 5  Unnamed: 6  Mã bưu cục.1      Mã đơn hàng Loại đơn Khách hàng                     Phường/xã                    Trạng thái Thời gian tồn đọng
+31429        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      21998000  VNGH80418396609     Giao        TTS  Xã Phú Túc, Huyện Châu Thành  Chưa có chuyến đi trong ngày                0_6
+31434        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      21998000         GYHCAAAY     Giao     SHOPEE  Xã Phú Túc, Huyện Châu Thành  Chưa có chuyến đi trong ngày                0_6
+31436        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      21998000         GYHUMVAA     Giao     SHOPEE  Xã Phú Túc, Huyện Châu Thành  Chưa có chuyến đi trong ngày                0_6
+31887        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      21998000  VNGH80774536609     Giao        TTS  Xã Phú Túc, Huyện Châu Thành  Chưa có chuyến đi trong ngày                0_6
+32055        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      21998000         GYHLTCVB     Giao      OTHER  Xã Phú Túc, Huyện Châu Thành  Chưa có chuyến đi trong ngày                0_6
+----------------------------------------
+Found term 'Tân Quới' in column 'Phường/xã':
+     Mã bưu cục  COUNTA of Mã đơn hàng  Unnamed: 2  Unnamed: 3  Unnamed: 4  Unnamed: 5  Unnamed: 6  Mã bưu cục.1      Mã đơn hàng Loại đơn Khách hàng                      Phường/xã                    Trạng thái Thời gian tồn đọng
+938         NaN                    NaN         NaN         NaN         NaN         NaN         NaN      20139000         GYH7978B     Giao      OTHER  Xã Tân Quới, Huyện Thanh Bình  Chưa có chuyến đi trong ngày                0_6
+1123        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      20731000         GYH9TRWV     Giao      OTHER    Xã Tân Quới, Huyện Bình Tân  Chưa có chuyến đi trong ngày                0_6
+1368        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      20731000  VNGH80239356609     Giao        TTS    Xã Tân Quới, Huyện Bình Tân  Chưa có chuyến đi trong ngày                0_6
+1420        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      20139000  VNGH80398256610     Giao        TTS  Xã Tân Quới, Huyện Thanh Bình  Chưa có chuyến đi trong ngày                0_6
+1462        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      20731000  VNGH80941316610     Giao        TTS    Xã Tân Quới, Huyện Bình Tân  Chưa có chuyến đi trong ngày                0_6
+----------------------------------------
+Found term 'Phú Quới' in column 'Phường/xã':
+      Mã bưu cục  COUNTA of Mã đơn hàng  Unnamed: 2  Unnamed: 3  Unnamed: 4  Unnamed: 5  Unnamed: 6  Mã bưu cục.1      Mã đơn hàng Loại đơn Khách hàng                   Phường/xã                    Trạng thái Thời gian tồn đọng
+25230        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      21665000         GYHU7XN8     Giao      OTHER  Xã Phú Quới, Huyện Long Hồ  Chưa có chuyến đi trong ngày                0_6
+25261        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      21665000  VNGH80470576701      Lấy        TTS  Xã Phú Quới, Huyện Long Hồ  Chưa có chuyến đi trong ngày                0_6
+25514        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      21665000  VNGH80087446602     Giao        TTS  Xã Phú Quới, Huyện Long Hồ  Chưa có chuyến đi trong ngày                0_6
+25616        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      21665000         GYHUU6RE     Giao      OTHER  Xã Phú Quới, Huyện Long Hồ  Chưa có chuyến đi trong ngày                0_6
+25623        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      21665000  VNGH80819906606     Giao        TTS  Xã Phú Quới, Huyện Long Hồ  Chưa có chuyến đi trong ngày                0_6
+----------------------------------------
+Found term 'Thanh Hòa' in column 'Phường/xã':
+      Mã bưu cục  COUNTA of Mã đơn hàng  Unnamed: 2  Unnamed: 3  Unnamed: 4  Unnamed: 5  Unnamed: 6  Mã bưu cục.1      Mã đơn hàng Loại đơn Khách hàng                     Phường/xã                    Trạng thái Thời gian tồn đọng
+22186        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      21559000         GYHCPQHN     Giao     SHOPEE  Xã Thanh Hòa, Thị xã Cai Lậy  Đang có chuyến đi trong ngày                0_6
+22290        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      21559000         GYH9EB9L     Giao      OTHER  Xã Thanh Hòa, Thị xã Cai Lậy  Đang có chuyến đi trong ngày                0_6
+22695        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      21559000  VNGH80571986609     Giao        TTS  Xã Thanh Hòa, Thị xã Cai Lậy  Đang có chuyến đi trong ngày                0_6
+22737        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      21559000         GYH96P8L     Giao     SHOPEE  Xã Thanh Hòa, Thị xã Cai Lậy  Đang có chuyến đi trong ngày                0_6
+24874        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      21559000  VNGH80056106609     Giao        TTS  Xã Thanh Hòa, Thị xã Cai Lậy  Đang có chuyến đi trong ngày                0_6
+----------------------------------------
+Found term 'Long Tiên' in column 'Phường/xã':
+      Mã bưu cục  COUNTA of Mã đơn hàng  Unnamed: 2  Unnamed: 3  Unnamed: 4  Unnamed: 5  Unnamed: 6  Mã bưu cục.1      Mã đơn hàng Loại đơn Khách hàng                    Phường/xã                    Trạng thái Thời gian tồn đọng
+17169        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      21313000  VNGH80874616701     Giao        TTS  Xã Long Tiên, Huyện Cai Lậy  Chưa có chuyến đi trong ngày                0_6
+17376        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      21313000  VNGH80844996609     Giao        TTS  Xã Long Tiên, Huyện Cai Lậy  Chưa có chuyến đi trong ngày                0_6
+17389        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      21313000         GYHG9VYN     Giao     SHOPEE  Xã Long Tiên, Huyện Cai Lậy  Chưa có chuyến đi trong ngày                0_6
+17455        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      21313000         GYHUTNR8     Giao     SHOPEE  Xã Long Tiên, Huyện Cai Lậy  Chưa có chuyến đi trong ngày                0_6
+17927        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      21313000         GYH9UXUP     Giao     SHOPEE  Xã Long Tiên, Huyện Cai Lậy  Chưa có chuyến đi trong ngày                0_6
+----------------------------------------
+Found term 'Thạnh Phú' in column 'Phường/xã':
+    Mã bưu cục  COUNTA of Mã đơn hàng  Unnamed: 2  Unnamed: 3  Unnamed: 4  Unnamed: 5  Unnamed: 6  Mã bưu cục.1 Mã đơn hàng Loại đơn Khách hàng                            Phường/xã                    Trạng thái Thời gian tồn đọng
+379        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      20748000    GYHVDPNM      Lấy     SHOPEE           Xã Thạnh Phú, Huyện Cầu Kè  Đang có chuyến đi trong ngày                0_6
+380        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      20748000    GYHVDPF9      Lấy     SHOPEE           Xã Thạnh Phú, Huyện Cầu Kè  Đang có chuyến đi trong ngày                0_6
+383        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      20153000    GYHVP487      Lấy     SHOPEE  Xã Thạnh Phú Đông, Huyện Giồng Trôm  Chưa có chuyến đi trong ngày                0_6
+384        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      20153000    GYHVP3CG      Lấy     SHOPEE  Xã Thạnh Phú Đông, Huyện Giồng Trôm  Chưa có chuyến đi trong ngày                0_6
+713        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      20153000    GYH9CMP9     Giao      OTHER  Xã Thạnh Phú Đông, Huyện Giồng Trôm  Chưa có chuyến đi trong ngày                0_6
+----------------------------------------
+Found term 'Tiên Thủy' in column 'Phường/xã':
+      Mã bưu cục  COUNTA of Mã đơn hàng  Unnamed: 2  Unnamed: 3  Unnamed: 4  Unnamed: 5  Unnamed: 6  Mã bưu cục.1      Mã đơn hàng Loại đơn Khách hàng                       Phường/xã                    Trạng thái Thời gian tồn đọng
+31423        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      21998000         GYHGHK93     Giao      OTHER  Xã Tiên Thủy, Huyện Châu Thành  Chưa có chuyến đi trong ngày                0_6
+31426        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      21998000  VNGH80982276608     Giao        TTS  Xã Tiên Thủy, Huyện Châu Thành  Chưa có chuyến đi trong ngày                0_6
+31427        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      21998000         GYH9UGXE     Giao     SHOPEE  Xã Tiên Thủy, Huyện Châu Thành  Chưa có chuyến đi trong ngày                0_6
+31433        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      21998000         GYH9PNUF     Giao     SHOPEE  Xã Tiên Thủy, Huyện Châu Thành  Chưa có chuyến đi trong ngày                0_6
+31437        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      21998000  VNGH80433676609     Giao        TTS  Xã Tiên Thủy, Huyện Châu Thành  Chưa có chuyến đi trong ngày                0_6
+----------------------------------------
+Found term 'Long Thuận' in column 'Phường/xã':
+     Mã bưu cục  COUNTA of Mã đơn hàng  Unnamed: 2  Unnamed: 3  Unnamed: 4  Unnamed: 5  Unnamed: 6  Mã bưu cục.1      Mã đơn hàng Loại đơn Khách hàng                          Phường/xã                    Trạng thái Thời gian tồn đọng
+920         NaN                    NaN         NaN         NaN         NaN         NaN         NaN          1933  VNGH80460156610     Giao        TTS  Xã Long Thuận, Thành phố Hồng Ngự  Chưa có chuyến đi trong ngày                0_6
+1251        NaN                    NaN         NaN         NaN         NaN         NaN         NaN          1933  VNGH80950466610     Giao        TTS  Xã Long Thuận, Thành phố Hồng Ngự  Chưa có chuyến đi trong ngày                0_6
+1390        NaN                    NaN         NaN         NaN         NaN         NaN         NaN          1933  VNGH80726516607     Giao        TTS  Xã Long Thuận, Thành phố Hồng Ngự  Chưa có chuyến đi trong ngày                0_6
+2329        NaN                    NaN         NaN         NaN         NaN         NaN         NaN          1933         GYHCTKXP     Giao      OTHER  Xã Long Thuận, Thành phố Hồng Ngự  Chưa có chuyến đi trong ngày                0_6
+2351        NaN                    NaN         NaN         NaN         NaN         NaN         NaN          1933         GYH76NW4     Giao      OTHER  Xã Long Thuận, Thành phố Hồng Ngự  Chưa có chuyến đi trong ngày                0_6
+----------------------------------------
+Found term 'Cái Nhum' in column 'Phường/xã':
+    Mã bưu cục  COUNTA of Mã đơn hàng  Unnamed: 2  Unnamed: 3  Unnamed: 4  Unnamed: 5  Unnamed: 6  Mã bưu cục.1      Mã đơn hàng Loại đơn Khách hàng                           Phường/xã                    Trạng thái Thời gian tồn đọng
+423        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      20880000  VNGH80979656608     Giao        TTS  Thị trấn Cái Nhum, Huyện Mang Thít  Đang có chuyến đi trong ngày                0_6
+428        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      20880000         GYHG8HDR     Giao      OTHER  Thị trấn Cái Nhum, Huyện Mang Thít  Đang có chuyến đi trong ngày                0_6
+441        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      20880000         GYHGAMDG     Giao     SHOPEE  Thị trấn Cái Nhum, Huyện Mang Thít  Đang có chuyến đi trong ngày                0_6
+442        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      20880000  VNGH80020956603     Giao        TTS  Thị trấn Cái Nhum, Huyện Mang Thít  Đang có chuyến đi trong ngày                0_6
+447        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      20880000  VNGH80586816609     Giao        TTS  Thị trấn Cái Nhum, Huyện Mang Thít  Đang có chuyến đi trong ngày                0_6
+----------------------------------------
+Found term 'Châu Thành' in column 'Phường/xã':
+      Mã bưu cục  COUNTA of Mã đơn hàng  Unnamed: 2  Unnamed: 3  Unnamed: 4  Unnamed: 5  Unnamed: 6  Mã bưu cục.1      Mã đơn hàng Loại đơn Khách hàng                       Phường/xã                    Trạng thái Thời gian tồn đọng
+5971         NaN                    NaN         NaN         NaN         NaN         NaN         NaN          1199  VNGH80254606606     Giao        TTS  Xã Thạnh Phú, Huyện Châu Thành  Chưa có chuyến đi trong ngày                0_6
+7827         NaN                    NaN         NaN         NaN         NaN         NaN         NaN          1933  VNGH80895536604     Giao        TTS    Xã An Hiệp, Huyện Châu Thành  Chưa có chuyến đi trong ngày                0_6
+15336        NaN                    NaN         NaN         NaN         NaN         NaN         NaN          1199  VNGH80830496609     Giao        TTS  Xã Thạnh Phú, Huyện Châu Thành  Chưa có chuyến đi trong ngày                0_6
+19067        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      21528000  VNGH80465516702      Lấy        TTS   Xã Vĩnh Kim, Huyện Châu Thành  Chưa có chuyến đi trong ngày                0_6
+19068        NaN                    NaN         NaN         NaN         NaN         NaN         NaN      21528000  VNGH80262516702      Lấy        TTS   Xã Vĩnh Kim, Huyện Châu Thành  Chưa có chuyến đi trong ngày                0_6
+----------------------------------------
+
+================================================================================
+
+=== Sheet: Pivot Table 7 ===
+
+================================================================================
+
+=== Sheet: Lịch sử ===
+Found term 'Thạnh Phú' in column 'Tên Bưu cục':
+            Ngày ghi nhận ID Bưu cục                           Tên Bưu cục  %GTC 7 ngày (1)  % GTC lịch sử tốt nhất (2)  Logic: So sánh (1) / (2)    Trạng thái
+68    2025-04-12 00:00:00   21582000  BC QL57-Bình Thạnh-Thạnh Phú-Bến Tre         0.628758                      0.7705                  0.816039  Cấp cảnh báo
+1246           28/02/2026   21582000  BC QL57-Bình Thạnh-Thạnh Phú-Bến Tre         0.573283                      0.7677                  0.746754  Cấp cảnh báo
+1271  2026-01-03 00:00:00   21582000  BC QL57-Bình Thạnh-Thạnh Phú-Bến Tre         0.568519                      0.7677                  0.740549  Cấp cảnh báo
+1295  2026-02-03 00:00:00   21582000  BC QL57-Bình Thạnh-Thạnh Phú-Bến Tre         0.587330                      0.7677                  0.765051  Cấp cảnh báo
+1317  2026-03-03 00:00:00   21582000  BC QL57-Bình Thạnh-Thạnh Phú-Bến Tre         0.597411                      0.7677                  0.778183  Cấp cảnh báo
+----------------------------------------
+Found term 'Châu Thành' in column 'Tên Bưu cục':
+   Ngày ghi nhận ID Bưu cục                                           Tên Bưu cục  %GTC 7 ngày (1)  % GTC lịch sử tốt nhất (2)  Logic: So sánh (1) / (2)    Trạng thái
+8     26/11/2025   22101000                    BC 3/2 Thị Trấn Châu Thành-Bến Tre         0.594385                      0.7135                  0.833055  Cấp cảnh báo
+16    27/11/2025   22101000                    BC 3/2 Thị Trấn Châu Thành-Bến Tre         0.596375                      0.7135                  0.835844  Cấp cảnh báo
+17    27/11/2025   21528000  BC 992 Đường Huyện 35-Vĩnh Kim-Châu Thành-Tiền Giang         0.609528                      0.7194                  0.847273  Cấp cảnh báo
+22    28/11/2025   22101000                    BC 3/2 Thị Trấn Châu Thành-Bến Tre         0.599105                      0.7135                  0.839671  Cấp cảnh báo
+27    29/11/2025   21528000  BC 992 Đường Huyện 35-Vĩnh Kim-Châu Thành-Tiền Giang         0.607775                      0.7194                  0.844836  Cấp cảnh báo
+----------------------------------------
+
+================================================================================
+
+=== Sheet: GTC hiện tại ===
+Found term 'Thạnh Phú' in column 'Bưu cục':
+                                      Bưu cục  SUM of TongDonGTC
+45  Bưu Cục QL57-Bình Thạnh-Thạnh Phú-Bến Tre                  0
+----------------------------------------
+Found term 'Châu Thành' in column 'Bưu cục':
+                                                        Bưu cục  SUM of TongDonGTC
+6                       Bưu Cục 3/2 Thị Trấn Châu Thành-Bến Tre                  0
+11                      Bưu Cục 86 Tiên Thuỷ-Châu Thành-Bến Tre                  0
+13  Bưu Cục 88 Ấp Thân Hòa-Thân Cửu Nghĩa-Châu Thành-Tiền Giang                  0
+16    Bưu Cục 992 Đường Huyện 35-Vĩnh Kim-Châu Thành-Tiền Giang                  0
+30          Bưu Cục Khóm 4 TT Châu Thành-Xã Châu Thành-Trà Vinh                  0
+----------------------------------------
+
+================================================================================
+
+=== Sheet: Hướng dẫn ===
+
+================================================================================
+
+=== Sheet: CoCauVung ===
+Found term 'Thạnh Phú' in column 'warehouse_name':
+   warehouse_id                             warehouse_name province_name           am_name    am_id      am_tele
+9      21582000  Bưu Cục QL57-Bình Thạnh-Thạnh Phú-Bến Tre       Bến Tre  Huỳnh Phương Duy  3147922  @DUY_AM_BTE
+----------------------------------------
+Found term 'Châu Thành' in column 'warehouse_name':
+    warehouse_id                                               warehouse_name province_name           am_name    am_id        am_tele
+4       22101000                      Bưu Cục 3/2 Thị Trấn Châu Thành-Bến Tre       Bến Tre     Lâm Xuân Vinh   200407  @Vinhlxbentre
+5       21998000                      Bưu Cục 86 Tiên Thuỷ-Châu Thành-Bến Tre       Bến Tre  Huỳnh Quốc Trung  3166061   @HuynhQTrung
+15      22000000                  Bưu Cục Tân Nhuận Đông-Châu Thành-Đồng Tháp     Đồng Tháp      Lý Quài Nhân  3003753    @lynhantv92
+23      21991000  Bưu Cục 88 Ấp Thân Hòa-Thân Cửu Nghĩa-Châu Thành-Tiền Giang    Tiền Giang   Nguyễn Anh Tùng  3155955    @jimmytho91
+25      21528000    Bưu Cục 992 Đường Huyện 35-Vĩnh Kim-Châu Thành-Tiền Giang    Tiền Giang   Nguyễn Anh Tùng  3155955    @jimmytho91
+----------------------------------------
+
+================================================================================
+
+=== Sheet: Theo dõi BC bể ===
+Found term 'Thạnh Phú' in column 'Bưu cục':
+                                  Bưu cục                   Ngày  Hàng mới về trong ngày  Hàng tồn cũ     Gán  Chưa gán    GTC      %GTC  Chưa GTC (Tồn cuối ngày)
+352  BC QL57-Bình Thạnh-Thạnh Phú-Bến Tre  2026-05-31 - Chủ Nhật                     556          362   916.0       2.0  630.0  0.686275                     288.0
+353  BC QL57-Bình Thạnh-Thạnh Phú-Bến Tre     2026-06-01 - Thứ 2                     529          254   768.0      15.0  493.0  0.629630                     290.0
+354  BC QL57-Bình Thạnh-Thạnh Phú-Bến Tre     2026-06-02 - Thứ 3                     840          250  1082.0       8.0  748.0  0.686239                     342.0
+355  BC QL57-Bình Thạnh-Thạnh Phú-Bến Tre     2026-06-03 - Thứ 4                     662          301   960.0       3.0  714.0  0.741433                     249.0
+356  BC QL57-Bình Thạnh-Thạnh Phú-Bến Tre     2026-06-04 - Thứ 5                     770          218   980.0       8.0  788.0  0.797571                     200.0
+----------------------------------------
+Found term 'Châu Thành' in column 'Bưu cục':
+                               Bưu cục                   Ngày  Hàng mới về trong ngày  Hàng tồn cũ     Gán  Chưa gán    GTC      %GTC  Chưa GTC (Tồn cuối ngày)
+48  BC 3/2 Thị Trấn Châu Thành-Bến Tre  2026-05-31 - Chủ Nhật                     950          781  1033.0     698.0  583.0  0.336800                    1148.0
+49  BC 3/2 Thị Trấn Châu Thành-Bến Tre     2026-06-01 - Thứ 2                     651         1096  1282.0     465.0  748.0  0.428163                     999.0
+50  BC 3/2 Thị Trấn Châu Thành-Bến Tre     2026-06-02 - Thứ 3                    1194          915  1583.0     526.0  930.0  0.440967                    1179.0
+51  BC 3/2 Thị Trấn Châu Thành-Bến Tre     2026-06-03 - Thứ 4                    1044         1086  1218.0     912.0  776.0  0.364319                    1354.0
+52  BC 3/2 Thị Trấn Châu Thành-Bến Tre     2026-06-04 - Thứ 5                     966         1270  1727.0     509.0  887.0  0.396691                    1349.0
+----------------------------------------
+
+================================================================================
+
+=== Sheet: %GTC tốt nhất ===
+Found term 'Thạnh Phú' in column 'BC':
+   Vùng     Tỉnh                                    BC       %     Tuàn      Mốc
+44  ĐCL  Bến Tre  BC QL57-Bình Thạnh-Thạnh Phú-Bến Tre  0.7677  2025/33  0.53739
+----------------------------------------
+Found term 'Châu Thành' in column 'BC':
+   Vùng        Tỉnh                                                      BC       %     Tuàn      Mốc
+6   ĐCL     Bến Tre                      BC 3/2 Thị Trấn Châu Thành-Bến Tre  0.7135  2025/34  0.49945
+11  ĐCL     Bến Tre                      BC 86 Tiên Thuỷ-Châu Thành-Bến Tre  0.7639  2025/33  0.53473
+13  ĐCL  Tiền Giang  BC 88 Ấp Thân Hòa-Thân Cửu Nghĩa-Châu Thành-Tiền Giang  0.6858  2025/49  0.48006
+15  ĐCL  Tiền Giang    BC 992 Đường Huyện 35-Vĩnh Kim-Châu Thành-Tiền Giang  0.7194  2025/42  0.50358
+29  ĐCL    Trà Vinh          BC Khóm 4 TT Châu Thành-Xã Châu Thành-Trà Vinh  0.7977  2026/17  0.55839
+----------------------------------------
+
+================================================================================
+

@@ -1,0 +1,23 @@
+Total DCL backlog rows: 3595
+Matched count: 2102
+Unmatched count: 1493
+
+Unmatched items samples (first 50 unique):
+- (TGI) Tân Phước 1 : No match in province Tiền Giang
+- (VLO) Long Châu : No match in province Vĩnh Long
+- (TGI) Đồng Sơn : No match in province Tiền Giang
+- (DTH) An Bình : No match in province Đồng Tháp
+- (VLO) Tân Quới : No match in province Vĩnh Long
+- (VLO) Phú Quới : No match in province Vĩnh Long
+- (TGI) Thanh Hòa : No match in province Tiền Giang
+- (TGI) Long Tiên : No match in province Tiền Giang
+- (BTR) Sơn Đông : No match in province Bến Tre
+- (TGI) Mỹ Phong : No match in province Tiền Giang
+- (TGI) Đạo Thạnh : No match in province Tiền Giang
+- (BTR) Phú Túc : No match in province Bến Tre
+- (TGI) Thạnh Phú : No match in province Tiền Giang
+- (BTR) Tiên Thủy : No match in province Bến Tre
+- (BTR) An Hội : No match in province Bến Tre
+- (DTH) Tràm Chim : No match in province Đồng Tháp
+- (TGI) Long Thuận : No match in province Tiền Giang
+- (VLO) Cái Nhum : No match in province Vĩnh Long

@@ -1,0 +1,163 @@
+=== SEARCH FOR UNMATCHED BACKLOG BCS IN DATA ĐCL ===
+
+Searching for 'An Hội':
+  - Match: 'BC Tỉnh Lộ DT848-Xã Mỹ An Hưng-Đồng Tháp' | BC IDs: [22797000] | AMs: ['Lê Minh Tuấn']
+--------------------------------------------------------------------------------
+Searching for 'Sơn Đông':
+  - Match: 'BC Tân Nhuận Đông-Châu Thành-Đồng Tháp' | BC IDs: [22000000] | AMs: ['Lý Quài Nhân']
+  - Match: 'BC Sơn Thông-Phường 9-Tp.Trà Vinh-Trà Vinh' | BC IDs: [21620000] | AMs: ['Nguyễn Thành Huy']
+--------------------------------------------------------------------------------
+Searching for 'Đồng Sơn':
+  - Match: 'BC Ấp Bình Hiệp A-Xã Lấp Vò-Đồng Tháp' | BC IDs: [22789000] | AMs: ['Lý Quài Nhân']
+  - Match: 'BC Tỉnh Lộ DT848-Xã Mỹ An Hưng-Đồng Tháp' | BC IDs: [22797000] | AMs: ['Lê Minh Tuấn']
+  - Match: 'BC Tân Nhuận Đông-Châu Thành-Đồng Tháp' | BC IDs: [22000000] | AMs: ['Lý Quài Nhân']
+  - Match: 'BC Tam Nông-Đồng Tháp' | BC IDs: [2498] | AMs: ['Ngô Phan Mỹ Tú']
+  - Match: 'BC Quốc Lộ 54-Xã Lai Vung-Đồng Tháp' | BC IDs: [22877000] | AMs: ['Lý Quài Nhân']
+  - Match: 'BC QL80-Xã Hòa Long-Đồng Tháp' | BC IDs: [22372000] | AMs: ['Lý Quài Nhân']
+  - Match: 'BC QL 30-Thanh Bình-Đồng Tháp' | BC IDs: [20139000] | AMs: ['Ngô Phan Mỹ Tú']
+  - Match: 'BC Mỹ Thọ-Trần Quang Khải-Cao Lãnh-Đồng Tháp' | BC IDs: [22080000] | AMs: ['Nguyễn Việt Tới']
+  - Match: 'BC Khóm 3 Trần Hưng Đạo-Xã Tháp Mười-Đồng Tháp' | BC IDs: [22461000] | AMs: ['Lê Minh Tuấn']
+  - Match: 'BC Hồng Ngự-Đồng Tháp' | BC IDs: [1933] | AMs: ['Ngô Phan Mỹ Tú']
+  - Match: 'BC DT846 Phương Trà-Xã Ba Sao-Đồng Tháp' | BC IDs: [22812000] | AMs: ['Nguyễn Việt Tới']
+  - Match: 'BC 286 Nguyễn Huệ-Tân Hồng-Đồng Tháp' | BC IDs: [20861000] | AMs: ['Ngô Phan Mỹ Tú']
+  - Match: 'BC 19 Đường DT848-Sa Đéc-Đồng Tháp' | BC IDs: [22920000] | AMs: ['Lý Quài Nhân']
+  - Match: 'BC 12-14 Bà Triệu-Cao Lãnh-Đồng Tháp' | BC IDs: [1083] | AMs: ['Nguyễn Việt Tới']
+  - Match: 'BC Sơn Thông-Phường 9-Tp.Trà Vinh-Trà Vinh' | BC IDs: [21620000] | AMs: ['Nguyễn Thành Huy']
+--------------------------------------------------------------------------------
+Searching for 'Đạo Thạnh':
+  - Match: 'BC Khóm 3 Trần Hưng Đạo-Xã Tháp Mười-Đồng Tháp' | BC IDs: [22461000] | AMs: ['Lê Minh Tuấn']
+  - Match: 'BC QL57-Bình Thạnh-Thạnh Phú-Bến Tre' | BC IDs: [21582000] | AMs: ['Huỳnh Phương Duy']
+--------------------------------------------------------------------------------
+Searching for 'Tràm Chim':
+  No match found!
+--------------------------------------------------------------------------------
+Searching for 'Phú Túc':
+  - Match: 'BC Ấp Cây Hẹ-Phú Cần-Tiểu Cần-Trà Vinh' | BC IDs: [21563000] | AMs: ['Nguyễn Thành Huy']
+  - Match: 'BC Ấp Hậu Mỹ Phú 1-Cái Bè-Tiền Giang' | BC IDs: [20776000] | AMs: ['Lê Minh Tuấn']
+  - Match: 'BC Tỉnh Lộ 868-Phú Cường-Cai Lậy-Tiền Giang' | BC IDs: [21992000] | AMs: ['Đoàn Công Tín']
+  - Match: 'BC Ấp Phú Long-Xã Hưng Khánh Trung-Bến Tre' | BC IDs: [22876000] | AMs: ['Huỳnh Phương Duy']
+  - Match: 'BC Ấp 2-Phú Nhuận-Bến Tre' | BC IDs: [22031000] | AMs: ['Lâm Xuân Vinh']
+  - Match: 'BC Võ Nguyên Giáp-Phú Tân-Bến Tre' | BC IDs: [22972000] | AMs: ['Nguyễn Thành Huy']
+  - Match: 'BC QL57-Bình Thạnh-Thạnh Phú-Bến Tre' | BC IDs: [21582000] | AMs: ['Huỳnh Phương Duy']
+--------------------------------------------------------------------------------
+Searching for 'Tân Phước 1':
+  - Match: 'BC Tân Nhuận Đông-Châu Thành-Đồng Tháp' | BC IDs: [22000000] | AMs: ['Lý Quài Nhân']
+  - Match: 'BC 286 Nguyễn Huệ-Tân Hồng-Đồng Tháp' | BC IDs: [20861000] | AMs: ['Ngô Phan Mỹ Tú']
+  - Match: 'BC Ấp Tân Thuận-Bình Tân-Vĩnh Long' | BC IDs: ['Không tìm thấy'] | AMs: []
+  - Match: 'BC Tổ 1 Đường 30/4-Trà Ôn-Vĩnh Long' | BC IDs: [20478000] | AMs: ['Nguyễn Tuấn Anh']
+  - Match: 'BC Phước Long-Lộc Hòa-Long Hồ-Vĩnh Long' | BC IDs: [21665000] | AMs: ['Nguyễn Tuấn Anh']
+  - Match: 'BC 73 Phó Cơ Điều-Phường Phước Hậu-Vĩnh Long' | BC IDs: [22387000] | AMs: ['Nguyễn Tuấn Anh']
+  - Match: 'BC Ấp Hậu Mỹ Phú 1-Cái Bè-Tiền Giang' | BC IDs: [20776000] | AMs: ['Lê Minh Tuấn']
+  - Match: 'BC Khu phố 1-Tân Phước-Tiền Giang' | BC IDs: [20227000] | AMs: ['Nguyễn Anh Tùng']
+  - Match: 'BC Võ Nguyên Giáp-Phú Tân-Bến Tre' | BC IDs: [22972000] | AMs: ['Nguyễn Thành Huy']
+  - Match: 'BC Phước Hậu-Phước Mỹ Trung-Bến Tre' | BC IDs: [22337000] | AMs: ['Lâm Xuân Vinh']
+--------------------------------------------------------------------------------
+Searching for 'Long Châu':
+  - Match: 'BC Tân Nhuận Đông-Châu Thành-Đồng Tháp' | BC IDs: [22000000] | AMs: ['Lý Quài Nhân']
+  - Match: 'BC QL80-Xã Hòa Long-Đồng Tháp' | BC IDs: [22372000] | AMs: ['Lý Quài Nhân']
+  - Match: 'BC Ấp Tân Thuận-Bình Tân-Vĩnh Long' | BC IDs: ['Không tìm thấy'] | AMs: []
+  - Match: 'BC Tổ 1 Đường 30/4-Trà Ôn-Vĩnh Long' | BC IDs: [20478000] | AMs: ['Nguyễn Tuấn Anh']
+  - Match: 'BC Quốc Lộ 53-Xã Trung Thành-Vĩnh Long' | BC IDs: [22916000] | AMs: ['Nguyễn Tuấn Anh']
+  - Match: 'BC Quốc Lộ 53-Long Hồ-Vĩnh Long' | BC IDs: [22980000] | AMs: ['Nguyễn Tuấn Anh']
+  - Match: 'BC Phước Long-Lộc Hòa-Long Hồ-Vĩnh Long' | BC IDs: [21665000] | AMs: ['Nguyễn Tuấn Anh']
+  - Match: 'BC 87 Lê Văn Vị-Cái Vồn-Bình Minh-Vĩnh Long' | BC IDs: [21374000] | AMs: ['Nguyễn Tuấn Anh']
+  - Match: 'BC 73 Phó Cơ Điều-Phường Phước Hậu-Vĩnh Long' | BC IDs: [22387000] | AMs: ['Nguyễn Tuấn Anh']
+  - Match: 'BC 57/4 Phan Văn Đáng-Vĩnh Long-Vĩnh Long' | BC IDs: [20908000] | AMs: ['Nguyễn Tuấn Anh']
+  - Match: 'BC 355 Võ Tấn Đức-Tam Bình-Vĩnh Long' | BC IDs: [20875000] | AMs: ['Nguyễn Tuấn Anh']
+  - Match: 'BC 07 Lê Lợi-Mang Thít-Vĩnh Long' | BC IDs: [20880000] | AMs: ['Nguyễn Tuấn Anh']
+  - Match: 'BC Khóm 4 TT Châu Thành-Xã Châu Thành-Trà Vinh' | BC IDs: [22521000] | AMs: ['Nguyễn Thành Huy']
+  - Match: 'BC Khóm 3 TT Càng Long-Xã Càng Long-Trà Vinh' | BC IDs: [22522000] | AMs: ['Nguyễn Thành Huy']
+  - Match: 'BC Long Trung-Cai Lậy-Tiền Giang' | BC IDs: [21313000] | AMs: ['Lê Minh Tuấn']
+  - Match: 'BC 992 Đường Huyện 35-Vĩnh Kim-Châu Thành-Tiền Giang' | BC IDs: [21528000] | AMs: ['Nguyễn Anh Tùng']
+  - Match: 'BC 88 Ấp Thân Hòa-Thân Cửu Nghĩa-Châu Thành-Tiền Giang' | BC IDs: [21991000] | AMs: ['Nguyễn Anh Tùng']
+  - Match: 'BC 230 Ấp Bình Hạnh-Long Bình Điền-Chợ Gạo-Tiền Giang' | BC IDs: [22316000] | AMs: ['Đoàn Công Tín']
+  - Match: 'BC Ấp Phú Long-Xã Hưng Khánh Trung-Bến Tre' | BC IDs: [22876000] | AMs: ['Huỳnh Phương Duy']
+  - Match: 'BC 86 Tiên Thuỷ-Châu Thành-Bến Tre' | BC IDs: [21998000] | AMs: ['Huỳnh Quốc Trung']
+  - Match: 'BC 3/2 Thị Trấn Châu Thành-Bến Tre' | BC IDs: [22101000] | AMs: ['Lâm Xuân Vinh']
+--------------------------------------------------------------------------------
+Searching for 'Tân Quới':
+  - Match: 'BC Tân Nhuận Đông-Châu Thành-Đồng Tháp' | BC IDs: [22000000] | AMs: ['Lý Quài Nhân']
+  - Match: 'BC 286 Nguyễn Huệ-Tân Hồng-Đồng Tháp' | BC IDs: [20861000] | AMs: ['Ngô Phan Mỹ Tú']
+  - Match: 'BC Ấp Tân Thuận-Bình Tân-Vĩnh Long' | BC IDs: ['Không tìm thấy'] | AMs: []
+  - Match: 'BC Khu phố 1-Tân Phước-Tiền Giang' | BC IDs: [20227000] | AMs: ['Nguyễn Anh Tùng']
+  - Match: 'BC Võ Nguyên Giáp-Phú Tân-Bến Tre' | BC IDs: [22972000] | AMs: ['Nguyễn Thành Huy']
+--------------------------------------------------------------------------------
+Searching for 'Phú Quới':
+  - Match: 'BC Ấp Cây Hẹ-Phú Cần-Tiểu Cần-Trà Vinh' | BC IDs: [21563000] | AMs: ['Nguyễn Thành Huy']
+  - Match: 'BC Ấp Hậu Mỹ Phú 1-Cái Bè-Tiền Giang' | BC IDs: [20776000] | AMs: ['Lê Minh Tuấn']
+  - Match: 'BC Tỉnh Lộ 868-Phú Cường-Cai Lậy-Tiền Giang' | BC IDs: [21992000] | AMs: ['Đoàn Công Tín']
+  - Match: 'BC Ấp Phú Long-Xã Hưng Khánh Trung-Bến Tre' | BC IDs: [22876000] | AMs: ['Huỳnh Phương Duy']
+  - Match: 'BC Ấp 2-Phú Nhuận-Bến Tre' | BC IDs: [22031000] | AMs: ['Lâm Xuân Vinh']
+  - Match: 'BC Võ Nguyên Giáp-Phú Tân-Bến Tre' | BC IDs: [22972000] | AMs: ['Nguyễn Thành Huy']
+  - Match: 'BC QL57-Bình Thạnh-Thạnh Phú-Bến Tre' | BC IDs: [21582000] | AMs: ['Huỳnh Phương Duy']
+--------------------------------------------------------------------------------
+Searching for 'Thanh Hòa':
+  - Match: 'BC QL80-Xã Hòa Long-Đồng Tháp' | BC IDs: [22372000] | AMs: ['Lý Quài Nhân']
+  - Match: 'BC QL 30-Thanh Bình-Đồng Tháp' | BC IDs: [20139000] | AMs: ['Ngô Phan Mỹ Tú']
+  - Match: 'BC Phước Long-Lộc Hòa-Long Hồ-Vĩnh Long' | BC IDs: [21665000] | AMs: ['Nguyễn Tuấn Anh']
+  - Match: 'BC QL1A Hòa Khánh-Cái Bè-Tiền Giang' | BC IDs: [20798000] | AMs: ['Lê Minh Tuấn']
+  - Match: 'BC 88 Ấp Thân Hòa-Thân Cửu Nghĩa-Châu Thành-Tiền Giang' | BC IDs: [21991000] | AMs: ['Nguyễn Anh Tùng']
+--------------------------------------------------------------------------------
+Searching for 'Long Tiên':
+  - Match: 'BC QL80-Xã Hòa Long-Đồng Tháp' | BC IDs: [22372000] | AMs: ['Lý Quài Nhân']
+  - Match: 'BC Ấp Tân Thuận-Bình Tân-Vĩnh Long' | BC IDs: ['Không tìm thấy'] | AMs: []
+  - Match: 'BC Tổ 1 Đường 30/4-Trà Ôn-Vĩnh Long' | BC IDs: [20478000] | AMs: ['Nguyễn Tuấn Anh']
+  - Match: 'BC Quốc Lộ 53-Xã Trung Thành-Vĩnh Long' | BC IDs: [22916000] | AMs: ['Nguyễn Tuấn Anh']
+  - Match: 'BC Quốc Lộ 53-Long Hồ-Vĩnh Long' | BC IDs: [22980000] | AMs: ['Nguyễn Tuấn Anh']
+  - Match: 'BC Phước Long-Lộc Hòa-Long Hồ-Vĩnh Long' | BC IDs: [21665000] | AMs: ['Nguyễn Tuấn Anh']
+  - Match: 'BC 87 Lê Văn Vị-Cái Vồn-Bình Minh-Vĩnh Long' | BC IDs: [21374000] | AMs: ['Nguyễn Tuấn Anh']
+  - Match: 'BC 73 Phó Cơ Điều-Phường Phước Hậu-Vĩnh Long' | BC IDs: [22387000] | AMs: ['Nguyễn Tuấn Anh']
+  - Match: 'BC 57/4 Phan Văn Đáng-Vĩnh Long-Vĩnh Long' | BC IDs: [20908000] | AMs: ['Nguyễn Tuấn Anh']
+  - Match: 'BC 355 Võ Tấn Đức-Tam Bình-Vĩnh Long' | BC IDs: [20875000] | AMs: ['Nguyễn Tuấn Anh']
+  - Match: 'BC 07 Lê Lợi-Mang Thít-Vĩnh Long' | BC IDs: [20880000] | AMs: ['Nguyễn Tuấn Anh']
+  - Match: 'BC Khóm 3 TT Càng Long-Xã Càng Long-Trà Vinh' | BC IDs: [22522000] | AMs: ['Nguyễn Thành Huy']
+  - Match: 'BC Long Trung-Cai Lậy-Tiền Giang' | BC IDs: [21313000] | AMs: ['Lê Minh Tuấn']
+  - Match: 'BC 230 Ấp Bình Hạnh-Long Bình Điền-Chợ Gạo-Tiền Giang' | BC IDs: [22316000] | AMs: ['Đoàn Công Tín']
+  - Match: 'BC Ấp Phú Long-Xã Hưng Khánh Trung-Bến Tre' | BC IDs: [22876000] | AMs: ['Huỳnh Phương Duy']
+  - Match: 'BC 86 Tiên Thuỷ-Châu Thành-Bến Tre' | BC IDs: [21998000] | AMs: ['Huỳnh Quốc Trung']
+--------------------------------------------------------------------------------
+Searching for 'Thạnh Phú':
+  - Match: 'BC Ấp Cây Hẹ-Phú Cần-Tiểu Cần-Trà Vinh' | BC IDs: [21563000] | AMs: ['Nguyễn Thành Huy']
+  - Match: 'BC Ấp Hậu Mỹ Phú 1-Cái Bè-Tiền Giang' | BC IDs: [20776000] | AMs: ['Lê Minh Tuấn']
+  - Match: 'BC Tỉnh Lộ 868-Phú Cường-Cai Lậy-Tiền Giang' | BC IDs: [21992000] | AMs: ['Đoàn Công Tín']
+  - Match: 'BC Ấp Phú Long-Xã Hưng Khánh Trung-Bến Tre' | BC IDs: [22876000] | AMs: ['Huỳnh Phương Duy']
+  - Match: 'BC Ấp 2-Phú Nhuận-Bến Tre' | BC IDs: [22031000] | AMs: ['Lâm Xuân Vinh']
+  - Match: 'BC Võ Nguyên Giáp-Phú Tân-Bến Tre' | BC IDs: [22972000] | AMs: ['Nguyễn Thành Huy']
+  - Match: 'BC QL57-Bình Thạnh-Thạnh Phú-Bến Tre' | BC IDs: [21582000] | AMs: ['Huỳnh Phương Duy']
+--------------------------------------------------------------------------------
+Searching for 'Tiên Thủy':
+  - Match: 'BC 86 Tiên Thuỷ-Châu Thành-Bến Tre' | BC IDs: [21998000] | AMs: ['Huỳnh Quốc Trung']
+--------------------------------------------------------------------------------
+Searching for 'Long Thuận':
+  - Match: 'BC QL80-Xã Hòa Long-Đồng Tháp' | BC IDs: [22372000] | AMs: ['Lý Quài Nhân']
+  - Match: 'BC Ấp Tân Thuận-Bình Tân-Vĩnh Long' | BC IDs: ['Không tìm thấy'] | AMs: []
+  - Match: 'BC Tổ 1 Đường 30/4-Trà Ôn-Vĩnh Long' | BC IDs: [20478000] | AMs: ['Nguyễn Tuấn Anh']
+  - Match: 'BC Quốc Lộ 53-Xã Trung Thành-Vĩnh Long' | BC IDs: [22916000] | AMs: ['Nguyễn Tuấn Anh']
+  - Match: 'BC Quốc Lộ 53-Long Hồ-Vĩnh Long' | BC IDs: [22980000] | AMs: ['Nguyễn Tuấn Anh']
+  - Match: 'BC Phước Long-Lộc Hòa-Long Hồ-Vĩnh Long' | BC IDs: [21665000] | AMs: ['Nguyễn Tuấn Anh']
+  - Match: 'BC 87 Lê Văn Vị-Cái Vồn-Bình Minh-Vĩnh Long' | BC IDs: [21374000] | AMs: ['Nguyễn Tuấn Anh']
+  - Match: 'BC 73 Phó Cơ Điều-Phường Phước Hậu-Vĩnh Long' | BC IDs: [22387000] | AMs: ['Nguyễn Tuấn Anh']
+  - Match: 'BC 57/4 Phan Văn Đáng-Vĩnh Long-Vĩnh Long' | BC IDs: [20908000] | AMs: ['Nguyễn Tuấn Anh']
+  - Match: 'BC 355 Võ Tấn Đức-Tam Bình-Vĩnh Long' | BC IDs: [20875000] | AMs: ['Nguyễn Tuấn Anh']
+  - Match: 'BC 07 Lê Lợi-Mang Thít-Vĩnh Long' | BC IDs: [20880000] | AMs: ['Nguyễn Tuấn Anh']
+  - Match: 'BC Khóm 3 TT Càng Long-Xã Càng Long-Trà Vinh' | BC IDs: [22522000] | AMs: ['Nguyễn Thành Huy']
+  - Match: 'BC Long Trung-Cai Lậy-Tiền Giang' | BC IDs: [21313000] | AMs: ['Lê Minh Tuấn']
+  - Match: 'BC 79 Đường Tỉnh 871-Xã Gia Thuận-Tiền Giang' | BC IDs: [22867000] | AMs: ['Nguyễn Anh Tùng']
+  - Match: 'BC 230 Ấp Bình Hạnh-Long Bình Điền-Chợ Gạo-Tiền Giang' | BC IDs: [22316000] | AMs: ['Đoàn Công Tín']
+  - Match: 'BC Ấp Phú Long-Xã Hưng Khánh Trung-Bến Tre' | BC IDs: [22876000] | AMs: ['Huỳnh Phương Duy']
+  - Match: 'BC Quốc Lộ 57B-Xã Lộc Thuận-Bến Tre' | BC IDs: [22868000] | AMs: ['Lâm Xuân Vinh']
+--------------------------------------------------------------------------------
+Searching for 'Cái Nhum':
+  - Match: 'BC 87 Lê Văn Vị-Cái Vồn-Bình Minh-Vĩnh Long' | BC IDs: [21374000] | AMs: ['Nguyễn Tuấn Anh']
+  - Match: 'BC Ấp Hậu Mỹ Phú 1-Cái Bè-Tiền Giang' | BC IDs: [20776000] | AMs: ['Lê Minh Tuấn']
+  - Match: 'BC QL1A Hòa Khánh-Cái Bè-Tiền Giang' | BC IDs: [20798000] | AMs: ['Lê Minh Tuấn']
+--------------------------------------------------------------------------------
+Searching for 'Châu Thành':
+  - Match: 'BC Tân Nhuận Đông-Châu Thành-Đồng Tháp' | BC IDs: [22000000] | AMs: ['Lý Quài Nhân']
+  - Match: 'BC Quốc Lộ 53-Xã Trung Thành-Vĩnh Long' | BC IDs: [22916000] | AMs: ['Nguyễn Tuấn Anh']
+  - Match: 'BC Khóm 4 TT Châu Thành-Xã Châu Thành-Trà Vinh' | BC IDs: [22521000] | AMs: ['Nguyễn Thành Huy']
+  - Match: 'BC 992 Đường Huyện 35-Vĩnh Kim-Châu Thành-Tiền Giang' | BC IDs: [21528000] | AMs: ['Nguyễn Anh Tùng']
+  - Match: 'BC 88 Ấp Thân Hòa-Thân Cửu Nghĩa-Châu Thành-Tiền Giang' | BC IDs: [21991000] | AMs: ['Nguyễn Anh Tùng']
+  - Match: 'BC 86 Tiên Thuỷ-Châu Thành-Bến Tre' | BC IDs: [21998000] | AMs: ['Huỳnh Quốc Trung']
+  - Match: 'BC 3/2 Thị Trấn Châu Thành-Bến Tre' | BC IDs: [22101000] | AMs: ['Lâm Xuân Vinh']
+--------------------------------------------------------------------------------

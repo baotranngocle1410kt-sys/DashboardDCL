@@ -1,0 +1,35 @@
+Data ĐCL columns: ['Cấp Quản Lý', 'Chi tiết', 'Time', 'Volume', '% Gán', '% GTC', '% Chuyển trả', 'Leadtime', 'Vol GTC', 'ID Bưu cục', 'Time Format']
+
+First 15 unique values of 'Chi tiết' column:
+- BC Ấp Bình Hiệp A-Xã Lấp Vò-Đồng Tháp
+- BC Tỉnh Lộ DT848-Xã Mỹ An Hưng-Đồng Tháp
+- BC Tân Nhuận Đông-Châu Thành-Đồng Tháp
+- BC Tam Nông-Đồng Tháp
+- BC Quốc Lộ 54-Xã Lai Vung-Đồng Tháp
+- BC QL80-Xã Hòa Long-Đồng Tháp
+- BC QL 30-Thanh Bình-Đồng Tháp
+- BC Mỹ Thọ-Trần Quang Khải-Cao Lãnh-Đồng Tháp
+- BC Khóm 3 Trần Hưng Đạo-Xã Tháp Mười-Đồng Tháp
+- BC Hồng Ngự-Đồng Tháp
+- BC DT846 Phương Trà-Xã Ba Sao-Đồng Tháp
+- BC 286 Nguyễn Huệ-Tân Hồng-Đồng Tháp
+- BC 19 Đường DT848-Sa Đéc-Đồng Tháp
+- BC 12-14 Bà Triệu-Cao Lãnh-Đồng Tháp
+- BC Ấp Tân Thuận-Bình Tân-Vĩnh Long
+
+First 15 unique values of 'ID Bưu cục' column:
+- 22789000
+- 22797000
+- 22000000
+- 2498
+- 22877000
+- 22372000
+- 20139000
+- 22080000
+- 22461000
+- 1933
+- 22812000
+- 20861000
+- 22920000
+- 1083
+- Không tìm thấy

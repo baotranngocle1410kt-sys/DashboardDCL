@@ -1,0 +1,167 @@
+AM TO BC MAPPING EXTRACTED FROM GOOGLE SHEET (GID 1726600667):
+================================================================
+
+AM: Huỳnh Quốc Trung
+--------------------
+  - [Bến Tre] 21998000 - (BTR) Tiên Thủy (Clean: Tiên Thủy)
+  - [Bến Tre] 21998000 - (BTR) Tiên Thủy (Clean: Tiên Thủy)
+  - [Tiền Giang] 1199 - (TGI) Đạo Thạnh (Clean: Đạo Thạnh)
+  - [Tiền Giang] 1199 - (TGI) Đạo Thạnh (Clean: Đạo Thạnh)
+
+AM: Lê Minh Tuấn
+----------------
+  - [Tiền Giang] 21313000 - (TGI) Long Tiên (Clean: Long Tiên)
+  - [Tiền Giang] 21313000 - (TGI) Long Tiên (Clean: Long Tiên)
+  - [Đồng Tháp] 22797000 - (DTH) Mỹ An Hưng (Clean: Mỹ An Hưng)
+  - [Đồng Tháp] 22797000 - (DTH) Mỹ An Hưng (Clean: Mỹ An Hưng)
+  - [Đồng Tháp] 22461000 - (DTH) Tháp Mười (Clean: Tháp Mười)
+  - [Đồng Tháp] 22461000 - (DTH) Tháp Mười (Clean: Tháp Mười)
+
+AM: Lý Quài Nhân
+----------------
+  - [Đồng Tháp] 22372000 - (DTH) Hòa Long (Clean: Hòa Long)
+  - [Đồng Tháp] 22372000 - (DTH) Hòa Long (Clean: Hòa Long)
+  - [Đồng Tháp] 22877000 - (DTH) Lai Vung (Clean: Lai Vung)
+  - [Đồng Tháp] 22877000 - (DTH) Lai Vung (Clean: Lai Vung)
+  - [Đồng Tháp] 22789000 - (DTH) Lấp Vò (Clean: Lấp Vò)
+  - [Đồng Tháp] 22789000 - (DTH) Lấp Vò (Clean: Lấp Vò)
+  - [Đồng Tháp] 22920000 - (DTH) Sa Đéc (Clean: Sa Đéc)
+  - [Đồng Tháp] 22920000 - (DTH) Sa Đéc (Clean: Sa Đéc)
+  - [Đồng Tháp] 22000000 - (DTH) Tân Nhuận Đông (Clean: Tân Nhuận Đông)
+  - [Đồng Tháp] 22000000 - (DTH) Tân Nhuận Đông (Clean: Tân Nhuận Đông)
+
+AM: Nguyễn Anh Tùng
+-------------------
+  - [Tiền Giang] 21991000 - (TGI) Châu Thành (Clean: Châu Thành)
+  - [Tiền Giang] 21991000 - (TGI) Châu Thành (Clean: Châu Thành)
+  - [Tiền Giang] 22867000 - (TGI) Gia Thuận (Clean: Gia Thuận)
+  - [Tiền Giang] 22867000 - (TGI) Gia Thuận (Clean: Gia Thuận)
+  - [Tiền Giang] 22270000 - (TGI) Long Thuận (Clean: Long Thuận)
+  - [Tiền Giang] 22270000 - (TGI) Long Thuận (Clean: Long Thuận)
+  - [Tiền Giang] 23072000 - (TGI) Long Định (Clean: Long Định)
+  - [Tiền Giang] 23072000 - (TGI) Long Định (Clean: Long Định)
+  - [Tiền Giang] 20795000 - (TGI) Mỹ Phong (Clean: Mỹ Phong)
+  - [Tiền Giang] 20795000 - (TGI) Mỹ Phong (Clean: Mỹ Phong)
+  - [Tiền Giang] 20227000 - (TGI) Tân Phước 1 (Clean: Tân Phước 1)
+  - [Tiền Giang] 20227000 - (TGI) Tân Phước 1 (Clean: Tân Phước 1)
+  - [Tiền Giang] 21528000 - (TGI) Vĩnh Kim (Clean: Vĩnh Kim)
+  - [Tiền Giang] 21528000 - (TGI) Vĩnh Kim (Clean: Vĩnh Kim)
+
+AM: Nguyễn Huỳnh Quốc Dũng
+--------------------------
+  - [Bến Tre] 22876000 - (BTR) Hưng Khánh Trung (Clean: Hưng Khánh Trung)
+  - [Bến Tre] 22876000 - (BTR) Hưng Khánh Trung (Clean: Hưng Khánh Trung)
+  - [Bến Tre] 22910000 - (BTR) Hương Mỹ (Clean: Hương Mỹ)
+  - [Bến Tre] 22910000 - (BTR) Hương Mỹ (Clean: Hương Mỹ)
+  - [Bến Tre] 1934 - (BTR) Mỏ Cày (Clean: Mỏ Cày)
+  - [Bến Tre] 1934 - (BTR) Mỏ Cày (Clean: Mỏ Cày)
+  - [Bến Tre] 23030000 - (BTR) Phú Phụng (Clean: Phú Phụng)
+  - [Bến Tre] 23030000 - (BTR) Phú Phụng (Clean: Phú Phụng)
+  - [Bến Tre] 22101000 - (BTR) Phú Túc (Clean: Phú Túc)
+  - [Bến Tre] 22101000 - (BTR) Phú Túc (Clean: Phú Túc)
+  - [Bến Tre] 22337000 - (BTR) Phước Mỹ Trung (Clean: Phước Mỹ Trung)
+  - [Bến Tre] 22337000 - (BTR) Phước Mỹ Trung (Clean: Phước Mỹ Trung)
+  - [Bến Tre] 21582000 - (BTR) Thạnh Phú (Clean: Thạnh Phú)
+  - [Bến Tre] 21582000 - (BTR) Thạnh Phú (Clean: Thạnh Phú)
+
+AM: Nguyễn Thành Huy
+--------------------
+  - [Trà Vinh] 22521000 - (TVI) Châu Thành (Clean: Châu Thành)
+  - [Trà Vinh] 22521000 - (TVI) Châu Thành (Clean: Châu Thành)
+  - [Trà Vinh] 22522000 - (TVI) Càng Long (Clean: Càng Long)
+  - [Trà Vinh] 22522000 - (TVI) Càng Long (Clean: Càng Long)
+  - [Trà Vinh] 20748000 - (TVI) Cầu Kè (Clean: Cầu Kè)
+  - [Trà Vinh] 20748000 - (TVI) Cầu Kè (Clean: Cầu Kè)
+  - [Trà Vinh] 22479000 - (TVI) Cầu Ngang (Clean: Cầu Ngang)
+  - [Trà Vinh] 22479000 - (TVI) Cầu Ngang (Clean: Cầu Ngang)
+  - [Trà Vinh] 2410 - (TVI) Duyên Hải (Clean: Duyên Hải)
+  - [Trà Vinh] 2410 - (TVI) Duyên Hải (Clean: Duyên Hải)
+  - [Trà Vinh] 21563000 - (TVI) Tiểu Cần (Clean: Tiểu Cần)
+  - [Trà Vinh] 21563000 - (TVI) Tiểu Cần (Clean: Tiểu Cần)
+  - [Trà Vinh] 21497000 - (TVI) Trà Cú (Clean: Trà Cú)
+  - [Trà Vinh] 21497000 - (TVI) Trà Cú (Clean: Trà Cú)
+  - [Trà Vinh] 21620000 - (TVI) Trà Vinh (Clean: Trà Vinh)
+  - [Trà Vinh] 21620000 - (TVI) Trà Vinh (Clean: Trà Vinh)
+
+AM: Nguyễn Tuấn Anh
+-------------------
+  - [Vĩnh Long] 20880000 - (VLO) Cái Nhum (Clean: Cái Nhum)
+  - [Vĩnh Long] 20880000 - (VLO) Cái Nhum (Clean: Cái Nhum)
+  - [Vĩnh Long] 21374000 - (VLO) Cái Vồn (Clean: Cái Vồn)
+  - [Vĩnh Long] 21374000 - (VLO) Cái Vồn (Clean: Cái Vồn)
+  - [Vĩnh Long] 20908000 - (VLO) Long Châu (Clean: Long Châu)
+  - [Vĩnh Long] 20908000 - (VLO) Long Châu (Clean: Long Châu)
+  - [Vĩnh Long] 22980000 - (VLO) Long Hồ (Clean: Long Hồ)
+  - [Vĩnh Long] 22980000 - (VLO) Long Hồ (Clean: Long Hồ)
+  - [Vĩnh Long] 21665000 - (VLO) Phú Quới (Clean: Phú Quới)
+  - [Vĩnh Long] 21665000 - (VLO) Phú Quới (Clean: Phú Quới)
+  - [Vĩnh Long] 22387000 - (VLO) Phước Hậu (Clean: Phước Hậu)
+  - [Vĩnh Long] 22387000 - (VLO) Phước Hậu (Clean: Phước Hậu)
+  - [Vĩnh Long] 20875000 - (VLO) Tam Bình (Clean: Tam Bình)
+  - [Vĩnh Long] 20875000 - (VLO) Tam Bình (Clean: Tam Bình)
+  - [Vĩnh Long] 22916000 - (VLO) Trung Thành (Clean: Trung Thành)
+  - [Vĩnh Long] 22916000 - (VLO) Trung Thành (Clean: Trung Thành)
+  - [Vĩnh Long] 20478000 - (VLO) Trà Ôn (Clean: Trà Ôn)
+  - [Vĩnh Long] 20478000 - (VLO) Trà Ôn (Clean: Trà Ôn)
+  - [Vĩnh Long] 20731000 - (VLO) Tân Quới (Clean: Tân Quới)
+  - [Vĩnh Long] 20731000 - (VLO) Tân Quới (Clean: Tân Quới)
+  - [Vĩnh Long] 23057000 - (VLO) Vĩnh Xuân (Clean: Vĩnh Xuân)
+  - [Vĩnh Long] 23057000 - (VLO) Vĩnh Xuân (Clean: Vĩnh Xuân)
+
+AM: Nguyễn Việt Tới
+-------------------
+  - [Đồng Tháp] 22812000 - (DTH) Ba Sao (Clean: Ba Sao)
+  - [Đồng Tháp] 22812000 - (DTH) Ba Sao (Clean: Ba Sao)
+  - [Đồng Tháp] 1083 - (DTH) Cao Lãnh (Clean: Cao Lãnh)
+  - [Đồng Tháp] 1083 - (DTH) Cao Lãnh (Clean: Cao Lãnh)
+  - [Đồng Tháp] 23056000 - (DTH) Mỹ Hiệp (Clean: Mỹ Hiệp)
+  - [Đồng Tháp] 23056000 - (DTH) Mỹ Hiệp (Clean: Mỹ Hiệp)
+  - [Đồng Tháp] 22080000 - (DTH) Mỹ Thọ (Clean: Mỹ Thọ)
+  - [Đồng Tháp] 22080000 - (DTH) Mỹ Thọ (Clean: Mỹ Thọ)
+
+AM: Ngô Phan Mỹ Tú
+------------------
+  - [Đồng Tháp] 1933 - (DTH) An Bình (Clean: An Bình)
+  - [Đồng Tháp] 1933 - (DTH) An Bình (Clean: An Bình)
+  - [Đồng Tháp] 20139000 - (DTH) Thanh Bình (Clean: Thanh Bình)
+  - [Đồng Tháp] 20139000 - (DTH) Thanh Bình (Clean: Thanh Bình)
+  - [Đồng Tháp] 2498 - (DTH) Tràm Chim (Clean: Tràm Chim)
+  - [Đồng Tháp] 2498 - (DTH) Tràm Chim (Clean: Tràm Chim)
+  - [Đồng Tháp] 20861000 - (DTH) Tân Hồng (Clean: Tân Hồng)
+  - [Đồng Tháp] 20861000 - (DTH) Tân Hồng (Clean: Tân Hồng)
+
+AM: Ngô Thị Bé Mi
+-----------------
+  - [Tiền Giang] 20798000 - (TGI) Cái Bè (Clean: Cái Bè)
+  - [Tiền Giang] 20798000 - (TGI) Cái Bè (Clean: Cái Bè)
+  - [Tiền Giang] 20776000 - (TGI) Hậu Mỹ (Clean: Hậu Mỹ)
+  - [Tiền Giang] 20776000 - (TGI) Hậu Mỹ (Clean: Hậu Mỹ)
+  - [Tiền Giang] 22869000 - (TGI) Mỹ Lợi (Clean: Mỹ Lợi)
+  - [Tiền Giang] 22869000 - (TGI) Mỹ Lợi (Clean: Mỹ Lợi)
+
+AM: Võ Hồng Chơn
+----------------
+  - [Bến Tre] 22031000 - (BTR) An Hội (Clean: An Hội)
+  - [Bến Tre] 22031000 - (BTR) An Hội (Clean: An Hội)
+  - [Bến Tre] 22003000 - (BTR) Ba Tri (Clean: Ba Tri)
+  - [Bến Tre] 22003000 - (BTR) Ba Tri (Clean: Ba Tri)
+  - [Bến Tre] 21583000 - (BTR) Bình Đại (Clean: Bình Đại)
+  - [Bến Tre] 21583000 - (BTR) Bình Đại (Clean: Bình Đại)
+  - [Bến Tre] 20153000 - (BTR) Giồng Trôm (Clean: Giồng Trôm)
+  - [Bến Tre] 20153000 - (BTR) Giồng Trôm (Clean: Giồng Trôm)
+  - [Bến Tre] 22868000 - (BTR) Lộc Thuận (Clean: Lộc Thuận)
+  - [Bến Tre] 22868000 - (BTR) Lộc Thuận (Clean: Lộc Thuận)
+  - [Bến Tre] 22972000 - (BTR) Sơn Đông (Clean: Sơn Đông)
+  - [Bến Tre] 22972000 - (BTR) Sơn Đông (Clean: Sơn Đông)
+
+AM: Đoàn Công Tín
+-----------------
+  - [Tiền Giang] 22316000 - (TGI) Chợ Gạo (Clean: Chợ Gạo)
+  - [Tiền Giang] 22316000 - (TGI) Chợ Gạo (Clean: Chợ Gạo)
+  - [Tiền Giang] 21559000 - (TGI) Thanh Hòa (Clean: Thanh Hòa)
+  - [Tiền Giang] 21559000 - (TGI) Thanh Hòa (Clean: Thanh Hòa)
+  - [Tiền Giang] 21992000 - (TGI) Thạnh Phú (Clean: Thạnh Phú)
+  - [Tiền Giang] 21992000 - (TGI) Thạnh Phú (Clean: Thạnh Phú)
+  - [Tiền Giang] 20349000 - (TGI) Đồng Sơn (Clean: Đồng Sơn)
+  - [Tiền Giang] 20349000 - (TGI) Đồng Sơn (Clean: Đồng Sơn)
+

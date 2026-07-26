@@ -1,0 +1,29 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20260627062238
+Username: BAOBAO\BaoBao
+RunAs User: BAOBAO\BaoBao
+Configuration Name: 
+Machine: BAOBAO (Microsoft Windows NT 10.0.26200.0)
+Host Application: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -ExecutionPolicy Bypass -File Fix_Schedule.ps1
+Process ID: 12540
+PSVersion: 5.1.26100.8655
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.8655
+BuildVersion: 10.0.26100.8655
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+Transcript started, output file is c:\Users\Administrator\Desktop\AI 2026\fix_log.txt
+Stopping scheduled task...
+Killing hanging processes...
+Changing task principal to baobao...
+PS>TerminatingError(Set-ScheduledTask): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Access is denied.
+"
+WARNING: Failed to execute: Access is denied.
+**********************
+Windows PowerShell transcript end
+End time: 20260627062239
+**********************
