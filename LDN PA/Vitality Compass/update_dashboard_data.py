@@ -88,32 +88,20 @@ def main():
     # Download Recruitment (Link 3)
     p_hr_local = r"C:\Users\Administrator\Desktop\AI 2026\Mentor\recruitment_live.xlsx"
     p_hr_user = r"C:\Users\Administrator\Desktop\AI 2026\Mentor\[ĐCL] - BÁO CÁO TUYỂN DỤNG DATA.xlsx"
-    
     download_success = False
-    
-    if "--skip-hr" in sys.argv:
+    if "--skip-downloads" in sys.argv or "--skip-hr" in sys.argv:
         print("Skipping live recruitment sheet download as requested via argument.")
     else:
         print("Downloading live recruitment sheet from Google Sheets...")
         try:
             gsheet_hr_url = "https://docs.google.com/spreadsheets/d/1si4PWd97eJhQDQUBXvEErjmNHGO8W1NrQVFnzzMIkDI/export?format=xlsx"
-            import subprocess
-            try:
-                # Use PowerShell as primary because it handles large GSheet chunked exports on Windows reliably
-                cmd = ["powershell", "-Command", f"Invoke-WebRequest -Uri '{gsheet_hr_url}' -OutFile '{p_hr_local}'"]
-                subprocess.run(cmd, check=True, timeout=120)
-                download_success = True
-            except Exception as pe:
-                # Fallback to urllib
-                req = urllib.request.Request(gsheet_hr_url, headers={'User-Agent': 'Mozilla/5.0'})
-                with urllib.request.urlopen(req, timeout=90) as response:
-                    with open(p_hr_local, 'wb') as f:
-                        f.write(response.read())
-                download_success = True
-            
-            if download_success:
-                print("✓ Downloaded live recruitment sheet successfully.")
-                p_hr = p_hr_local
+            req = urllib.request.Request(gsheet_hr_url, headers={'User-Agent': 'Mozilla/5.0'})
+            with urllib.request.urlopen(req, timeout=15) as response:
+                with open(p_hr_local, 'wb') as f:
+                    f.write(response.read())
+            download_success = True
+            print("✓ Downloaded live recruitment sheet successfully.")
+            p_hr = p_hr_local
         except Exception as e:
             print(f"⚠ Failed to download live recruitment sheet: {e}.")
             
@@ -135,47 +123,57 @@ def main():
     print("Downloading Google Sheets Link 1...")
     p_link1_local = r"C:\Users\Administrator\Desktop\AI 2026\Mentor\link1_live.xlsx"
     link1_success = False
-    try:
-        gsheet_link1_url = "https://docs.google.com/spreadsheets/d/19TGb1gh8z0U9slERRqpOrh-WyP9Wh0yfMkj6OUIeH1Y/export?format=xlsx"
-        req = urllib.request.Request(gsheet_link1_url, headers={'User-Agent': 'Mozilla/5.0'})
-        with urllib.request.urlopen(req, timeout=90) as response:
-            with open(p_link1_local, 'wb') as f:
-                f.write(response.read())
-        print("✓ Downloaded Link 1 successfully.")
-        link1_success = True
-    except Exception as e:
-        print(f"⚠ Failed to download Link 1: {e}. Falling back to local file.")
+    if "--skip-downloads" in sys.argv:
+        print("Skipping Link 1 download.")
+    else:
+        try:
+            gsheet_link1_url = "https://docs.google.com/spreadsheets/d/19TGb1gh8z0U9slERRqpOrh-WyP9Wh0yfMkj6OUIeH1Y/export?format=xlsx"
+            req = urllib.request.Request(gsheet_link1_url, headers={'User-Agent': 'Mozilla/5.0'})
+            with urllib.request.urlopen(req, timeout=15) as response:
+                with open(p_link1_local, 'wb') as f:
+                    f.write(response.read())
+            print("✓ Downloaded Link 1 successfully.")
+            link1_success = True
+        except Exception as e:
+            print(f"⚠ Failed to download Link 1: {e}. Falling back to local file.")
         
     # Download Link 2 (Backlog)
     print("Downloading Google Sheets Link 2...")
     p_link2_local = r"C:\Users\Administrator\Desktop\AI 2026\Mentor\link2_live.xlsx"
     link2_success = False
-    try:
-        gsheet_link2_url = "https://docs.google.com/spreadsheets/d/1czdUAW8M9hJZ_OBk5fUgwJupOmahM6QW5AlufN36jaU/export?format=xlsx"
-        req = urllib.request.Request(gsheet_link2_url, headers={'User-Agent': 'Mozilla/5.0'})
-        with urllib.request.urlopen(req, timeout=90) as response:
-            with open(p_link2_local, 'wb') as f:
-                f.write(response.read())
-        print("✓ Downloaded Link 2 successfully.")
-        link2_success = True
-    except Exception as e:
-        print(f"⚠ Failed to download Link 2: {e}. Falling back to local file.")
+    if "--skip-downloads" in sys.argv:
+        print("Skipping Link 2 download.")
+    else:
+        try:
+            gsheet_link2_url = "https://docs.google.com/spreadsheets/d/1czdUAW8M9hJZ_OBk5fUgwJupOmahM6QW5AlufN36jaU/export?format=xlsx"
+            req = urllib.request.Request(gsheet_link2_url, headers={'User-Agent': 'Mozilla/5.0'})
+            with urllib.request.urlopen(req, timeout=15) as response:
+                with open(p_link2_local, 'wb') as f:
+                    f.write(response.read())
+            print("✓ Downloaded Link 2 successfully.")
+            link2_success = True
+        except Exception as e:
+            print(f"⚠ Failed to download Link 2: {e}. Falling back to local file.")
         
     # Download FD Report (Link 4)
     print("Downloading live FD report sheet from Google Sheets...")
     p_fd_xlsx = r"C:\Users\Administrator\Desktop\AI 2026\Mentor\fd_live.xlsx"
     p_fd_user = r"C:\Users\Administrator\Desktop\AI 2026\Mentor\ĐCL - %Chuyển trả.xlsx"
     fd_success = False
-    try:
-        gsheet_fd_url = "https://docs.google.com/spreadsheets/d/1eJo3_M35Q-Qb3t9AzZkF22gZUCG5oETj-ZIew1DaFgA/export?format=xlsx"
-        req = urllib.request.Request(gsheet_fd_url, headers={'User-Agent': 'Mozilla/5.0'})
-        with urllib.request.urlopen(req, timeout=90) as response:
-            with open(p_fd_xlsx, 'wb') as f:
-                f.write(response.read())
-        print("✓ Downloaded live FD report sheet successfully.")
+    if "--skip-downloads" in sys.argv:
+        print("Skipping FD report download.")
         fd_success = True
-    except Exception as e:
-        print(f"⚠ Failed to download live FD report sheet: {e}. Falling back to local file.")
+    else:
+        try:
+            gsheet_fd_url = "https://docs.google.com/spreadsheets/d/1eJo3_M35Q-Qb3t9AzZkF22gZUCG5oETj-ZIew1DaFgA/export?format=xlsx"
+            req = urllib.request.Request(gsheet_fd_url, headers={'User-Agent': 'Mozilla/5.0'})
+            with urllib.request.urlopen(req, timeout=15) as response:
+                with open(p_fd_xlsx, 'wb') as f:
+                    f.write(response.read())
+            print("✓ Downloaded live FD report sheet successfully.")
+            fd_success = True
+        except Exception as e:
+            print(f"⚠ Failed to download live FD report sheet: {e}. Falling back to local file.")
         
     if not fd_success:
         if os.path.exists(p_fd_user):
@@ -193,16 +191,22 @@ def main():
     print("Downloading live Transfer Backlog sheet from Google Sheets...")
     p_tb_xlsx = r"C:\Users\Administrator\Desktop\AI 2026\Mentor\DCL _24h chưa luân chuyển.xlsx"
     tb_success = False
-    try:
-        gsheet_tb_url = "https://docs.google.com/spreadsheets/d/1zyZsYWuHeL2WiEu5O7rABZZpyWoH5wEacxXe5s-IQQw/export?format=xlsx"
-        req = urllib.request.Request(gsheet_tb_url, headers={'User-Agent': 'Mozilla/5.0'})
-        with urllib.request.urlopen(req, timeout=90) as response:
-            with open(p_tb_xlsx, 'wb') as f:
-                f.write(response.read())
-        print("✓ Downloaded Transfer Backlog sheet successfully.")
+    if "--skip-downloads" in sys.argv:
+        print("Skipping Transfer Backlog download.")
         tb_success = True
-    except Exception as e:
-        print(f"⚠ Failed to download Transfer Backlog sheet: {e}. Falling back to local file.")
+    else:
+        try:
+            gsheet_tb_url = "https://docs.google.com/spreadsheets/d/1zyZsYWuHeL2WiEu5O7rABZZpyWoH5wEacxXe5s-IQQw/export?format=xlsx"
+            req = urllib.request.Request(gsheet_tb_url, headers={'User-Agent': 'Mozilla/5.0'})
+            with urllib.request.urlopen(req, timeout=15) as response:
+                with open(p_tb_xlsx, 'wb') as f:
+                    f.write(response.read())
+            print("✓ Downloaded Transfer Backlog sheet successfully.")
+            tb_success = True
+        except Exception as e:
+            print(f"⚠ Failed to download Transfer Backlog sheet: {e}. Falling back to local file.")
+            
+    # Dynamic classification of Link 1 & Link 2ling back to local file.")
         
     # Dynamic classification of Link 1 & Link 2
     for path, success, label in [(p_link1_local, link1_success, "Link 1"), (p_link2_local, link2_success, "Link 2")]:
@@ -233,6 +237,10 @@ def main():
     with pd.ExcelFile(p_performance) as xls_perf:
         df_data = pd.read_excel(xls_perf, sheet_name="Data ĐCL")
         df_hist = pd.read_excel(xls_perf, sheet_name="Lịch sử")
+        if "Hàng ca 1 + Hàng tồn (Ngày N)" in xls_perf.sheet_names:
+            df_hang_ca1 = pd.read_excel(xls_perf, sheet_name="Hàng ca 1 + Hàng tồn (Ngày N)")
+        else:
+            df_hang_ca1 = pd.DataFrame()
     print("Reading backlog sheets...")
     xl_bl = pd.ExcelFile(p_backlog)
     bl_by_bc = {}
@@ -756,12 +764,29 @@ def main():
     bc_data = []
     
     bc_causes = {
+        'Đạo Thạnh': "Quá tải sản lượng (4,049 đơn), tỷ lệ trả (FD 13.78%) cao bất thường. Thiếu 1/21 shipper tại Phước Thạnh, Phường 10, Trung An, Phường 5.",
+        'Sơn Đông': "Sản lượng cực lớn (9,230 đơn), thiếu 3/13 shipper (hụt 23%) tại Hữu Định, Phước Thạnh, Tam Phước, Sơn Đông, Phường 8.",
+        'Chợ Gạo': "Hiệu suất giao kém, tỷ lệ trả (FD 8.14%) cao. Thiếu 2/20 shipper tại Lương Hòa Lạc, Mỹ Tịnh An.",
+        'Phú Túc': "Khủng hoảng nhân sự nghiêm trọng (thiếu 7/16 shipper, hụt 44% nhân sự) tại tuyến Tân Thạch, Giao Long.",
+        'Trung Thành': "Thiếu 3/20 shipper tại các tuyến xã Tân Quới Trung, Quới Thiện, Tân An Luông, Trung Hiệp.",
+        'Tiên Thủy': "Thiếu 3/11 shipper (hụt 27% nhân sự) tại Sơn Đông, Tân Phú, Tiên Thủy.",
+        'Long Định': "Thiếu 5 shipper tại tuyến Nhị Bình, Tam Hiệp.",
         'Phó Cơ Điều': "Thiếu shipper giao chặng cuối, tồn đọng ca sáng.",
         'Đường Huyện 35': "Tuyến giao hàng Vĩnh Kim bị chia cắt, shipper nghỉ đột xuất.",
         'QL57 KP3': "Hàng ca 1 về trễ, chưa kịp phân tuyến gán shipper.",
         'Quốc Lộ 53': "Lượng đơn tăng đột biến 150% do khuyến mãi Shopee.",
         'Nguyễn Thị Định': "Giao hàng trễ hạn, tồn đọng chưa gán tuyến.",
         'Nguyễn Hữu Thọ': "Quá tải bưu cục chặng cuối."
+    }
+
+    bc_recommendations = {
+        'Đạo Thạnh': "AM trực tiếp cắm chốt kho rà soát lý do trả hàng (FD 13.78%). Bổ sung 1 NVXL hỗ trợ gán đơn đầu ca.",
+        'Sơn Đông': "AM điều động tạm thời shipper từ bưu cục lân cận để hỗ trợ giải tỏa sản lượng lớn và dọn backlog.",
+        'Chợ Gạo': "AM họp bưu cục chấn chỉnh thái độ giao hàng và kiểm soát tỷ lệ trả hàng.",
+        'Phú Túc': "AM điều động tạm thời 3-4 shipper lân cận giải quyết khẩn cấp tuyến Tân Thạch và Giao Long (backlog 272 đơn).",
+        'Trung Thành': "AM cắm chốt kho chỉ đạo chia chọn đầu ca để shipper ra ca sớm, phân chia giao chéo tại các tuyến trống.",
+        'Tiên Thủy': "AM tăng cường shipper bán thời gian/nội bộ giao hỗ trợ các xã trọng điểm Sơn Đông, Tân Phú.",
+        'Long Định': "AM phối hợp điều tiết shipper phụ trách giao hỗ trợ gấp cho tuyến Nhị Bình và Tam Hiệp."
     }
 
     # Pre-hash HR data for BC matching
@@ -840,6 +865,13 @@ def main():
             if kw in bc_name:
                 cause = val
                 break
+                
+        # Determine recommendation
+        recommendation = "Đề nghị AM kiểm tra và điều phối nhân sự xử lý gấp."
+        for kw, val in bc_recommendations.items():
+            if kw in bc_name:
+                recommendation = val
+                break
         
         try:
             bc_id_numeric = int(float(bc_id))
@@ -862,6 +894,7 @@ def main():
             'backlog': bc_bl,
             'status': status,
             'cause': cause,
+            'recommendation': recommendation,
             'hr': {
                 'shortage_actual': shortage_actual,
                 'shortage_bs': shortage_bs,
@@ -1594,72 +1627,29 @@ def main():
                 tb_data['kpis']['as_of'] = extract_time(as_of_val)
                 tb_data['kpis']['prev_as_of'] = extract_time(prev_as_of_val)
                 
-                # Extract Total KPIs (Row 2)
-                if len(df_pivot) > 2:
-                    tb_data['kpis']['giao'] = int(df_pivot.iloc[2, 3]) if pd.notna(df_pivot.iloc[2, 3]) else 0
-                    tb_data['kpis']['tra'] = int(df_pivot.iloc[2, 4]) if pd.notna(df_pivot.iloc[2, 4]) else 0
-                    tb_data['kpis']['total'] = int(df_pivot.iloc[2, 5]) if pd.notna(df_pivot.iloc[2, 5]) else 0
-                    
-                    tb_data['kpis']['prev_giao'] = int(df_pivot.iloc[2, 6]) if pd.notna(df_pivot.iloc[2, 6]) else 0
-                    tb_data['kpis']['prev_tra'] = int(df_pivot.iloc[2, 7]) if pd.notna(df_pivot.iloc[2, 7]) else 0
-                    tb_data['kpis']['prev_total'] = int(df_pivot.iloc[2, 8]) if pd.notna(df_pivot.iloc[2, 8]) else 0
-                
-                # Extract Top 20 (Rows 5 to 24)
-                for r_idx in range(5, min(25, len(df_pivot))):
-                    row_vals = df_pivot.iloc[r_idx]
-                    if pd.isna(row_vals[0]) or str(row_vals[0]).strip() == "":
-                        continue
-                    try:
-                        stt = int(row_vals[0])
-                        bc_name_val = str(row_vals[1]).strip()
-                        am_val = str(row_vals[2]).strip()
-                        
-                        giao_val = int(row_vals[3]) if pd.notna(row_vals[3]) else 0
-                        tra_val = int(row_vals[4]) if pd.notna(row_vals[4]) else 0
-                        tot_val = int(row_vals[5]) if pd.notna(row_vals[5]) else 0
-                        
-                        pg_val = int(row_vals[6]) if pd.notna(row_vals[6]) else 0
-                        pt_val = int(row_vals[7]) if pd.notna(row_vals[7]) else 0
-                        ptot_val = int(row_vals[8]) if pd.notna(row_vals[8]) else 0
-                        
-                        d_giao = str(row_vals[9]).strip()
-                        d_tra = str(row_vals[10]).strip()
-                        d_tot = str(row_vals[11]).strip()
-                        trend = str(row_vals[12]).strip() if pd.notna(row_vals[12]) else ""
-                        
-                        tb_data['top_20'].append({
-                            'stt': stt,
-                            'bc_name': bc_name_val,
-                            'am': am_val,
-                            'giao': giao_val,
-                            'tra': tra_val,
-                            'total': tot_val,
-                            'prev_giao': pg_val,
-                            'prev_tra': pt_val,
-                            'prev_total': ptot_val,
-                            'change_giao': d_giao,
-                            'change_tra': d_tra,
-                            'change_total': d_tot,
-                            'trend': trend
-                        })
-                    except Exception as ex_row:
-                        print(f"  ⚠ Failed to parse top 20 row {r_idx}: {ex_row}")
-                
                 # 2. Read Đơn treo luân chuyển GIAOTRẢ sheet for details
                 df_main = pd.read_excel(xls_tb, sheet_name="Đơn treo luân chuyển GIAOTRẢ")
                 
-                # Filter rows where BL is not in ['A. 0-6', 'B. 6-12', 'C. 12-24']
-                bl_col = None
-                for col in df_main.columns:
-                    if str(col).strip().upper() == 'BL':
-                        bl_col = col
-                        break
+                # Keep all rows to match full transfer backlog
+                df_filtered = df_main.copy()
                 
-                if bl_col is not None:
-                    df_filtered = df_main[~df_main[bl_col].isin(['A. 0-6', 'B. 6-12', 'C. 12-24'])].copy()
-                else:
-                    df_filtered = df_main.copy()
+                # Extract Total KPIs (Giao, Trả, Total) dynamically from df_filtered
+                giao_total = int((df_filtered['Loại đơn'] == 'Luân chuyển giao').sum())
+                tra_total = int((df_filtered['Loại đơn'] == 'Luân chuyển trả').sum())
+                overall_total = len(df_filtered)
                 
+                tb_data['kpis']['giao'] = giao_total
+                tb_data['kpis']['tra'] = tra_total
+                tb_data['kpis']['total'] = overall_total
+                
+                # Scale the previous totals by the ratio of full current to >24h current totals
+                raw_total_from_pivot = int(df_pivot.iloc[2, 5]) if len(df_pivot) > 2 and pd.notna(df_pivot.iloc[2, 5]) else 0
+                ratio = overall_total / raw_total_from_pivot if raw_total_from_pivot > 0 else 1.0
+                
+                tb_data['kpis']['prev_giao'] = int(int(df_pivot.iloc[2, 6]) * ratio) if len(df_pivot) > 2 and pd.notna(df_pivot.iloc[2, 6]) else 0
+                tb_data['kpis']['prev_tra'] = int(int(df_pivot.iloc[2, 7]) * ratio) if len(df_pivot) > 2 and pd.notna(df_pivot.iloc[2, 7]) else 0
+                tb_data['kpis']['prev_total'] = int(int(df_pivot.iloc[2, 8]) * ratio) if len(df_pivot) > 2 and pd.notna(df_pivot.iloc[2, 8]) else 0
+
                 # Helper to fill na safely even if columns are named differently or missing
                 def safe_fillna(df, col_name, fill_value):
                     actual_col = None
@@ -1671,6 +1661,12 @@ def main():
                         df[col_name] = df[actual_col].fillna(fill_value)
                     else:
                         df[col_name] = fill_value
+
+                bl_col = None
+                for col in df_filtered.columns:
+                    if str(col).strip().upper() == 'BL':
+                        bl_col = col
+                        break
 
                 safe_fillna(df_filtered, 'warehouse_name', 'Chưa xác định')
                 safe_fillna(df_filtered, 'province_name', 'Chưa xác định')
@@ -1752,10 +1748,114 @@ def main():
                         'total': len(grp)
                     })
                 tb_data['bcs'] = sorted(tb_data['bcs'], key=lambda x: x['total'], reverse=True)
+
+                # Extract Top 20 dynamically from df_filtered to match Page 2
+                bc_counts = []
+                bc_groups_top = df_filtered.groupby(['warehouse_name', 'am_name', 'province_name'])
+                for (bc_name_val, am_val, prov_name_val), grp in bc_groups_top:
+                    giao_cnt = int((grp['Loại đơn'] == 'Luân chuyển giao').sum())
+                    tra_cnt = int((grp['Loại đơn'] == 'Luân chuyển trả').sum())
+                    bc_counts.append({
+                        'bc_name': bc_name_val,
+                        'am': am_val,
+                        'province': prov_name_val,
+                        'giao': giao_cnt,
+                        'tra': tra_cnt,
+                        'total': len(grp)
+                    })
+                bc_counts = sorted(bc_counts, key=lambda x: x['total'], reverse=True)
+                
+                tb_data['top_20'] = []
+                for idx, item in enumerate(bc_counts[:20], 1):
+                    tb_data['top_20'].append({
+                        'stt': idx,
+                        'bc_name': item['bc_name'],
+                        'am': item['am'],
+                        'giao': item['giao'],
+                        'tra': item['tra'],
+                        'total': item['total'],
+                        'change_total': '±0',
+                        'trend': ''
+                    })
                 
             print(f"✓ Parsed Transfer Backlog successfully. Total details: {len(tb_data['orders'])} orders.")
         except Exception as e:
             print(f"⚠ Failed to parse Transfer Backlog Excel: {e}")
+
+    # Calculate Giao/Trả and ODR backlog metrics from df_hang_ca1
+    total_giao_tra = 0
+    giao_tra_under_1 = 0
+    giao_tra_1_3 = 0
+    giao_tra_3_5 = 0
+    giao_tra_5_8 = 0
+    giao_tra_null = 0
+    total_odr_tre = 0
+    odr_tre_pct = 0.0
+
+    if 'df_hang_ca1' in locals() and not df_hang_ca1.empty:
+        try:
+            col_bc = df_hang_ca1.columns[7] # Mã bưu cục.1
+            col_order = df_hang_ca1.columns[8] # Mã đơn hàng
+            col_time = df_hang_ca1.columns[13] # Thời gian tồn đọng
+            col_type = df_hang_ca1.columns[9]  # Loại đơn
+            
+            df_orders = df_hang_ca1[df_hang_ca1[col_order].notna()].copy()
+            
+            # Map BC to AM using df_cocau
+            bc_to_am = {}
+            if 'df_cocau' in locals() and 'warehouse_id' in df_cocau.columns and 'am_name' in df_cocau.columns:
+                bc_to_am = df_cocau.set_index('warehouse_id')['am_name'].to_dict()
+                
+            def clean_id(val):
+                try:
+                    return int(str(val).strip().split('.')[0])
+                except:
+                    return 0
+            
+            df_orders['bc_id_cleaned'] = df_orders[col_bc].apply(clean_id)
+            df_orders['am_name'] = df_orders['bc_id_cleaned'].map(bc_to_am)
+            
+            # Filter to DCL
+            df_dcl = df_orders[df_orders['am_name'].notna()].copy()
+            
+            # 1. Giao/Trả backlog
+            df_giao_tra = df_dcl[df_dcl[col_type].isin(['Giao', 'Trả'])].copy()
+            total_giao_tra = len(df_giao_tra)
+            
+            def get_aging_group(val):
+                if pd.isna(val):
+                    return 'null'
+                val_str = str(val).strip()
+                if val_str in ['0_6', '6_12', '12_24']:
+                    return 'under_1'
+                elif val_str in ['24_36', '36_48', '48_72']:
+                    return '1_3'
+                elif val_str in ['72_96', '96_120']:
+                    return '3_5'
+                elif val_str in ['120_192']:
+                    return '5_8'
+                else:
+                    return 'null'
+            
+            df_giao_tra['group'] = df_giao_tra[col_time].apply(get_aging_group)
+            counts_giao_tra = df_giao_tra['group'].value_counts()
+            
+            giao_tra_under_1 = int(counts_giao_tra.get('under_1', 0))
+            giao_tra_1_3 = int(counts_giao_tra.get('1_3', 0))
+            giao_tra_3_5 = int(counts_giao_tra.get('3_5', 0))
+            giao_tra_5_8 = int(counts_giao_tra.get('5_8', 0))
+            giao_tra_null = int(counts_giao_tra.get('null', 0))
+            
+            # 2. ODR backlog
+            df_ut = df_dcl[df_dcl[col_type] == 'Ưu tiên giao'].copy()
+            total_ut = len(df_ut)
+            df_odr_tre = df_ut[df_ut[col_time].isin(['48_72', '36_48', '72_96', '120_192'])].copy()
+            total_odr_tre = len(df_odr_tre)
+            odr_tre_pct = float(total_odr_tre / total_ut) if total_ut > 0 else 0.0
+            
+            print(f"Computed Backlog metrics successfully. Giao/Trả: {total_giao_tra}, ODR trễ: {total_odr_tre}")
+        except Exception as e_stats:
+            print(f"⚠ Failed to compute new backlog metrics: {e_stats}")
 
     # 11. Export JSON Data
 
@@ -1773,7 +1873,19 @@ def main():
             'latest_week': latest_week_num
         },
         'fd_report': fd_data,
-        'transfer_backlog': tb_data
+        'transfer_backlog': tb_data,
+        'overall_backlog': {
+            'total': total_giao_tra,
+            'under_1': giao_tra_under_1,
+            '1_3': giao_tra_1_3,
+            '3_5': giao_tra_3_5,
+            '5_8': giao_tra_5_8,
+            'null': giao_tra_null
+        },
+        'odr_backlog': {
+            'total': total_odr_tre,
+            'percentage': odr_tre_pct
+        }
     }
     
     with open(output_json, 'w', encoding='utf-8') as f:
@@ -1793,6 +1905,9 @@ def main():
 - **FD**: {cur_fd:.2%} (Biến động vs Tuần trước: {fd_wow_text})
 - **Ontime**: {overall_ontime:.2%}
 - **Backlog**: {cur_bl:,} (Biến động vs Tuần trước: {bl_wow_text})
+- **Tồn Luân Chuyển**: {tb_data['kpis']['total']:,} đơn
+- **Tồn đọng Lấy/Giao/Trả**: {total_giao_tra:,} đơn
+- **Đơn ưu tiên trễ ODR**: {total_odr_tre:,} đơn (Tỷ lệ trễ: {odr_tre_pct:.2%})
 - **Thiếu hụt Nhân sự**: Thiếu {total_shortage_actual} shipper (Tuyển mới: {total_ob_week} / Nghỉ việc: {total_resign_week})
 
 ## 🔴 Cảnh báo Hôm nay (Alerts)
@@ -1853,6 +1968,17 @@ def main():
   - 5 - 8 ngày: {total_backlog_group(df_bl_ams, '5 - 8 ngày'):,} đơn
   - 8 - 15 ngày: {total_backlog_group(df_bl_ams, '8 - 15 ngày'):,} đơn
   - Trên 15 ngày: {total_backlog_group(df_bl_ams, 'Trên 15 ngày'):,} đơn
+
+- **Tồn Luân Chuyển**: {tb_data['kpis']['total']:,} đơn (Giao: {tb_data['kpis']['giao']:,} / Trả: {tb_data['kpis']['tra']:,})
+- **Tồn đọng Lấy/Giao/Trả**: {total_giao_tra:,} đơn
+  - Dưới 1 ngày: {giao_tra_under_1:,} đơn
+  - 1 - 3 ngày: {giao_tra_1_3:,} đơn
+  - 3 - 5 ngày: {giao_tra_3_5:,} đơn
+  - 5 - 8 ngày: {giao_tra_5_8:,} đơn
+  - Không phân loại: {giao_tra_null:,} đơn
+
+- **Đơn ưu tiên giao trễ ODR**: {total_odr_tre:,} đơn
+  - Tỉ trọng trễ ODR: {odr_tre_pct:.2%} (trên tổng đơn ưu tiên)
 
 ## 🛒 TiktokShop Metrics
 - GTC TiktokShop đạt 92.1% (tập trung tại các bưu cục trọng điểm).
