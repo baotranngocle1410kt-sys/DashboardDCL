@@ -9,9 +9,9 @@
 - **FD**: 6.68% (Biến động vs Tuần trước: ↘ -0.24% vs Tuần trước)
 - **Ontime**: 91.50%
 - **Backlog**: 1,760 (Biến động vs Tuần trước: ↘ -29.32% vs Tuần trước)
-- **Tồn Luân Chuyển**: 5,086 đơn
-- **Tồn đọng Lấy/Giao/Trả**: 71,125 đơn
-- **Đơn ưu tiên trễ ODR**: 4,583 đơn (Tỷ lệ trễ: 39.56%)
+- **Tồn Luân Chuyển**: 8,582 đơn
+- **Tồn đọng Lấy/Giao/Trả**: 60,353 đơn
+- **Đơn ưu tiên trễ ODR**: 4,587 đơn (Tỷ lệ trễ: 39.59%)
 - **Thiếu hụt Nhân sự**: Thiếu 83 shipper (Tuyển mới: 21 / Nghỉ việc: 64)
 
 ## 🔴 Cảnh báo Hôm nay (Alerts)
@@ -55,15 +55,15 @@
 | Ngô Phan Mỹ Tú | 72.46% | 4.88% | Mạnh | 17 | Thiếu 4/57 | NgọcNTM |
 | Nguyễn Thành Huy | 69.36% | 5.26% | Mạnh | 55 | Thiếu 4/116 | VyLNK |
 | Nguyễn Việt Tới | 69.13% | 5.91% | Mạnh | 24 | Thiếu 1/47 | NgọcNTM |
-| Ngô Thị Bé Mi | 67.35% | 3.10% | Mạnh | 7 | Thiếu 1/39 | BìnhNLC |
+| Ngô Thị Bé Mi | 67.35% | 3.10% | Mạnh | 138 | Thiếu 1/39 | BìnhNLC |
 | Nguyễn Tuấn Anh | 63.20% | 5.57% | Cải thiện | 351 | Thiếu 8/135 | VyLNK |
 | Lý Quài Nhân | 62.92% | 8.27% | Cải thiện | 107 | Thiếu 9/60 | NgọcNTM |
-| Nguyễn Huỳnh Quốc Dũng | 58.75% | 6.70% | Cải thiện | 266 | Thiếu 10/74 | NgọcNTM |
-| Lê Minh Tuấn | 57.39% | 7.27% | Cải thiện | 37 | Thiếu 4/43 | NgọcNTM |
-| Nguyễn Anh Tùng | 53.70% | 7.02% | Yếu | 277 | Thiếu 17/94 | BìnhNLC |
-| Đoàn Công Tín | 53.17% | 8.14% | Yếu | 157 | Thiếu 9/63 | BìnhNLC |
+| Nguyễn Huỳnh Quốc Dũng | 58.75% | 6.70% | Cải thiện | 368 | Thiếu 10/74 | NgọcNTM |
+| Lê Minh Tuấn | 57.39% | 7.27% | Cải thiện | 42 | Thiếu 4/43 | NgọcNTM |
+| Nguyễn Anh Tùng | 53.70% | 7.02% | Yếu | 209 | Thiếu 17/94 | BìnhNLC |
+| Đoàn Công Tín | 53.17% | 8.14% | Yếu | 89 | Thiếu 9/63 | BìnhNLC |
 | Võ Hồng Chơn | 52.12% | 6.07% | Yếu | 203 | Thiếu 12/80 | NgọcNTM |
-| Huỳnh Quốc Trung | 40.28% | 13.78% | Yếu | 259 | Thiếu 4/32 | NgọcNTM |
+| Huỳnh Quốc Trung | 40.28% | 13.78% | Yếu | 157 | Thiếu 4/32 | NgọcNTM |
 
 ## 📦 Backlog Tracking
 - **Tổng Backlog >5 ngày**: 1,760 đơn
@@ -72,16 +72,16 @@
   - 8 - 15 ngày: 322 đơn
   - Trên 15 ngày: 21 đơn
 
-- **Tồn Luân Chuyển**: 5,086 đơn (Giao: 891 / Trả: 4,195)
-- **Tồn đọng Lấy/Giao/Trả**: 71,125 đơn
-  - Dưới 1 ngày: 50,988 đơn
-  - 1 - 3 ngày: 16,526 đơn
-  - 3 - 5 ngày: 2,517 đơn
-  - 5 - 8 ngày: 845 đơn
-  - Không phân loại: 249 đơn
+- **Tồn Luân Chuyển**: 8,582 đơn (Giao: 4,308 / Trả: 4,273)
+- **Tồn đọng Lấy/Giao/Trả**: 60,353 đơn
+  - Dưới 1 ngày: 37,161 đơn
+  - 1 - 3 ngày: 16,949 đơn
+  - 3 - 5 ngày: 4,197 đơn
+  - 5 - 8 ngày: 1,532 đơn
+  - Không phân loại: 514 đơn
 
-- **Đơn ưu tiên giao trễ ODR**: 4,583 đơn
-  - Tỉ trọng trễ ODR: 39.56% (trên tổng đơn ưu tiên)
+- **Đơn ưu tiên giao trễ ODR**: 4,587 đơn
+  - Tỉ trọng trễ ODR: 39.59% (trên tổng đơn ưu tiên)
 
 ## 🛒 TiktokShop Metrics
 - GTC TiktokShop đạt 92.1% (tập trung tại các bưu cục trọng điểm).
