@@ -8,32 +8,32 @@
 - **GTC**: 59.79% (Biến động vs Tuần trước: ↗ +1.22% vs Tuần trước)
 - **FD**: 6.68% (Biến động vs Tuần trước: ↘ -0.24% vs Tuần trước)
 - **Ontime**: 91.50%
-- **Backlog**: 1,760 (Biến động vs Tuần trước: ↘ -29.32% vs Tuần trước)
-- **Tồn Luân Chuyển**: 8,582 đơn
+- **Backlog**: 1,616 (Biến động vs Tuần trước: ↘ -35.10% vs Tuần trước)
+- **Tồn Luân Chuyển**: 5,001 đơn
 - **Tồn đọng Lấy/Giao/Trả**: 60,353 đơn
 - **Đơn ưu tiên trễ ODR**: 4,587 đơn (Tỷ lệ trễ: 39.59%)
-- **Thiếu hụt Nhân sự**: Thiếu 83 shipper (Tuyển mới: 21 / Nghỉ việc: 64)
+- **Thiếu hụt Nhân sự**: Thiếu 79 shipper (Tuyển mới: 21 / Nghỉ việc: 61)
 
 ## 🔴 Cảnh báo Hôm nay (Alerts)
 - **(BTR) Sơn Đông** có chỉ số GTC ngày 25/07/26 thấp hơn ngày hôm N-1 (24/07/26) 0.51%. So với cùng kỳ giảm 0.01% do Sản lượng cực lớn (9,230 đơn), thiếu 3/13 shipper (hụt 23%) tại Hữu Định, Phước Thạnh, Tam Phước, Sơn Đông, Phường 8., nhân sự đang thiếu 3/13 định biên, tuyến thiếu (Hữu Định, Phước Thạnh, Tam Phước, Sơn Đông, Phường 8).
 - **(TGI) Châu Thành** có chỉ số GTC ngày 25/07/26 thấp hơn ngày hôm N-1 (24/07/26) 1.14%. So với cùng kỳ giảm 2.52% do Không rõ nguyên nhân, rủi ro sập luồng hàng cao!, nhân sự đang thiếu 0/20 định biên.
 - **(TVI) Duyên Hải** có chỉ số GTC ngày 25/07/26 thấp hơn ngày hôm N-1 (24/07/26) 0.04%. So với cùng kỳ giảm 1.21% do Không rõ nguyên nhân, rủi ro sập luồng hàng cao!, nhân sự đang thiếu 2/18 định biên, tuyến thiếu (Trường Long Hòa, Ngủ Lạc).
-- **(TGI) Chợ Gạo** có chỉ số GTC ngày 25/07/26 thấp hơn ngày hôm N-1 (24/07/26) 2.46%. So với cùng kỳ giảm 3.82% do Hiệu suất giao kém, tỷ lệ trả (FD 8.14%) cao. Thiếu 2/20 shipper tại Lương Hòa Lạc, Mỹ Tịnh An., nhân sự đang thiếu 2/20 định biên, tuyến thiếu (Lương Hòa Lạc, Mỹ Tịnh An).
+- **(TGI) Chợ Gạo** có chỉ số GTC ngày 25/07/26 thấp hơn ngày hôm N-1 (24/07/26) 2.46%. So với cùng kỳ giảm 3.82% do Hiệu suất giao kém, tỷ lệ trả (FD 8.14%) cao. Thiếu 2/20 shipper tại Lương Hòa Lạc, Mỹ Tịnh An., nhân sự đang thiếu 0/20 định biên.
 - **(DTH) Tân Nhuận Đông** có chỉ số GTC ngày 25/07/26 thấp hơn ngày hôm N-1 (24/07/26) 3.74%. So với cùng kỳ giảm 5.42% do Không rõ nguyên nhân, rủi ro sập luồng hàng cao!, nhân sự đang thiếu 5/16 định biên, tuyến thiếu (xã tân phú trung, xã tân bình, xã tân nhuận đông, xã phú hựu, xã an nhơn).
 - **(TGI) Đạo Thạnh** có chỉ số GTC ngày 25/07/26 thấp hơn ngày hôm N-1 (24/07/26) 3.80%. So với cùng kỳ giảm 3.00% do Quá tải sản lượng (4,049 đơn), tỷ lệ trả (FD 13.78%) cao bất thường. Thiếu 1/21 shipper tại Phước Thạnh, Phường 10, Trung An, Phường 5., nhân sự đang thiếu 1/21 định biên, tuyến thiếu (Phước Thạnh, Phường 10, Trung An, Phường 5).
 
 ## 📈 Highlight / Lowlight
 ### Highlights:
 - Tỷ lệ GTC toàn vùng (59.79%) cải thiện **+1.22%** so với cùng kỳ tuần trước (58.57%).
-- Đơn tồn backlog (>5 ngày) kiểm soát tốt, giảm **-29.32%** so với tuần trước (từ 2,490 xuống 1,760 đơn).
+- Đơn tồn backlog (>5 ngày) kiểm soát tốt, giảm **-35.10%** so với tuần trước (từ 2,490 xuống 1,616 đơn).
 - **Ngô Phan Mỹ Tú** là AM có tỷ lệ GTC cao nhất toàn vùng (72.46%), đồng thời duy trì lượng đơn tồn đọng cực thấp.
 - Tỷ lệ chuyển trả (FD) toàn vùng duy trì ở mức an toàn là **6.68%** (↘ -0.24% vs Tuần trước).
 - Trong tuần qua, HRBP đã tuyển thành công **21 nhân viên mới** (OB) hỗ trợ lấp đầy các tuyến nóng.
 
 ### Lowlights:
 - Sản lượng đơn toàn vùng đạt 76,366 đơn, suy giảm nhẹ **-8.01%** so với tuần trước.
-- Toàn vùng đang **thiếu hụt thực tế 83 shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.
-- Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 30 định biên) và **Đồng Tháp** (thiếu 16 định biên).
+- Toàn vùng đang **thiếu hụt thực tế 79 shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.
+- Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 26 định biên) và **Đồng Tháp** (thiếu 16 định biên).
 
 ## 🔮 Phân tích Nguyên nhân (Root Causes)
 - Tại **(BTR) An Hội**: Nhân sự: 7/11 (thiếu 4) + 2 nhân viên hỗ trợ; Bưu cục liên tục có nhân viên nghỉ ngang, té xe.; NVXL mới chưa quản lý được nhân sự tại BC, điều tiết giờ giấc xuất hàng.; Nhân viên 9h chưa rời khỏi kho.
@@ -53,26 +53,26 @@
 | AM | GTC | FD | Trạng thái | Đơn Aging | Thiếu shipper | HRBP |
 | --- | --- | --- | --- | --- | --- | --- |
 | Ngô Phan Mỹ Tú | 72.46% | 4.88% | Mạnh | 17 | Thiếu 4/57 | NgọcNTM |
-| Nguyễn Thành Huy | 69.36% | 5.26% | Mạnh | 55 | Thiếu 4/116 | VyLNK |
-| Nguyễn Việt Tới | 69.13% | 5.91% | Mạnh | 24 | Thiếu 1/47 | NgọcNTM |
-| Ngô Thị Bé Mi | 67.35% | 3.10% | Mạnh | 138 | Thiếu 1/39 | BìnhNLC |
-| Nguyễn Tuấn Anh | 63.20% | 5.57% | Cải thiện | 351 | Thiếu 8/135 | VyLNK |
-| Lý Quài Nhân | 62.92% | 8.27% | Cải thiện | 107 | Thiếu 9/60 | NgọcNTM |
-| Nguyễn Huỳnh Quốc Dũng | 58.75% | 6.70% | Cải thiện | 368 | Thiếu 10/74 | NgọcNTM |
-| Lê Minh Tuấn | 57.39% | 7.27% | Cải thiện | 42 | Thiếu 4/43 | NgọcNTM |
-| Nguyễn Anh Tùng | 53.70% | 7.02% | Yếu | 209 | Thiếu 17/94 | BìnhNLC |
-| Đoàn Công Tín | 53.17% | 8.14% | Yếu | 89 | Thiếu 9/63 | BìnhNLC |
+| Nguyễn Thành Huy | 69.36% | 5.26% | Mạnh | 46 | Thiếu 4/116 | VyLNK |
+| Nguyễn Việt Tới | 69.13% | 5.91% | Mạnh | 25 | Thiếu 1/47 | NgọcNTM |
+| Ngô Thị Bé Mi | 67.35% | 3.10% | Mạnh | 119 | Thiếu 0/39 | BìnhNLC |
+| Nguyễn Tuấn Anh | 63.20% | 5.57% | Cải thiện | 314 | Thiếu 8/135 | VyLNK |
+| Lý Quài Nhân | 62.92% | 8.27% | Cải thiện | 55 | Thiếu 9/60 | NgọcNTM |
+| Nguyễn Huỳnh Quốc Dũng | 58.75% | 6.70% | Cải thiện | 343 | Thiếu 10/74 | NgọcNTM |
+| Lê Minh Tuấn | 57.39% | 7.27% | Cải thiện | 31 | Thiếu 3/43 | NgọcNTM |
+| Nguyễn Anh Tùng | 53.70% | 7.02% | Yếu | 219 | Thiếu 17/94 | BìnhNLC |
+| Đoàn Công Tín | 53.17% | 8.14% | Yếu | 83 | Thiếu 7/63 | BìnhNLC |
 | Võ Hồng Chơn | 52.12% | 6.07% | Yếu | 203 | Thiếu 12/80 | NgọcNTM |
-| Huỳnh Quốc Trung | 40.28% | 13.78% | Yếu | 157 | Thiếu 4/32 | NgọcNTM |
+| Huỳnh Quốc Trung | 40.28% | 13.78% | Yếu | 161 | Thiếu 4/32 | NgọcNTM |
 
 ## 📦 Backlog Tracking
-- **Tổng Backlog >5 ngày**: 1,760 đơn
+- **Tổng Backlog >5 ngày**: 1,616 đơn
 - **Chi tiết theo nhóm tuổi đơn**:
-  - 5 - 8 ngày: 1,417 đơn
-  - 8 - 15 ngày: 322 đơn
-  - Trên 15 ngày: 21 đơn
+  - 5 - 8 ngày: 1,307 đơn
+  - 8 - 15 ngày: 289 đơn
+  - Trên 15 ngày: 20 đơn
 
-- **Tồn Luân Chuyển**: 8,582 đơn (Giao: 4,308 / Trả: 4,273)
+- **Tồn Luân Chuyển**: 5,001 đơn (Giao: 831 / Trả: 4,170)
 - **Tồn đọng Lấy/Giao/Trả**: 60,353 đơn
   - Dưới 1 ngày: 37,161 đơn
   - 1 - 3 ngày: 16,949 đơn
