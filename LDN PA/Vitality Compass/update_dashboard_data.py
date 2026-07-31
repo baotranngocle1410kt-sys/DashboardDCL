@@ -360,7 +360,7 @@ def main():
             df_cocau_raw = pd.read_excel(xl_hr, sheet_name="Cơ cấu Vùng")
             df_cocau = pd.DataFrame()
             df_cocau['warehouse_id'] = df_cocau_raw['Mã BC']
-            df_cocau['warehouse_name'] = df_cocau_raw['Bưu cục']
+            df_cocau['warehouse_name'] = df_cocau_raw['Bưu cục cũ']
             df_cocau['province_name'] = df_cocau_raw['Tỉnh']
             df_cocau['am_name'] = df_cocau_raw['AM']
             
@@ -383,8 +383,8 @@ def main():
             
             # Populate cocau_map for old to new name translations
             for idx_c, row_c in df_cocau_raw.iterrows():
-                old_name_raw = row_c['Bưu cục cũ']
-                new_name_raw = row_c['Bưu cục']
+                old_name_raw = row_c['Bưu cục']
+                new_name_raw = row_c['Bưu cục cũ']
                 new_am_raw = row_c['AM']
                 if pd.notna(old_name_raw) and pd.notna(new_name_raw):
                     clean_old = clean_bc_name(str(old_name_raw))

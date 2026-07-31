@@ -106,8 +106,8 @@
       "gtc_change": 0.03211488836807708,
       "fd": 0.038,
       "fd_change": 0.0,
-      "backlog": 650,
-      "backlog_change": 181,
+      "backlog": 0,
+      "backlog_change": 0,
       "hr": {
         "shortage_actual": 23,
         "shortage_bs": 12,
@@ -125,8 +125,8 @@
       "gtc_change": 0.013599999999999945,
       "fd": 0.038,
       "fd_change": 0.0,
-      "backlog": 329,
-      "backlog_change": 155,
+      "backlog": 592,
+      "backlog_change": 280,
       "hr": {
         "shortage_actual": 8,
         "shortage_bs": 4,
@@ -144,8 +144,8 @@
       "gtc_change": 0.03243900097159513,
       "fd": 0.038,
       "fd_change": 0.0,
-      "backlog": 97,
-      "backlog_change": 17,
+      "backlog": 158,
+      "backlog_change": 27,
       "hr": {
         "shortage_actual": 16,
         "shortage_bs": 6,
@@ -163,15 +163,15 @@
       "gtc_change": 0.02677239552359828,
       "fd": 0.038,
       "fd_change": 0.0,
-      "backlog": 637,
-      "backlog_change": 186,
+      "backlog": 520,
+      "backlog_change": 156,
       "hr": {
         "shortage_actual": 28,
         "shortage_bs": 12,
         "resign": 22,
         "ob": 7,
         "target_headcount": 230,
-        "hrbp": "DungLK",
+        "hrbp": "BaoHQ",
         "intern": "Tuấn Hưng"
       }
     },
@@ -182,8 +182,8 @@
       "gtc_change": -0.019299999999999984,
       "fd": 0.038,
       "fd_change": 0.0,
-      "backlog": 17,
-      "backlog_change": 8,
+      "backlog": 46,
+      "backlog_change": 13,
       "hr": {
         "shortage_actual": 10,
         "shortage_bs": 3,
@@ -203,9 +203,9 @@
       "gtc_change": 0.026100000000000012,
       "fd": 0.04885,
       "fd_change": 0.006374999999999999,
-      "backlog": 9,
+      "backlog": 11,
       "backlog_detail": {
-        "5_8": 9,
+        "5_8": 11,
         "8_15": 0,
         "above_15": 0
       },
@@ -225,10 +225,10 @@
       "gtc_change": -0.019299999999999984,
       "fd": 0.052575,
       "fd_change": 0.0032874999999999988,
-      "backlog": 17,
+      "backlog": 46,
       "backlog_detail": {
-        "5_8": 11,
-        "8_15": 6,
+        "5_8": 37,
+        "8_15": 9,
         "above_15": 0
       },
       "status": "Mạnh",
@@ -247,9 +247,9 @@
       "gtc_change": 0.07810000000000006,
       "fd": 0.0591,
       "fd_change": 0.018125000000000002,
-      "backlog": 20,
+      "backlog": 36,
       "backlog_detail": {
-        "5_8": 17,
+        "5_8": 33,
         "8_15": 3,
         "above_15": 0
       },
@@ -269,11 +269,11 @@
       "gtc_change": 0.013599999999999945,
       "fd": 0.05571818181818181,
       "fd_change": 0.011836363636363631,
-      "backlog": 329,
+      "backlog": 592,
       "backlog_detail": {
-        "5_8": 194,
-        "8_15": 128,
-        "above_15": 7
+        "5_8": 347,
+        "8_15": 233,
+        "above_15": 12
       },
       "status": "Cải thiện",
       "hr": {
@@ -291,11 +291,11 @@
       "gtc_change": 0.006700000000000039,
       "fd": 0.08272000000000002,
       "fd_change": 0.021320000000000026,
-      "backlog": 22,
+      "backlog": 46,
       "backlog_detail": {
-        "5_8": 17,
-        "8_15": 4,
-        "above_15": 1
+        "5_8": 44,
+        "8_15": 2,
+        "above_15": 0
       },
       "status": "Cải thiện",
       "hr": {
@@ -313,10 +313,10 @@
       "gtc_change": 0.02290000000000003,
       "fd": 0.05445491733424237,
       "fd_change": 0.004048087924187149,
-      "backlog": 46,
+      "backlog": 65,
       "backlog_detail": {
-        "5_8": 46,
-        "8_15": 0,
+        "5_8": 58,
+        "8_15": 7,
         "above_15": 0
       },
       "status": "Cải thiện",
@@ -329,39 +329,17 @@
       }
     },
     {
-      "name": "Nguyễn Huỳnh Quốc Dũng",
-      "volume": 7530,
-      "gtc": 0.6102,
-      "gtc_change": 0.03859999999999997,
-      "fd": 0.06695714285714287,
-      "fd_change": 0.013885714285714286,
-      "backlog": 338,
-      "backlog_detail": {
-        "5_8": 238,
-        "8_15": 96,
-        "above_15": 4
-      },
-      "status": "Cải thiện",
-      "hr": {
-        "shortage_actual": 12,
-        "shortage_bs": 5,
-        "resign": 9,
-        "ob": 2,
-        "target_headcount": 85
-      }
-    },
-    {
       "name": "Nguyễn Anh Tùng",
       "volume": 5547,
       "gtc": 0.4698,
       "gtc_change": 0.0021999999999999797,
       "fd": 0.07022857142857143,
       "fd_change": 0.007157142857142862,
-      "backlog": 306,
+      "backlog": 175,
       "backlog_detail": {
-        "5_8": 238,
-        "8_15": 67,
-        "above_15": 1
+        "5_8": 108,
+        "8_15": 57,
+        "above_15": 10
       },
       "status": "Yếu",
       "hr": {
@@ -379,11 +357,11 @@
       "gtc_change": 0.0524,
       "fd": 0.08140000000000001,
       "fd_change": -0.0013999999999999846,
-      "backlog": 53,
+      "backlog": 232,
       "backlog_detail": {
-        "5_8": 39,
-        "8_15": 14,
-        "above_15": 0
+        "5_8": 199,
+        "8_15": 30,
+        "above_15": 3
       },
       "status": "Cải thiện",
       "hr": {
@@ -395,39 +373,17 @@
       }
     },
     {
-      "name": "Võ Hồng Chơn",
-      "volume": 9249,
-      "gtc": 0.5305,
-      "gtc_change": 0.0252,
-      "fd": 0.0607,
-      "fd_change": -0.010533333333333332,
-      "backlog": 312,
-      "backlog_detail": {
-        "5_8": 284,
-        "8_15": 24,
-        "above_15": 4
-      },
-      "status": "Yếu",
-      "hr": {
-        "shortage_actual": 11,
-        "shortage_bs": 7,
-        "resign": 5,
-        "ob": 1,
-        "target_headcount": 80
-      }
-    },
-    {
       "name": "Huỳnh Quốc Trung",
       "volume": 3270,
       "gtc": 0.4155,
       "gtc_change": 0.009799999999999975,
       "fd": 0.1378,
       "fd_change": 0.015350000000000003,
-      "backlog": 130,
+      "backlog": 48,
       "backlog_detail": {
-        "5_8": 86,
-        "8_15": 43,
-        "above_15": 1
+        "5_8": 40,
+        "8_15": 8,
+        "above_15": 0
       },
       "status": "Yếu",
       "hr": {
@@ -439,32 +395,54 @@
       }
     },
     {
-      "name": "Ngô Thị Bé Mi",
-      "volume": 5048,
-      "gtc": 0.5127,
-      "gtc_change": 0.023700000000000054,
+      "name": "Lâm Xuân Vinh",
+      "volume": 0,
+      "gtc": 0.0,
+      "gtc_change": 0.0,
       "fd": 0.0,
       "fd_change": 0.0,
-      "backlog": 102,
+      "backlog": 132,
       "backlog_detail": {
-        "5_8": 93,
-        "8_15": 9,
+        "5_8": 107,
+        "8_15": 25,
         "above_15": 0
       },
       "status": "Yếu",
       "hr": {
-        "shortage_actual": 12,
-        "shortage_bs": 4,
-        "resign": 8,
+        "shortage_actual": 0,
+        "shortage_bs": 0,
+        "resign": 0,
         "ob": 0,
-        "target_headcount": 53
+        "target_headcount": 0
+      }
+    },
+    {
+      "name": "Huỳnh Phương Duy",
+      "volume": 0,
+      "gtc": 0.0,
+      "gtc_change": 0.0,
+      "fd": 0.0,
+      "fd_change": 0.0,
+      "backlog": 111,
+      "backlog_detail": {
+        "5_8": 95,
+        "8_15": 16,
+        "above_15": 0
+      },
+      "status": "Yếu",
+      "hr": {
+        "shortage_actual": 0,
+        "shortage_bs": 0,
+        "resign": 0,
+        "ob": 0,
+        "target_headcount": 0
       }
     }
   ],
   "bcs": [
     {
       "id": 20880000,
-      "name": "(VLO) Cái Nhum",
+      "name": "Bưu Cục 07 Lê Lợi-Mang Thít-Vĩnh Long",
       "am": "Nguyễn Tuấn Anh",
       "am_id": "3162597",
       "am_tele": "@Tuananh_kr",
@@ -475,16 +453,16 @@
       "gtc_vs_lastweek": -0.017800000000000038,
       "fd": 0.05571818181818181,
       "fd_change": 0.011836363636363631,
-      "backlog": 1,
+      "backlog": 0,
       "status": "Cảnh báo",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "recommendation": "Đề nghị AM kiểm tra và điều phối nhân sự xử lý gấp.",
       "hr": {
         "shortage_actual": 0,
         "shortage_bs": 0,
-        "target_headcount": 11,
+        "target_headcount": 222,
         "tuyen_thieu": "",
-        "hrbp": "VyLNK",
+        "hrbp": "N/A",
         "status": "Đủ",
         "ob_week": 0,
         "resign_week": 0
@@ -492,36 +470,35 @@
     },
     {
       "id": 22972000,
-      "name": "(BTR) Sơn Đông",
+      "name": "Bưu Cục Võ Nguyên Giáp-Phú Tân-Bến Tre",
       "am": "Võ Hồng Chơn",
       "am_id": "1705850",
       "am_tele": "@chonvh",
       "province": "Bến Tre",
       "volume": 9230,
-      "gtc": 0.3902,
+      "gtc": 0.5213,
       "gtc_change": -0.005099999999999993,
       "gtc_vs_lastweek": -9.999999999998899e-05,
       "fd": 0.0607,
       "fd_change": -0.010533333333333332,
-      "backlog": 150,
+      "backlog": 21,
       "status": "Bất ổn",
-      "cause": "Sản lượng cực lớn (9,230 đơn), thiếu 3/13 shipper (hụt 23%) tại Hữu Định, Phước Thạnh, Tam Phước, Sơn Đông, Phường 8.",
-      "recommendation": "AM điều động tạm thời shipper từ bưu cục lân cận để hỗ trợ giải tỏa sản lượng lớn và dọn backlog.",
+      "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
+      "recommendation": "Đề nghị AM kiểm tra và điều phối nhân sự xử lý gấp.",
       "hr": {
-        "shortage_actual": 2,
+        "shortage_actual": 0,
         "shortage_bs": 0,
-        "target_headcount": 13,
-        "tuyen_thieu": "Hữu Định, Phước Thạnh, Tam Phước, Sơn Đông, Phường 8",
-        "hrbp": "NgọcNTM",
-        "status": "Thiếu",
-        "ob_week": 1,
-        "resign_week": 3
-      },
-      "% Gán": 0.7617
+        "target_headcount": 186,
+        "tuyen_thieu": "",
+        "hrbp": "N/A",
+        "status": "Đủ",
+        "ob_week": 0,
+        "resign_week": 0
+      }
     },
     {
       "id": 21991000,
-      "name": "(TGI) Châu Thành",
+      "name": "Bưu Cục 88 Ấp Thân Hòa-Thân Cửu Nghĩa-Châu Thành-Tiền Giang",
       "am": "Nguyễn Anh Tùng",
       "am_id": "3155955",
       "am_tele": "@jimmytho91",
@@ -532,16 +509,16 @@
       "gtc_vs_lastweek": 0.0252,
       "fd": 0.07022857142857143,
       "fd_change": 0.007157142857142862,
-      "backlog": 1,
+      "backlog": 46,
       "status": "Bất ổn",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "recommendation": "Đề nghị AM kiểm tra và điều phối nhân sự xử lý gấp.",
       "hr": {
         "shortage_actual": 0,
         "shortage_bs": 0,
-        "target_headcount": 20,
+        "target_headcount": 185,
         "tuyen_thieu": "",
-        "hrbp": "DungLK",
+        "hrbp": "N/A",
         "status": "Đủ",
         "ob_week": 0,
         "resign_week": 0
@@ -549,7 +526,7 @@
     },
     {
       "id": 2410,
-      "name": "(TVI) Duyên Hải",
+      "name": "Bưu Cục Duyên Hải-Trà Vinh",
       "am": "Nguyễn Thành Huy",
       "am_id": "2047719",
       "am_tele": "@nguyenthanhhuytv",
@@ -560,24 +537,24 @@
       "gtc_vs_lastweek": 0.0121,
       "fd": 0.052575,
       "fd_change": 0.0032874999999999988,
-      "backlog": 4,
+      "backlog": 19,
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "recommendation": "Đề nghị AM kiểm tra và điều phối nhân sự xử lý gấp.",
       "hr": {
-        "shortage_actual": 2,
-        "shortage_bs": 1,
-        "target_headcount": 18,
-        "tuyen_thieu": "Trường Long Hòa, Ngũ Lạc, Thạnh Hòa Sơn",
-        "hrbp": "VyLNK",
-        "status": "Thiếu",
+        "shortage_actual": 0,
+        "shortage_bs": 0,
+        "target_headcount": 179,
+        "tuyen_thieu": "",
+        "hrbp": "N/A",
+        "status": "Đủ",
         "ob_week": 0,
-        "resign_week": 1
+        "resign_week": 0
       }
     },
     {
       "id": 22910000,
-      "name": "(BTR) Hương Mỹ",
+      "name": "Bưu Cục Quốc Lộ 57-Xã Hương Mỹ-Bến Tre",
       "am": "Nguyễn Huỳnh Quốc Dũng",
       "am_id": "3126726",
       "am_tele": "@DungBt",
@@ -588,24 +565,24 @@
       "gtc_vs_lastweek": 0.018500000000000072,
       "fd": 0.06695714285714287,
       "fd_change": 0.013885714285714286,
-      "backlog": 4,
+      "backlog": 3,
       "status": "Cảnh báo",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "recommendation": "Đề nghị AM kiểm tra và điều phối nhân sự xử lý gấp.",
       "hr": {
-        "shortage_actual": 1,
+        "shortage_actual": 0,
         "shortage_bs": 0,
-        "target_headcount": 8,
-        "tuyen_thieu": "xã Tân Phong - Thới Thạnh (huyện Thạnh Phú cũ)   + An định  sắp chuyển  (20)",
-        "hrbp": "NgọcNTM",
-        "status": "Thiếu",
+        "target_headcount": 136,
+        "tuyen_thieu": "",
+        "hrbp": "N/A",
+        "status": "Đủ",
         "ob_week": 0,
-        "resign_week": 1
+        "resign_week": 0
       }
     },
     {
       "id": 22316000,
-      "name": "(TGI) Chợ Gạo",
+      "name": "Bưu Cục 230 Ấp Bình Hạnh-Long Bình Điền-Chợ Gạo-Tiền Giang",
       "am": "Đoàn Công Tín",
       "am_id": "3115359",
       "am_tele": "@congtind",
@@ -616,16 +593,16 @@
       "gtc_vs_lastweek": 0.038199999999999956,
       "fd": 0.0814,
       "fd_change": -0.0013999999999999985,
-      "backlog": 7,
+      "backlog": 33,
       "status": "Bất ổn",
       "cause": "Hiệu suất giao kém, tỷ lệ trả (FD 8.14%) cao. Thiếu 2/20 shipper tại Lương Hòa Lạc, Mỹ Tịnh An.",
       "recommendation": "AM họp bưu cục chấn chỉnh thái độ giao hàng và kiểm soát tỷ lệ trả hàng.",
       "hr": {
         "shortage_actual": 0,
         "shortage_bs": 0,
-        "target_headcount": 20,
+        "target_headcount": 133,
         "tuyen_thieu": "",
-        "hrbp": "DungLK",
+        "hrbp": "N/A",
         "status": "Đủ",
         "ob_week": 0,
         "resign_week": 0
@@ -634,7 +611,7 @@
     },
     {
       "id": 22000000,
-      "name": "(DTH) Tân Nhuận Đông",
+      "name": "Bưu Cục Tân Nhuận Đông-Châu Thành-Đồng Tháp",
       "am": "Lý Quài Nhân",
       "am_id": "3003753",
       "am_tele": "@lynhantv92",
@@ -645,24 +622,24 @@
       "gtc_vs_lastweek": 0.054199999999999915,
       "fd": 0.08272000000000002,
       "fd_change": 0.021320000000000026,
-      "backlog": 7,
+      "backlog": 10,
       "status": "Cảnh báo",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "recommendation": "Đề nghị AM kiểm tra và điều phối nhân sự xử lý gấp.",
       "hr": {
-        "shortage_actual": 5,
+        "shortage_actual": 0,
         "shortage_bs": 0,
-        "target_headcount": 16,
-        "tuyen_thieu": "xã tân phú trung, xã tân bình, xã tân nhuận đông, xã phú hựu, xã an nhơn",
-        "hrbp": "NgọcNTM",
-        "status": "Thiếu",
+        "target_headcount": 113,
+        "tuyen_thieu": "",
+        "hrbp": "N/A",
+        "status": "Đủ",
         "ob_week": 0,
-        "resign_week": 5
+        "resign_week": 0
       }
     },
     {
       "id": 2498,
-      "name": "(DTH) Tràm Chim",
+      "name": "Bưu Cục Tam Nông-Đồng Tháp",
       "am": "Ngô Phan Mỹ Tú",
       "am_id": "255924",
       "am_tele": "@MyTuNgoPhan",
@@ -673,53 +650,52 @@
       "gtc_vs_lastweek": 0.029000000000000026,
       "fd": 0.04885,
       "fd_change": 0.006374999999999999,
-      "backlog": 6,
+      "backlog": 4,
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "recommendation": "Đề nghị AM kiểm tra và điều phối nhân sự xử lý gấp.",
       "hr": {
-        "shortage_actual": 1,
+        "shortage_actual": 0,
         "shortage_bs": 0,
-        "target_headcount": 12,
-        "tuyen_thieu": "Phú Thọ (1 NV )",
-        "hrbp": "NgọcNTM",
-        "status": "Thiếu",
+        "target_headcount": 108,
+        "tuyen_thieu": "",
+        "hrbp": "N/A",
+        "status": "Đủ",
         "ob_week": 0,
-        "resign_week": 1
+        "resign_week": 0
       }
     },
     {
       "id": 1199,
-      "name": "(TGI) Đạo Thạnh",
+      "name": "Bưu Cục 206 A Đoàn Thị Nghiệp-Mỹ Tho-Tiền Giang 01",
       "am": "Huỳnh Quốc Trung",
       "am_id": "3166061",
       "am_tele": "@HuynhQTrung",
       "province": "Tiền Giang",
       "volume": 4049,
-      "gtc": 0.4159,
+      "gtc": 0.403,
       "gtc_change": -0.03799999999999998,
       "gtc_vs_lastweek": -0.02999999999999997,
       "fd": 0.1378,
       "fd_change": 0.015350000000000003,
-      "backlog": 130,
+      "backlog": 29,
       "status": "Bất ổn",
-      "cause": "Quá tải sản lượng (4,049 đơn), tỷ lệ trả (FD 13.78%) cao bất thường. Thiếu 1/21 shipper tại Phước Thạnh, Phường 10, Trung An, Phường 5.",
-      "recommendation": "AM trực tiếp cắm chốt kho rà soát lý do trả hàng (FD 13.78%). Bổ sung 1 NVXL hỗ trợ gán đơn đầu ca.",
+      "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
+      "recommendation": "Đề nghị AM kiểm tra và điều phối nhân sự xử lý gấp.",
       "hr": {
-        "shortage_actual": 3,
-        "shortage_bs": 2,
-        "target_headcount": 21,
-        "tuyen_thieu": "Phước Thạnh, Phường 10, Trung An, Phường 5",
-        "hrbp": "DungLK",
-        "status": "Thiếu",
-        "ob_week": 1,
-        "resign_week": 2
-      },
-      "% Gán": 0.7141
+        "shortage_actual": 0,
+        "shortage_bs": 0,
+        "target_headcount": 82,
+        "tuyen_thieu": "",
+        "hrbp": "N/A",
+        "status": "Đủ",
+        "ob_week": 0,
+        "resign_week": 0
+      }
     },
     {
       "id": 1083,
-      "name": "(DTH) Cao Lãnh",
+      "name": "Bưu Cục 12-14 Bà Triệu-Cao Lãnh-Đồng Tháp",
       "am": "Nguyễn Việt Tới",
       "am_id": "27547",
       "am_tele": "@OP_MN_CAOLANH_DONGTHAP_TOI",
@@ -730,24 +706,24 @@
       "gtc_vs_lastweek": 0.021199999999999997,
       "fd": 0.0591,
       "fd_change": 0.018125000000000002,
-      "backlog": 7,
+      "backlog": 16,
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "recommendation": "Đề nghị AM kiểm tra và điều phối nhân sự xử lý gấp.",
       "hr": {
         "shortage_actual": 0,
-        "shortage_bs": 1,
-        "target_headcount": 13,
+        "shortage_bs": 0,
+        "target_headcount": 80,
         "tuyen_thieu": "",
-        "hrbp": "NgọcNTM",
-        "status": "Thiếu",
-        "ob_week": 1,
+        "hrbp": "N/A",
+        "status": "Đủ",
+        "ob_week": 0,
         "resign_week": 0
       }
     },
     {
       "id": 22461000,
-      "name": "(DTH) Tháp Mười",
+      "name": "Bưu Cục Khóm 3 Trần Hưng Đạo-Xã Tháp Mười-Đồng Tháp",
       "am": "Lê Minh Tuấn",
       "am_id": "1880732",
       "am_tele": "@MinhTuanLM",
@@ -758,24 +734,24 @@
       "gtc_vs_lastweek": -0.03279999999999994,
       "fd": 0.0727,
       "fd_change": 0.008199999999999999,
-      "backlog": 4,
+      "backlog": 31,
       "status": "Cảnh báo",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "recommendation": "Đề nghị AM kiểm tra và điều phối nhân sự xử lý gấp.",
       "hr": {
-        "shortage_actual": 1,
+        "shortage_actual": 0,
         "shortage_bs": 0,
-        "target_headcount": 20,
+        "target_headcount": 68,
         "tuyen_thieu": "",
-        "hrbp": "NgọcNTM",
-        "status": "Thiếu",
+        "hrbp": "N/A",
+        "status": "Đủ",
         "ob_week": 0,
-        "resign_week": 1
+        "resign_week": 0
       }
     },
     {
       "id": 20776000,
-      "name": "(TGI) Hậu Mỹ",
+      "name": "Bưu Cục Ấp Hậu Mỹ Phú 1-Cái Bè-Tiền Giang",
       "am": "Lê Minh Tuấn",
       "am_id": "1880732",
       "am_tele": "@MinhTuanLM",
@@ -786,18 +762,18 @@
       "gtc_vs_lastweek": 0.03750000000000009,
       "fd": 0.031,
       "fd_change": -0.0022333333333333302,
-      "backlog": 0,
+      "backlog": 2,
       "status": "Tốt",
       "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
       "recommendation": "Đề nghị AM kiểm tra và điều phối nhân sự xử lý gấp.",
       "hr": {
         "shortage_actual": 0,
         "shortage_bs": 0,
-        "target_headcount": 10,
+        "target_headcount": 53,
         "tuyen_thieu": "",
-        "hrbp": "BaoHQ",
+        "hrbp": "N/A",
         "status": "Đủ",
-        "ob_week": 1,
+        "ob_week": 0,
         "resign_week": 0
       }
     }
@@ -805,7 +781,7 @@
   "analysis": {
     "highlights": [
       "Tỷ lệ GTC toàn vùng (59.79%) cải thiện **+0.23%** so với cùng kỳ tuần trước (58.57%).",
-      "Đơn tồn backlog (>5 ngày) kiểm soát tốt, giảm **-20.86%** so với tuần trước (từ 2,490 xuống 1,684 đơn).",
+      "Đơn tồn backlog (>5 ngày) kiểm soát tốt, giảm **-20.86%** so với tuần trước (từ 2,128 xuống 1,497 đơn).",
       "**Ngô Phan Mỹ Tú** là AM có tỷ lệ GTC cao nhất toàn vùng (72.38%), đồng thời duy trì lượng đơn tồn đọng cực thấp.",
       "Tỷ lệ chuyển trả (FD) toàn vùng duy trì ở mức an toàn là **6.68%** (↗ +1.05% vs Tuần trước).",
       "Trong tuần qua, HRBP đã tuyển thành công **16 nhân viên mới** (OB) hỗ trợ lấp đầy các tuyến nóng."
@@ -816,18 +792,18 @@
       "Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 28 định biên) và **Đồng Tháp** (thiếu 16 định biên)."
     ],
     "causes": [
-      "Tại **(BTR) An Hội**: Nhân sự: 7/11 (thiếu 4) + 2 nhân viên hỗ trợ; Bưu cục liên tục có nhân viên nghỉ ngang, té xe.; NVXL mới chưa quản lý được nhân sự tại BC, điều tiết giờ giấc xuất hàng.; Nhân viên 9h chưa rời khỏi kho.",
-      "Tại **(DTH) Lấp Vò**: Số thiếu: 4 NVPTTT; Thiếu tuyến xã Mỹ An Hưng A, xã Mỹ An Hưng B, xã Hội An Đông; Nhân sự hiện tại: 9 NVPTTT (12 tuyến chạy); Nhân viên mới năng suất trung bình: GTC 35 đơn/ngày; Bưu cục có phân chia tuyến rõ ràng, hàng cồng kềnh còn để không gọn, hàng lấy về nhiều để giữa kho không kiểm soát được; NV ra khỏi kho trễ (10h) do tự lựa hàng và gọi lâu, NVXL không phân chia hàng trước cho NVPTTT; AM ngồi trực tiếp tại kho, NVXL có kinh nghiệm sắp xếp gán và điều hành; AM tick mất hàng (hơn 75 đơn), còn hàng vật lý chuyển trả về OE",
-      "Tại **(TGI) Châu Thành**: Số thiếu: 5 NVPTTT + 1 NVXL; Thiếu tuyến xã Tân Hương, xã Thân Cửu Nghĩa, xã Tam Hiệp, xã Tân Hội Đông; NVXL trực tiếp điều hành sắp xếp và gán chuyến cho nhân viên; Hàng tồn: 121 đơn",
-      "Tại **(TVI) Duyên Hải**: Số thiếu 4; Bưu cục xảy ra chiếm dụng, nhân viên nghỉ ngang; Các tuyến chạy xa BC; Nhân viên mới vào năng suất chưa cao; NVXL có kinh nghiệm, sắp xếp layout, FIFO hàng hóa",
-      "Tại **(DTH) Hòa Long**: Số thiếu: 2 NVPTTT; Thiếu tuyến xã Long Hưng B; Nhân viên mới năng suất trung bình: GTC 30 đơn/ngày; NVXL trực tiếp điều hành tại kho, tuy nhiên năng suất nhân viên không cao"
+      "Tại **Bưu Cục Ấp 2-Phú Nhuận-Bến Tre**: Nhân sự: 7/11 (thiếu 4) + 2 nhân viên hỗ trợ; Bưu cục liên tục có nhân viên nghỉ ngang, té xe.; NVXL mới chưa quản lý được nhân sự tại BC, điều tiết giờ giấc xuất hàng.; Nhân viên 9h chưa rời khỏi kho.",
+      "Tại **Bưu Cục Ấp Bình Hiệp A-Xã Lấp Vò-Đồng Tháp**: Số thiếu: 4 NVPTTT; Thiếu tuyến xã Mỹ An Hưng A, xã Mỹ An Hưng B, xã Hội An Đông; Nhân sự hiện tại: 9 NVPTTT (12 tuyến chạy); Nhân viên mới năng suất trung bình: GTC 35 đơn/ngày; Bưu cục có phân chia tuyến rõ ràng, hàng cồng kềnh còn để không gọn, hàng lấy về nhiều để giữa kho không kiểm soát được; NV ra khỏi kho trễ (10h) do tự lựa hàng và gọi lâu, NVXL không phân chia hàng trước cho NVPTTT; AM ngồi trực tiếp tại kho, NVXL có kinh nghiệm sắp xếp gán và điều hành; AM tick mất hàng (hơn 75 đơn), còn hàng vật lý chuyển trả về OE",
+      "Tại **Bưu Cục Khóm 4 TT Châu Thành-Xã Châu Thành-Trà Vinh**: Số thiếu: 5 NVPTTT + 1 NVXL; Thiếu tuyến xã Tân Hương, xã Thân Cửu Nghĩa, xã Tam Hiệp, xã Tân Hội Đông; NVXL trực tiếp điều hành sắp xếp và gán chuyến cho nhân viên; Hàng tồn: 121 đơn",
+      "Tại **Bưu Cục Duyên Hải-Trà Vinh**: Số thiếu 4; Bưu cục xảy ra chiếm dụng, nhân viên nghỉ ngang; Các tuyến chạy xa BC; Nhân viên mới vào năng suất chưa cao; NVXL có kinh nghiệm, sắp xếp layout, FIFO hàng hóa",
+      "Tại **Bưu Cục QL80-Xã Hòa Long-Đồng Tháp**: Số thiếu: 2 NVPTTT; Thiếu tuyến xã Long Hưng B; Nhân viên mới năng suất trung bình: GTC 30 đơn/ngày; NVXL trực tiếp điều hành tại kho, tuy nhiên năng suất nhân viên không cao"
     ],
     "recommendations": [
-      "Tại **(BTR) An Hội**: Tuyển thay thế NVXL ( NVXL mới đã OB ngày 19/8),; Chạy Ads FB; Đẩy mạnh tuyển dụng NVPTTT; AM cắm chốt hỗ trợ vận hành BC",
-      "Tại **(DTH) Lấp Vò**: NVXL trực tiếp điều hành của nhân viên; Layout có sắp xếp, hàng cồng kềnh chưa gọn; AOV đã được điều chỉnh, không có tuyến AOV thấp; Đang thực hiện chạy FB Ads để hỗ trợ tuyển dụng, áp dụng chính sách giới thiệu nội bộ; Call check NV cũ nghỉ việc không vi phạm vào làm lại",
-      "Tại **(TGI) Châu Thành**: Đẩy mạnh tuyển dụng do cắt hàng nặng, nhân viên nghỉ do thu nhập giảm; NVXL tìm việc làm mới, đã có NVXL mới đang được đào tạo - AM phân chia lại các tuyến chạy và điều chỉnh lại AOV",
-      "Tại **(TVI) Duyên Hải**: Triển khai dán banner tuyển dụng ở các khu vực lân cận; Triển khai chính sách giới thiệu nội bộ để đẩy nhanh tuyển dụng",
-      "Tại **(DTH) Hòa Long**: Tuyển dụng cho bưu cục; AM họp kho để thúc đẩy tinh thần nhân viên; Sắp xếp lại layout: kho mới cần sắp xếp hàng hoá đúng chỗ"
+      "Tại **Bưu Cục Ấp 2-Phú Nhuận-Bến Tre**: Tuyển thay thế NVXL ( NVXL mới đã OB ngày 19/8),; Chạy Ads FB; Đẩy mạnh tuyển dụng NVPTTT; AM cắm chốt hỗ trợ vận hành BC",
+      "Tại **Bưu Cục Ấp Bình Hiệp A-Xã Lấp Vò-Đồng Tháp**: NVXL trực tiếp điều hành của nhân viên; Layout có sắp xếp, hàng cồng kềnh chưa gọn; AOV đã được điều chỉnh, không có tuyến AOV thấp; Đang thực hiện chạy FB Ads để hỗ trợ tuyển dụng, áp dụng chính sách giới thiệu nội bộ; Call check NV cũ nghỉ việc không vi phạm vào làm lại",
+      "Tại **Bưu Cục Khóm 4 TT Châu Thành-Xã Châu Thành-Trà Vinh**: Đẩy mạnh tuyển dụng do cắt hàng nặng, nhân viên nghỉ do thu nhập giảm; NVXL tìm việc làm mới, đã có NVXL mới đang được đào tạo - AM phân chia lại các tuyến chạy và điều chỉnh lại AOV",
+      "Tại **Bưu Cục Duyên Hải-Trà Vinh**: Triển khai dán banner tuyển dụng ở các khu vực lân cận; Triển khai chính sách giới thiệu nội bộ để đẩy nhanh tuyển dụng",
+      "Tại **Bưu Cục QL80-Xã Hòa Long-Đồng Tháp**: Tuyển dụng cho bưu cục; AM họp kho để thúc đẩy tinh thần nhân viên; Sắp xếp lại layout: kho mới cần sắp xếp hàng hoá đúng chỗ"
     ]
   },
   "dropped_bcs": [
@@ -1124,16 +1100,16 @@
     "top_5": [
       {
         "bc_name": "22031000 - (BTR) An Hội",
-        "volume": 451,
-        "vol_tts": 70,
-        "gtc": 0.479,
-        "backlog_72h": 57,
+        "volume": 0,
+        "vol_tts": 0,
+        "gtc": 0.0,
+        "backlog_72h": 0,
         "am": "Võ Hồng Chơn",
         "dinhiben_nvpttt": 14,
         "dinhiben_nvxl": 1,
         "tuyen_7d": 0,
         "nghi_7d": 2,
-        "details": "- Nhân sự: 7/11 (thiếu 4) + 2 nhân viên hỗ trợ \n- Bưu cục liên tục có nhân viên nghỉ ngang, té xe.\n - NVXL mới chưa quản lý được nhân sự tại BC, điều tiết giờ giấc xuất hàng. \nNhân viên 9h chưa rời khỏi kho.\n * Phương án:\n - Tuyển thay thế NVXL ( NVXL mới đã OB ngày 19/8),\n - Chạy Ads FB \n- Đẩy mạnh tuyển dụng NVPTTT \n- AM cắm chốt hỗ trợ vận hành BC",
+        "details": "- Thiếu hụt thực tế sau OB: 6 NVPTTT.\n- Nhân sự mới nhận việc trong tuần: +0 OB. Nhân sự nghỉ việc: -2.\n- Tuyến thiếu: BÌNH PHÚ , PHƯỜNG AN HỘI , MỸ THẠNH AN.",
         "shortage_accurate": 6,
         "missing_routes": "BÌNH PHÚ , PHƯỜNG AN HỘI , MỸ THẠNH AN",
         "action_plan": "Phân bổ gán tuyến trước 8h sáng, chạy FB Ads tìm shipper thay thế. AM cắm chốt tại BC để hướng dẫn shipper mới."
@@ -6055,8 +6031,8 @@
           "w19": 0.07035922135687668,
           "w20": 0.0699546494643836,
           "w21": 0.1097810462782603,
-          "w22": 0.0607,
-          "change_wtd": -0.0490810462782603
+          "w22": 0.1519,
+          "change_wtd": 0.04211895372173971
         },
         {
           "am": "Nguyễn Huỳnh Quốc Dũng",
@@ -6225,8 +6201,8 @@
           "w19": 0.05138371868168044,
           "w20": 0.057340344923253427,
           "w21": 0.05221525289583132,
-          "w22": 0.04885,
-          "change_wtd": -0.003365252895831325
+          "w22": 0.0687,
+          "change_wtd": 0.016484747104168675
         },
         {
           "am": "Ngô Thị Bé Mi",
@@ -6235,8 +6211,8 @@
           "w19": 0.051860866448017726,
           "w20": 0.050403944384784,
           "w21": 0.045114398515566055,
-          "w22": 0.0745,
-          "change_wtd": 0.02938560148443394
+          "w22": 0.031,
+          "change_wtd": -0.014114398515566055
         },
         {
           "am": "Nguyễn Anh Tùng",
@@ -6245,8 +6221,8 @@
           "w19": 0.04173807621428301,
           "w20": 0.047240717202447706,
           "w21": 0.04560312753836783,
-          "w22": 0.07022857142857143,
-          "change_wtd": 0.024625443890203602
+          "w22": 0.08272000000000002,
+          "change_wtd": 0.037116872461632186
         },
         {
           "am": "Đoàn Công Tín",
@@ -6265,8 +6241,8 @@
           "w19": 0.07139149734974554,
           "w20": 0.11733665799569816,
           "w21": 0.11703245699256402,
-          "w22": 0.1378,
-          "change_wtd": 0.020767543007435982
+          "w22": 0.1425,
+          "change_wtd": 0.025467543007435964
         },
         {
           "am": "Đoàn Công Tín",
@@ -6425,8 +6401,8 @@
           "w19": 0.04173807621428301,
           "w20": 0.047240717202447706,
           "w21": 0.04560312753836783,
-          "w22": 0.07022857142857143,
-          "change_wtd": 0.024625443890203602
+          "w22": 0.08272000000000002,
+          "change_wtd": 0.037116872461632186
         },
         {
           "am": "Nguyễn Thành Huy",
@@ -6465,8 +6441,8 @@
           "w19": 0.05284604533126426,
           "w20": 0.054516834597209046,
           "w21": 0.0558787903574339,
-          "w22": 0.0662,
-          "change_wtd": 0.010321209642566095
+          "w22": 0.052575,
+          "change_wtd": -0.003303790357433903
         },
         {
           "am": "Nguyễn Tuấn Anh",
@@ -6475,8 +6451,8 @@
           "w19": 0.05674275208968537,
           "w20": 0.06242297234363902,
           "w21": 0.05777039557996842,
-          "w22": 0.05571818181818181,
-          "change_wtd": -0.00205221376178661
+          "w22": 0.0675,
+          "change_wtd": 0.009729604420031582
         },
         {
           "am": "Nguyễn Tuấn Anh",
@@ -6737,16 +6713,16 @@
         {
           "am": "Võ Hồng Chơn",
           "bc_name": "(BTR) Sơn Đông",
-          "change_d1": 0.005966666666666662,
-          "change_d7": 0.010533333333333332,
-          "d18": 0.0607,
+          "change_d1": -0.03739664920762523,
+          "change_d7": 0.0025085001502100635,
+          "d18": 0.11074383473234214,
           "d19": 0.10553612974213998,
           "d20": 0.15794363149528198,
           "d21": 0.12060025606739343,
           "d22": 0.13141328918641218,
           "d23": 0.18410182942975925,
-          "d24": 0.06526666666666667,
-          "d25": 0.07123333333333333
+          "d24": 0.15064898409017743,
+          "d25": 0.11325233488255221
         },
         {
           "am": "Nguyễn Huỳnh Quốc Dũng",
@@ -6975,30 +6951,30 @@
         {
           "am": "Ngô Phan Mỹ Tú",
           "bc_name": "(DTH) Tràm Chim",
-          "change_d1": -0.0027749999999999997,
-          "change_d7": -0.006374999999999999,
-          "d18": 0.04885,
+          "change_d1": 0.023510722706693264,
+          "change_d7": 0.021140425550292885,
+          "d18": 0.03855245860278202,
           "d19": 0.04987275075494573,
           "d20": 0.04499240928080669,
           "d21": 0.052742586106848094,
           "d22": 0.044771593324216936,
           "d23": 0.07386988623314789,
-          "d24": 0.04525,
-          "d25": 0.042475
+          "d24": 0.036182161446381644,
+          "d25": 0.05969288415307491
         },
         {
           "am": "Ngô Thị Bé Mi",
           "bc_name": "(TGI) Cái Bè",
-          "change_d1": -0.012588825776908286,
-          "change_d7": -0.0015835438005788946,
-          "d18": 0.04818265939489346,
+          "change_d1": -0.005866666666666673,
+          "change_d7": 0.0022333333333333302,
+          "d18": 0.031,
           "d19": 0.06871854335773961,
           "d20": 0.037726328974981245,
           "d21": 0.03578762664282444,
           "d22": 0.036741150091734696,
           "d23": 0.05881656908059465,
-          "d24": 0.05918794137122285,
-          "d25": 0.046599115594314566
+          "d24": 0.0391,
+          "d25": 0.03323333333333333
         },
         {
           "am": "Nguyễn Anh Tùng",
@@ -7031,16 +7007,16 @@
         {
           "am": "Huỳnh Quốc Trung",
           "bc_name": "(TGI) Đạo Thạnh",
-          "change_d1": 0.006750000000000006,
-          "change_d7": -0.015350000000000003,
-          "d18": 0.1378,
+          "change_d1": -0.01742593056024655,
+          "change_d7": -0.029280504677305697,
+          "d18": 0.11295431054953246,
           "d19": 0.11166879108197332,
           "d20": 0.07479021008019325,
           "d21": 0.08983657847886779,
           "d22": 0.09971075774049798,
           "d23": 0.08469990519498122,
-          "d24": 0.1157,
-          "d25": 0.12245
+          "d24": 0.10109973643247332,
+          "d25": 0.08367380587222677
         },
         {
           "am": "Đoàn Công Tín",
@@ -7311,30 +7287,30 @@
         {
           "am": "Nguyễn Thành Huy",
           "bc_name": "(TVI) Trà Vinh",
-          "change_d1": -0.0064530761020177504,
-          "change_d7": 0.01236260523396844,
-          "d18": 0.040357590443714966,
+          "change_d1": 0.004699999999999996,
+          "change_d7": -0.0032874999999999988,
+          "d18": 0.052575,
           "d19": 0.0445569540377416,
           "d20": 0.047167369244839226,
           "d21": 0.05380574545028893,
           "d22": 0.0812178074179891,
           "d23": 0.07010983830100785,
-          "d24": 0.05917327177970116,
-          "d25": 0.05272019567768341
+          "d24": 0.0445875,
+          "d25": 0.0492875
         },
         {
           "am": "Nguyễn Tuấn Anh",
           "bc_name": "(VLO) Cái Nhum",
-          "change_d1": -0.004845454545454542,
-          "change_d7": -0.011836363636363631,
-          "d18": 0.05571818181818181,
+          "change_d1": -0.009751417943106515,
+          "change_d7": -0.02174033463515384,
+          "d18": 0.06890693179622875,
           "d19": 0.0507861258481124,
           "d20": 0.024234937277606495,
           "d21": 0.02957852901032543,
           "d22": 0.061801444913377676,
           "d23": 0.05454771794778104,
-          "d24": 0.04872727272727272,
-          "d25": 0.04388181818181818
+          "d24": 0.05691801510418143,
+          "d25": 0.047166597161074915
         },
         {
           "am": "Nguyễn Tuấn Anh",
