@@ -674,6 +674,15 @@ async function refreshData() {
   
   // Render reporting dashboard if data is available
   if (repData) {
+    if (repData.latest_date) {
+      const parts = repData.latest_date.split('-');
+      if (parts.length === 3) {
+        const dateEl = document.getElementById('dateDisplay');
+        if (dateEl && !dateEl.textContent.includes('Vận hành:')) {
+          dateEl.textContent += ` | Vận hành: ${parts[2]}/${parts[1]}/${parts[0]}`;
+        }
+      }
+    }
     renderReportingView();
     renderRecruitmentView();
     renderWorstBcs();
@@ -681,6 +690,13 @@ async function refreshData() {
     renderDroppedBcs();
     renderReturnRateView();
     renderTransferBacklogView();
+    try {
+      renderSomaticZen();
+      renderPredictiveStaffing();
+      renderRoutesHeatmap();
+    } catch(e) {
+      console.error("Failed to render new somatic/predictive views:", e);
+    }
   } else if (insightsContent) {
     parseAndRenderInsights(insightsContent);
   }
@@ -1190,6 +1206,40 @@ function renderWorstBcs() {
         reasons.push(`<span style="color: var(--accent-purple); background: rgba(167,139,250,0.1); padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 600; display: inline-block; margin-right: 4px; margin-top: 4px;">⚠️ Trả tăng vọt: +${(bc.fd_change*100).toFixed(1)}%</span>`);
       }
 
+      // Check staffing shortage: shortage_actual / target_headcount >= 20%
+      if (bc.hr && bc.hr.target_headcount > 0) {
+        const shortagePct = bc.hr.shortage_actual / bc.hr.target_headcount;
+        if (shortagePct >= 0.20) {
+          severity += shortagePct * 100 * 1.5;
+          matchesCriteria = true;
+          reasons.push(`<span style="color: #f43f5e; background: rgba(244,63,94,0.1); padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 600; display: inline-block; margin-right: 4px; margin-top: 4px;">🚨 Thiếu NV: -${bc.hr.shortage_actual}</span>`);
+        }
+      }
+
+      // Check Resign wave: resign_week >= 3
+      if (bc.hr && bc.hr.resign_week >= 3) {
+        severity += bc.hr.resign_week * 10;
+        matchesCriteria = true;
+        reasons.push(`<span style="color: #f43f5e; background: rgba(244,63,94,0.1); padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 600; display: inline-block; margin-right: 4px; margin-top: 4px;">⚠️ Nghỉ việc: -${bc.hr.resign_week}</span>`);
+      }
+
+      // Check Newbie overload: ob_week / target_headcount >= 20%
+      if (bc.hr && bc.hr.target_headcount > 0) {
+        const obPct = bc.hr.ob_week / bc.hr.target_headcount;
+        if (obPct >= 0.20) {
+          severity += obPct * 100 * 0.5;
+          matchesCriteria = true;
+          reasons.push(`<span style="color: #10b981; background: rgba(16,185,129,0.1); padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 600; display: inline-block; margin-right: 4px; margin-top: 4px;">🌱 Shipper mới: +${bc.hr.ob_week}</span>`);
+        }
+      }
+
+      // Check Dropped transfer
+      if (bc.cause && bc.cause.includes("Rớt luân chuyển")) {
+        severity += 20;
+        matchesCriteria = true;
+        reasons.push(`<span style="color: #a78bfa; background: rgba(167,139,250,0.1); padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 600; display: inline-block; margin-right: 4px; margin-top: 4px;">🔄 Rớt luân chuyển</span>`);
+      }
+
       // Fallback: If it doesn't match any criteria but we need to fill the list, sort by GTC
       if (!matchesCriteria) {
         severity = (0.67 - bc.gtc) * 5; // very small severity baseline
@@ -1262,13 +1312,41 @@ async function sendTop10Alert(bcName, amName, amTele, gtcVal, changeText, backlo
   const chatId = telegramConfig.CHAT_ID;
   const threadId = telegramConfig.THREADS && telegramConfig.THREADS.top10;
 
-  const text = `🚨 *[TOP 10 BƯU CỤC CẦN CHÚ Ý]* 🚨\n\n` +
+  // Look up full post office details to fetch dynamic HR metrics
+  const bc = repData && repData.bcs ? repData.bcs.find(b => b.name === bcName) : null;
+  let hrInfo = "";
+  let recInfo = "";
+
+  if (bc && bc.hr) {
+    hrInfo = `*Nhân sự:* Thiếu ${bc.hr.shortage_actual}/${bc.hr.target_headcount} NVPTTT | Biến động tuần: +${bc.hr.ob_week} OB / -${bc.hr.resign_week} nghỉ\n`;
+    if (bc.hr.tuyen_thieu) {
+      hrInfo += `*Tuyến thiếu:* ${bc.hr.tuyen_thieu}\n`;
+    }
+    if (bc.hr.hrbp && bc.hr.hrbp !== 'N/A') {
+      hrInfo += `*HRBP Phụ Trách:* ${bc.hr.hrbp}\n`;
+    }
+    hrInfo += `\n`;
+    
+    if (bc.recommendation) {
+      recInfo = `*Khuyến nghị hành động:* ${bc.recommendation}\n\n`;
+    }
+  }
+
+  // Determine telegram warning label header
+  let labelHeader = `🚨 *[TOP 10 BƯU CỤC CẦN CHÚ Ý]* 🚨`;
+  if (bc && bc.hr && bc.hr.target_headcount > 0 && bc.hr.shortage_actual / bc.hr.target_headcount >= 0.20) {
+    labelHeader = `🚨 *[CẢNH BÁO NHÂN SỰ & VẬN HÀNH TOP 10]* 🚨`;
+  }
+
+  const text = `${labelHeader}\n\n` +
                `*Bưu cục:* ${escapeMarkdown(bcName)}\n` +
                `*AM Phụ Trách:* ${escapeMarkdown(amName)} (${escapeMarkdown(amTele || '@chua_co_tele')})\n\n` +
                `*Tỷ lệ GTC hiện tại:* ${escapeMarkdown(gtcVal)} (Biến động N-1: ${escapeMarkdown(changeText)})\n` +
                `*Đơn Tồn > 5 ngày:* ${escapeMarkdown(backlog)} đơn\n\n` +
+               hrInfo +
                `*Nguyên nhân:* ${escapeMarkdown(cause)}\n\n` +
-               `👉 Đề nghị AM vào kiểm tra và xử lý luồng hàng gấp!`;
+               recInfo +
+               `👉 Đề nghị AM cắm chốt xử lý và HRBP phối hợp tuyển dụng/điều phối gấp!`;
 
   const url = `https://api.telegram.org/bot${token}/sendMessage`;
 
@@ -1552,6 +1630,11 @@ function renderReportingView() {
     renderTrendChart();
   } catch(e) {
     console.error("Failed to render trend chart: ", e);
+  }
+  try {
+    renderExitHoursChart();
+  } catch(e) {
+    console.error("Failed to render exit hours chart: ", e);
   }
   renderInsights();
   renderDimensionTable();
@@ -3518,3 +3601,301 @@ if (document.readyState === 'loading') {
 } else {
   initAutoLoad();
 }
+
+/* === SOMATIC & PREDICTIVE UPGRADES FUNCTIONS === */
+function renderSomaticZen() {
+  if (!repData) return;
+  const zenScore = repData.zen_score !== undefined ? repData.zen_score : 65;
+  const scoreVal = document.getElementById('zenScoreValue');
+  const emojiEl = document.getElementById('zenEmoji');
+  const titleEl = document.getElementById('zenTitle');
+  const subtitleEl = document.getElementById('zenSubtitle');
+  const cardEl = document.querySelector('.somatic-zen-card');
+
+  if (scoreVal) scoreVal.textContent = zenScore + '%';
+
+  if (zenScore >= 80) {
+    if (emojiEl) emojiEl.textContent = '🧘';
+    if (titleEl) titleEl.textContent = 'VÙNG ĐCL BÌNH YÊN';
+    if (subtitleEl) subtitleEl.textContent = 'Các chỉ số vận hành đang rất khỏe. Bạn có thể thư giãn và duy trì nhịp độ.';
+    if (scoreVal) scoreVal.style.color = 'var(--accent-green)';
+    if (cardEl) {
+      cardEl.style.background = 'linear-gradient(135deg, rgba(16, 185, 129, 0.06) 0%, rgba(13, 13, 13, 0.95) 100%)';
+      cardEl.style.borderColor = 'rgba(16, 185, 129, 0.2)';
+    }
+  } else if (zenScore >= 50) {
+    if (emojiEl) emojiEl.textContent = '🌱';
+    if (titleEl) titleEl.textContent = 'VÙNG ĐCL QUÂN BÌNH';
+    if (subtitleEl) subtitleEl.textContent = 'Vận hành tương đối ổn định. Chú ý theo dõi sát sao các tuyến hụt nhân sự.';
+    if (scoreVal) scoreVal.style.color = 'var(--accent-teal)';
+    if (cardEl) {
+      cardEl.style.background = 'linear-gradient(135deg, rgba(45, 212, 191, 0.05) 0%, rgba(13, 13, 13, 0.95) 100%)';
+      cardEl.style.borderColor = 'rgba(45, 212, 191, 0.2)';
+    }
+  } else {
+    if (emojiEl) emojiEl.textContent = '🚨';
+    if (titleEl) titleEl.textContent = 'VÙNG ĐCL BÃO ĐỘNG';
+    if (subtitleEl) subtitleEl.textContent = 'Nhiều điểm nóng quá tải và thiếu hụt nhân sự. Khuyến nghị thực hiện trị liệu thở trước khi chỉ đạo.';
+    if (scoreVal) scoreVal.style.color = 'var(--accent-rose)';
+    if (cardEl) {
+      cardEl.style.background = 'linear-gradient(135deg, rgba(244, 63, 94, 0.05) 0%, rgba(13, 13, 13, 0.95) 100%)';
+      cardEl.style.borderColor = 'rgba(244, 63, 94, 0.2)';
+    }
+  }
+}
+
+let breathingTimerInterval = null;
+let breathingCycleTimeout = null;
+let isBreathingActive = false;
+
+function openBreathingModal() {
+  const modal = document.getElementById('breathingModal');
+  if (modal) modal.style.display = 'flex';
+  resetBreathing();
+}
+
+function closeBreathingModal() {
+  const modal = document.getElementById('breathingModal');
+  if (modal) modal.style.display = 'none';
+  resetBreathing();
+}
+
+function resetBreathing() {
+  isBreathingActive = false;
+  clearInterval(breathingTimerInterval);
+  clearTimeout(breathingCycleTimeout);
+  
+  const textEl = document.getElementById('breathingText');
+  const timerEl = document.getElementById('breathingTimer');
+  const circleEl = document.getElementById('breathingCircle');
+  const btnEl = document.getElementById('btnStartBreathing');
+  
+  if (textEl) textEl.textContent = 'Hãy ngồi thẳng lưng, thả lỏng vai và sẵn sàng...';
+  if (timerEl) timerEl.textContent = '0s';
+  if (btnEl) btnEl.textContent = '▶ Bắt đầu chu kỳ';
+  if (circleEl) {
+    circleEl.style.animation = 'none';
+    circleEl.style.transform = 'scale(1)';
+  }
+}
+
+function toggleBreathingCycle() {
+  if (isBreathingActive) {
+    resetBreathing();
+  } else {
+    isBreathingActive = true;
+    const btnEl = document.getElementById('btnStartBreathing');
+    if (btnEl) btnEl.textContent = '⏹ Dừng chu kỳ';
+    runBreathingStep('inhale');
+  }
+}
+
+function runBreathingStep(phase) {
+  if (!isBreathingActive) return;
+  
+  const textEl = document.getElementById('breathingText');
+  const timerEl = document.getElementById('breathingTimer');
+  const circleEl = document.getElementById('breathingCircle');
+  
+  let duration = 0;
+  
+  if (phase === 'inhale') {
+    duration = 4;
+    if (textEl) textEl.textContent = '💨 Hít vào từ từ qua mũi...';
+    if (circleEl) {
+      circleEl.style.animation = 'inhale 4s forwards linear';
+    }
+  } else if (phase === 'hold') {
+    duration = 7;
+    if (textEl) textEl.textContent = '🧘 Giữ hơi thở lại...';
+    if (circleEl) {
+      circleEl.style.animation = 'none';
+      circleEl.style.transform = 'scale(2.8)';
+    }
+  } else if (phase === 'exhale') {
+    duration = 8;
+    if (textEl) textEl.textContent = '🌬️ Thở ra từ từ bằng miệng...';
+    if (circleEl) {
+      circleEl.style.animation = 'exhale 8s forwards linear';
+    }
+  }
+  
+  let elapsed = 0;
+  if (timerEl) timerEl.textContent = elapsed + 's / ' + duration + 's';
+  
+  clearInterval(breathingTimerInterval);
+  breathingTimerInterval = setInterval(() => {
+    elapsed++;
+    if (elapsed <= duration) {
+      if (timerEl) timerEl.textContent = elapsed + 's / ' + duration + 's';
+    }
+  }, 1000);
+  
+  clearTimeout(breathingCycleTimeout);
+  breathingCycleTimeout = setTimeout(() => {
+    clearInterval(breathingTimerInterval);
+    if (phase === 'inhale') {
+      runBreathingStep('hold');
+    } else if (phase === 'hold') {
+      runBreathingStep('exhale');
+    } else {
+      runBreathingStep('inhale');
+    }
+  }, duration * 1000);
+}
+
+function renderPredictiveStaffing() {
+  if (!repData || !repData.forecasting) return;
+  const f = repData.forecasting;
+  const volEl = document.getElementById('projectedVolumeVal');
+  const trendEl = document.getElementById('projectedTrendVal');
+  const shortageEl = document.getElementById('projectedShortageVal');
+  const recEl = document.getElementById('forecastingRecommendation');
+  
+  if (volEl) volEl.textContent = f.projected_volume.toLocaleString() + ' đơn';
+  if (trendEl) {
+    trendEl.textContent = f.vol_trend === 'Tăng' ? '↗ Tăng' : '↘ Giảm';
+    trendEl.style.color = f.vol_trend === 'Tăng' ? 'var(--accent-green)' : 'var(--accent-rose)';
+  }
+  if (shortageEl) shortageEl.textContent = f.projected_shortage + ' NV';
+  if (recEl) recEl.textContent = f.recommendation;
+}
+
+function renderRoutesHeatmap() {
+  const gridEl = document.getElementById('routesHeatmapGrid');
+  if (!gridEl || !repData || !repData.bcs) return;
+  gridEl.innerHTML = '';
+  
+  const allRoutes = [];
+  repData.bcs.forEach(bc => {
+    if (bc.hr && bc.hr.tuyen_thieu) {
+      const routes = bc.hr.tuyen_thieu.split(/[,;\n]+/).map(r => r.trim()).filter(r => r.length > 0);
+      routes.forEach(r => {
+        allRoutes.push({
+          bcName: bc.name,
+          routeName: r,
+          province: bc.province
+        });
+      });
+    }
+  });
+  
+  if (allRoutes.length === 0) {
+    gridEl.innerHTML = '<div style="font-size:12px; color:var(--text-muted);">Không có tuyến thiếu hụt nhân sự được ghi nhận.</div>';
+    return;
+  }
+  
+  const uniqueRoutes = [];
+  const seen = new Set();
+  allRoutes.forEach(r => {
+    const key = `${r.bcName}-${r.routeName}`;
+    if (!seen.has(key)) {
+      seen.add(key);
+      uniqueRoutes.push(r);
+    }
+  });
+
+  uniqueRoutes.slice(0, 15).forEach(item => {
+    const card = document.createElement('div');
+    const isSpecial = /đò|phà|cù lao|sông|biển/i.test(item.routeName);
+    card.className = isSpecial ? 'heatmap-route-card heatmap-route-special' : 'heatmap-route-card heatmap-route-normal';
+    
+    const icon = isSpecial ? '⛴️' : '📍';
+    card.innerHTML = `${icon} <strong>[${item.bcName}]</strong> ${item.routeName}`;
+    gridEl.appendChild(card);
+  });
+}
+
+let exitHoursChartObj = null;
+
+function renderExitHoursChart() {
+  const provinces = repData.provinces;
+  if (!provinces || provinces.length === 0) return;
+  
+  const labels = provinces.map(p => p.name);
+  const exitHoursData = provinces.map(p => {
+    if (p.exit_profile && p.exit_profile.exit_hour) {
+      const parts = p.exit_profile.exit_hour.split(':');
+      return parseFloat(parts[0]) + parseFloat(parts[1]) / 60;
+    }
+    return 8.75;
+  });
+  
+  if (exitHoursChartObj) exitHoursChartObj.destroy();
+  const ctx = document.getElementById('exitHoursChart').getContext('2d');
+  
+  exitHoursChartObj = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Giờ rời kho bình quân shipper',
+        data: exitHoursData,
+        backgroundColor: 'rgba(45, 212, 191, 0.75)',
+        borderColor: '#2dd4bf',
+        borderWidth: 1.5,
+        borderRadius: 4
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          min: 8.0,
+          max: 10.5,
+          grid: { color: 'rgba(255,255,255,0.05)' },
+          ticks: {
+            color: '#9ca3af',
+            callback: function(value) {
+              const hour = Math.floor(value);
+              const min = Math.round((value - hour) * 60);
+              return hour.toString().padStart(2, '0') + ':' + min.toString().padStart(2, '0');
+            }
+          }
+        },
+        x: {
+          grid: { display: false },
+          ticks: { color: '#9ca3af' }
+        }
+      },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              const val = context.parsed.y;
+              const hour = Math.floor(val);
+              const min = Math.round((val - hour) * 60);
+              return 'Giờ ra kho: ' + hour.toString().padStart(2, '0') + ':' + min.toString().padStart(2, '0');
+            }
+          }
+        }
+      }
+    }
+  });
+
+  const textEl = document.getElementById('inboundBottleneckAnalysis');
+  if (textEl) {
+    let html = '';
+    provinces.forEach(p => {
+      const ep = p.exit_profile || { exit_hour: '08:45', late_inbound_rate: 0.1, sorting_delay_min: 30 };
+      const latePct = (ep.late_inbound_rate * 100).toFixed(0);
+      const isLate = parseFloat(ep.exit_hour.replace(':', '.')) >= 9.0;
+      const statusIcon = isLate ? '🔴' : '🟢';
+      
+      html += `<div style="margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px dashed var(--border);">
+        <div style="font-weight:600; color:#fff; display:flex; align-items:center; gap:6px;">
+          ${statusIcon} ${p.name}: Giờ ra kho ${ep.exit_hour}
+        </div>
+        <div style="color:var(--text-muted); font-size:11px; margin-top:2px;">
+          • Xe tải về trễ (late inbound): <strong>${latePct}%</strong> số chuyến.<br>
+          • Thời gian chia chọn (sorting delay): <strong>${ep.sorting_delay_min} phút</strong>.<br>
+          • Đánh giá: ${isLate ? '<span style="color:var(--accent-rose)">Nghẽn nghiêm trọng, cần cắm chốt tối ưu phân chuyến.</span>' : '<span style="color:var(--accent-green)">Tốt, dòng hàng ổn định.</span>'}
+        </div>
+      </div>`;
+    });
+    textEl.innerHTML = html;
+  }
+}
+

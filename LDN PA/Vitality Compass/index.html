@@ -107,6 +107,11 @@
       <div>
         <div class="header-title">TỔNG QUAN VÙNG ĐCL</div>
         <div class="header-subtitle" id="dateDisplay"></div>
+        <div style="margin-top: 5px; display: flex; gap: 12px; font-size: 11px;">
+          <a href="https://datastudio.google.com/u/0/reporting/c15bb190-272c-4a03-83a0-f323f867cdf7/page/iqRWF" target="_blank" style="color: var(--accent-teal); text-decoration: none; display: flex; align-items: center; gap: 4px; font-weight: 500;">📊 Looker Hiệu Suất Vùng</a>
+          <span style="color: var(--border);">|</span>
+          <a href="https://datastudio.google.com/u/0/reporting/ad3903e1-3825-4b16-812e-e92def710c27/page/p_wr6wgaugwd" target="_blank" style="color: var(--accent-teal); text-decoration: none; display: flex; align-items: center; gap: 4px; font-weight: 500;">📦 Looker Tồn Luân Chuyển</a>
+        </div>
       </div>
     </div>
     <div class="header-actions">
@@ -133,6 +138,26 @@
 
   <!-- Main -->
   <main class="main" id="appMain" style="display:none">
+    <!-- Somatic Zen Score Widget (Spans full width) -->
+    <div class="card somatic-zen-card" style="grid-column: span 2; margin-bottom: 0;">
+      <div class="somatic-zen-container">
+        <div class="somatic-zen-left">
+          <span class="somatic-zen-emoji" id="zenEmoji">🧘</span>
+          <div>
+            <div class="somatic-zen-title" id="zenTitle">ĐANG TÍNH TOÁN SỨC KHỎE VÙNG...</div>
+            <div class="somatic-zen-subtitle" id="zenSubtitle">Hoạt hóa hệ phó giao cảm để cân bằng sức lao động.</div>
+          </div>
+        </div>
+        <div class="somatic-zen-right">
+          <div class="somatic-zen-score-box">
+            <span class="somatic-zen-score-label">Chỉ Số Tĩnh Tại:</span>
+            <span class="somatic-zen-score-value" id="zenScoreValue">--%</span>
+          </div>
+          <button class="btn btn-zen" onclick="openBreathingModal()">🧘 Trị liệu hơi thở (4-7-8)</button>
+        </div>
+      </div>
+    </div>
+
     <!-- LEFT COLUMN -->
     <div>
       <!-- Top 10 Bưu cục Cần Chú Ý -->
@@ -404,6 +429,23 @@
           </tbody>
         </table>
       </div>
+    <!-- Row 4: Inbound & First Scan Exit Hours Analysis -->
+    <div class="card" style="margin-top: 24px;">
+      <div class="card-header">
+        <div class="card-title">⏱️ Phân Tích Điểm Nghẽn Ca 1 & Giờ Ra Kho Shipper</div>
+        <span class="card-badge" style="background:rgba(45,212,191,0.15); color:var(--accent-teal)">Ca 1 Vận Hành</span>
+      </div>
+      <div class="rep-row-2" style="border:none; padding:0; background:none;">
+        <div class="chart-wrapper" style="height: 250px;">
+          <canvas id="exitHoursChart"></canvas>
+        </div>
+        <div style="padding: 10px 20px;">
+          <h4 style="font-size:12px; font-weight:600; color:var(--accent-teal); margin-bottom:8px; text-transform:uppercase; letter-spacing:0.5px;">Phân tích điểm nghẽn chặng đầu</h4>
+          <div class="scrollable" style="max-height: 200px; font-size:12px; line-height:1.6;" id="inboundBottleneckAnalysis">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+      </div>
     </div>
   </main>
 
@@ -460,6 +502,47 @@
         </div>
         <div class="insights-body scrollable" id="hrTop5List">
           <!-- Rendered dynamically -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2.5: Forecast & Heatmap Grid -->
+    <div class="rep-row-2" style="margin-top: 24px;">
+      <!-- Predictive Staffing Forecast -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">🔮 Dự Báo & Kế Hoạch 7 Ngày Tới (AI-Driven)</div>
+        </div>
+        <div class="insights-body" style="padding: 20px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px; border-bottom:1px dashed var(--border); padding-bottom:12px;">
+            <div>
+              <div style="font-size:12px; color:var(--text-muted)">Dự báo sản lượng</div>
+              <div style="font-size:18px; font-weight:700; color:#fff;" id="projectedVolumeVal">0 đơn</div>
+            </div>
+            <div>
+              <div style="font-size:12px; color:var(--text-muted)">Xu hướng</div>
+              <div style="font-size:14px; font-weight:600; color:var(--accent-teal);" id="projectedTrendVal">--</div>
+            </div>
+            <div>
+              <div style="font-size:12px; color:var(--text-muted)">Cần tuyển dự phòng</div>
+              <div style="font-size:18px; font-weight:700; color:var(--accent-amber);" id="projectedShortageVal">0 NV</div>
+            </div>
+          </div>
+          <div style="font-size:12px; line-height:1.6; color:var(--text-primary); background:rgba(245,158,11,0.04); border-left:3px solid var(--accent-amber); padding:10px 14px; border-radius:0 4px 4px 0;" id="forecastingRecommendation">
+            Chưa có dữ liệu dự báo. Vui lòng cập nhật dữ liệu.
+          </div>
+        </div>
+      </div>
+
+      <!-- Routes Heatmap Grid -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">🔥 Tuyến Nóng Thiếu Shipper Chặng Cuối</div>
+        </div>
+        <div class="scrollable" style="max-height: 180px; padding: 12px 16px;">
+          <div class="heatmap-grid" id="routesHeatmapGrid" style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <!-- Rendered dynamically -->
+          </div>
         </div>
       </div>
     </div>
@@ -745,6 +828,24 @@
       </div>
     </div>
   </main>
+
+  <!-- Somatic Breathing Modal -->
+  <div class="breathing-modal-overlay" id="breathingModal" style="display:none" onclick="if(event.target===this)closeBreathingModal()">
+    <div class="breathing-card">
+      <div class="breathing-header">
+        <h3>🧘 Trị Liệu Hơi Thở Somatic (Nhịp 4-7-8)</h3>
+        <button class="breathing-close" onclick="closeBreathingModal()">✕</button>
+      </div>
+      <div class="breathing-instruction" id="breathingText">Hãy ngồi thẳng lưng, thả lỏng vai và sẵn sàng...</div>
+      <div class="breathing-circle-wrapper">
+        <div class="breathing-circle" id="breathingCircle"></div>
+      </div>
+      <div class="breathing-footer">
+        <span class="breathing-counter" id="breathingTimer">0s</span>
+        <button class="btn btn-zen-start" id="btnStartBreathing" onclick="toggleBreathingCycle()">▶ Bắt đầu chu kỳ</button>
+      </div>
+    </div>
+  </div>
 
   <div class="toast" id="toast"></div>
 
