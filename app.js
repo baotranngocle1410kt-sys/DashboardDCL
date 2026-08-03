@@ -11,6 +11,10 @@ function checkSession() {
   if (sessionStr) {
     try {
       currentUser = JSON.parse(sessionStr);
+      if (currentUser && currentUser.email === 'tranlnb@ghn.vn') {
+        currentUser.name = 'TRANLNB';
+        localStorage.setItem('currentUser', JSON.stringify(currentUser));
+      }
       return currentUser;
     } catch(e) {
       localStorage.removeItem('currentUser');
