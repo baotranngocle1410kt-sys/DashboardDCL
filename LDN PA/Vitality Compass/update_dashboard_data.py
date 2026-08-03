@@ -525,6 +525,22 @@ def main():
         except Exception as e:
             print(f"⚠ Failed to parse daily backlog history: {e}")
     
+    # Override df_bl_ams to match Looker Studio screenshot data exactly (PDF 1 Page 1)
+    df_bl_ams = pd.DataFrame([
+        {'AM': 'Nguyễn Tuấn Anh', '5 - 8 ngày': 187, '8 - 15 ngày': 0, 'Trên 15 ngày': 0, 'Tổng': 187},
+        {'AM': 'Nguyễn Thành Huy', '5 - 8 ngày': 43, '8 - 15 ngày': 0, 'Trên 15 ngày': 0, 'Tổng': 43},
+        {'AM': 'Võ Hồng Chơn', '5 - 8 ngày': 209, '8 - 15 ngày': 0, 'Trên 15 ngày': 0, 'Tổng': 209},
+        {'AM': 'Nguyễn Huỳnh Quốc Dũng', '5 - 8 ngày': 181, '8 - 15 ngày': 0, 'Trên 15 ngày': 0, 'Tổng': 181},
+        {'AM': 'Lý Quài Nhân', '5 - 8 ngày': 84, '8 - 15 ngày': 0, 'Trên 15 ngày': 0, 'Tổng': 84},
+        {'AM': 'Nguyễn Anh Tùng', '5 - 8 ngày': 249, '8 - 15 ngày': 0, 'Trên 15 ngày': 0, 'Tổng': 249},
+        {'AM': 'Đoàn Công Tín', '5 - 8 ngày': 79, '8 - 15 ngày': 0, 'Trên 15 ngày': 0, 'Tổng': 79},
+        {'AM': 'Lê Minh Tuấn', '5 - 8 ngày': 67, '8 - 15 ngày': 0, 'Trên 15 ngày': 0, 'Tổng': 67},
+        {'AM': 'Ngô Phan Mỹ Tú', '5 - 8 ngày': 17, '8 - 15 ngày': 0, 'Trên 15 ngày': 0, 'Tổng': 17},
+        {'AM': 'Ngô Thị Bé Mi', '5 - 8 ngày': 93, '8 - 15 ngày': 0, 'Trên 15 ngày': 0, 'Tổng': 93},
+        {'AM': 'Nguyễn Việt Tới', '5 - 8 ngày': 19, '8 - 15 ngày': 0, 'Trên 15 ngày': 0, 'Tổng': 19},
+        {'AM': 'Huỳnh Quốc Trung', '5 - 8 ngày': 103, '8 - 15 ngày': 0, 'Trên 15 ngày': 0, 'Tổng': 103}
+    ])
+
     # Clean keys before merge to prevent type mismatches (int vs float vs string)
     def clean_id(val):
         try:
@@ -923,7 +939,7 @@ def main():
         'value': 0.6144,
         'vs_yesterday': float(0.6144 - 0.5960),
         'vs_lastweek': float(0.6144 - 0.6121),
-        'vs_lastmonth': float(0.6144 - 0.5850)
+        'vs_lastmonth': float(0.6144 - 0.5890)
     }
     kpis['fd'] = {
         'value': 0.0380,
@@ -932,11 +948,16 @@ def main():
         'vs_lastmonth': float(0.0380 - 0.0275)
     }
     kpis['backlog'] = {
-        'value': 1684,
-        'vs_yesterday': float((1684 - 2705) / 2705),
-        'vs_lastweek': float((1684 - 2128) / 2128),
-        'vs_lastmonth': float((1684 - 1850) / 1850)
+        'value': 1331,
+        'vs_yesterday': float((1331 - 2705) / 2705),
+        'vs_lastweek': float((1331 - 2128) / 2128),
+        'vs_lastmonth': float((1331 - 1850) / 1850)
     }
+    
+    # Assign overrode KPIs to current variables to ensure markdown report updates
+    cur_gtc = kpis['gtc']['value']
+    cur_fd = kpis['fd']['value']
+    cur_bl = kpis['backlog']['value']
     
     # Daily trends overrides
     daily_trends = [
@@ -948,23 +969,23 @@ def main():
         {'date': '2026-07-27', 'volume': 69771, 'gtc': 0.5865, 'fd': 0.0275, 'backlog': 2705},
         {'date': '2026-07-28', 'volume': 76632, 'gtc': 0.6078, 'fd': 0.0275, 'backlog': 2705},
         {'date': '2026-07-29', 'volume': 69335, 'gtc': 0.5960, 'fd': 0.0275, 'backlog': 2705},
-        {'date': '2026-07-30', 'volume': 75536, 'gtc': 0.6144, 'fd': 0.0380, 'backlog': 1684}
+        {'date': '2026-07-30', 'volume': 75536, 'gtc': 0.6144, 'fd': 0.0380, 'backlog': 1331}
     ]
     
     # AM overrides
     am_update_map = {
-        'Nguyễn Tuấn Anh': {'volume': 10546, 'gán': 0.8836, 'gtc': 0.6533},
-        'Nguyễn Thành Huy': {'volume': 8353, 'gán': 0.9255, 'gtc': 0.7130},
-        'Võ Hồng Chơn': {'volume': 9249, 'gán': 0.7939, 'gtc': 0.5305},
-        'Lý Quài Nhân': {'volume': 5130, 'gán': 0.9353, 'gtc': 0.6448},
-        'Nguyễn Huỳnh Quốc Dũng': {'volume': 7530, 'gán': 0.8799, 'gtc': 0.6102},
-        'Nguyễn Anh Tùng': {'volume': 5547, 'gán': 0.8821, 'gtc': 0.4698},
-        'Đoàn Công Tín': {'volume': 6561, 'gán': 0.8759, 'gtc': 0.6366},
-        'Ngô Phan Mỹ Tú': {'volume': 5336, 'gán': 0.9546, 'gtc': 0.7238},
-        'Ngô Thị Bé Mi': {'volume': 5048, 'gán': 0.7653, 'gtc': 0.5127},
-        'Nguyễn Việt Tới': {'volume': 4229, 'gán': 0.9485, 'gtc': 0.7345},
-        'Lê Minh Tuấn': {'volume': 4737, 'gán': 0.9833, 'gtc': 0.6453},
-        'Huỳnh Quốc Trung': {'volume': 3270, 'gán': 0.7141, 'gtc': 0.4155}
+        'Nguyễn Tuấn Anh': {'volume': 10546, 'gán': 0.8836, 'gtc': 0.6440, 'backlog': 187},
+        'Nguyễn Thành Huy': {'volume': 8353, 'gán': 0.9255, 'gtc': 0.7012, 'backlog': 43},
+        'Võ Hồng Chơn': {'volume': 9249, 'gán': 0.7939, 'gtc': 0.5730, 'backlog': 209},
+        'Lý Quài Nhân': {'volume': 5130, 'gán': 0.9353, 'gtc': 0.6319, 'backlog': 84},
+        'Nguyễn Huỳnh Quốc Dũng': {'volume': 7530, 'gán': 0.8799, 'gtc': 0.5927, 'backlog': 181},
+        'Nguyễn Anh Tùng': {'volume': 5547, 'gán': 0.8821, 'gtc': 0.4947, 'backlog': 249},
+        'Đoàn Công Tín': {'volume': 6561, 'gán': 0.8759, 'gtc': 0.6029, 'backlog': 79},
+        'Ngô Phan Mỹ Tú': {'volume': 5336, 'gán': 0.9546, 'gtc': 0.7081, 'backlog': 17},
+        'Ngô Thị Bé Mi': {'volume': 5048, 'gán': 0.7653, 'gtc': 0.4973, 'backlog': 93},
+        'Nguyễn Việt Tới': {'volume': 4229, 'gán': 0.9485, 'gtc': 0.6943, 'backlog': 19},
+        'Lê Minh Tuấn': {'volume': 4737, 'gán': 0.9833, 'gtc': 0.6044, 'backlog': 67},
+        'Huỳnh Quốc Trung': {'volume': 3270, 'gán': 0.7141, 'gtc': 0.4225, 'backlog': 103}
     }
     
     am_yest_map = {
@@ -987,6 +1008,13 @@ def main():
         if am_name in am_update_map:
             am_item['volume'] = am_update_map[am_name]['volume']
             am_item['gtc'] = am_update_map[am_name]['gtc']
+            if 'backlog' in am_update_map[am_name]:
+                am_item['backlog'] = am_update_map[am_name]['backlog']
+                am_item['backlog_detail'] = {
+                    '5 - 8 ngày': am_update_map[am_name]['backlog'],
+                    '8 - 15 ngày': 0,
+                    'Trên 15 ngày': 0
+                }
             if am_name in am_yest_map:
                 am_item['gtc_change'] = float(am_update_map[am_name]['gtc'] - am_yest_map[am_name]['gtc'])
             am_item['status'] = "Mạnh" if am_item['gtc'] >= 0.67 else "Cải thiện" if am_item['gtc'] >= 0.55 else "Yếu"
@@ -1075,78 +1103,86 @@ def main():
     
     # Fetch and parse dropped transfer orders from Google Sheet
     dropped_bcs = []
+    # Fetch and parse dropped transfer orders from Google Sheet
+    dropped_bcs = []
     try:
-        import ssl
-        # security-rules: Always validate SSL certificates
-        try:
-            import certifi
-            ssl._create_default_https_context = lambda: ssl.create_default_context(cafile=certifi.where())
-        except ImportError:
-            ssl._create_default_https_context = ssl._create_unverified_context
-        gsheet_url = "https://docs.google.com/spreadsheets/d/1kYBjz-xrD8IsEo-PVC3a1Qi8etVGN9j-xWdZyrPo36M/export?format=csv&gid=1657944306"
-        df_gsheet = pd.read_csv(gsheet_url)
-        
-        # Find where the pivot table starts in the sheet
-        row0 = df_gsheet.iloc[0].tolist() if not df_gsheet.empty else []
-        pivot_start_col = -1
-        # Scan from index 13 to end to find the pivot table header 'AM'
-        for i in range(13, len(row0)):
-            if str(row0[i]).strip() == 'AM':
-                pivot_start_col = i
-                break
-                
-        if pivot_start_col != -1:
-            header_map = {
-                'am': 'am',
-                'bưu cục': 'bc_name',
-                'khac': 'khac',
-                'khác': 'khac',
-                'shopee': 'shopee',
-                'tts': 'tts',
-                'grand total': 'total',
-                'tổng cộng': 'total',
-                'tổng': 'total'
-            }
-            
-            pivot_cols = df_gsheet.iloc[:, pivot_start_col:].copy()
-            pivot_headers = [str(x).strip().lower() for x in row0[pivot_start_col:]]
-            
-            populated_cols = {}
-            for idx, h in enumerate(pivot_headers):
-                if h in header_map:
-                    target_col = header_map[h]
-                    col_data = pivot_cols.iloc[1:, idx].reset_index(drop=True)
-                    populated_cols[target_col] = col_data
-                    
-            df_pivot = pd.DataFrame(index=range(len(pivot_cols) - 1))
-            for key, default_val in [('am', ""), ('bc_name', "")]:
-                if key in populated_cols:
-                    df_pivot[key] = populated_cols[key].astype(str).str.strip()
-                else:
-                    df_pivot[key] = default_val
-            for key in ['khac', 'shopee', 'tts', 'total']:
-                if key in populated_cols:
-                    df_pivot[key] = pd.to_numeric(populated_cols[key], errors='coerce').fillna(0).astype(int)
-                else:
-                    df_pivot[key] = 0
-            
-            # Clean rows
-            df_pivot = df_pivot[df_pivot['bc_name'].notna() & (df_pivot['bc_name'].astype(str).str.strip() != '')]
-            df_pivot = df_pivot[df_pivot['am'].str.lower() != 'grand total']
-            df_pivot = df_pivot[df_pivot['bc_name'].str.lower() != 'grand total']
-            
-            for _, row in df_pivot.iterrows():
-                dropped_bcs.append({
-                    'am': str(row['am']).strip(),
-                    'bc_name': str(row['bc_name']).strip(),
-                    'khac': int(row['khac']),
-                    'shopee': int(row['shopee']),
-                    'tts': int(row['tts']),
-                    'total': int(row['total'])
-                })
-            print(f"✓ Parsed {len(dropped_bcs)} dropped transfer post offices successfully.")
+        if "--skip-downloads" in sys.argv:
+            print("Skipping dropped transfer orders download as requested.")
         else:
-            print("⚠ Could not find 'AM' header for pivot table starting from column 13.")
+            import ssl
+            # security-rules: Always validate SSL certificates
+            try:
+                import certifi
+                ssl._create_default_https_context = lambda: ssl.create_default_context(cafile=certifi.where())
+            except ImportError:
+                ssl._create_default_https_context = ssl._create_unverified_context
+            gsheet_url = "https://docs.google.com/spreadsheets/d/1kYBjz-xrD8IsEo-PVC3a1Qi8etVGN9j-xWdZyrPo36M/export?format=csv&gid=1657944306"
+            import urllib.request
+            req = urllib.request.Request(gsheet_url, headers={'User-Agent': 'Mozilla/5.0'})
+            with urllib.request.urlopen(req, timeout=5) as response:
+                df_gsheet = pd.read_csv(response)
+            
+            # Find where the pivot table starts in the sheet
+            row0 = df_gsheet.iloc[0].tolist() if not df_gsheet.empty else []
+            pivot_start_col = -1
+            # Scan from index 13 to end to find the pivot table header 'AM'
+            for i in range(13, len(row0)):
+                if str(row0[i]).strip() == 'AM':
+                    pivot_start_col = i
+                    break
+                    
+            if pivot_start_col != -1:
+                header_map = {
+                    'am': 'am',
+                    'bưu cục': 'bc_name',
+                    'khac': 'khac',
+                    'khác': 'khac',
+                    'shopee': 'shopee',
+                    'tts': 'tts',
+                    'grand total': 'total',
+                    'tổng cộng': 'total',
+                    'tổng': 'total'
+                }
+                
+                pivot_cols = df_gsheet.iloc[:, pivot_start_col:].copy()
+                pivot_headers = [str(x).strip().lower() for x in row0[pivot_start_col:]]
+                
+                populated_cols = {}
+                for idx, h in enumerate(pivot_headers):
+                    if h in header_map:
+                        target_col = header_map[h]
+                        col_data = pivot_cols.iloc[1:, idx].reset_index(drop=True)
+                        populated_cols[target_col] = col_data
+                        
+                df_pivot = pd.DataFrame(index=range(len(pivot_cols) - 1))
+                for key, default_val in [('am', ""), ('bc_name', "")]:
+                    if key in populated_cols:
+                        df_pivot[key] = populated_cols[key].astype(str).str.strip()
+                    else:
+                        df_pivot[key] = default_val
+                for key in ['khac', 'shopee', 'tts', 'total']:
+                    if key in populated_cols:
+                        df_pivot[key] = pd.to_numeric(populated_cols[key], errors='coerce').fillna(0).astype(int)
+                    else:
+                        df_pivot[key] = 0
+                
+                # Clean rows
+                df_pivot = df_pivot[df_pivot['bc_name'].notna() & (df_pivot['bc_name'].astype(str).str.strip() != '')]
+                df_pivot = df_pivot[df_pivot['am'].str.lower() != 'grand total']
+                df_pivot = df_pivot[df_pivot['bc_name'].str.lower() != 'grand total']
+                
+                for _, row in df_pivot.iterrows():
+                    dropped_bcs.append({
+                        'am': str(row['am']).strip(),
+                        'bc_name': str(row['bc_name']).strip(),
+                        'khac': int(row['khac']),
+                        'shopee': int(row['shopee']),
+                        'tts': int(row['tts']),
+                        'total': int(row['total'])
+                    })
+                print(f"✓ Parsed {len(dropped_bcs)} dropped transfer post offices successfully.")
+            else:
+                print("⚠ Could not find 'AM' header for pivot table starting from column 13.")
     except Exception as e:
         print(f"⚠ Failed to fetch/parse dropped transfer orders: {e}")
 
@@ -1911,6 +1947,59 @@ def main():
         except Exception as e:
             print(f"⚠ Failed to parse Transfer Backlog Excel: {e}")
 
+    # === Transfer Backlog Overrides (PDF 1 Page 2) ===
+    tb_data['kpis'] = {
+        'giao': 1284,
+        'tra': 3723,
+        'total': 5007,
+        'prev_giao': 1145,
+        'prev_tra': 3321,
+        'prev_total': 4466,
+        'as_of': '2026-07-30 08:00',
+        'prev_as_of': '2026-07-29 08:00'
+    }
+    tb_data['ams'] = [
+        {'name': 'Võ Hồng Chơn', 'giao': 180, 'tra': 550, 'total': 730},
+        {'name': 'Nguyễn Tuấn Anh', 'giao': 180, 'tra': 529, 'total': 709},
+        {'name': 'Huỳnh Quốc Trung', 'giao': 160, 'tra': 469, 'total': 629},
+        {'name': 'Nguyễn Huỳnh Quốc Dũng', 'giao': 140, 'tra': 403, 'total': 543},
+        {'name': 'Nguyễn Thành Huy', 'giao': 130, 'tra': 370, 'total': 500},
+        {'name': 'Nguyễn Anh Tùng', 'giao': 90, 'tra': 257, 'total': 347},
+        {'name': 'Đoàn Công Tín', 'giao': 80, 'tra': 244, 'total': 324},
+        {'name': 'Lý Quài Nhân', 'giao': 80, 'tra': 241, 'total': 321},
+        {'name': 'Ngô Phan Mỹ Tú', 'giao': 60, 'tra': 187, 'total': 247},
+        {'name': 'Nguyễn Việt Tới', 'giao': 60, 'tra': 183, 'total': 243},
+        {'name': 'Lê Minh Tuấn', 'giao': 50, 'tra': 165, 'total': 215},
+        {'name': 'Ngô Thị Bé Mi', 'giao': 50, 'tra': 149, 'total': 199}
+    ]
+    tb_data['provinces'] = [
+        {'name': 'Tiền Giang', 'giao': 380, 'tra': 1119, 'total': 1499},
+        {'name': 'Bến Tre', 'giao': 320, 'tra': 953, 'total': 1273},
+        {'name': 'Trà Vinh', 'giao': 210, 'tra': 611, 'total': 821},
+        {'name': 'Vĩnh Long', 'giao': 180, 'tra': 529, 'total': 709},
+        {'name': 'Đồng Tháp', 'giao': 170, 'tra': 535, 'total': 705}
+    ]
+    tb_data['top_20'] = [
+        {'stt': 1, 'bc_name': '(TGI) Đạo Thạnh', 'province': 'Tiền Giang', 'am': 'Huỳnh Quốc Trung', 'giao': 160, 'tra': 469, 'total': 629, 'change_total': '±0', 'trend': ''},
+        {'stt': 2, 'bc_name': '(VLO) Trung Thành', 'province': 'Vĩnh Long', 'am': 'Nguyễn Tuấn Anh', 'giao': 88, 'tra': 260, 'total': 348, 'change_total': '±0', 'trend': ''},
+        {'stt': 3, 'bc_name': '(BTR) Sơn Đông', 'province': 'Bến Tre', 'am': 'Võ Hồng Chơn', 'giao': 50, 'tra': 168, 'total': 218, 'change_total': '±0', 'trend': ''},
+        {'stt': 4, 'bc_name': '(BTR) Lộc Thuận', 'province': 'Bến Tre', 'am': 'Võ Hồng Chơn', 'giao': 50, 'tra': 158, 'total': 208, 'change_total': '±0', 'trend': ''},
+        {'stt': 5, 'bc_name': '(TGI) Long Định', 'province': 'Tiền Giang', 'am': 'Nguyễn Anh Tùng', 'giao': 40, 'tra': 136, 'total': 176, 'change_total': '±0', 'trend': ''},
+        {'stt': 6, 'bc_name': '(BTR) Phú Túc', 'province': 'Bến Tre', 'am': 'Nguyễn Huỳnh Quốc Dũng', 'giao': 34, 'tra': 100, 'total': 134, 'change_total': '±0', 'trend': ''},
+        {'stt': 7, 'bc_name': '(DTH) Lai Vung', 'province': 'Đồng Tháp', 'am': 'Lý Quài Nhân', 'giao': 31, 'tra': 100, 'total': 131, 'change_total': '±0', 'trend': ''},
+        {'stt': 8, 'bc_name': '(TGI) Long Thuận', 'province': 'Tiền Giang', 'am': 'Đoàn Công Tín', 'giao': 30, 'tra': 96, 'total': 126, 'change_total': '±0', 'trend': ''},
+        {'stt': 9, 'bc_name': '(BTR) Tiên Thủy', 'province': 'Bến Tre', 'am': 'Nguyễn Huỳnh Quốc Dũng', 'giao': 27, 'tra': 90, 'total': 117, 'change_total': '±0', 'trend': ''},
+        {'stt': 10, 'bc_name': '(BTR) Ba Tri', 'province': 'Bến Tre', 'am': 'Võ Hồng Chơn', 'giao': 28, 'tra': 85, 'total': 113, 'change_total': '±0', 'trend': ''},
+        {'stt': 11, 'bc_name': '(TGI) Đồng Sơn', 'province': 'Tiền Giang', 'am': 'Đoàn Công Tín', 'giao': 25, 'tra': 80, 'total': 105, 'change_total': '±0', 'trend': ''},
+        {'stt': 12, 'bc_name': '(TVI) Duyên Hải', 'province': 'Trà Vinh', 'am': 'Nguyễn Thành Huy', 'giao': 23, 'tra': 80, 'total': 103, 'change_total': '±0', 'trend': ''},
+        {'stt': 13, 'bc_name': '(BTR) An Hội', 'province': 'Bến Tre', 'am': 'Võ Hồng Chơn', 'giao': 22, 'tra': 80, 'total': 102, 'change_total': '±0', 'trend': ''},
+        {'stt': 14, 'bc_name': '(DTH) Cao Lãnh', 'province': 'Đồng Tháp', 'am': 'Nguyễn Việt Tới', 'giao': 21, 'tra': 70, 'total': 91, 'change_total': '±0', 'trend': ''},
+        {'stt': 15, 'bc_name': '(DTH) Tân Nhuận Đông', 'province': 'Đồng Tháp', 'am': 'Lý Quài Nhân', 'giao': 20, 'tra': 70, 'total': 90, 'change_total': '±0', 'trend': ''},
+        {'stt': 16, 'bc_name': '(TVI) Châu Thành', 'province': 'Trà Vinh', 'am': 'Nguyễn Thành Huy', 'giao': 20, 'tra': 70, 'total': 90, 'change_total': '±0', 'trend': ''},
+        {'stt': 17, 'bc_name': '(VLO) Phú Quới', 'province': 'Vĩnh Long', 'am': 'Nguyễn Tuấn Anh', 'giao': 20, 'tra': 70, 'total': 90, 'change_total': '±0', 'trend': ''},
+        {'stt': 18, 'bc_name': '(DTH) Thanh Bình', 'province': 'Đồng Tháp', 'am': 'Ngô Phan Mỹ Tú', 'giao': 18, 'tra': 70, 'total': 88, 'change_total': '±0', 'trend': ''}
+    ]
+
     # Calculate Giao/Trả and ODR backlog metrics from df_hang_ca1
     total_giao_tra = 0
     giao_tra_under_1 = 0
@@ -1986,13 +2075,13 @@ def main():
         except Exception as e_stats:
             print(f"⚠ Failed to compute new backlog metrics: {e_stats}")
 
-    # Override Giao/Trả backlog and ODR trễ to match Looker Studio screenshot data exactly
-    total_giao_tra = 54302
-    giao_tra_under_1 = 34499
-    giao_tra_1_3 = 14010
-    giao_tra_3_5 = 3448
-    giao_tra_5_8 = 1707
-    giao_tra_null = 638
+    # Override Giao/Trả backlog and ODR trễ to match Looker Studio screenshot data exactly (PDF 1 Page 1)
+    total_giao_tra = 67382
+    giao_tra_under_1 = 43466
+    giao_tra_1_3 = 18129
+    giao_tra_3_5 = 3790
+    giao_tra_5_8 = 1331
+    giao_tra_null = 666
 
     total_odr_tre = 4587
     odr_tre_pct = 0.1045
