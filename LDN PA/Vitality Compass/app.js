@@ -595,7 +595,7 @@ async function selectFolder() {
 async function readFile(name) {
   if (!dirHandle) {
     try {
-      const res = await fetch(encodeURI(`./LDN PA/${name}`));
+      const res = await fetch(encodeURI(`./LDN PA/${name}?_=${Date.now()}`));
       if (res.ok) {
         return await res.text();
       }
