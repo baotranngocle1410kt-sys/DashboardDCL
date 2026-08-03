@@ -1232,22 +1232,6 @@
         "action_plan": "Phân bổ gán tuyến trước 8h sáng, chạy FB Ads tìm shipper thay thế. AM cắm chốt tại BC để hướng dẫn shipper mới."
       },
       {
-        "bc_name": "(VLO) Trung Thành",
-        "volume": 0,
-        "vol_tts": 0,
-        "gtc": 0.0,
-        "backlog_72h": 0,
-        "am": "Nguyễn Tuấn Anh",
-        "dinhiben_nvpttt": 20,
-        "dinhiben_nvxl": 1,
-        "tuyen_7d": 0,
-        "nghi_7d": 6,
-        "details": "- Thiếu hụt thực tế sau OB: 7 NVPTTT.\n- Nhân sự mới nhận việc trong tuần: +0 OB. Nhân sự nghỉ việc: -6.\n- Tuyến thiếu: Tân Quới Trung, Quới Thiện, Tân An Luông, Trung Hiệp.",
-        "shortage_accurate": 7,
-        "missing_routes": "Tân Quới Trung, Quới Thiện, Tân An Luông, Trung Hiệp",
-        "action_plan": "Phân bổ gán tuyến trước 8h sáng, chạy FB Ads tìm shipper thay thế. AM cắm chốt tại BC để hướng dẫn shipper mới."
-      },
-      {
         "bc_name": "(TGI) Đạo Thạnh",
         "volume": 4049,
         "vol_tts": 607,
@@ -1293,6 +1277,22 @@
         "details": "- Thiếu hụt thực tế sau OB: 6 NVPTTT.\n- Nhân sự mới nhận việc trong tuần: +0 OB. Nhân sự nghỉ việc: -4.\n- Tuyến thiếu: Thị trấn Cầu Quan, Thị trấn Tiểu Cần, Tân Hoà, Hiếu Trung.",
         "shortage_accurate": 6,
         "missing_routes": "Thị trấn Cầu Quan, Thị trấn Tiểu Cần, Tân Hoà, Hiếu Trung",
+        "action_plan": "Phân bổ gán tuyến trước 8h sáng, chạy FB Ads tìm shipper thay thế. AM cắm chốt tại BC để hướng dẫn shipper mới."
+      },
+      {
+        "bc_name": "(BTR) An Hội",
+        "volume": 451,
+        "vol_tts": 70,
+        "gtc": 0.479,
+        "backlog_72h": 57,
+        "am": "Võ Hồng Chơn",
+        "dinhiben_nvpttt": 14,
+        "dinhiben_nvxl": 1,
+        "tuyen_7d": 0,
+        "nghi_7d": 2,
+        "details": "- Nhân sự: 7/11 (thiếu 4) + 2 nhân viên hỗ trợ \n- Bưu cục liên tục có nhân viên nghỉ ngang, té xe.\n - NVXL mới chưa quản lý được nhân sự tại BC, điều tiết giờ giấc xuất hàng. \nNhân viên 9h chưa rời khỏi kho.\n * Phương án:\n - Tuyển thay thế NVXL ( NVXL mới đã OB ngày 19/8),\n - Chạy Ads FB \n- Đẩy mạnh tuyển dụng NVPTTT \n- AM cắm chốt hỗ trợ vận hành BC",
+        "shortage_accurate": 6,
+        "missing_routes": "BÌNH PHÚ , PHƯỜNG AN HỘI , MỸ THẠNH AN",
         "action_plan": "Phân bổ gán tuyến trước 8h sáng, chạy FB Ads tìm shipper thay thế. AM cắm chốt tại BC để hướng dẫn shipper mới."
       }
     ],

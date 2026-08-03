@@ -1497,7 +1497,10 @@ def main():
     }
 
     # Build the dynamic top 5 from the master sheet (df_bc_hr) sorted by shortage descending
+    # Deduplicate post offices by clean name, keeping the one with the highest shortage first
+    df_bc_hr['clean_name_for_dedup'] = df_bc_hr['Bưu cục'].astype(str).apply(clean_bc_name)
     df_bc_hr_sorted = df_bc_hr.sort_values(by='NVPTTT_shortage_actual', ascending=False)
+    df_bc_hr_sorted = df_bc_hr_sorted.drop_duplicates(subset=['clean_name_for_dedup'], keep='first')
     
     # We take the top 5 with shortage > 0
     top5_candidates = df_bc_hr_sorted[df_bc_hr_sorted['NVPTTT_shortage_actual'] > 0].head(5)
