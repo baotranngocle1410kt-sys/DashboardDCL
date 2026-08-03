@@ -12,7 +12,7 @@
 - **Tồn Luân Chuyển**: 5,007 đơn
 - **Tồn đọng Lấy/Giao/Trả**: 67,382 đơn
 - **Đơn ưu tiên trễ ODR**: 4,587 đơn (Tỷ lệ trễ: 10.45%)
-- **Thiếu hụt Nhân sự**: Thiếu 812 shipper (Tuyển mới: 4 / Nghỉ việc: 136)
+- **Thiếu hụt Nhân sự**: Thiếu 206 shipper (Tuyển mới: 4 / Nghỉ việc: 134)
 
 ## 🔴 Cảnh báo Hôm nay (Alerts)
 - **(BTR) Sơn Đông** có chỉ số GTC ngày 30/07/26 thấp hơn ngày hôm N-1 (24/07/26) 0.51%. So với cùng kỳ giảm 0.01% do Sản lượng cực lớn (9,230 đơn), thiếu 3/13 shipper (hụt 23%) tại Hữu Định, Phước Thạnh, Tam Phước, Sơn Đông, Phường 8. | Cảnh báo: Thiếu 2 shipper + Biến động nghỉ việc đột biến trong tuần (-3 shipper) + Hiệu suất giao (GTC) thấp (52.13%) + Tồn đọng đơn hàng backlog >5 ngày lớn (161 đơn), nhân sự đang thiếu 2/13 định biên, tuyến thiếu (Hữu Định, Phước Thạnh, Tam Phước, Sơn Đông, Phường 8).
@@ -36,7 +36,7 @@ xã an khánh:             1 nv).
 
 ### Lowlights:
 - Sản lượng đơn toàn vùng đạt 76,366 đơn, suy giảm nhẹ **-9.15%** so với tuần trước.
-- Toàn vùng đang **thiếu hụt thực tế 812 shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.
+- Toàn vùng đang **thiếu hụt thực tế 206 shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.
 - Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 98 định biên) và **Đồng Tháp** (thiếu 30 định biên).
 
 ## 🔮 Phân tích Nguyên nhân (Root Causes)

@@ -549,8 +549,6 @@ def main():
             col_str = str(col).strip()
             if col_str == 'Bưu cục' or col_str.startswith('Bưu cục.'):
                 subtables.append((col_str, idx))
-            elif idx == 1 and str(df_hr.iloc[0, 1]).strip() == 'Bưu cục':
-                subtables.append(('Unnamed: 1', idx))
                 
         standard_cols = [
             'Bưu cục', 'Tỉnh', 'AM', 'Tuyến thiếu', 'Định biên NVPTTT', 'Định biên NVXL', 
