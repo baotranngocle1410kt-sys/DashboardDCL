@@ -37,6 +37,27 @@ def clean_bc_name(name):
     name = re.sub(r'[\s\-]+', ' ', name)
     return name.strip()
 
+def get_new_bc_name(name, cocau_map):
+    if not isinstance(name, str):
+        return ""
+    name_str = str(name).strip()
+    # Strip any numeric prefix like 22031000 - 
+    name_str = re.sub(r'^\d+\s*-\s*', '', name_str).strip()
+    
+    clean_val = clean_bc_name(name_str)
+    
+    # Try exact match in cocau_map
+    if clean_val in cocau_map:
+        return cocau_map[clean_val]['new_name']
+        
+    # Try substring match in cocau_map
+    for k_old, info in cocau_map.items():
+        if k_old in clean_val or clean_val in k_old:
+            return info['new_name']
+            
+    # Fallback to the stripped name
+    return name_str
+
 def parse_pct(val):
     if val is None:
         return 0.0
@@ -451,8 +472,8 @@ def main():
             if 'warehouse_id' not in df_cocau.columns:
                 df_cocau['warehouse_id'] = df_cocau_raw.iloc[:, 0]
                 
-            # Map warehouse_name
-            for col in ['Bưu cục cũ', 'Bưu cục', 'Bưu cục mới', 'Tên bưu cục', 'Tên BC']:
+            # Map warehouse_name (prefer new name)
+            for col in ['Bưu cục', 'Bưu cục mới', 'Bưu cục cũ', 'Tên bưu cục', 'Tên BC']:
                 if col in df_cocau_raw.columns:
                     df_cocau['warehouse_name'] = df_cocau_raw[col]
                     break
@@ -494,8 +515,8 @@ def main():
             
             # Populate cocau_map for old to new name translations
             for idx_c, row_c in df_cocau_raw.iterrows():
-                old_name_raw = row_c['Bưu cục']
-                new_name_raw = row_c['Bưu cục cũ']
+                old_name_raw = row_c['Bưu cục cũ']
+                new_name_raw = row_c['Bưu cục']
                 new_am_raw = row_c['AM']
                 if pd.notna(old_name_raw) and pd.notna(new_name_raw):
                     clean_old = clean_bc_name(str(old_name_raw))
@@ -504,31 +525,78 @@ def main():
                         'new_am': str(new_am_raw).strip() if pd.notna(new_am_raw) else ''
                     }
             print("✓ Loaded new AM/BC structure successfully.")
+            
+            # Translate dropped_bcs to new names
+            for dbc in dropped_bcs:
+                dbc['bc_name'] = get_new_bc_name(dbc['bc_name'], cocau_map)
+                
+            # Translate bl_by_bc keys to new names
+            bl_by_bc_new = {}
+            for raw_bc, val in bl_by_bc.items():
+                new_name = get_new_bc_name(raw_bc, cocau_map)
+                bl_by_bc_new[clean_bc_name(new_name)] = val
+            bl_by_bc = bl_by_bc_new
+            
         except Exception as ce:
             print(f"⚠ Failed to load new AM/BC structure from Cơ cấu Vùng: {ce}")
             # Fallback empty df with correct columns
             df_cocau = pd.DataFrame(columns=['warehouse_id', 'warehouse_name', 'province_name', 'am_name', 'am_tele', 'am_id'])
     
-    # Find columns for Subtable 0 (fallback)
+    # Merge all subtables from df_hr
     try:
-        bc_col_idx = list(df_hr.columns).index('Bưu cục')
-        df_sub0 = df_hr.iloc[:, bc_col_idx:bc_col_idx+16].copy()
+        subtables = []
+        for idx, col in enumerate(df_hr.columns):
+            col_str = str(col).strip()
+            if col_str == 'Bưu cục' or col_str.startswith('Bưu cục.'):
+                subtables.append((col_str, idx))
+            elif idx == 1 and str(df_hr.iloc[0, 1]).strip() == 'Bưu cục':
+                subtables.append(('Unnamed: 1', idx))
+                
+        standard_cols = [
+            'Bưu cục', 'Tỉnh', 'AM', 'Tuyến thiếu', 'Định biên NVPTTT', 'Định biên NVXL', 
+            'NVPTTT_resign', 'NVPTTT_shortage_bs', 'YCTD', 'NVPTTT_ob_day', 'NVPTTT_ob_week', 
+            'Data_Day', 'NVPTTT_shortage_actual', 'pct_dapung', 'HRBP', 'Status'
+        ]
+        
+        all_hr_rows = []
+        for name, start_idx in subtables:
+            df_sub = df_hr.iloc[:, start_idx:start_idx+16].copy()
+            num_cols = len(df_sub.columns)
+            current_cols = standard_cols[:num_cols]
+            
+            if str(df_sub.iloc[0, 0]).strip() == 'Bưu cục':
+                df_sub.columns = current_cols
+                df_sub = df_sub.iloc[1:]
+            else:
+                df_sub.columns = current_cols
+                
+            df_sub = df_sub.dropna(subset=['Bưu cục'])
+            df_sub = df_sub[df_sub['Bưu cục'].astype(str).str.strip() != '' ]
+            df_sub = df_sub[df_sub['Bưu cục'] != 'TỔNG']
+            
+            for _, row in df_sub.iterrows():
+                all_hr_rows.append(row.to_dict())
+                
+        df_bc_hr = pd.DataFrame(all_hr_rows)
+        print(f"✓ Parsed and merged recruitment data from all subtables. Total: {len(df_bc_hr)} bưu cục.")
     except Exception as e:
-        print(f"⚠ Columns layout mismatch: {e}. Using raw indices.")
-        df_sub0 = df_hr.iloc[:, 9:25].copy()
-        
-    # Standardize subtable columns (Subtable 0 has 16 columns including Status and HRBP)
-    df_sub0.columns = [
-        'Bưu cục', 'Tỉnh', 'AM', 'Tuyến thiếu', 'Định biên NVPTTT', 'Định biên NVXL', 
-        'NVPTTT_resign', 'NVPTTT_shortage_bs', 'YCTD', 'NVPTTT_ob_day', 'NVPTTT_ob_week', 
-        'Data_Day', 'NVPTTT_shortage_actual', 'pct_dapung', 'HRBP', 'Status'
-    ]
+        print(f"⚠ Failed to parse recruitment subtables: {e}. Falling back to default slicing.")
+        try:
+            bc_col_idx = list(df_hr.columns).index('Bưu cục')
+            df_sub0 = df_hr.iloc[:, bc_col_idx:bc_col_idx+16].copy()
+        except:
+            df_sub0 = df_hr.iloc[:, 9:25].copy()
+        df_sub0.columns = [
+            'Bưu cục', 'Tỉnh', 'AM', 'Tuyến thiếu', 'Định biên NVPTTT', 'Định biên NVXL', 
+            'NVPTTT_resign', 'NVPTTT_shortage_bs', 'YCTD', 'NVPTTT_ob_day', 'NVPTTT_ob_week', 
+            'Data_Day', 'NVPTTT_shortage_actual', 'pct_dapung', 'HRBP', 'Status'
+        ]
+        df_bc_hr = df_sub0[(df_sub0['Bưu cục'].notna()) & (df_sub0['Bưu cục'] != 'TỔNG') & (df_sub0['Tỉnh'].notna()) & (df_sub0['Bưu cục'].astype(str).str.strip() != '')].copy()
 
-    # Read headcount allocation and HRBP assignments directly from Subtable 0
-    df_bc_hr = df_sub0[(df_sub0['Bưu cục'].notna()) & (df_sub0['Bưu cục'] != 'TỔNG') & (df_sub0['Tỉnh'].notna()) & (df_sub0['Bưu cục'].astype(str).str.strip() != '')].copy()
+    # Translate bưu cục names in recruitment data to new names
+    df_bc_hr['Bưu cục'] = df_bc_hr['Bưu cục'].apply(lambda x: get_new_bc_name(x, cocau_map))
     df_bc_hr['Bưu cục_clean'] = df_bc_hr['Bưu cục'].apply(clean_bc_name)
-    print(f"✓ Parsed recruitment data from Subtable 0. Total: {len(df_bc_hr)} bưu cục.")
-        
+    
     # Standardize numeric columns
     for col in ['NVPTTT_shortage_actual', 'NVPTTT_shortage_bs', 'NVPTTT_resign', 'NVPTTT_ob_week', 'Định biên NVPTTT', 'Định biên NVXL']:
         if col in df_bc_hr.columns:
@@ -667,6 +735,7 @@ def main():
     # Map Post Offices to AM and Province
     df_data_m = df_data.merge(df_cocau, left_on="ID Bưu cục", right_on="warehouse_id", how="left")
     df_data_m['warehouse_name'] = df_data_m['warehouse_name'].fillna(df_data_m['Chi tiết'])
+    df_data_m['warehouse_name'] = df_data_m['warehouse_name'].apply(lambda x: get_new_bc_name(x, cocau_map))
     df_data_m['Vol Chuyen Tra'] = df_data_m['Volume'] * df_data_m['% Chuyển trả']
     
     # Extract Trend Data (Last 8 Days)
@@ -898,7 +967,7 @@ def main():
         'Trung Thành': "Thiếu 3/20 shipper tại các tuyến xã Tân Quới Trung, Quới Thiện, Tân An Luông, Trung Hiệp.",
         'Tiên Thủy': "Thiếu 3/11 shipper (hụt 27% nhân sự) tại Sơn Đông, Tân Phú, Tiên Thủy.",
         'Long Định': "Thiếu 5 shipper tại tuyến Nhị Bình, Tam Hiệp.",
-        'Phó Cơ Điều': "Thiếu shipper giao chặng cuối, tồn đọng ca sáng.",
+        'Phước Hậu': "Thiếu shipper giao chặng cuối, tồn đọng ca sáng.",
         'Đường Huyện 35': "Tuyến giao hàng Vĩnh Kim bị chia cắt, shipper nghỉ đột xuất.",
         'QL57 KP3': "Hàng ca 1 về trễ, chưa kịp phân tuyến gán shipper.",
         'Quốc Lộ 53': "Lượng đơn tăng đột biến 150% do khuyến mãi Shopee.",
@@ -1091,7 +1160,7 @@ def main():
         late_inbound = False
         sorting_delay = False
         
-        if "Phó Cơ Điều" in bc_name or "Đạo Thạnh" in bc_name or "Sơn Đông" in bc_name:
+        if "Phước Hậu" in bc_name or "Đạo Thạnh" in bc_name or "Sơn Đông" in bc_name:
             exit_hour = "09:35"
             sorting_delay = True
         elif "Phú Túc" in bc_name or "Trung Thành" in bc_name or "Tiên Thủy" in bc_name:
@@ -1492,7 +1561,7 @@ def main():
         # Determine dynamic action plan based on post office name
         action_plan = "Phân bổ gán tuyến trước 8h sáng, chạy FB Ads tìm shipper thay thế. AM cắm chốt tại BC để hướng dẫn shipper mới."
         clean_bc_n = clean_bc_name(bc_n)
-        if "phó cơ điều" in clean_bc_n:
+        if "phó cơ điều" in clean_bc_n or "phước hậu" in clean_bc_n:
             action_plan = "Yêu cầu AM Nguyễn Tuấn Anh trực tiếp xuống kho điều phối chia nhỏ tuyến giao, cam kết phân hàng trước 8h sáng, hỗ trợ điều động shipper từ các BC lân cận sang ứng cứu trong giờ cao điểm."
         elif "chợ lách" in clean_bc_n:
             action_plan = "Đề xuất phụ cấp xăng xe/vé đò đặc thù cho các tuyến cù lao (An Bình, Bình Hòa Phước), AM Huỳnh Phương Duy cắm chốt tại BC để kèm cặp và dẫn tuyến cho shipper mới."

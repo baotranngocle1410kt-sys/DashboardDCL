@@ -12,13 +12,19 @@
 - **Tồn Luân Chuyển**: 5,007 đơn
 - **Tồn đọng Lấy/Giao/Trả**: 67,382 đơn
 - **Đơn ưu tiên trễ ODR**: 4,587 đơn (Tỷ lệ trễ: 10.45%)
-- **Thiếu hụt Nhân sự**: Thiếu 103 shipper (Tuyển mới: 2 / Nghỉ việc: 67)
+- **Thiếu hụt Nhân sự**: Thiếu 812 shipper (Tuyển mới: 4 / Nghỉ việc: 136)
 
 ## 🔴 Cảnh báo Hôm nay (Alerts)
-- **Bưu Cục Võ Nguyên Giáp-Phú Tân-Bến Tre** có chỉ số GTC ngày 30/07/26 thấp hơn ngày hôm N-1 (24/07/26) 0.51%. So với cùng kỳ giảm 0.01% do Hiệu suất giao (GTC) thấp (52.13%), nhân sự đang thiếu 0/186 định biên.
-- **Bưu Cục 88 Ấp Thân Hòa-Thân Cửu Nghĩa-Châu Thành-Tiền Giang** có chỉ số GTC ngày 30/07/26 thấp hơn ngày hôm N-1 (24/07/26) 1.14%. So với cùng kỳ giảm 2.52% do Hiệu suất giao (GTC) thấp (53.71%) + Rớt luân chuyển 9 đơn (Shopee: 0, TTS: 7, Khác: 2), nhân sự đang thiếu 0/185 định biên.
-- **Bưu Cục 230 Ấp Bình Hạnh-Long Bình Điền-Chợ Gạo-Tiền Giang** có chỉ số GTC ngày 30/07/26 thấp hơn ngày hôm N-1 (24/07/26) 2.46%. So với cùng kỳ giảm 3.82% do Hiệu suất giao kém, tỷ lệ trả (FD 8.14%) cao. Thiếu 2/20 shipper tại Lương Hòa Lạc, Mỹ Tịnh An. | Cảnh báo: Tỷ lệ trả hàng (%FD) cao bất thường (8.14%) + Hiệu suất giao (GTC) thấp (53.17%) + Rớt luân chuyển 5 đơn (Shopee: 0, TTS: 0, Khác: 5), nhân sự đang thiếu 0/133 định biên.
-- **Bưu Cục 206 A Đoàn Thị Nghiệp-Mỹ Tho-Tiền Giang 01** có chỉ số GTC ngày 30/07/26 thấp hơn ngày hôm N-1 (24/07/26) 3.80%. So với cùng kỳ giảm 3.00% do Tỷ lệ trả hàng (%FD) cao bất thường (13.78%) + Hiệu suất giao (GTC) thấp (40.30%), nhân sự đang thiếu 0/82 định biên.
+- **(BTR) Sơn Đông** có chỉ số GTC ngày 30/07/26 thấp hơn ngày hôm N-1 (24/07/26) 0.51%. So với cùng kỳ giảm 0.01% do Sản lượng cực lớn (9,230 đơn), thiếu 3/13 shipper (hụt 23%) tại Hữu Định, Phước Thạnh, Tam Phước, Sơn Đông, Phường 8. | Cảnh báo: Thiếu 2 shipper + Biến động nghỉ việc đột biến trong tuần (-3 shipper) + Hiệu suất giao (GTC) thấp (52.13%) + Tồn đọng đơn hàng backlog >5 ngày lớn (161 đơn), nhân sự đang thiếu 2/13 định biên, tuyến thiếu (Hữu Định, Phước Thạnh, Tam Phước, Sơn Đông, Phường 8).
+- **(BTR) Phú Túc** có chỉ số GTC ngày 30/07/26 thấp hơn ngày hôm N-1 (24/07/26) 1.14%. So với cùng kỳ giảm 2.52% do Khủng hoảng nhân sự nghiêm trọng (thiếu 7/16 shipper, hụt 44% nhân sự) tại tuyến Tân Thạch, Giao Long. | Cảnh báo: Hiệu suất giao (GTC) thấp (53.71%) + Rớt luân chuyển 9 đơn (Shopee: 0, TTS: 7, Khác: 2), nhân sự đang thiếu 0/20 định biên.
+- **(TVI) Duyên Hải** có chỉ số GTC ngày 30/07/26 thấp hơn ngày hôm N-1 (24/07/26) 0.04%. So với cùng kỳ giảm 1.21% do Thiếu 2 shipper + Rớt luân chuyển 18 đơn (Shopee: 1, TTS: 0, Khác: 17), nhân sự đang thiếu 2/18 định biên, tuyến thiếu (Trường Long Hòa, Ngũ Lạc, Thạnh Hòa Sơn).
+- **(TGI) Chợ Gạo** có chỉ số GTC ngày 30/07/26 thấp hơn ngày hôm N-1 (24/07/26) 2.46%. So với cùng kỳ giảm 3.82% do Hiệu suất giao kém, tỷ lệ trả (FD 8.14%) cao. Thiếu 2/20 shipper tại Lương Hòa Lạc, Mỹ Tịnh An. | Cảnh báo: Thiếu 3 shipper + Biến động nghỉ việc đột biến trong tuần (-3 shipper) + Tỷ lệ trả hàng (%FD) cao bất thường (8.14%) + Hiệu suất giao (GTC) thấp (53.17%) + Rớt luân chuyển 5 đơn (Shopee: 0, TTS: 0, Khác: 5), nhân sự đang thiếu 3/20 định biên.
+- **(DTH) Tân Nhuận Đông** có chỉ số GTC ngày 30/07/26 thấp hơn ngày hôm N-1 (24/07/26) 3.74%. So với cùng kỳ giảm 5.42% do Thiếu hụt nhân sự nghiêm trọng (hụt 4/16 shipper, ~25%) + Biến động nghỉ việc đột biến trong tuần (-4 shipper) + Tỷ lệ trả hàng (%FD) cao bất thường (8.27%) + Rớt luân chuyển 1 đơn (Shopee: 1, TTS: 0, Khác: 0), nhân sự đang thiếu 4/16 định biên, tuyến thiếu (xã tân phú trung :    1nv
+xã tân nhuận đông: 1nv
+xã phú hựu:               1nv
+xã an khánh:             1 nv).
+- **(TGI) Đạo Thạnh** có chỉ số GTC ngày 30/07/26 thấp hơn ngày hôm N-1 (24/07/26) 3.80%. So với cùng kỳ giảm 3.00% do Quá tải sản lượng (4,049 đơn), tỷ lệ trả (FD 13.78%) cao bất thường. Thiếu 1/21 shipper tại Phước Thạnh, Phường 10, Trung An, Phường 5. | Cảnh báo: Thiếu hụt nhân sự nghiêm trọng (hụt 6/21 shipper, ~29%) + Biến động nghỉ việc đột biến trong tuần (-4 shipper) + Tỷ lệ trả hàng (%FD) cao bất thường (13.78%) + Hiệu suất giao (GTC) thấp (40.30%) + Tồn đọng đơn hàng backlog >5 ngày lớn (132 đơn) + Rớt luân chuyển 9 đơn (Shopee: 0, TTS: 4, Khác: 5), nhân sự đang thiếu 6/21 định biên, tuyến thiếu (Phước Thạnh, Phường 10, Trung An, Phường 5).
+- **(TGI) Hậu Mỹ** có chỉ số GTC ngày 30/07/26 thấp hơn ngày hôm N-1 (24/07/26) 1.66%. So với cùng kỳ giảm 3.75% do Thiếu 3 shipper + Rớt luân chuyển 11 đơn (Shopee: 1, TTS: 1, Khác: 9), nhân sự đang thiếu 3/16 định biên, tuyến thiếu (Tuyến Hậu Thành, Thị trấn Cái Bè, Hậu Mỹ Phú).
 
 ## 📈 Highlight / Lowlight
 ### Highlights:
@@ -26,42 +32,42 @@
 - Đơn tồn backlog (>5 ngày) kiểm soát tốt, giảm **-37.45%** so với tuần trước (từ 2,128 xuống 1,331 đơn).
 - **Ngô Phan Mỹ Tú** là AM có tỷ lệ GTC cao nhất toàn vùng (70.81%), đồng thời duy trì lượng đơn tồn đọng cực thấp.
 - Tỷ lệ chuyển trả (FD) toàn vùng duy trì ở mức an toàn là **3.80%** (↗ +1.05% vs Tuần trước).
-- Trong tuần qua, HRBP đã tuyển thành công **2 nhân viên mới** (OB) hỗ trợ lấp đầy các tuyến nóng.
+- Trong tuần qua, HRBP đã tuyển thành công **4 nhân viên mới** (OB) hỗ trợ lấp đầy các tuyến nóng.
 
 ### Lowlights:
 - Sản lượng đơn toàn vùng đạt 76,366 đơn, suy giảm nhẹ **-9.15%** so với tuần trước.
-- Toàn vùng đang **thiếu hụt thực tế 103 shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.
-- Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 49 định biên) và **Đồng Tháp** (thiếu 15 định biên).
+- Toàn vùng đang **thiếu hụt thực tế 812 shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.
+- Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 98 định biên) và **Đồng Tháp** (thiếu 30 định biên).
 
 ## 🔮 Phân tích Nguyên nhân (Root Causes)
-- Tại **Bưu Cục Ấp 2-Phú Nhuận-Bến Tre**: Nhân sự: 7/11 (thiếu 4) + 2 nhân viên hỗ trợ; Bưu cục liên tục có nhân viên nghỉ ngang, té xe.; NVXL mới chưa quản lý được nhân sự tại BC, điều tiết giờ giấc xuất hàng.; Nhân viên 9h chưa rời khỏi kho.
-- Tại **Bưu Cục Ấp Bình Hiệp A-Xã Lấp Vò-Đồng Tháp**: Số thiếu: 4 NVPTTT; Thiếu tuyến xã Mỹ An Hưng A, xã Mỹ An Hưng B, xã Hội An Đông; Nhân sự hiện tại: 9 NVPTTT (12 tuyến chạy); Nhân viên mới năng suất trung bình: GTC 35 đơn/ngày; Bưu cục có phân chia tuyến rõ ràng, hàng cồng kềnh còn để không gọn, hàng lấy về nhiều để giữa kho không kiểm soát được; NV ra khỏi kho trễ (10h) do tự lựa hàng và gọi lâu, NVXL không phân chia hàng trước cho NVPTTT; AM ngồi trực tiếp tại kho, NVXL có kinh nghiệm sắp xếp gán và điều hành; AM tick mất hàng (hơn 75 đơn), còn hàng vật lý chuyển trả về OE
-- Tại **Bưu Cục Khóm 4 TT Châu Thành-Xã Châu Thành-Trà Vinh**: Số thiếu: 5 NVPTTT + 1 NVXL; Thiếu tuyến xã Tân Hương, xã Thân Cửu Nghĩa, xã Tam Hiệp, xã Tân Hội Đông; NVXL trực tiếp điều hành sắp xếp và gán chuyến cho nhân viên; Hàng tồn: 121 đơn
-- Tại **Bưu Cục Duyên Hải-Trà Vinh**: Số thiếu 4; Bưu cục xảy ra chiếm dụng, nhân viên nghỉ ngang; Các tuyến chạy xa BC; Nhân viên mới vào năng suất chưa cao; NVXL có kinh nghiệm, sắp xếp layout, FIFO hàng hóa
-- Tại **Bưu Cục QL80-Xã Hòa Long-Đồng Tháp**: Số thiếu: 2 NVPTTT; Thiếu tuyến xã Long Hưng B; Nhân viên mới năng suất trung bình: GTC 30 đơn/ngày; NVXL trực tiếp điều hành tại kho, tuy nhiên năng suất nhân viên không cao
+- Tại **(BTR) An Hội**: Nhân sự: 7/11 (thiếu 4) + 2 nhân viên hỗ trợ; Bưu cục liên tục có nhân viên nghỉ ngang, té xe.; NVXL mới chưa quản lý được nhân sự tại BC, điều tiết giờ giấc xuất hàng.; Nhân viên 9h chưa rời khỏi kho.
+- Tại **(DTH) Lấp Vò**: Số thiếu: 4 NVPTTT; Thiếu tuyến xã Mỹ An Hưng A, xã Mỹ An Hưng B, xã Hội An Đông; Nhân sự hiện tại: 9 NVPTTT (12 tuyến chạy); Nhân viên mới năng suất trung bình: GTC 35 đơn/ngày; Bưu cục có phân chia tuyến rõ ràng, hàng cồng kềnh còn để không gọn, hàng lấy về nhiều để giữa kho không kiểm soát được; NV ra khỏi kho trễ (10h) do tự lựa hàng và gọi lâu, NVXL không phân chia hàng trước cho NVPTTT; AM ngồi trực tiếp tại kho, NVXL có kinh nghiệm sắp xếp gán và điều hành; AM tick mất hàng (hơn 75 đơn), còn hàng vật lý chuyển trả về OE
+- Tại **(TGI) Châu Thành**: Số thiếu: 5 NVPTTT + 1 NVXL; Thiếu tuyến xã Tân Hương, xã Thân Cửu Nghĩa, xã Tam Hiệp, xã Tân Hội Đông; NVXL trực tiếp điều hành sắp xếp và gán chuyến cho nhân viên; Hàng tồn: 121 đơn
+- Tại **(TVI) Duyên Hải**: Số thiếu 4; Bưu cục xảy ra chiếm dụng, nhân viên nghỉ ngang; Các tuyến chạy xa BC; Nhân viên mới vào năng suất chưa cao; NVXL có kinh nghiệm, sắp xếp layout, FIFO hàng hóa
+- Tại **(DTH) Hòa Long**: Số thiếu: 2 NVPTTT; Thiếu tuyến xã Long Hưng B; Nhân viên mới năng suất trung bình: GTC 30 đơn/ngày; NVXL trực tiếp điều hành tại kho, tuy nhiên năng suất nhân viên không cao
 
 ## 🛠️ Kiến nghị Hành động (Recommendations)
-- Tại **Bưu Cục Ấp 2-Phú Nhuận-Bến Tre**: Tuyển thay thế NVXL ( NVXL mới đã OB ngày 19/8),; Chạy Ads FB; Đẩy mạnh tuyển dụng NVPTTT; AM cắm chốt hỗ trợ vận hành BC
-- Tại **Bưu Cục Ấp Bình Hiệp A-Xã Lấp Vò-Đồng Tháp**: NVXL trực tiếp điều hành của nhân viên; Layout có sắp xếp, hàng cồng kềnh chưa gọn; AOV đã được điều chỉnh, không có tuyến AOV thấp; Đang thực hiện chạy FB Ads để hỗ trợ tuyển dụng, áp dụng chính sách giới thiệu nội bộ; Call check NV cũ nghỉ việc không vi phạm vào làm lại
-- Tại **Bưu Cục Khóm 4 TT Châu Thành-Xã Châu Thành-Trà Vinh**: Đẩy mạnh tuyển dụng do cắt hàng nặng, nhân viên nghỉ do thu nhập giảm; NVXL tìm việc làm mới, đã có NVXL mới đang được đào tạo - AM phân chia lại các tuyến chạy và điều chỉnh lại AOV
-- Tại **Bưu Cục Duyên Hải-Trà Vinh**: Triển khai dán banner tuyển dụng ở các khu vực lân cận; Triển khai chính sách giới thiệu nội bộ để đẩy nhanh tuyển dụng
-- Tại **Bưu Cục QL80-Xã Hòa Long-Đồng Tháp**: Tuyển dụng cho bưu cục; AM họp kho để thúc đẩy tinh thần nhân viên; Sắp xếp lại layout: kho mới cần sắp xếp hàng hoá đúng chỗ
+- Tại **(BTR) An Hội**: Tuyển thay thế NVXL ( NVXL mới đã OB ngày 19/8),; Chạy Ads FB; Đẩy mạnh tuyển dụng NVPTTT; AM cắm chốt hỗ trợ vận hành BC
+- Tại **(DTH) Lấp Vò**: NVXL trực tiếp điều hành của nhân viên; Layout có sắp xếp, hàng cồng kềnh chưa gọn; AOV đã được điều chỉnh, không có tuyến AOV thấp; Đang thực hiện chạy FB Ads để hỗ trợ tuyển dụng, áp dụng chính sách giới thiệu nội bộ; Call check NV cũ nghỉ việc không vi phạm vào làm lại
+- Tại **(TGI) Châu Thành**: Đẩy mạnh tuyển dụng do cắt hàng nặng, nhân viên nghỉ do thu nhập giảm; NVXL tìm việc làm mới, đã có NVXL mới đang được đào tạo - AM phân chia lại các tuyến chạy và điều chỉnh lại AOV
+- Tại **(TVI) Duyên Hải**: Triển khai dán banner tuyển dụng ở các khu vực lân cận; Triển khai chính sách giới thiệu nội bộ để đẩy nhanh tuyển dụng
+- Tại **(DTH) Hòa Long**: Tuyển dụng cho bưu cục; AM họp kho để thúc đẩy tinh thần nhân viên; Sắp xếp lại layout: kho mới cần sắp xếp hàng hoá đúng chỗ
 
 ## 📋 Đánh giá AM (Scorecard)
 | AM | GTC | FD | Trạng thái | Đơn Aging | Thiếu shipper | HRBP |
 | --- | --- | --- | --- | --- | --- | --- |
-| Ngô Phan Mỹ Tú | 70.81% | 4.88% | Mạnh | 17 | Thiếu 5/57 | NgọcNTM |
-| Nguyễn Thành Huy | 70.12% | 5.26% | Mạnh | 43 | Thiếu 11/116 | VyLNK |
-| Nguyễn Việt Tới | 69.43% | 5.91% | Mạnh | 19 | Thiếu 1/47 | NgọcNTM |
-| Nguyễn Tuấn Anh | 64.40% | 5.57% | Cải thiện | 187 | Thiếu 11/135 | VyLNK |
-| Lý Quài Nhân | 63.19% | 8.27% | Cải thiện | 84 | Thiếu 8/60 | NgọcNTM |
-| Lê Minh Tuấn | 60.44% | 5.45% | Cải thiện | 67 | Thiếu 5/66 | NgọcNTM |
-| Nguyễn Huỳnh Quốc Dũng | 59.27% | 6.70% | Cải thiện | 181 | Thiếu 9/85 | NgọcNTM |
-| Nguyễn Anh Tùng | 49.47% | 7.02% | Yếu | 249 | Thiếu 13/53 | DungLK |
-| Đoàn Công Tín | 60.29% | 8.14% | Cải thiện | 79 | Thiếu 11/67 | DungLK |
-| Võ Hồng Chơn | 57.30% | 6.07% | Cải thiện | 209 | Thiếu 8/80 | NgọcNTM |
-| Huỳnh Quốc Trung | 42.25% | 13.78% | Yếu | 103 | Thiếu 6/21 | DungLK |
-| Ngô Thị Bé Mi | 49.73% | 0.00% | Yếu | 93 | Thiếu 15/53 | BaoHQ |
+| Ngô Phan Mỹ Tú | 70.81% | 4.88% | Mạnh | 17 | Thiếu 10/114 | NgọcNTM |
+| Nguyễn Thành Huy | 70.12% | 5.26% | Mạnh | 43 | Thiếu 22/232 | VyLNK |
+| Nguyễn Việt Tới | 69.43% | 5.91% | Mạnh | 19 | Thiếu 2/94 | NgọcNTM |
+| Nguyễn Tuấn Anh | 64.40% | 5.57% | Cải thiện | 187 | Thiếu 22/270 | VyLNK |
+| Lý Quài Nhân | 63.19% | 8.27% | Cải thiện | 84 | Thiếu 16/120 | NgọcNTM |
+| Lê Minh Tuấn | 60.44% | 5.45% | Cải thiện | 67 | Thiếu 10/132 | NgọcNTM |
+| Nguyễn Huỳnh Quốc Dũng | 59.27% | 6.70% | Cải thiện | 181 | Thiếu 18/170 | NgọcNTM |
+| Nguyễn Anh Tùng | 49.47% | 7.02% | Yếu | 249 | Thiếu 26/106 | DungLK |
+| Đoàn Công Tín | 60.29% | 8.14% | Cải thiện | 79 | Thiếu 22/134 | DungLK |
+| Võ Hồng Chơn | 57.30% | 6.07% | Cải thiện | 209 | Thiếu 16/160 | NgọcNTM |
+| Huỳnh Quốc Trung | 42.25% | 13.78% | Yếu | 103 | Thiếu 12/42 | DungLK |
+| Ngô Thị Bé Mi | 49.73% | 0.00% | Yếu | 93 | Thiếu 30/106 | BaoHQ |
 
 ## 📦 Backlog Tracking
 - **Tổng Backlog >5 ngày**: 1,331 đơn
