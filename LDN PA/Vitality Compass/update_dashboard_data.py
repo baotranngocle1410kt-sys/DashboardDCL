@@ -550,6 +550,10 @@ def main():
             if col_str == 'Bưu cục' or col_str.startswith('Bưu cục.'):
                 subtables.append((col_str, idx))
                 
+        # Keep only the first subtable (master table) to avoid double counting with provincial subtables on the right
+        if len(subtables) > 1:
+            subtables = subtables[:1]
+            
         standard_cols = [
             'Bưu cục', 'Tỉnh', 'AM', 'Tuyến thiếu', 'Định biên NVPTTT', 'Định biên NVXL', 
             'NVPTTT_resign', 'NVPTTT_shortage_bs', 'YCTD', 'NVPTTT_ob_day', 'NVPTTT_ob_week', 
