@@ -12,7 +12,7 @@
 - **Tồn Luân Chuyển**: 5,007 đơn
 - **Tồn đọng Lấy/Giao/Trả**: 67,382 đơn
 - **Đơn ưu tiên trễ ODR**: 4,587 đơn (Tỷ lệ trễ: 10.45%)
-- **Thiếu hụt Nhân sự**: Thiếu 102 shipper (Tuyển mới: 6 / Nghỉ việc: 67)
+- **Thiếu hụt Nhân sự**: Thiếu 98 shipper (Tuyển mới: 8 / Nghỉ việc: 64)
 
 ## 🔴 Cảnh báo Hôm nay (Alerts)
 - **(BTR) Sơn Đông** có chỉ số GTC ngày 03/08/26 thấp hơn ngày hôm N-1 (24/07/26) 0.50%. So với cùng kỳ giảm 0.01% do Sản lượng cực lớn (9,230 đơn), thiếu 3/13 shipper (hụt 23%) tại Hữu Định, Phước Thạnh, Tam Phước, Sơn Đông, Phường 8. | Cảnh báo: Thiếu 2 shipper + Biến động nghỉ việc đột biến trong tuần (-3 shipper) + Hiệu suất giao (GTC) thấp (52.13%) + Tồn đọng đơn hàng backlog >5 ngày lớn (208 đơn), nhân sự đang thiếu 2/13 định biên, tuyến thiếu (Hữu Định, Phước Thạnh, Tam Phước, Sơn Đông, Phường 8).
@@ -32,11 +32,11 @@ xã an khánh:             1 nv).
 - Đơn tồn backlog (>5 ngày) kiểm soát tốt, giảm **-37.45%** so với tuần trước (từ 1,850 xuống 1,331 đơn).
 - **Ngô Phan Mỹ Tú** là AM có tỷ lệ GTC cao nhất toàn vùng (69.40%), đồng thời duy trì lượng đơn tồn đọng cực thấp.
 - Tỷ lệ chuyển trả (FD) toàn vùng duy trì ở mức an toàn là **2.50%** (↘ -0.25% vs Tuần trước).
-- Trong tuần qua, HRBP đã tuyển thành công **6 nhân viên mới** (OB) hỗ trợ lấp đầy các tuyến nóng.
+- Trong tuần qua, HRBP đã tuyển thành công **8 nhân viên mới** (OB) hỗ trợ lấp đầy các tuyến nóng.
 
 ### Lowlights:
 - Sản lượng đơn toàn vùng đạt 76,366 đơn, suy giảm nhẹ **-3.34%** so với tuần trước.
-- Toàn vùng đang **thiếu hụt thực tế 102 shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.
+- Toàn vùng đang **thiếu hụt thực tế 98 shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.
 - Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 47 định biên) và **Đồng Tháp** (thiếu 13 định biên).
 
 ## 🔮 Phân tích Nguyên nhân (Root Causes)
@@ -57,9 +57,9 @@ xã an khánh:             1 nv).
 | AM | GTC | FD | Trạng thái | Đơn Aging | Thiếu shipper | HRBP |
 | --- | --- | --- | --- | --- | --- | --- |
 | Ngô Phan Mỹ Tú | 69.40% | 4.88% | Mạnh | 17 | Thiếu 4/57 | NgọcNTM |
-| Nguyễn Thành Huy | 68.73% | 5.26% | Mạnh | 43 | Thiếu 9/116 | VyLNK |
+| Nguyễn Thành Huy | 68.73% | 5.26% | Mạnh | 43 | Thiếu 6/116 | VyLNK |
 | Nguyễn Việt Tới | 68.05% | 5.91% | Mạnh | 19 | Thiếu 1/47 | NgọcNTM |
-| Nguyễn Tuấn Anh | 63.12% | 5.57% | Cải thiện | 187 | Thiếu 16/135 | VyLNK |
+| Nguyễn Tuấn Anh | 63.12% | 5.57% | Cải thiện | 187 | Thiếu 15/135 | VyLNK |
 | Lý Quài Nhân | 61.94% | 8.27% | Cải thiện | 84 | Thiếu 7/60 | NgọcNTM |
 | Lê Minh Tuấn | 59.24% | 5.45% | Cải thiện | 67 | Thiếu 5/66 | NgọcNTM |
 | Nguyễn Huỳnh Quốc Dũng | 58.09% | 6.70% | Cải thiện | 181 | Thiếu 9/85 | NgọcNTM |
