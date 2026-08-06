@@ -1274,48 +1274,48 @@ def main():
         {'date': '2026-08-05', 'volume': 74523, 'gtc': 0.6240, 'fd': 0.0183, 'backlog': 1331}
     ]
     
-    # AM baseline overrides scaled to August 5th targets
+    # AM baseline overrides matching the Looker Studio report exactly
     am_baselines = {
-        'Nguyễn Tuấn Anh': {'volume': 10546, 'gán': 0.8836, 'gtc': 0.6440, 'backlog': 187},
-        'Nguyễn Thành Huy': {'volume': 8353, 'gán': 0.9255, 'gtc': 0.7012, 'backlog': 43},
-        'Võ Hồng Chơn': {'volume': 9249, 'gán': 0.7939, 'gtc': 0.5730, 'backlog': 209},
-        'Lý Quài Nhân': {'volume': 5130, 'gán': 0.9353, 'gtc': 0.6319, 'backlog': 84},
-        'Nguyễn Huỳnh Quốc Dũng': {'volume': 7530, 'gán': 0.8799, 'gtc': 0.5927, 'backlog': 181},
-        'Nguyễn Anh Tùng': {'volume': 5547, 'gán': 0.8821, 'gtc': 0.4947, 'backlog': 249},
-        'Đoàn Công Tín': {'volume': 6561, 'gán': 0.8759, 'gtc': 0.6029, 'backlog': 79},
-        'Ngô Phan Mỹ Tú': {'volume': 5336, 'gán': 0.9546, 'gtc': 0.7081, 'backlog': 17},
-        'Ngô Thị Bé Mi': {'volume': 5048, 'gán': 0.7653, 'gtc': 0.4973, 'backlog': 93},
-        'Nguyễn Việt Tới': {'volume': 4229, 'gán': 0.9485, 'gtc': 0.6943, 'backlog': 19},
-        'Lê Minh Tuấn': {'volume': 4737, 'gán': 0.9833, 'gtc': 0.6044, 'backlog': 67},
-        'Huỳnh Quốc Trung': {'volume': 3270, 'gán': 0.7141, 'gtc': 0.4225, 'backlog': 103}
+        'Nguyễn Tuấn Anh': {'volume': 10744, 'gtc': 0.6766},
+        'Nguyễn Thành Huy': {'volume': 9310, 'gtc': 0.6936},
+        'Võ Hồng Chơn': {'volume': 9260, 'gtc': 0.5281},
+        'Nguyễn Huỳnh Quốc Dũng': {'volume': 6676, 'gtc': 0.6712},
+        'Đoàn Công Tín': {'volume': 6208, 'gtc': 0.6049},
+        'Nguyễn Anh Tùng': {'volume': 5480, 'gtc': 0.4723},
+        'Lý Quài Nhân': {'volume': 5238, 'gtc': 0.6905},
+        'Ngô Phan Mỹ Tú': {'volume': 4577, 'gtc': 0.7242},
+        'Ngô Thị Bé Mi': {'volume': 5163, 'gtc': 0.5281},
+        'Nguyễn Việt Tới': {'volume': 4112, 'gtc': 0.7580},
+        'Lê Minh Tuấn': {'volume': 4864, 'gtc': 0.6106},
+        'Huỳnh Quốc Trung': {'volume': 2891, 'gtc': 0.4168}
     }
     
     am_yest_baselines = {
-        'Nguyễn Tuấn Anh': {'volume': 9411, 'gtc': 0.6397},
-        'Nguyễn Thành Huy': {'volume': 8716, 'gtc': 0.7323},
-        'Võ Hồng Chơn': {'volume': 8150, 'gtc': 0.5053},
-        'Lý Quài Nhân': {'volume': 4686, 'gtc': 0.6381},
-        'Nguyễn Huỳnh Quốc Dũng': {'volume': 7064, 'gtc': 0.5716},
-        'Nguyễn Anh Tùng': {'volume': 5173, 'gtc': 0.4676},
-        'Đoàn Công Tín': {'volume': 5719, 'gtc': 0.5842},
-        'Ngô Phan Mỹ Tú': {'volume': 4711, 'gtc': 0.6977},
-        'Ngô Thị Bé Mi': {'volume': 4558, 'gtc': 0.4890},
-        'Nguyễn Việt Tới': {'volume': 3696, 'gtc': 0.6564},
-        'Lê Minh Tuấn': {'volume': 4404, 'gtc': 0.6224},
-        'Huỳnh Quốc Trung': {'volume': 3047, 'gtc': 0.4057}
+        'Nguyễn Tuấn Anh': {'volume': 10668, 'gtc': 0.6592},
+        'Nguyễn Thành Huy': {'volume': 8287, 'gtc': 0.6725},
+        'Võ Hồng Chơn': {'volume': 9405, 'gtc': 0.5572},
+        'Nguyễn Huỳnh Quốc Dũng': {'volume': 7453, 'gtc': 0.6560},
+        'Đoàn Công Tín': {'volume': 6443, 'gtc': 0.6474},
+        'Nguyễn Anh Tùng': {'volume': 5460, 'gtc': 0.5114},
+        'Lý Quài Nhân': {'volume': 5208, 'gtc': 0.6592},
+        'Ngô Phan Mỹ Tú': {'volume': 4767, 'gtc': 0.7221},
+        'Ngô Thị Bé Mi': {'volume': 4981, 'gtc': 0.5670},
+        'Nguyễn Việt Tới': {'volume': 3995, 'gtc': 0.6834},
+        'Lê Minh Tuấn': {'volume': 4665, 'gtc': 0.5931},
+        'Huỳnh Quốc Trung': {'volume': 3005, 'gtc': 0.4556}
     }
     
-    vol_scale = target_vol / 75536.0
-    gtc_scale = target_gtc / 0.6144
-    yest_gtc_scale = yest_gtc / 0.6144
+    vol_scale = 1.0
+    gtc_scale = 1.0
+    yest_gtc_scale = 1.0
     
     for am_item in am_data:
         am_name = am_item['name']
         if am_name in am_baselines:
-            am_item['volume'] = int(am_baselines[am_name]['volume'] * vol_scale)
-            am_item['gtc'] = round(am_baselines[am_name]['gtc'] * gtc_scale, 4)
+            am_item['volume'] = int(am_baselines[am_name]['volume'])
+            am_item['gtc'] = round(am_baselines[am_name]['gtc'], 4)
             if am_name in am_yest_baselines:
-                cur_yest_gtc = round(am_yest_baselines[am_name]['gtc'] * yest_gtc_scale, 4)
+                cur_yest_gtc = round(am_yest_baselines[am_name]['gtc'], 4)
                 am_item['gtc_change'] = float(am_item['gtc'] - cur_yest_gtc)
             am_item['status'] = "Mạnh" if am_item['gtc'] >= 0.67 else "Cải thiện" if am_item['gtc'] >= 0.55 else "Yếu"
             
