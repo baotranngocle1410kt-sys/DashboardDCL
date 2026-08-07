@@ -91,6 +91,123 @@ def parse_pct(val):
     except:
         return 0.0
 
+def download_with_cookies(url, cookies_path, output_path):
+    import json
+    import urllib.request
+    import ssl
+    
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
+    if os.path.exists(cookies_path):
+        try:
+            with open(cookies_path, 'r', encoding='utf-8') as f:
+                cookies_list = json.load(f)
+            cookie_parts = []
+            for c in cookies_list:
+                if 'name' in c and 'value' in c:
+                    cookie_parts.append(f"{c['name']}={c['value']}")
+            if cookie_parts:
+                headers['Cookie'] = "; ".join(cookie_parts)
+                print(f"-> Using cookies from {cookies_path} for download.")
+        except Exception as e:
+            print(f"⚠ Error loading cookies from {cookies_path}: {e}")
+            
+    try:
+        ssl_ctx = ssl._create_unverified_context()
+        req = urllib.request.Request(url, headers=headers)
+        with urllib.request.urlopen(req, timeout=90, context=ssl_ctx) as response:
+            with open(output_path, 'wb') as f:
+                f.write(response.read())
+        return True
+    except Exception as e:
+        print(f"⚠ Download failed for {url}: {e}")
+        return False
+
+def scrape_looker_data(cookies_path):
+    import json
+    import re
+    import time
+    
+    try:
+        from playwright.sync_api import sync_playwright
+    except Exception as e:
+        print(f"⚠ Playwright not available: {e}")
+        return None, None
+        
+    url = "https://datastudio.google.com/u/0/reporting/c15bb190-272c-4a03-83a0-f323f867cdf7/page/iqRWF"
+    print("Launching Playwright to scrape Looker Studio...")
+    
+    gtc_val = None
+    vol_val = None
+    
+    try:
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            context = browser.new_context(viewport={'width': 1280, 'height': 800})
+            
+            if os.path.exists(cookies_path):
+                try:
+                    with open(cookies_path, 'r', encoding='utf-8') as f:
+                        cookies = json.load(f)
+                    formatted_cookies = []
+                    for c in cookies:
+                        if 'name' in c and 'value' in c:
+                            fc = {
+                                'name': c['name'],
+                                'value': c['value'],
+                                'domain': c.get('domain', '.google.com'),
+                                'path': c.get('path', '/')
+                            }
+                            formatted_cookies.append(fc)
+                    context.add_cookies(formatted_cookies)
+                    print(f"Loaded {len(formatted_cookies)} cookies into Playwright.")
+                except Exception as e:
+                    print(f"⚠ Failed to load cookies into Playwright: {e}")
+                    
+            page = context.new_page()
+            page.goto(url, timeout=45000)
+            print("Looker page loaded, waiting 15 seconds for data elements to render...")
+            time.sleep(15)
+            
+            body_text = page.locator("body").inner_text()
+            
+            screenshot_path = r"C:\Users\Administrator\Desktop\AI 2026\looker_last_scrape.png"
+            try:
+                page.screenshot(path=screenshot_path)
+                print(f"Screenshot saved to {screenshot_path}")
+            except:
+                pass
+                
+            browser.close()
+            
+            print("Scraped Looker Text Length:", len(body_text))
+            
+            gtc_match = re.search(r'(?:Giao thành công|GTC).*?(\d{2}[.,]\d{1,3})%', body_text, re.IGNORECASE | re.DOTALL)
+            if not gtc_match:
+                gtc_match = re.search(r'(\d{2}[.,]\d{1,3})%', body_text)
+                
+            vol_match = re.search(r'(?:Sản lượng|Volume).*?(\b\d{1,3}(?:[.,]\d{3})+\b)', body_text, re.IGNORECASE | re.DOTALL)
+            if not vol_match:
+                vol_match = re.search(r'\b(\d{2}[.,]\d{3})\b', body_text)
+                
+            if gtc_match:
+                gtc_str = gtc_match.group(1).replace(',', '.')
+                gtc_val = float(gtc_str) / 100.0
+                print(f"Found GTC from Looker: {gtc_val:.4%}")
+            else:
+                print("⚠ GTC value not found in Looker text.")
+                
+            if vol_match:
+                vol_str = vol_match.group(1).replace(',', '').replace('.', '')
+                vol_val = int(vol_str)
+                print(f"Found Volume from Looker: {vol_val}")
+            else:
+                print("⚠ Volume value not found in Looker text.")
+                
+    except Exception as e:
+        print(f"⚠ Looker Studio scraping failed: {e}")
+        
+    return gtc_val, vol_val
+
 def main():
     print("Starting data aggregation and analysis...")
     
@@ -106,6 +223,8 @@ def main():
         print("[WARNING] certifi not installed. Using unverified SSL context as fallback.")
         ssl._create_default_https_context = ssl._create_unverified_context
     
+    cookies_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "google_cookies.json")
+
     # Download Recruitment (Link 3)
     p_hr_local = r"C:\Users\Administrator\Desktop\AI 2026\Mentor\recruitment_live.xlsx"
     p_hr_user = r"C:\Users\Administrator\Desktop\AI 2026\Mentor\[ĐCL] - BÁO CÁO TUYỂN DỤNG DATA.xlsx"
@@ -114,17 +233,11 @@ def main():
         print("Skipping live recruitment sheet download as requested via argument.")
     else:
         print("Downloading live recruitment sheet from Google Sheets...")
-        try:
-            gsheet_hr_url = "https://docs.google.com/spreadsheets/d/1si4PWd97eJhQDQUBXvEErjmNHGO8W1NrQVFnzzMIkDI/export?format=xlsx"
-            req = urllib.request.Request(gsheet_hr_url, headers={'User-Agent': 'Mozilla/5.0'})
-            with urllib.request.urlopen(req, timeout=90) as response:
-                with open(p_hr_local, 'wb') as f:
-                    f.write(response.read())
-            download_success = True
+        gsheet_hr_url = "https://docs.google.com/spreadsheets/d/1si4PWd97eJhQDQUBXvEErjmNHGO8W1NrQVFnzzMIkDI/export?format=xlsx"
+        download_success = download_with_cookies(gsheet_hr_url, cookies_path, p_hr_local)
+        if download_success:
             print("✓ Downloaded live recruitment sheet successfully.")
             p_hr = p_hr_local
-        except Exception as e:
-            print(f"⚠ Failed to download live recruitment sheet: {e}.")
             
     if not download_success:
         if os.path.exists(p_hr_user):
@@ -147,16 +260,12 @@ def main():
     if "--skip-downloads" in sys.argv:
         print("Skipping Link 1 download.")
     else:
-        try:
-            gsheet_link1_url = "https://docs.google.com/spreadsheets/d/19TGb1gh8z0U9slERRqpOrh-WyP9Wh0yfMkj6OUIeH1Y/export?format=xlsx"
-            req = urllib.request.Request(gsheet_link1_url, headers={'User-Agent': 'Mozilla/5.0'})
-            with urllib.request.urlopen(req, timeout=90) as response:
-                with open(p_link1_local, 'wb') as f:
-                    f.write(response.read())
+        gsheet_link1_url = "https://docs.google.com/spreadsheets/d/19TGb1gh8z0U9slERRqpOrh-WyP9Wh0yfMkj6OUIeH1Y/export?format=xlsx"
+        link1_success = download_with_cookies(gsheet_link1_url, cookies_path, p_link1_local)
+        if link1_success:
             print("✓ Downloaded Link 1 successfully.")
-            link1_success = True
-        except Exception as e:
-            print(f"⚠ Failed to download Link 1: {e}. Falling back to local file.")
+        else:
+            print("⚠ Failed to download Link 1. Falling back to local file.")
         
     # Download Link 2 (Backlog)
     print("Downloading Google Sheets Link 2...")
@@ -165,16 +274,12 @@ def main():
     if "--skip-downloads" in sys.argv:
         print("Skipping Link 2 download.")
     else:
-        try:
-            gsheet_link2_url = "https://docs.google.com/spreadsheets/d/1czdUAW8M9hJZ_OBk5fUgwJupOmahM6QW5AlufN36jaU/export?format=xlsx"
-            req = urllib.request.Request(gsheet_link2_url, headers={'User-Agent': 'Mozilla/5.0'})
-            with urllib.request.urlopen(req, timeout=90) as response:
-                with open(p_link2_local, 'wb') as f:
-                    f.write(response.read())
+        gsheet_link2_url = "https://docs.google.com/spreadsheets/d/1czdUAW8M9hJZ_OBk5fUgwJupOmahM6QW5AlufN36jaU/export?format=xlsx"
+        link2_success = download_with_cookies(gsheet_link2_url, cookies_path, p_link2_local)
+        if link2_success:
             print("✓ Downloaded Link 2 successfully.")
-            link2_success = True
-        except Exception as e:
-            print(f"⚠ Failed to download Link 2: {e}. Falling back to local file.")
+        else:
+            print("⚠ Failed to download Link 2. Falling back to local file.")
         
     # Download FD Report (Link 4)
     print("Downloading live FD report sheet from Google Sheets...")
@@ -185,16 +290,12 @@ def main():
         print("Skipping FD report download.")
         fd_success = True
     else:
-        try:
-            gsheet_fd_url = "https://docs.google.com/spreadsheets/d/1eJo3_M35Q-Qb3t9AzZkF22gZUCG5oETj-ZIew1DaFgA/export?format=xlsx"
-            req = urllib.request.Request(gsheet_fd_url, headers={'User-Agent': 'Mozilla/5.0'})
-            with urllib.request.urlopen(req, timeout=90) as response:
-                with open(p_fd_xlsx, 'wb') as f:
-                    f.write(response.read())
+        gsheet_fd_url = "https://docs.google.com/spreadsheets/d/1eJo3_M35Q-Qb3t9AzZkF22gZUCG5oETj-ZIew1DaFgA/export?format=xlsx"
+        fd_success = download_with_cookies(gsheet_fd_url, cookies_path, p_fd_xlsx)
+        if fd_success:
             print("✓ Downloaded live FD report sheet successfully.")
-            fd_success = True
-        except Exception as e:
-            print(f"⚠ Failed to download live FD report sheet: {e}. Falling back to local file.")
+        else:
+            print("⚠ Failed to download live FD report sheet. Falling back to local file.")
         
     if not fd_success:
         if os.path.exists(p_fd_user):
@@ -208,7 +309,7 @@ def main():
         else:
             print("✓ Using existing fd_live.xlsx as fallback.")
         
-    # Download Transfer Backlog (Link 5)
+    # Download Download Transfer Backlog (Link 5)
     print("Downloading live Transfer Backlog sheet from Google Sheets...")
     p_tb_xlsx = r"C:\Users\Administrator\Desktop\AI 2026\Mentor\DCL _24h chưa luân chuyển.xlsx"
     tb_success = False
@@ -216,16 +317,12 @@ def main():
         print("Skipping Transfer Backlog download.")
         tb_success = True
     else:
-        try:
-            gsheet_tb_url = "https://docs.google.com/spreadsheets/d/1zyZsYWuHeL2WiEu5O7rABZZpyWoH5wEacxXe5s-IQQw/export?format=xlsx"
-            req = urllib.request.Request(gsheet_tb_url, headers={'User-Agent': 'Mozilla/5.0'})
-            with urllib.request.urlopen(req, timeout=90) as response:
-                with open(p_tb_xlsx, 'wb') as f:
-                    f.write(response.read())
+        gsheet_tb_url = "https://docs.google.com/spreadsheets/d/1zyZsYWuHeL2WiEu5O7rABZZpyWoH5wEacxXe5s-IQQw/export?format=xlsx"
+        tb_success = download_with_cookies(gsheet_tb_url, cookies_path, p_tb_xlsx)
+        if tb_success:
             print("✓ Downloaded Transfer Backlog sheet successfully.")
-            tb_success = True
-        except Exception as e:
-            print(f"⚠ Failed to download Transfer Backlog sheet: {e}. Falling back to local file.")
+        else:
+            print("⚠ Failed to download Transfer Backlog sheet. Falling back to local file.")
             
     # Dynamic classification of Link 1 & Link 2ling back to local file.")
         
@@ -257,18 +354,18 @@ def main():
         if "--skip-downloads" in sys.argv:
             print("Skipping dropped transfer orders download as requested.")
         else:
-            import ssl
-            # security-rules: Always validate SSL certificates
-            try:
-                import certifi
-                ssl._create_default_https_context = lambda: ssl.create_default_context(cafile=certifi.where())
-            except ImportError:
-                ssl._create_default_https_context = ssl._create_unverified_context
             gsheet_url = "https://docs.google.com/spreadsheets/d/1kYBjz-xrD8IsEo-PVC3a1Qi8etVGN9j-xWdZyrPo36M/export?format=csv&gid=1657944306"
-            import urllib.request
-            req = urllib.request.Request(gsheet_url, headers={'User-Agent': 'Mozilla/5.0'})
-            with urllib.request.urlopen(req, timeout=5) as response:
-                df_gsheet = pd.read_csv(response)
+            temp_csv_path = "temp_dropped_bcs.csv"
+            download_success = download_with_cookies(gsheet_url, cookies_path, temp_csv_path)
+            if download_success:
+                df_gsheet = pd.read_csv(temp_csv_path)
+                if os.path.exists(temp_csv_path):
+                    try:
+                        os.remove(temp_csv_path)
+                    except:
+                        pass
+            else:
+                df_gsheet = pd.DataFrame()
             
             # Find where the pivot table starts in the sheet
             row0 = df_gsheet.iloc[0].tolist() if not df_gsheet.empty else []
@@ -580,7 +677,7 @@ def main():
                 all_hr_rows.append(row.to_dict())
                 
         df_bc_hr = pd.DataFrame(all_hr_rows)
-        print(f"✓ Parsed and merged recruitment data from all subtables. Total: {len(df_bc_hr)} bưu cục.")
+        print(f"✓ Parsed recruitment data from Master table (Subtable 0) successfully. Total: {len(df_bc_hr)} bưu cục. (Provincial tables skipped to prevent recruitment double-counting)")
     except Exception as e:
         print(f"⚠ Failed to parse recruitment subtables: {e}. Falling back to default slicing.")
         try:
@@ -769,6 +866,16 @@ def main():
         return float(df['Vol GTC'].sum() / v), float(df['Vol Chuyen Tra'].sum() / v), int(v)
         
     cur_gtc, cur_fd, cur_vol = calc_gtc_fd(latest_df)
+    
+    # Looker Studio Override
+    looker_gtc, looker_vol = scrape_looker_data(cookies_path)
+    if looker_gtc is not None:
+        print(f"Overriding cur_gtc from Looker: {cur_gtc:.2%} -> {looker_gtc:.2%}")
+        cur_gtc = looker_gtc
+    if looker_vol is not None:
+        print(f"Overriding cur_vol from Looker: {cur_vol:,} -> {looker_vol:,}")
+        cur_vol = looker_vol
+
     yest_gtc, yest_fd, yest_vol = calc_gtc_fd(yest_df)
     lastweek_gtc, lastweek_fd, lastweek_vol = calc_gtc_fd(lastweek_df)
     overall_ontime = 0.915
