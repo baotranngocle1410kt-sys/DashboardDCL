@@ -9,13 +9,13 @@
 - **FD**: 1.83% (Biến động vs Tuần trước: ↘ -0.92% vs Tuần trước)
 - **Ontime**: 91.50%
 - **Backlog**: 1,543 (Biến động vs Tuần trước: ↘ -27.49% vs Tuần trước)
-- **Tồn Luân Chuyển**: 5,040 đơn
+- **Tồn Luân Chuyển**: 4,470 đơn
 - **Tồn đọng Lấy/Giao/Trả**: 77,056 đơn
 - **Đơn ưu tiên trễ ODR**: 4,587 đơn (Tỷ lệ trễ: 10.45%)
-- **Thiếu hụt Nhân sự**: Thiếu 90 shipper (Tuyển mới: 12 / Nghỉ việc: 63)
+- **Thiếu hụt Nhân sự**: Thiếu 107 shipper (Tuyển mới: 12 / Nghỉ việc: 80)
 
 ## 🔴 Cảnh báo Hôm nay (Alerts)
-- **(BTR) Sơn Đông** có chỉ số GTC ngày 05/08/26 thấp hơn ngày hôm N-1 (24/07/26) 0.53%. So với cùng kỳ giảm 0.01% do Sản lượng cực lớn (9,230 đơn), thiếu 3/13 shipper (hụt 23%) tại Hữu Định, Phước Thạnh, Tam Phước, Sơn Đông, Phường 8. | Cảnh báo: Thiếu 2 shipper + Biến động nghỉ việc đột biến trong tuần (-3 shipper) + Hiệu suất giao (GTC) thấp (52.13%) + Tồn đọng đơn hàng backlog >5 ngày lớn (149 đơn), nhân sự đang thiếu 2/13 định biên, tuyến thiếu (Hữu Định, Phước Thạnh, Tam Phước, Sơn Đông, Phường 8).
+- **(BTR) Sơn Đông** có chỉ số GTC ngày 05/08/26 thấp hơn ngày hôm N-1 (24/07/26) 0.53%. So với cùng kỳ giảm 0.01% do Sản lượng cực lớn (9,230 đơn), thiếu 3/13 shipper (hụt 23%) tại Hữu Định, Phước Thạnh, Tam Phước, Sơn Đông, Phường 8. | Cảnh báo: Thiếu 2 shipper + Biến động nghỉ việc đột biến trong tuần (-3 shipper) + Hiệu suất giao (GTC) thấp (52.13%) + Tồn đọng đơn hàng backlog >5 ngày lớn (214 đơn), nhân sự đang thiếu 2/13 định biên, tuyến thiếu (Hữu Định, Phước Thạnh, Tam Phước, Sơn Đông, Phường 8).
 - **(BTR) Phú Túc** có chỉ số GTC ngày 05/08/26 thấp hơn ngày hôm N-1 (24/07/26) 1.16%. So với cùng kỳ giảm 2.57% do Khủng hoảng nhân sự nghiêm trọng (thiếu 7/16 shipper, hụt 44% nhân sự) tại tuyến Tân Thạch, Giao Long. | Cảnh báo: Hiệu suất giao (GTC) thấp (53.71%) + Rớt luân chuyển 9 đơn (Shopee: 0, TTS: 7, Khác: 2), nhân sự đang thiếu 0/13 định biên.
 - **(TVI) Duyên Hải** có chỉ số GTC ngày 05/08/26 thấp hơn ngày hôm N-1 (24/07/26) 0.04%. So với cùng kỳ giảm 1.18% do Thiếu 3 shipper + Rớt luân chuyển 18 đơn (Shopee: 1, TTS: 0, Khác: 17), nhân sự đang thiếu 3/18 định biên, tuyến thiếu (Trường Long Hòa, Ngũ Lạc, Thạnh Hòa Sơn).
 - **(TGI) Chợ Gạo** có chỉ số GTC ngày 05/08/26 thấp hơn ngày hôm N-1 (24/07/26) 2.51%. So với cùng kỳ giảm 3.90% do Hiệu suất giao kém, tỷ lệ trả (FD 8.14%) cao. Thiếu 2/20 shipper tại Lương Hòa Lạc, Mỹ Tịnh An. | Cảnh báo: Thiếu 2 shipper + Biến động nghỉ việc đột biến trong tuần (-3 shipper) + Tỷ lệ trả hàng (%FD) cao bất thường (8.14%) + Hiệu suất giao (GTC) thấp (53.17%) + Rớt luân chuyển 5 đơn (Shopee: 0, TTS: 0, Khác: 5), nhân sự đang thiếu 2/20 định biên.
@@ -23,8 +23,7 @@
 xã tân nhuận đông: 1nv
 xã phú hựu:               1nv
 xã an khánh:             1 nv).
-- **(TGI) Đạo Thạnh** có chỉ số GTC ngày 05/08/26 thấp hơn ngày hôm N-1 (24/07/26) 3.88%. So với cùng kỳ giảm 3.06% do Quá tải sản lượng (4,049 đơn), tỷ lệ trả (FD 13.78%) cao bất thường. Thiếu 1/21 shipper tại Phước Thạnh, Phường 10, Trung An, Phường 5. | Cảnh báo: Thiếu hụt nhân sự nghiêm trọng (hụt 6/21 shipper, ~29%) + Biến động nghỉ việc đột biến trong tuần (-4 shipper) + Tỷ lệ trả hàng (%FD) cao bất thường (13.78%) + Hiệu suất giao (GTC) thấp (40.30%) + Tồn đọng đơn hàng backlog >5 ngày lớn (355 đơn) + Rớt luân chuyển 9 đơn (Shopee: 0, TTS: 4, Khác: 5), nhân sự đang thiếu 6/21 định biên, tuyến thiếu (Phước Thạnh, Phường 10, Trung An, Phường 5).
-- **(TGI) Hậu Mỹ** có chỉ số GTC ngày 05/08/26 thấp hơn ngày hôm N-1 (24/07/26) 1.70%. So với cùng kỳ giảm 3.83% do Thiếu 3 shipper + Rớt luân chuyển 11 đơn (Shopee: 1, TTS: 1, Khác: 9), nhân sự đang thiếu 3/16 định biên, tuyến thiếu (Tuyến Hậu Thành, Thị trấn Cái Bè, Hậu Mỹ Phú).
+- **(TGI) Đạo Thạnh** có chỉ số GTC ngày 05/08/26 thấp hơn ngày hôm N-1 (24/07/26) 3.88%. So với cùng kỳ giảm 3.06% do Quá tải sản lượng (4,049 đơn), tỷ lệ trả (FD 13.78%) cao bất thường. Thiếu 1/21 shipper tại Phước Thạnh, Phường 10, Trung An, Phường 5. | Cảnh báo: Thiếu hụt nhân sự nghiêm trọng (hụt 13/21 shipper, ~62%) + Biến động nghỉ việc đột biến trong tuần (-11 shipper) + Tỷ lệ trả hàng (%FD) cao bất thường (13.78%) + Hiệu suất giao (GTC) thấp (40.30%) + Tồn đọng đơn hàng backlog >5 ngày lớn (398 đơn) + Rớt luân chuyển 9 đơn (Shopee: 0, TTS: 4, Khác: 5), nhân sự đang thiếu 13/21 định biên, tuyến thiếu (Phước Thạnh, Phường 10, Trung An, Phường 5, Đạo Thạnh, Phường 6 + Thới Sơn).
 
 ## 📈 Highlight / Lowlight
 ### Highlights:
@@ -36,8 +35,8 @@ xã an khánh:             1 nv).
 - Trong tuần qua, HRBP đã tuyển thành công **12 nhân viên mới** (OB) hỗ trợ lấp đầy các tuyến nóng.
 
 ### Lowlights:
-- Toàn vùng đang **thiếu hụt thực tế 90 shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.
-- Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 44 định biên) và **Đồng Tháp** (thiếu 9 định biên).
+- Toàn vùng đang **thiếu hụt thực tế 107 shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.
+- Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 61 định biên) và **Đồng Tháp** (thiếu 9 định biên).
 
 ## 🔮 Phân tích Nguyên nhân (Root Causes)
 - Tại **(BTR) An Hội**: Nhân sự: 7/11 (thiếu 4) + 2 nhân viên hỗ trợ; Bưu cục liên tục có nhân viên nghỉ ngang, té xe.; NVXL mới chưa quản lý được nhân sự tại BC, điều tiết giờ giấc xuất hàng.; Nhân viên 9h chưa rời khỏi kho.
@@ -61,13 +60,13 @@ xã an khánh:             1 nv).
 | Nguyễn Việt Tới | 75.80% | 5.91% | Mạnh | 19 | Thiếu 0/47 | NgọcNTM |
 | Nguyễn Tuấn Anh | 67.66% | 5.57% | Mạnh | 210 | Thiếu 13/135 | VyLNK |
 | Lý Quài Nhân | 69.05% | 8.27% | Mạnh | 141 | Thiếu 7/60 | NgọcNTM |
-| Lê Minh Tuấn | 61.06% | 5.45% | Cải thiện | 72 | Thiếu 5/66 | NgọcNTM |
+| Lê Minh Tuấn | 61.06% | 5.45% | Cải thiện | 72 | Thiếu 9/66 | NgọcNTM |
 | Nguyễn Huỳnh Quốc Dũng | 67.12% | 6.70% | Mạnh | 146 | Thiếu 9/85 | NgọcNTM |
-| Nguyễn Anh Tùng | 47.23% | 7.02% | Yếu | 308 | Thiếu 12/53 | DungLK |
+| Nguyễn Anh Tùng | 47.23% | 7.02% | Yếu | 308 | Thiếu 15/53 | DungLK |
 | Đoàn Công Tín | 60.49% | 8.14% | Cải thiện | 70 | Thiếu 9/67 | DungLK |
 | Võ Hồng Chơn | 52.81% | 6.07% | Yếu | 241 | Thiếu 8/80 | NgọcNTM |
-| Huỳnh Quốc Trung | 41.68% | 13.78% | Yếu | 99 | Thiếu 6/21 | DungLK |
-| Ngô Thị Bé Mi | 52.81% | 0.00% | Yếu | 138 | Thiếu 13/53 | BaoHQ |
+| Huỳnh Quốc Trung | 41.68% | 13.78% | Yếu | 99 | Thiếu 13/21 | DungLK |
+| Ngô Thị Bé Mi | 52.81% | 0.00% | Yếu | 138 | Thiếu 16/53 | BaoHQ |
 
 ## 📦 Backlog Tracking
 - **Tổng Backlog >5 ngày**: 1,543 đơn
@@ -76,7 +75,7 @@ xã an khánh:             1 nv).
   - 8 - 15 ngày: 0 đơn
   - Trên 15 ngày: 0 đơn
 
-- **Tồn Luân Chuyển**: 5,040 đơn (Giao: 1,119 / Trả: 3,921)
+- **Tồn Luân Chuyển**: 4,470 đơn (Giao: 1,099 / Trả: 3,371)
 - **Tồn đọng Lấy/Giao/Trả**: 77,056 đơn
   - Dưới 1 ngày: 57,782 đơn
   - 1 - 3 ngày: 14,384 đơn
