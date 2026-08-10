@@ -206,6 +206,102 @@ def scrape_looker_data(cookies_path):
     except Exception as e:
         print(f"⚠ Looker Studio scraping failed: {e}")
         
+    # Try persistent browser context if default scrape failed to get values
+    if gtc_val is None or vol_val is None:
+        print("Default scrape did not find Looker metrics (possibly requires login). Attempting with persistent Chrome profile...")
+        user_profile = os.environ.get("USERPROFILE", "C:\\Users\\Administrator")
+        chrome_user_data = os.path.join(user_profile, "AppData\\Local\\Google\\Chrome\\User Data")
+        if os.path.exists(chrome_user_data):
+            try:
+                with sync_playwright() as p:
+                    print("Launching persistent Chrome context...")
+                    # We specify user_data_dir to load Chrome's actual user profile
+                    context = p.chromium.launch_persistent_context(
+                        user_data_dir=chrome_user_data,
+                        headless=True,
+                        viewport={'width': 1280, 'height': 800}
+                    )
+                    page = context.new_page()
+                    page.goto(url, timeout=45000)
+                    print("Persistent Chrome Looker page loaded, waiting 15 seconds...")
+                    time.sleep(15)
+                    body_text = page.locator("body").inner_text()
+                    
+                    screenshot_path = r"C:\Users\Administrator\Desktop\AI 2026\looker_last_scrape_persistent.png"
+                    try:
+                        page.screenshot(path=screenshot_path)
+                        print(f"Persistent screenshot saved to {screenshot_path}")
+                    except:
+                        pass
+                    
+                    context.close()
+                    
+                    # Parse again
+                    gtc_match = re.search(r'(?:Giao thành công|GTC).*?(\d{2}[.,]\d{1,3})%', body_text, re.IGNORECASE | re.DOTALL)
+                    if not gtc_match:
+                        gtc_match = re.search(r'(\d{2}[.,]\d{1,3})%', body_text)
+                    vol_match = re.search(r'(?:Sản lượng|Volume).*?(\b\d{1,3}(?:[.,]\d{3})+\b)', body_text, re.IGNORECASE | re.DOTALL)
+                    if not vol_match:
+                        vol_match = re.search(r'\b(\d{2}[.,]\d{3})\b', body_text)
+                        
+                    if gtc_match:
+                        gtc_str = gtc_match.group(1).replace(',', '.')
+                        gtc_val = float(gtc_str) / 100.0
+                        print(f"Found GTC from persistent Chrome: {gtc_val:.4%}")
+                    if vol_match:
+                        vol_str = vol_match.group(1).replace(',', '').replace('.', '')
+                        vol_val = int(vol_str)
+                        print(f"Found Volume from persistent Chrome: {vol_val}")
+            except Exception as pe:
+                print(f"⚠ Persistent Chrome scraping failed: {pe}")
+
+        # Edge fallback
+        edge_user_data = os.path.join(user_profile, "AppData\\Local\\Microsoft\\Edge\\User Data")
+        if (gtc_val is None or vol_val is None) and os.path.exists(edge_user_data):
+            print("Attempting with persistent Edge profile...")
+            try:
+                with sync_playwright() as p:
+                    print("Launching persistent Edge context...")
+                    context = p.chromium.launch_persistent_context(
+                        user_data_dir=edge_user_data,
+                        headless=True,
+                        channel="msedge",
+                        viewport={'width': 1280, 'height': 800}
+                    )
+                    page = context.new_page()
+                    page.goto(url, timeout=45000)
+                    print("Persistent Edge Looker page loaded, waiting 15 seconds...")
+                    time.sleep(15)
+                    body_text = page.locator("body").inner_text()
+                    
+                    screenshot_path = r"C:\Users\Administrator\Desktop\AI 2026\looker_last_scrape_persistent.png"
+                    try:
+                        page.screenshot(path=screenshot_path)
+                        print(f"Persistent screenshot saved to {screenshot_path}")
+                    except:
+                        pass
+                    
+                    context.close()
+                    
+                    # Parse again
+                    gtc_match = re.search(r'(?:Giao thành công|GTC).*?(\d{2}[.,]\d{1,3})%', body_text, re.IGNORECASE | re.DOTALL)
+                    if not gtc_match:
+                        gtc_match = re.search(r'(\d{2}[.,]\d{1,3})%', body_text)
+                    vol_match = re.search(r'(?:Sản lượng|Volume).*?(\b\d{1,3}(?:[.,]\d{3})+\b)', body_text, re.IGNORECASE | re.DOTALL)
+                    if not vol_match:
+                        vol_match = re.search(r'\b(\d{2}[.,]\d{3})\b', body_text)
+                        
+                    if gtc_match:
+                        gtc_str = gtc_match.group(1).replace(',', '.')
+                        gtc_val = float(gtc_str) / 100.0
+                        print(f"Found GTC from persistent Edge: {gtc_val:.4%}")
+                    if vol_match:
+                        vol_str = vol_match.group(1).replace(',', '').replace('.', '')
+                        vol_val = int(vol_str)
+                        print(f"Found Volume from persistent Edge: {vol_val}")
+            except Exception as pe:
+                print(f"⚠ Persistent Edge scraping failed: {pe}")
+                
     return gtc_val, vol_val
 
 def main():
@@ -328,7 +424,7 @@ def main():
         
     # Dynamic classification of Link 1 & Link 2
     for path, success, label in [(p_link1_local, link1_success, "Link 1"), (p_link2_local, link2_success, "Link 2")]:
-        if success and os.path.exists(path):
+        if os.path.exists(path):
             try:
                 xl = pd.ExcelFile(path)
                 sheets = xl.sheet_names
@@ -869,11 +965,46 @@ def main():
     
     # Looker Studio Override
     looker_gtc, looker_vol = scrape_looker_data(cookies_path)
+    
+    # Parse command line overrides
+    for idx, arg in enumerate(sys.argv):
+        if arg == "--override-gtc" and idx + 1 < len(sys.argv):
+            try:
+                looker_gtc = float(sys.argv[idx + 1])
+                if looker_gtc > 1.0:
+                    looker_gtc /= 100.0
+                print(f"-> GTC override from command line: {looker_gtc:.4%}")
+            except ValueError:
+                pass
+        elif arg == "--override-volume" and idx + 1 < len(sys.argv):
+            try:
+                looker_vol = int(sys.argv[idx + 1].replace(",", "").replace(".", ""))
+                print(f"-> Volume override from command line: {looker_vol}")
+            except ValueError:
+                pass
+
+    # Read overrides from overrides.json if exists
+    overrides_file = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "overrides.json")
+    if os.path.exists(overrides_file):
+        try:
+            with open(overrides_file, 'r', encoding='utf-8') as f:
+                ov_data = json.load(f)
+            if 'gtc' in ov_data and ov_data['gtc'] is not None:
+                looker_gtc = float(ov_data['gtc'])
+                if looker_gtc > 1.0:
+                    looker_gtc /= 100.0
+                print(f"-> GTC override from overrides.json: {looker_gtc:.4%}")
+            if 'volume' in ov_data and ov_data['volume'] is not None:
+                looker_vol = int(str(ov_data['volume']).replace(",", "").replace(".", ""))
+                print(f"-> Volume override from overrides.json: {looker_vol}")
+        except Exception as e:
+            print(f"⚠ Error loading overrides from overrides.json: {e}")
+
     if looker_gtc is not None:
-        print(f"Overriding cur_gtc from Looker: {cur_gtc:.2%} -> {looker_gtc:.2%}")
+        print(f"Overriding cur_gtc: {cur_gtc:.2%} -> {looker_gtc:.2%}")
         cur_gtc = looker_gtc
     if looker_vol is not None:
-        print(f"Overriding cur_vol from Looker: {cur_vol:,} -> {looker_vol:,}")
+        print(f"Overriding cur_vol: {cur_vol:,} -> {looker_vol:,}")
         cur_vol = looker_vol
 
     yest_gtc, yest_fd, yest_vol = calc_gtc_fd(yest_df)
