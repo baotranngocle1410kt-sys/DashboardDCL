@@ -33,10 +33,10 @@
       "vs_lastmonth": -0.16594594594594594
     },
     "hr": {
-      "total_shortage_actual": 105,
-      "total_shortage_bs": 33,
-      "total_resign_week": 74,
-      "total_ob_week": 2,
+      "total_shortage_actual": 100,
+      "total_shortage_bs": 31,
+      "total_resign_week": 72,
+      "total_ob_week": 5,
       "latest_week": 34
     }
   },
@@ -109,8 +109,8 @@
       "backlog": 387,
       "backlog_change": 39,
       "hr": {
-        "shortage_actual": 21,
-        "shortage_bs": 7,
+        "shortage_actual": 19,
+        "shortage_bs": 5,
         "resign": 14,
         "ob": 0,
         "target_headcount": 197,
@@ -136,7 +136,7 @@
         "shortage_actual": 9,
         "shortage_bs": 3,
         "resign": 7,
-        "ob": 1,
+        "ob": 3,
         "target_headcount": 143,
         "hrbp": "VyLNK",
         "intern": "Tuấn Hưng"
@@ -181,9 +181,9 @@
       "backlog": 687,
       "backlog_change": 69,
       "hr": {
-        "shortage_actual": 59,
+        "shortage_actual": 57,
         "shortage_bs": 20,
-        "resign": 40,
+        "resign": 38,
         "ob": 1,
         "target_headcount": 241,
         "hrbp": "DungLK",
@@ -205,10 +205,10 @@
       "backlog": 80,
       "backlog_change": 8,
       "hr": {
-        "shortage_actual": 4,
+        "shortage_actual": 3,
         "shortage_bs": 0,
         "resign": 4,
-        "ob": 0,
+        "ob": 1,
         "target_headcount": 132,
         "hrbp": "VyLNK",
         "intern": "Minh Châu"
@@ -258,10 +258,10 @@
       },
       "status": "Mạnh",
       "hr": {
-        "shortage_actual": 4,
+        "shortage_actual": 3,
         "shortage_bs": 0,
         "resign": 4,
-        "ob": 0,
+        "ob": 1,
         "target_headcount": 132
       }
     },
@@ -305,7 +305,7 @@
         "shortage_actual": 9,
         "shortage_bs": 3,
         "resign": 7,
-        "ob": 1,
+        "ob": 3,
         "target_headcount": 143
       }
     },
@@ -368,8 +368,8 @@
       },
       "status": "Mạnh",
       "hr": {
-        "shortage_actual": 9,
-        "shortage_bs": 3,
+        "shortage_actual": 7,
+        "shortage_bs": 1,
         "resign": 6,
         "ob": 0,
         "target_headcount": 101
@@ -412,9 +412,9 @@
       },
       "status": "Cải thiện",
       "hr": {
-        "shortage_actual": 4,
+        "shortage_actual": 2,
         "shortage_bs": 0,
-        "resign": 5,
+        "resign": 3,
         "ob": 1,
         "target_headcount": 69
       }
@@ -895,11 +895,11 @@
       "Đơn tồn backlog (>5 ngày) kiểm soát tốt, giảm **-27.49%** so với tuần trước (từ 1,850 xuống 1,543 đơn).",
       "**Ngô Phan Mỹ Tú** là AM có tỷ lệ GTC cao nhất toàn vùng (72.42%), đồng thời duy trì lượng đơn tồn đọng cực thấp.",
       "Tỷ lệ chuyển trả (FD) toàn vùng duy trì ở mức an toàn là **1.83%** (↘ -0.92% vs Tuần trước).",
-      "Trong tuần qua, HRBP đã tuyển thành công **2 nhân viên mới** (OB) hỗ trợ lấp đầy các tuyến nóng."
+      "Trong tuần qua, HRBP đã tuyển thành công **5 nhân viên mới** (OB) hỗ trợ lấp đầy các tuyến nóng."
     ],
     "lowlights": [
-      "Toàn vùng đang **thiếu hụt thực tế 105 shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.",
-      "Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 59 định biên) và **Đồng Tháp** (thiếu 12 định biên)."
+      "Toàn vùng đang **thiếu hụt thực tế 100 shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.",
+      "Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 57 định biên) và **Đồng Tháp** (thiếu 12 định biên)."
     ],
     "causes": [
       "Tại **(BTR) An Hội**: Nhân sự: 7/11 (thiếu 4) + 2 nhân viên hỗ trợ; Bưu cục liên tục có nhân viên nghỉ ngang, té xe.; NVXL mới chưa quản lý được nhân sự tại BC, điều tiết giờ giấc xuất hàng.; Nhân viên 9h chưa rời khỏi kho.",
