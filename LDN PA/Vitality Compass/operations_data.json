@@ -33,10 +33,10 @@
       "vs_lastmonth": -0.16594594594594594
     },
     "hr": {
-      "total_shortage_actual": 100,
-      "total_shortage_bs": 31,
-      "total_resign_week": 72,
-      "total_ob_week": 5,
+      "total_shortage_actual": 97,
+      "total_shortage_bs": 35,
+      "total_resign_week": 71,
+      "total_ob_week": 13,
       "latest_week": 34
     }
   },
@@ -109,10 +109,10 @@
       "backlog": 387,
       "backlog_change": 39,
       "hr": {
-        "shortage_actual": 19,
+        "shortage_actual": 17,
         "shortage_bs": 5,
         "resign": 14,
-        "ob": 0,
+        "ob": 4,
         "target_headcount": 197,
         "hrbp": "NgọcNTM",
         "intern": "Mai Quý"
@@ -134,9 +134,9 @@
       "backlog_change": 21,
       "hr": {
         "shortage_actual": 9,
-        "shortage_bs": 3,
+        "shortage_bs": 4,
         "resign": 7,
-        "ob": 3,
+        "ob": 4,
         "target_headcount": 143,
         "hrbp": "VyLNK",
         "intern": "Tuấn Hưng"
@@ -181,10 +181,10 @@
       "backlog": 687,
       "backlog_change": 69,
       "hr": {
-        "shortage_actual": 57,
-        "shortage_bs": 20,
-        "resign": 38,
-        "ob": 1,
+        "shortage_actual": 56,
+        "shortage_bs": 23,
+        "resign": 37,
+        "ob": 4,
         "target_headcount": 241,
         "hrbp": "DungLK",
         "intern": "Tuấn Hưng"
@@ -303,9 +303,9 @@
       "status": "Mạnh",
       "hr": {
         "shortage_actual": 9,
-        "shortage_bs": 3,
+        "shortage_bs": 4,
         "resign": 7,
-        "ob": 3,
+        "ob": 4,
         "target_headcount": 143
       }
     },
@@ -346,8 +346,8 @@
       },
       "status": "Cải thiện",
       "hr": {
-        "shortage_actual": 10,
-        "shortage_bs": 4,
+        "shortage_actual": 11,
+        "shortage_bs": 5,
         "resign": 6,
         "ob": 0,
         "target_headcount": 65
@@ -368,10 +368,10 @@
       },
       "status": "Mạnh",
       "hr": {
-        "shortage_actual": 7,
+        "shortage_actual": 6,
         "shortage_bs": 1,
         "resign": 6,
-        "ob": 0,
+        "ob": 1,
         "target_headcount": 101
       }
     },
@@ -390,10 +390,10 @@
       },
       "status": "Yếu",
       "hr": {
-        "shortage_actual": 16,
+        "shortage_actual": 14,
         "shortage_bs": 6,
         "resign": 10,
-        "ob": 0,
+        "ob": 2,
         "target_headcount": 58
       }
     },
@@ -434,10 +434,10 @@
       },
       "status": "Yếu",
       "hr": {
-        "shortage_actual": 12,
+        "shortage_actual": 11,
         "shortage_bs": 4,
         "resign": 8,
-        "ob": 0,
+        "ob": 3,
         "target_headcount": 96
       }
     },
@@ -479,9 +479,9 @@
       "status": "Yếu",
       "hr": {
         "shortage_actual": 18,
-        "shortage_bs": 8,
-        "resign": 10,
-        "ob": 0,
+        "shortage_bs": 10,
+        "resign": 9,
+        "ob": 1,
         "target_headcount": 58
       }
     }
@@ -869,20 +869,20 @@
       "fd_change": -0.0022333333333333302,
       "backlog": 1,
       "status": "Tốt",
-      "cause": "Không rõ nguyên nhân, rủi ro sập luồng hàng cao!",
-      "recommendation": "Đề nghị AM kiểm tra và điều phối nhân sự xử lý gấp.",
+      "cause": "Thiếu 2 shipper",
+      "recommendation": "Đẩy nhanh tuyển dụng bổ sung shipper.",
       "exit_profile": {
         "exit_hour": "08:45",
         "late_inbound": false,
         "sorting_delay": false
       },
       "hr": {
-        "shortage_actual": 0,
-        "shortage_bs": 0,
+        "shortage_actual": 2,
+        "shortage_bs": 2,
         "target_headcount": 17,
         "tuyen_thieu": "",
         "hrbp": "BaoHQ",
-        "status": "Đủ",
+        "status": "Thiếu",
         "ob_week": 0,
         "resign_week": 0
       }
@@ -895,11 +895,11 @@
       "Đơn tồn backlog (>5 ngày) kiểm soát tốt, giảm **-27.49%** so với tuần trước (từ 1,850 xuống 1,543 đơn).",
       "**Ngô Phan Mỹ Tú** là AM có tỷ lệ GTC cao nhất toàn vùng (72.42%), đồng thời duy trì lượng đơn tồn đọng cực thấp.",
       "Tỷ lệ chuyển trả (FD) toàn vùng duy trì ở mức an toàn là **1.83%** (↘ -0.92% vs Tuần trước).",
-      "Trong tuần qua, HRBP đã tuyển thành công **5 nhân viên mới** (OB) hỗ trợ lấp đầy các tuyến nóng."
+      "Trong tuần qua, HRBP đã tuyển thành công **13 nhân viên mới** (OB) hỗ trợ lấp đầy các tuyến nóng."
     ],
     "lowlights": [
-      "Toàn vùng đang **thiếu hụt thực tế 100 shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.",
-      "Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 57 định biên) và **Đồng Tháp** (thiếu 12 định biên)."
+      "Toàn vùng đang **thiếu hụt thực tế 97 shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.",
+      "Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 56 định biên) và **Đồng Tháp** (thiếu 12 định biên)."
     ],
     "causes": [
       "Tại **(BTR) An Hội**: Nhân sự: 7/11 (thiếu 4) + 2 nhân viên hỗ trợ; Bưu cục liên tục có nhân viên nghỉ ngang, té xe.; NVXL mới chưa quản lý được nhân sự tại BC, điều tiết giờ giấc xuất hàng.; Nhân viên 9h chưa rời khỏi kho.",
@@ -952,22 +952,6 @@
         "action_plan": "Phân bổ gán tuyến trước 8h sáng, chạy FB Ads tìm shipper thay thế. AM cắm chốt tại BC để hướng dẫn shipper mới."
       },
       {
-        "bc_name": "(TGI) Long Định",
-        "volume": 0,
-        "vol_tts": 0,
-        "gtc": 0.0,
-        "backlog_72h": 0,
-        "am": "Nguyễn Anh Tùng",
-        "dinhiben_nvpttt": 13,
-        "dinhiben_nvxl": 0,
-        "tuyen_7d": 0,
-        "nghi_7d": 4,
-        "details": "- Thiếu hụt thực tế sau OB: 7 NVPTTT.\n- Nhân sự mới nhận việc trong tuần: +0 OB. Nhân sự nghỉ việc: -4.\n- Tuyến thiếu: Long Hưng, Tam Hiệp, Đông Hòa, Long Định.",
-        "shortage_accurate": 7,
-        "missing_routes": "Long Hưng, Tam Hiệp, Đông Hòa, Long Định",
-        "action_plan": "Phân bổ gán tuyến trước 8h sáng, chạy FB Ads tìm shipper thay thế. AM cắm chốt tại BC để hướng dẫn shipper mới."
-      },
-      {
         "bc_name": "(BTR) An Hội",
         "volume": 451,
         "vol_tts": 70,
@@ -976,27 +960,43 @@
         "am": "Võ Hồng Chơn",
         "dinhiben_nvpttt": 23,
         "dinhiben_nvxl": 1,
-        "tuyen_7d": 0,
+        "tuyen_7d": 1,
         "nghi_7d": 2,
         "details": "- Nhân sự: 7/11 (thiếu 4) + 2 nhân viên hỗ trợ \n- Bưu cục liên tục có nhân viên nghỉ ngang, té xe.\n - NVXL mới chưa quản lý được nhân sự tại BC, điều tiết giờ giấc xuất hàng. \nNhân viên 9h chưa rời khỏi kho.\n * Phương án:\n - Tuyển thay thế NVXL ( NVXL mới đã OB ngày 19/8),\n - Chạy Ads FB \n- Đẩy mạnh tuyển dụng NVPTTT \n- AM cắm chốt hỗ trợ vận hành BC",
-        "shortage_accurate": 6,
+        "shortage_accurate": 5,
         "missing_routes": "BÌNH PHÚ , PHƯỜNG AN HỘI , MỸ THẠNH AN",
         "action_plan": "Phân bổ gán tuyến trước 8h sáng, chạy FB Ads tìm shipper thay thế. AM cắm chốt tại BC để hướng dẫn shipper mới."
       },
       {
-        "bc_name": "(TGI) Thanh Hòa",
+        "bc_name": "(TGI) Long Định",
+        "volume": 0,
+        "vol_tts": 0,
+        "gtc": 0.0,
+        "backlog_72h": 0,
+        "am": "Nguyễn Anh Tùng",
+        "dinhiben_nvpttt": 13,
+        "dinhiben_nvxl": 0,
+        "tuyen_7d": 2,
+        "nghi_7d": 4,
+        "details": "- Thiếu hụt thực tế sau OB: 5 NVPTTT.\n- Nhân sự mới nhận việc trong tuần: +2 OB. Nhân sự nghỉ việc: -4.\n- Tuyến thiếu: Long Hưng, Tam Hiệp, Đông Hòa, Long Định.",
+        "shortage_accurate": 5,
+        "missing_routes": "Long Hưng, Tam Hiệp, Đông Hòa, Long Định",
+        "action_plan": "Phân bổ gán tuyến trước 8h sáng, chạy FB Ads tìm shipper thay thế. AM cắm chốt tại BC để hướng dẫn shipper mới."
+      },
+      {
+        "bc_name": "(BTR) Thạnh Phú",
         "volume": 0,
         "vol_tts": 0,
         "gtc": 0.0,
         "backlog_72h": 0,
         "am": "Ngô Thị Bé Mi",
-        "dinhiben_nvpttt": 22,
-        "dinhiben_nvxl": 2,
+        "dinhiben_nvpttt": 6,
+        "dinhiben_nvxl": 1,
         "tuyen_7d": 0,
         "nghi_7d": 3,
-        "details": "- Thiếu hụt thực tế sau OB: 5 NVPTTT.\n- Nhân sự mới nhận việc trong tuần: +0 OB. Nhân sự nghỉ việc: -3.\n- Tuyến thiếu: Bình Phú, Mỹ Hạnh Đông, P2+Tân Bình.",
+        "details": "- Thiếu hụt thực tế sau OB: 5 NVPTTT.\n- Nhân sự mới nhận việc trong tuần: +0 OB. Nhân sự nghỉ việc: -3.\n- Tuyến thiếu: Xã Phú Cường, Mỹ Phước Tây (2), Phường 1.",
         "shortage_accurate": 5,
-        "missing_routes": "Bình Phú, Mỹ Hạnh Đông, P2+Tân Bình",
+        "missing_routes": "Xã Phú Cường, Mỹ Phước Tây (2), Phường 1",
         "action_plan": "Phân bổ gán tuyến trước 8h sáng, chạy FB Ads tìm shipper thay thế. AM cắm chốt tại BC để hướng dẫn shipper mới."
       }
     ],
