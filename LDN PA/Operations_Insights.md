@@ -12,7 +12,7 @@
 - **Tồn Luân Chuyển**: 4,428 đơn
 - **Tồn đọng Lấy/Giao/Trả**: 77,056 đơn
 - **Đơn ưu tiên trễ ODR**: 4,587 đơn (Tỷ lệ trễ: 10.45%)
-- **Thiếu hụt Nhân sự**: Thiếu 97 shipper (Tuyển mới: 13 / Nghỉ việc: 71)
+- **Thiếu hụt Nhân sự**: Thiếu 91 shipper (Tuyển mới: 21 / Nghỉ việc: 71)
 
 ## 🔴 Cảnh báo Hôm nay (Alerts)
 - **(BTR) Sơn Đông** có chỉ số GTC ngày 05/08/26 thấp hơn ngày hôm N-1 (24/07/26) 0.53%. So với cùng kỳ giảm 0.01% do Sản lượng cực lớn (9,230 đơn), thiếu 3/13 shipper (hụt 23%) tại Hữu Định, Phước Thạnh, Tam Phước, Sơn Đông, Phường 8. | Cảnh báo: Thiếu 3 shipper + Biến động nghỉ việc đột biến trong tuần (-3 shipper) + Hiệu suất giao (GTC) thấp (52.13%) + Tồn đọng đơn hàng backlog >5 ngày lớn (307 đơn), nhân sự đang thiếu 3/17 định biên, tuyến thiếu (Hữu Định, Phước Thạnh, Tam Phước, Sơn Đông, Phường 8).
@@ -32,11 +32,11 @@ xã an khánh:             1 nv).
 - Đơn tồn backlog (>5 ngày) kiểm soát tốt, giảm **-27.49%** so với tuần trước (từ 1,850 xuống 1,543 đơn).
 - **Ngô Phan Mỹ Tú** là AM có tỷ lệ GTC cao nhất toàn vùng (72.42%), đồng thời duy trì lượng đơn tồn đọng cực thấp.
 - Tỷ lệ chuyển trả (FD) toàn vùng duy trì ở mức an toàn là **1.83%** (↘ -0.92% vs Tuần trước).
-- Trong tuần qua, HRBP đã tuyển thành công **13 nhân viên mới** (OB) hỗ trợ lấp đầy các tuyến nóng.
+- Trong tuần qua, HRBP đã tuyển thành công **21 nhân viên mới** (OB) hỗ trợ lấp đầy các tuyến nóng.
 
 ### Lowlights:
-- Toàn vùng đang **thiếu hụt thực tế 97 shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.
-- Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 56 định biên) và **Đồng Tháp** (thiếu 12 định biên).
+- Toàn vùng đang **thiếu hụt thực tế 91 shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.
+- Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 53 định biên) và **Đồng Tháp** (thiếu 12 định biên).
 
 ## 🔮 Phân tích Nguyên nhân (Root Causes)
 - Tại **(BTR) An Hội**: Nhân sự: 7/11 (thiếu 4) + 2 nhân viên hỗ trợ; Bưu cục liên tục có nhân viên nghỉ ngang, té xe.; NVXL mới chưa quản lý được nhân sự tại BC, điều tiết giờ giấc xuất hàng.; Nhân viên 9h chưa rời khỏi kho.
@@ -56,13 +56,13 @@ xã an khánh:             1 nv).
 | AM | GTC | FD | Trạng thái | Đơn Aging | Thiếu shipper | HRBP |
 | --- | --- | --- | --- | --- | --- | --- |
 | Ngô Phan Mỹ Tú | 72.42% | 4.88% | Mạnh | 19 | Thiếu 2/61 | NgọcNTM |
-| Nguyễn Thành Huy | 69.36% | 5.26% | Mạnh | 80 | Thiếu 3/132 | VyLNK |
+| Nguyễn Thành Huy | 69.36% | 5.26% | Mạnh | 80 | Thiếu 2/132 | VyLNK |
 | Nguyễn Việt Tới | 75.80% | 5.91% | Mạnh | 19 | Thiếu 0/64 | NgọcNTM |
-| Nguyễn Tuấn Anh | 67.66% | 5.57% | Mạnh | 210 | Thiếu 9/143 | VyLNK |
+| Nguyễn Tuấn Anh | 67.66% | 5.57% | Mạnh | 210 | Thiếu 7/143 | VyLNK |
 | Lý Quài Nhân | 69.05% | 8.27% | Mạnh | 141 | Thiếu 8/64 | NgọcNTM |
-| Lê Minh Tuấn | 61.06% | 5.45% | Cải thiện | 72 | Thiếu 11/65 | NgọcNTM |
+| Lê Minh Tuấn | 61.06% | 5.45% | Cải thiện | 72 | Thiếu 10/65 | NgọcNTM |
 | Nguyễn Huỳnh Quốc Dũng | 67.12% | 6.70% | Mạnh | 146 | Thiếu 6/101 | NgọcNTM |
-| Nguyễn Anh Tùng | 47.23% | 7.02% | Yếu | 308 | Thiếu 14/58 | DungLK |
+| Nguyễn Anh Tùng | 47.23% | 7.02% | Yếu | 308 | Thiếu 12/58 | DungLK |
 | Đoàn Công Tín | 60.49% | 8.14% | Cải thiện | 70 | Thiếu 2/69 | DungLK |
 | Võ Hồng Chơn | 52.81% | 6.07% | Yếu | 241 | Thiếu 11/96 | NgọcNTM |
 | Huỳnh Quốc Trung | 41.68% | 13.78% | Yếu | 99 | Thiếu 13/21 | DungLK |
