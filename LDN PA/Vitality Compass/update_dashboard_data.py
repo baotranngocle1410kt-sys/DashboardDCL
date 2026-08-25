@@ -963,10 +963,10 @@ def main():
         
     cur_gtc, cur_fd, cur_vol = calc_gtc_fd(latest_df)
     
-    # Looker Studio Override
-    looker_gtc, looker_vol = scrape_looker_data(cookies_path)
+    # Parse command line overrides first
+    looker_gtc = None
+    looker_vol = None
     
-    # Parse command line overrides
     for idx, arg in enumerate(sys.argv):
         if arg == "--override-gtc" and idx + 1 < len(sys.argv):
             try:
@@ -982,7 +982,13 @@ def main():
                 print(f"-> Volume override from command line: {looker_vol}")
             except ValueError:
                 pass
-
+                
+    # Looker Studio Override (only if not provided in args)
+    if looker_gtc is None or looker_vol is None:
+        scraped_gtc, scraped_vol = scrape_looker_data(cookies_path)
+        if looker_gtc is None: looker_gtc = scraped_gtc
+        if looker_vol is None: looker_vol = scraped_vol
+    
     # Read overrides from overrides.json if exists
     overrides_file = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "overrides.json")
     if os.path.exists(overrides_file):
