@@ -8,9 +8,9 @@
 - **GTC**: 62.40% (Biến động vs Tuần trước: ↗ +2.80% vs Tuần trước)
 - **FD**: 1.83% (Biến động vs Tuần trước: ↘ -0.92% vs Tuần trước)
 - **Ontime**: 91.50%
-- **Backlog**: 1,543 (Biến động vs Tuần trước: ↘ -27.49% vs Tuần trước)
+- **Backlog**: 1,823 (Biến động vs Tuần trước: ↘ -14.33% vs Tuần trước)
 - **Tồn Luân Chuyển**: 4,428 đơn
-- **Tồn đọng Lấy/Giao/Trả**: 77,056 đơn
+- **Tồn đọng Lấy/Giao/Trả**: 77,336 đơn
 - **Đơn ưu tiên trễ ODR**: 4,587 đơn (Tỷ lệ trễ: 10.45%)
 - **Thiếu hụt Nhân sự**: Thiếu 108 shipper (Tuyển mới: 0 / Nghỉ việc: 66)
 
@@ -30,7 +30,7 @@ xã an khánh:             1 nv).
 ### Highlights:
 - Tỷ lệ GTC toàn vùng (62.40%) cải thiện **+2.80%** so với cùng kỳ tuần trước (58.57%).
 - Sản lượng đơn toàn vùng đạt 76,366 đơn, tăng trưởng **+7.48%** so với tuần trước.
-- Đơn tồn backlog (>5 ngày) kiểm soát tốt, giảm **-27.49%** so với tuần trước (từ 1,850 xuống 1,543 đơn).
+- Đơn tồn backlog (>5 ngày) kiểm soát tốt, giảm **-14.33%** so với tuần trước (từ 1,850 xuống 1,823 đơn).
 - **Ngô Phan Mỹ Tú** là AM có tỷ lệ GTC cao nhất toàn vùng (72.42%), đồng thời duy trì lượng đơn tồn đọng cực thấp.
 - Tỷ lệ chuyển trả (FD) toàn vùng duy trì ở mức an toàn là **1.83%** (↘ -0.92% vs Tuần trước).
 - Trong tuần qua, HRBP đã tuyển thành công **0 nhân viên mới** (OB) hỗ trợ lấp đầy các tuyến nóng.
@@ -56,32 +56,32 @@ xã an khánh:             1 nv).
 ## 📋 Đánh giá AM (Scorecard)
 | AM | GTC | FD | Trạng thái | Đơn Aging | Thiếu shipper | HRBP |
 | --- | --- | --- | --- | --- | --- | --- |
-| Ngô Phan Mỹ Tú | 72.42% | 4.88% | Mạnh | 19 | Thiếu 7/61 | NgọcNTM |
-| Nguyễn Thành Huy | 69.36% | 5.26% | Mạnh | 80 | Thiếu 5/132 | DungLK |
-| Nguyễn Việt Tới | 75.80% | 5.91% | Mạnh | 19 | Thiếu 0/64 | NgọcNTM |
-| Nguyễn Tuấn Anh | 67.66% | 5.57% | Mạnh | 210 | Thiếu 9/143 | DungLK |
-| Lý Quài Nhân | 69.05% | 8.27% | Mạnh | 141 | Thiếu 9/64 | NgọcNTM |
-| Lê Minh Tuấn | 61.06% | 5.45% | Cải thiện | 72 | Thiếu 12/65 | NgọcNTM |
-| Nguyễn Anh Tùng | 47.23% | 7.02% | Yếu | 308 | Thiếu 12/58 | BaoHQ |
-| Nguyễn Huỳnh Quốc Dũng | 67.12% | 6.07% | Mạnh | 146 | Thiếu 13/101 | NgọcNTM |
-| Đoàn Công Tín | 60.49% | 10.29% | Cải thiện | 70 | Thiếu 4/69 | BaoHQ |
-| Võ Hồng Chơn | 52.81% | 0.00% | Yếu | 241 | Thiếu 18/96 | NgọcNTM |
-| Ngô Thị Bé Mi | 52.81% | 0.00% | Yếu | 138 | Thiếu 17/58 | BaoHQ |
-| Huỳnh Quốc Trung | 41.68% | 0.00% | Yếu | 99 | Thiếu 2/21 | BaoHQ |
+| Ngô Phan Mỹ Tú | 72.42% | 4.88% | Mạnh | 22 | Thiếu 7/61 | NgọcNTM |
+| Nguyễn Thành Huy | 69.36% | 5.26% | Mạnh | 95 | Thiếu 5/132 | DungLK |
+| Nguyễn Việt Tới | 75.80% | 5.91% | Mạnh | 22 | Thiếu 0/64 | NgọcNTM |
+| Nguyễn Tuấn Anh | 67.66% | 5.57% | Mạnh | 248 | Thiếu 9/143 | DungLK |
+| Lý Quài Nhân | 69.05% | 8.27% | Mạnh | 167 | Thiếu 9/64 | NgọcNTM |
+| Lê Minh Tuấn | 61.06% | 5.45% | Cải thiện | 85 | Thiếu 12/65 | NgọcNTM |
+| Nguyễn Anh Tùng | 47.23% | 7.02% | Yếu | 364 | Thiếu 12/58 | BaoHQ |
+| Nguyễn Huỳnh Quốc Dũng | 67.12% | 6.07% | Mạnh | 172 | Thiếu 13/101 | NgọcNTM |
+| Đoàn Công Tín | 60.49% | 10.29% | Cải thiện | 83 | Thiếu 4/69 | BaoHQ |
+| Võ Hồng Chơn | 52.81% | 0.00% | Yếu | 285 | Thiếu 18/96 | NgọcNTM |
+| Ngô Thị Bé Mi | 52.81% | 0.00% | Yếu | 163 | Thiếu 17/58 | BaoHQ |
+| Huỳnh Quốc Trung | 41.68% | 0.00% | Yếu | 117 | Thiếu 2/21 | BaoHQ |
 
 ## 📦 Backlog Tracking
-- **Tổng Backlog >5 ngày**: 1,543 đơn
+- **Tổng Backlog >5 ngày**: 1,823 đơn
 - **Chi tiết theo nhóm tuổi đơn**:
-  - 5 - 8 ngày: 1,543 đơn
+  - 5 - 8 ngày: 1,823 đơn
   - 8 - 15 ngày: 0 đơn
   - Trên 15 ngày: 0 đơn
 
 - **Tồn Luân Chuyển**: 4,428 đơn (Giao: 859 / Trả: 3,569)
-- **Tồn đọng Lấy/Giao/Trả**: 77,056 đơn
+- **Tồn đọng Lấy/Giao/Trả**: 77,336 đơn
   - Dưới 1 ngày: 57,782 đơn
   - 1 - 3 ngày: 14,384 đơn
   - 3 - 5 ngày: 2,761 đơn
-  - 5 - 8 ngày: 1,543 đơn
+  - 5 - 8 ngày: 1,823 đơn
   - Không phân loại: 586 đơn
 
 - **Đơn ưu tiên giao trễ ODR**: 4,587 đơn

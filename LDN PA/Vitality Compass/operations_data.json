@@ -1,6 +1,6 @@
 {
   "latest_date": "2026-08-05",
-  "zen_score": 78,
+  "zen_score": 77,
   "forecasting": {
     "projected_volume": 75264,
     "projected_shortage": 0,
@@ -27,10 +27,10 @@
       "vs_lastmonth": -0.0092
     },
     "backlog": {
-      "value": 1543,
-      "vs_yesterday": -0.42957486136783735,
-      "vs_lastweek": -0.274906015037594,
-      "vs_lastmonth": -0.16594594594594594
+      "value": 1823,
+      "vs_yesterday": -0.32606284658040663,
+      "vs_lastweek": -0.14332706766917294,
+      "vs_lastmonth": -0.014594594594594595
     },
     "hr": {
       "total_shortage_actual": 108,
@@ -106,8 +106,8 @@
       "gtc_change": -0.012800000000000034,
       "fd": 0.0191,
       "fd_change": -0.0011000000000000003,
-      "backlog": 146,
-      "backlog_change": 15,
+      "backlog": 172,
+      "backlog_change": 18,
       "hr": {
         "shortage_actual": 31,
         "shortage_bs": 13,
@@ -130,8 +130,8 @@
       "gtc_change": 0.01739999999999997,
       "fd": 0.019,
       "fd_change": -0.0009000000000000015,
-      "backlog": 210,
-      "backlog_change": 21,
+      "backlog": 248,
+      "backlog_change": 25,
       "hr": {
         "shortage_actual": 9,
         "shortage_bs": 0,
@@ -154,8 +154,8 @@
       "gtc_change": 0.02729999999999999,
       "fd": 0.0187,
       "fd_change": -0.0030999999999999986,
-      "backlog": 251,
-      "backlog_change": 26,
+      "backlog": 296,
+      "backlog_change": 30,
       "hr": {
         "shortage_actual": 18,
         "shortage_bs": 3,
@@ -178,8 +178,8 @@
       "gtc_change": -0.030500000000000083,
       "fd": 0.0178,
       "fd_change": -0.0098,
-      "backlog": 588,
-      "backlog_change": 59,
+      "backlog": 695,
+      "backlog_change": 70,
       "hr": {
         "shortage_actual": 45,
         "shortage_bs": 26,
@@ -202,8 +202,8 @@
       "gtc_change": 0.021199999999999997,
       "fd": 0.0171,
       "fd_change": -0.007300000000000001,
-      "backlog": 80,
-      "backlog_change": 8,
+      "backlog": 95,
+      "backlog_change": 10,
       "hr": {
         "shortage_actual": 5,
         "shortage_bs": 0,
@@ -228,9 +228,9 @@
       "gtc_change": 0.0020999999999999908,
       "fd": 0.04885,
       "fd_change": 0.006374999999999999,
-      "backlog": 19,
+      "backlog": 22,
       "backlog_detail": {
-        "5_8": 19,
+        "5_8": 22,
         "8_15": 0,
         "above_15": 0
       },
@@ -250,9 +250,9 @@
       "gtc_change": 0.021100000000000008,
       "fd": 0.052575,
       "fd_change": 0.0032874999999999988,
-      "backlog": 80,
+      "backlog": 95,
       "backlog_detail": {
-        "5_8": 80,
+        "5_8": 95,
         "8_15": 0,
         "above_15": 0
       },
@@ -272,9 +272,9 @@
       "gtc_change": 0.0746,
       "fd": 0.0591,
       "fd_change": 0.018125000000000002,
-      "backlog": 19,
+      "backlog": 22,
       "backlog_detail": {
-        "5_8": 19,
+        "5_8": 22,
         "8_15": 0,
         "above_15": 0
       },
@@ -294,9 +294,9 @@
       "gtc_change": 0.01739999999999997,
       "fd": 0.05571818181818181,
       "fd_change": 0.011836363636363631,
-      "backlog": 210,
+      "backlog": 248,
       "backlog_detail": {
-        "5_8": 210,
+        "5_8": 248,
         "8_15": 0,
         "above_15": 0
       },
@@ -316,9 +316,9 @@
       "gtc_change": 0.031299999999999994,
       "fd": 0.08272000000000002,
       "fd_change": 0.021320000000000026,
-      "backlog": 141,
+      "backlog": 167,
       "backlog_detail": {
-        "5_8": 141,
+        "5_8": 167,
         "8_15": 0,
         "above_15": 0
       },
@@ -338,9 +338,9 @@
       "gtc_change": 0.01750000000000007,
       "fd": 0.05445491733424237,
       "fd_change": 0.004048087924187149,
-      "backlog": 72,
+      "backlog": 85,
       "backlog_detail": {
-        "5_8": 72,
+        "5_8": 85,
         "8_15": 0,
         "above_15": 0
       },
@@ -360,9 +360,9 @@
       "gtc_change": -0.03909999999999997,
       "fd": 0.07022857142857143,
       "fd_change": 0.007157142857142862,
-      "backlog": 308,
+      "backlog": 364,
       "backlog_detail": {
-        "5_8": 308,
+        "5_8": 364,
         "8_15": 0,
         "above_15": 0
       },
@@ -382,9 +382,9 @@
       "gtc_change": 0.015199999999999991,
       "fd": 0.0607,
       "fd_change": -0.010533333333333332,
-      "backlog": 146,
+      "backlog": 172,
       "backlog_detail": {
-        "5_8": 146,
+        "5_8": 172,
         "8_15": 0,
         "above_15": 0
       },
@@ -404,9 +404,9 @@
       "gtc_change": -0.04249999999999998,
       "fd": 0.1028566945410129,
       "fd_change": 0.0044780431199701876,
-      "backlog": 70,
+      "backlog": 83,
       "backlog_detail": {
-        "5_8": 70,
+        "5_8": 83,
         "8_15": 0,
         "above_15": 0
       },
@@ -426,9 +426,9 @@
       "gtc_change": -0.029100000000000015,
       "fd": 0.0,
       "fd_change": 0.0,
-      "backlog": 241,
+      "backlog": 285,
       "backlog_detail": {
-        "5_8": 241,
+        "5_8": 285,
         "8_15": 0,
         "above_15": 0
       },
@@ -448,9 +448,9 @@
       "gtc_change": -0.038899999999999935,
       "fd": 0.0,
       "fd_change": 0.0,
-      "backlog": 138,
+      "backlog": 163,
       "backlog_detail": {
-        "5_8": 138,
+        "5_8": 163,
         "8_15": 0,
         "above_15": 0
       },
@@ -470,9 +470,9 @@
       "gtc_change": -0.0388,
       "fd": 0.0,
       "fd_change": 0.0,
-      "backlog": 99,
+      "backlog": 117,
       "backlog_detail": {
-        "5_8": 99,
+        "5_8": 117,
         "8_15": 0,
         "above_15": 0
       },
@@ -891,7 +891,7 @@
     "highlights": [
       "Tỷ lệ GTC toàn vùng (62.40%) cải thiện **+2.80%** so với cùng kỳ tuần trước (58.57%).",
       "Sản lượng đơn toàn vùng đạt 76,366 đơn, tăng trưởng **+7.48%** so với tuần trước.",
-      "Đơn tồn backlog (>5 ngày) kiểm soát tốt, giảm **-27.49%** so với tuần trước (từ 1,850 xuống 1,543 đơn).",
+      "Đơn tồn backlog (>5 ngày) kiểm soát tốt, giảm **-14.33%** so với tuần trước (từ 1,850 xuống 1,823 đơn).",
       "**Ngô Phan Mỹ Tú** là AM có tỷ lệ GTC cao nhất toàn vùng (72.42%), đồng thời duy trì lượng đơn tồn đọng cực thấp.",
       "Tỷ lệ chuyển trả (FD) toàn vùng duy trì ở mức an toàn là **1.83%** (↘ -0.92% vs Tuần trước).",
       "Trong tuần qua, HRBP đã tuyển thành công **0 nhân viên mới** (OB) hỗ trợ lấp đầy các tuyến nóng."
@@ -61127,11 +61127,11 @@
     ]
   },
   "overall_backlog": {
-    "total": 77056,
+    "total": 77336,
     "under_1": 57782,
     "1_3": 14384,
     "3_5": 2761,
-    "5_8": 1543,
+    "5_8": 1823,
     "null": 586
   },
   "odr_backlog": {

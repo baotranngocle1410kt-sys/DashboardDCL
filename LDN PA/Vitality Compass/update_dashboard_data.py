@@ -966,6 +966,7 @@ def main():
     # Parse command line overrides first
     looker_gtc = None
     looker_vol = None
+    override_bl = None
     
     for idx, arg in enumerate(sys.argv):
         if arg == "--override-gtc" and idx + 1 < len(sys.argv):
@@ -980,6 +981,12 @@ def main():
             try:
                 looker_vol = int(sys.argv[idx + 1].replace(",", "").replace(".", ""))
                 print(f"-> Volume override from command line: {looker_vol}")
+            except ValueError:
+                pass
+        elif arg == "--override-backlog" and idx + 1 < len(sys.argv):
+            try:
+                override_bl = int(sys.argv[idx + 1].replace(",", "").replace(".", ""))
+                print(f"-> Backlog override from command line: {override_bl}")
             except ValueError:
                 pass
                 
@@ -1003,6 +1010,9 @@ def main():
             if 'volume' in ov_data and ov_data['volume'] is not None:
                 looker_vol = int(str(ov_data['volume']).replace(",", "").replace(".", ""))
                 print(f"-> Volume override from overrides.json: {looker_vol}")
+            if 'backlog' in ov_data and ov_data['backlog'] is not None:
+                override_bl = int(str(ov_data['backlog']).replace(",", "").replace(".", ""))
+                print(f"-> Backlog override from overrides.json: {override_bl}")
         except Exception as e:
             print(f"⚠ Error loading overrides from overrides.json: {e}")
 
@@ -1012,6 +1022,20 @@ def main():
     if looker_vol is not None:
         print(f"Overriding cur_vol: {cur_vol:,} -> {looker_vol:,}")
         cur_vol = looker_vol
+
+    # Scale df_bl_ams if override_bl is provided
+    if override_bl is not None and not df_bl_ams.empty:
+        old_bl_sum = df_bl_ams['Tổng'].sum()
+        if old_bl_sum > 0:
+            scale = override_bl / old_bl_sum
+            df_bl_ams['5 - 8 ngày'] = (df_bl_ams['5 - 8 ngày'] * scale).round().astype(int)
+            df_bl_ams['Tổng'] = df_bl_ams['5 - 8 ngày'] + df_bl_ams['8 - 15 ngày'] + df_bl_ams['Trên 15 ngày']
+            diff = override_bl - df_bl_ams['Tổng'].sum()
+            if diff != 0:
+                max_idx = df_bl_ams['Tổng'].idxmax()
+                df_bl_ams.loc[max_idx, '5 - 8 ngày'] += diff
+                df_bl_ams.loc[max_idx, 'Tổng'] += diff
+            print(f"-> Scaled AM backlogs to match override {override_bl} (new sum: {df_bl_ams['Tổng'].sum()})")
 
     yest_gtc, yest_fd, yest_vol = calc_gtc_fd(yest_df)
     lastweek_gtc, lastweek_fd, lastweek_vol = calc_gtc_fd(lastweek_df)
@@ -2507,12 +2531,12 @@ def main():
             print(f"⚠ Failed to compute new backlog metrics: {e_stats}")
 
     # Override Giao/Trả backlog and ODR trễ to match Looker Studio screenshot data exactly (PDF 1 Page 1)
-    total_giao_tra = 77056
     giao_tra_under_1 = 57782
     giao_tra_1_3 = 14384
     giao_tra_3_5 = 2761
-    giao_tra_5_8 = 1543
+    giao_tra_5_8 = cur_bl
     giao_tra_null = 586
+    total_giao_tra = giao_tra_under_1 + giao_tra_1_3 + giao_tra_3_5 + giao_tra_5_8 + giao_tra_null
 
     total_odr_tre = 4587
     odr_tre_pct = 0.1045
