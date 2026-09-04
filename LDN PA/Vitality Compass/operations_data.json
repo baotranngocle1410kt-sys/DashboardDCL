@@ -33,9 +33,9 @@
       "vs_lastmonth": -0.16594594594594594
     },
     "hr": {
-      "total_shortage_actual": 101,
-      "total_shortage_bs": 40,
-      "total_resign_week": 61,
+      "total_shortage_actual": 108,
+      "total_shortage_bs": 42,
+      "total_resign_week": 66,
       "total_ob_week": 0,
       "latest_week": 36
     }
@@ -157,9 +157,9 @@
       "backlog": 251,
       "backlog_change": 26,
       "hr": {
-        "shortage_actual": 13,
+        "shortage_actual": 18,
         "shortage_bs": 3,
-        "resign": 10,
+        "resign": 15,
         "ob": 0,
         "target_headcount": 219,
         "hrbp": "NgọcNTM",
@@ -181,8 +181,8 @@
       "backlog": 588,
       "backlog_change": 59,
       "hr": {
-        "shortage_actual": 43,
-        "shortage_bs": 24,
+        "shortage_actual": 45,
+        "shortage_bs": 26,
         "resign": 19,
         "ob": 0,
         "target_headcount": 241,
@@ -236,9 +236,9 @@
       },
       "status": "Mạnh",
       "hr": {
-        "shortage_actual": 2,
+        "shortage_actual": 7,
         "shortage_bs": 0,
-        "resign": 2,
+        "resign": 7,
         "ob": 0,
         "target_headcount": 61
       }
@@ -412,8 +412,8 @@
       },
       "status": "Cải thiện",
       "hr": {
-        "shortage_actual": 2,
-        "shortage_bs": 2,
+        "shortage_actual": 4,
+        "shortage_bs": 4,
         "resign": 0,
         "ob": 0,
         "target_headcount": 69
@@ -669,20 +669,20 @@
       "fd_change": -0.0013999999999999985,
       "backlog": 5,
       "status": "Bất ổn",
-      "cause": "Hiệu suất giao kém, tỷ lệ trả (FD 8.14%) cao. Thiếu 2/20 shipper tại Lương Hòa Lạc, Mỹ Tịnh An. | Cảnh báo: Tỷ lệ trả hàng (%FD) cao bất thường (8.14%) + Hiệu suất giao (GTC) thấp (53.17%)",
-      "recommendation": "AM họp bưu cục chấn chỉnh thái độ giao hàng và kiểm soát tỷ lệ trả hàng. Hướng xử lý: AM trực tiếp rà soát lý do trả hàng chặng cuối và thái độ phục vụ.",
+      "cause": "Hiệu suất giao kém, tỷ lệ trả (FD 8.14%) cao. Thiếu 2/20 shipper tại Lương Hòa Lạc, Mỹ Tịnh An. | Cảnh báo: Thiếu 2 shipper + Tỷ lệ trả hàng (%FD) cao bất thường (8.14%) + Hiệu suất giao (GTC) thấp (53.17%)",
+      "recommendation": "AM họp bưu cục chấn chỉnh thái độ giao hàng và kiểm soát tỷ lệ trả hàng. Hướng xử lý: Đẩy nhanh tuyển dụng bổ sung shipper. AM trực tiếp rà soát lý do trả hàng chặng cuối và thái độ phục vụ.",
       "exit_profile": {
         "exit_hour": "09:20",
         "late_inbound": false,
         "sorting_delay": true
       },
       "hr": {
-        "shortage_actual": 0,
-        "shortage_bs": 0,
+        "shortage_actual": 2,
+        "shortage_bs": 2,
         "target_headcount": 22,
         "tuyen_thieu": "",
         "hrbp": "BaoHQ",
-        "status": "Đủ",
+        "status": "Thiếu",
         "ob_week": 0,
         "resign_week": 0
       },
@@ -897,8 +897,8 @@
       "Trong tuần qua, HRBP đã tuyển thành công **0 nhân viên mới** (OB) hỗ trợ lấp đầy các tuyến nóng."
     ],
     "lowlights": [
-      "Toàn vùng đang **thiếu hụt thực tế 101 shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.",
-      "Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 43 định biên) và **Đồng Tháp** (thiếu 13 định biên)."
+      "Toàn vùng đang **thiếu hụt thực tế 108 shipper (NVPTTT)**, ảnh nghiêm trọng đến tiến độ giao hàng đầu ca.",
+      "Điểm nóng nhân sự tập trung lớn nhất tại **Tiền Giang** (thiếu 45 định biên) và **Đồng Tháp** (thiếu 18 định biên)."
     ],
     "causes": [
       "Tại **(BTR) An Hội**: Nhân sự: 7/11 (thiếu 4) + 2 nhân viên hỗ trợ; Bưu cục liên tục có nhân viên nghỉ ngang, té xe.; NVXL mới chưa quản lý được nhân sự tại BC, điều tiết giờ giấc xuất hàng.; Nhân viên 9h chưa rời khỏi kho.",
